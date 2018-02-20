@@ -58,7 +58,7 @@ AutoRemove-Torrents是一个自动删除种子的脚本程序。它能根据你�
    如果只是想查看哪些种子符合删除条件，但并不打算删除它们，请在后面加上 `--view` 参数。
 
 .. _这里: https://github.com/jerrymakesjelly/autoremove-torrents/archive/master.zip
-.. _Wiki: https://127.0.0.1
+.. _Wiki: https://github.com/jerrymakesjelly/autoremove-torrents/wiki
 
 定时运行
 =========
