@@ -72,7 +72,7 @@ class qBittorrent(ClientBase):
                 if state == 'downloading' or state == 'stalledDL':
                     status = TorrentStatus.Downloading
                 elif state == 'queuedDL' or state == 'queuedUP':
-                    status == TorrentStatus.Queued
+                    status = TorrentStatus.Queued
                 elif state == 'uploading' or state == 'stalledUP':
                     status = TorrentStatus.Uploading
                 elif state == 'checkingUP' or state == 'checkingDL':
