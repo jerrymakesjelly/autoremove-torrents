@@ -20,20 +20,21 @@ Installation
 -------------
 Download the codes
 +++++++++++++++++++
-```bash
+::
+
     git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
     pip install pyyaml # The only python requirement we need to install
     cd autoremove-torrents
-```
+
 
 Write your configuration file
 ++++++++++++++++++++++++++++++
-In order to satisfactory your needs, you have to learn how to write a configuration file. The grammar is quite easy, for example:
-```bash
-    vim ./config.yml
-```
+In order to satisfactory your needs, you have to learn how to write a configuration file. The grammar is quite easy, for example::
 
-```YAML
+    vim ./config.yml
+
+::
+
     my_task:
       client: qbittorrent
       host: http://127.0.0.1
@@ -46,7 +47,7 @@ In order to satisfactory your needs, you have to learn how to write a configurat
           seeding_time: 1209600
           ratio: 1
           delete_data: true
-```
+
 
 The script will delete those torrents whose trackers are ipt.com, seeding time is above 1209600 seconds and ratio is greater than 1. Visit `Wiki`_ to learn more.
 
@@ -54,22 +55,23 @@ The script will delete those torrents whose trackers are ipt.com, seeding time i
 
 Run
 ++++
-```bash
+::
+
     python3 main.py
-```
+
 If you just want to see which torrents can be removed but don't want to really remove them, use --view command line argument.
 
 
 Setting up scheduled tasks
 -----------------------------
-If you want to check whether there is any torrent can be removed every 15 minutes, the crontab can help you. Look at the example:
-```bash
+If you want to check whether there is any torrent can be removed every 15 minutes, the crontab can help you. Look at the example::
+
     crontab -e
-```
-And then, add a line at the end of the file (please confirm the path of the python3 and your script):
-```
+
+And then, add a line at the end of the file (please confirm the path of the python3 and your script)::
+
 */15 * * * * /usr/bin/python3 /home/jerrymakesjelly/autoremove-torrents/main.py
-```
+
 
 Changelog
 ----------
