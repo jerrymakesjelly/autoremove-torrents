@@ -49,7 +49,7 @@ In order to satisfactory your needs, you have to learn how to write a configurat
           delete_data: true
 
 
-The script will delete those torrents whose trackers are ipt.com, seeding time is above 1209600 seconds and ratio is greater than 1. Visit `Wiki`_ to learn more.
+The script will delete those torrents whose trackers are ipt.com, seeding time is above 1209600 seconds **or** ratio is greater than 1. Visit `Wiki`_ to learn more.
 
 .. _Wiki: https://github.com/jerrymakesjelly/autoremove-torrents/wiki
 
