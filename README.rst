@@ -25,7 +25,7 @@ Download the codes
 ::
 
     git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
-    pip install pyyaml # The only python requirement we need to install
+    pip3 install pyyaml # The only python requirement we need to install
     cd autoremove-torrents
 
 
@@ -44,8 +44,8 @@ In order to satisfactory your needs, you have to learn how to write a configurat
       password: adminadmin
       strategies:
         my_strategy:
-          trackers:
-            - ipt.com
+          categories:
+            - IPT
           seeding_time: 1209600
           ratio: 1
           delete_data: true
