@@ -1,11 +1,13 @@
 ﻿Auto Remove Torrents
 ======================
-|MIT|
+|TravisCI| |MIT|
 
 This script can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, for each category and tracker, the script will check each torrent if it satisfies the remove condition; If so, delete it automatically.
 
 This smart script supports qBittorrent/Transmission/μTorrent. If you like, star it :sparkles: :)
 
+.. |TravisCI| image:: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents.svg?branch=master
+   :target: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents
 .. |MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
 

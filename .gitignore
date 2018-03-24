@@ -104,7 +104,7 @@ venv.bak/
 .mypy_cache/
 
 # configuration files
-*.yml
+config.yml
 
 # vscode
 .vscode
