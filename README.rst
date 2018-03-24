@@ -72,7 +72,9 @@ If you want to check whether there is any torrent can be removed every 15 minute
 
 And then, add a line at the end of the file (please confirm the path of the python3 and your script)::
 
-*/15 * * * * /usr/bin/python3 /home/jerrymakesjelly/autoremove-torrents/main.py
+*/15 * * * * /usr/bin/python3 /home/jerrymakesjelly/autoremove-torrents/main.py --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml
+
+The *conf=* indicates the path to the configuration file.
 
 
 Changelog
