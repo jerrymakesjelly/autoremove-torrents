@@ -25,7 +25,7 @@ Download the codes
 ::
 
     git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
-    pip3 install pyyaml # The only python requirement we need to install
+    pip3 install requests pyyaml
     cd autoremove-torrents
 
 
