@@ -87,7 +87,11 @@ Depend on users' feedback.
 
 * Support Deluge and rtorrent in the future
 
-* Add more remove conditions
+* Add remove condition: Disk free space
+
+* Add remove condition: Max/Min average UL/DL speed
+
+* The file *autoremove.py* is too long to maintain, I should reconstruct it using OOP.
 
 If you have any problem, please submit `Issues`_.
 
