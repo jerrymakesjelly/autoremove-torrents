@@ -48,7 +48,7 @@ In order to satisfactory your needs, you have to learn how to write a configurat
             - IPT
           seeding_time: 1209600
           ratio: 1
-          delete_data: true
+      delete_data: true
 
 
 The script will delete those torrents whose categories are IPT, seeding time is above 1209600 seconds **or** ratio is greater than 1. Visit `Wiki`_ to learn more.
@@ -79,6 +79,8 @@ The *conf=* indicates the path to the configuration file.
 
 Changelog
 ----------
+Wed, 28 Mar 2018: (Correct document) The *delete_data* field shouldn't be indented.
+
 Thu, 22 Mar 2018: First version :bowtie:
 
 TODO List
