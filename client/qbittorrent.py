@@ -28,9 +28,9 @@ class qBittorrent(ClientBase):
             if request.text == 'Ok.': # Success
                 self._cookies = request.cookies
             else:
-                raise RuntimeError(request.text)
+                raise RuntimeError('Login failed: '+request.text+'.')
         else:
-            raise RuntimeError('HTTP Error')
+            raise RuntimeError('The server returned HTTP '+request.status_code+'.')
     
     # Get qBittorrent Version
     def version(self):
