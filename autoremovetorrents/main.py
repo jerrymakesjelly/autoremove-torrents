@@ -3,10 +3,10 @@
 import sys
 import getopt
 import traceback
-import logger
-from autoremove import AutoRemover
+from . import logger
+from .autoremove import AutoRemover
 
-if __name__ == '__main__':
+def main():
     # View Mode
     view_mode = False
     # The path of the configuration file
@@ -40,3 +40,6 @@ if __name__ == '__main__':
         lg.error(traceback.format_exc().splitlines()[-1])
         lg.debug('Exception Logged', exc_info=True)
         lg.critical('An error occured. Please contact the administrator for more information.')
+
+if __name__ == '__main__':
+    main()

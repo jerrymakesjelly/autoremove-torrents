@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import logger
 import yaml
 import time
 import sys
 import urllib.parse
-from client.qbittorrent import qBittorrent
-from client.transmission import Transmission
-from client.utorrent import uTorrent
-from client.base.torrentstatus import TorrentStatus
+from . import logger
+from .client.qbittorrent import qBittorrent
+from .client.transmission import Transmission
+from .client.utorrent import uTorrent
+from .client.base.torrentstatus import TorrentStatus
 
 class AutoRemover(object):
     def __init__(self, conf_path):

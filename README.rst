@@ -20,22 +20,25 @@ That's all. It's a simple but smart script.
 
 Installation
 -------------
-Download the codes
+Download the codes and set up
 +++++++++++++++++++
 ::
 
     git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
-    pip3 install requests pyyaml
-    cd autoremove-torrents
+    python3 setup.py install
 
 
 Write your configuration file
 ++++++++++++++++++++++++++++++
-In order to satisfactory your needs, you have to learn how to write a configuration file. The grammar is quite easy, for example::
+In order to satisfactory your needs, you have to learn how to write a configuration file. 
 
+You can put the configuration file anywhere on your disk. The autoremove-torrents looks for *config.yml* in the Shell's current working directory.::
+
+    cd autoremove-torrents
     vim ./config.yml
 
-::
+
+The grammar is quite easy, for example::
 
     my_task:
       client: qbittorrent
@@ -59,7 +62,7 @@ Run
 ++++
 ::
 
-    python3 main.py
+    autoremove-torrents
 
 If you just want to see which torrents can be removed but don't want to really remove them, use --view command line argument.
 
@@ -70,18 +73,22 @@ If you want to check whether there is any torrent can be removed every 15 minute
 
     crontab -e
 
-And then, add a line at the end of the file (please confirm the path of the python3 and your script)::
+And then, add a line at the end of the file (please confirm the path of the autoremove-torrents and your script)::
 
-*/15 * * * * /usr/bin/python3 /home/jerrymakesjelly/autoremove-torrents/main.py --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml
+*/15 * * * * /usr/bin/autoremove-torrents --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml
 
 The *conf=* indicates the path to the configuration file.
 
 
 Changelog
 ----------
-Wed, 28 Mar 2018: (Correct document) The *delete_data* field shouldn't be indented.
+**Mon, 14 May 2018**: Created *setup.py*.
 
-Thu, 22 Mar 2018: First version :bowtie:
+    You can now use the *autoremove-torrents* command directly instead of *python3 main.py*.
+
+**Wed, 28 Mar 2018**: (Correct document) The *delete_data* field shouldn't be indented.
+
+**Thu, 22 Mar 2018**: First version :bowtie:
 
 TODO List
 -----------
