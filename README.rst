@@ -1,5 +1,9 @@
 ﻿Auto Remove Torrents
 ======================
+
+.. image:: https://api.codacy.com/project/badge/Grade/b2d4a371eb964a309af7fc8740769cb7
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&utm_medium=referral&utm_content=jerrymakesjelly/autoremove-torrents&utm_campaign=badger
 |TravisCI| |MIT|
 
 This script can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, for each category and tracker, the script will check each torrent if it satisfies the remove condition; If so, delete it automatically.
