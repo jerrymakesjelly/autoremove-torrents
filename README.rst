@@ -27,6 +27,7 @@ Download the codes and set up
 ::
 
     git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
+    cd autoremove-torrents
     python3 setup.py install
 
 
@@ -36,7 +37,6 @@ In order to satisfactory your needs, you have to learn how to write a configurat
 
 You can put the configuration file anywhere on your disk. The autoremove-torrents looks for *config.yml* in the Shell's current working directory.::
 
-    cd autoremove-torrents
     vim ./config.yml
 
 
