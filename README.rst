@@ -68,6 +68,34 @@ Run
 
 If you just want to see which torrents can be removed but don't want to really remove them, use --view command line argument.
 
+Uninstall
+----------
+However, the *setup.py* program doesn't provide the uninstall options, so you need to remove all the files manually.
+
+Step1
+++++++
+::
+
+    cd autoremove-torrents
+
+Step2
+++++++
+Reinstall the program and record a list of installed files::
+
+    python3 setup.py install --record files.txt
+
+Step3
+++++++
+Use *xargs* to remove each file::
+
+    cat files.txt | xargs rm -rf
+
+Or if you're running Windows, use Powershell::
+
+    Get-Content files.txt | ForEach-Object {Remove-Item $_ -Recurse -Force}
+
+Reference: https://stackoverflow.com/questions/1550226/python-setup-py-uninstall
+
 
 Setting up scheduled tasks
 -----------------------------
