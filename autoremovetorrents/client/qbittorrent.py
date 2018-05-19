@@ -2,10 +2,11 @@
 import logging
 import requests
 import time
-from .base.clientbase import ClientBase
-from .base.torrentstatus import TorrentStatus
+from ..torrent import Torrent
+from ..torrentstatus import TorrentStatus
+from ..exception.loginfailed import LoginFailed
 
-class qBittorrent(ClientBase):
+class qBittorrent(object):
     def __init__(self, host):
         # Logger
         self._logger = logging.getLogger(__name__)
@@ -28,9 +29,9 @@ class qBittorrent(ClientBase):
             if request.text == 'Ok.': # Success
                 self._cookies = request.cookies
             else:
-                raise RuntimeError('Login failed: '+request.text+'.')
+                raise LoginFailed(request.text)
         else:
-            raise RuntimeError('The server returned HTTP '+request.status_code+'.')
+            raise LoginFailed('The server returned HTTP %d.' % request.status_code)
     
     # Get qBittorrent Version
     def version(self):
@@ -84,7 +85,7 @@ class qBittorrent(ClientBase):
                 # Get other information
                 properties = self._torrent_generic_properties(torrent_hash)
                 trackers = self._torrent_trackers(torrent_hash)
-                return ClientBase._torrent_properties(self,
+                return Torrent(
                     torrent['hash'], torrent['name'], 
                     torrent['category'] if 'category' in torrent else torrent['label'],
                     [tracker['url'] for tracker in trackers],

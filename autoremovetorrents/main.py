@@ -3,8 +3,9 @@
 import sys
 import getopt
 import traceback
+import yaml
 from . import logger
-from .autoremove import AutoRemover
+from .task import Task
 
 def main():
     # View Mode
@@ -18,10 +19,10 @@ def main():
 
     # Get arguments
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'vc:t:', ['view', 'conf=', 'task='])
+        opts = getopt.getopt(sys.argv[1:], 'vc:t:', ['view', 'conf=', 'task='])[0]
     except getopt.GetoptError:
         print('Invalid arguments.')
-        sys.exit(2)
+        sys.exit(255)
     for opt,arg in opts:
         if opt in ('-v', '--view'): # View mode (without deleting)
             view_mode = True
@@ -32,11 +33,19 @@ def main():
     
     # Run autoremove
     try:
-        ar = AutoRemover(conf_path)
-        result = ar.execute(task)
-        if not view_mode:
-            ar.remove(result)
-    except Exception as exp:
+        # Load configurations
+        lg.info('Loading configurations...')
+        with open(conf_path, 'r') as stream:
+            result = yaml.safe_load(stream)
+        lg.info('Found %d task(s) in the file.' % len(result))
+
+        # Run tasks
+        if task == None: # Task name specified
+            for task_name in result:
+                Task(task_name, result[task_name], not view_mode).execute()
+        else:
+            Task(task, result[task], not view_mode).execute()
+    except Exception:
         lg.error(traceback.format_exc().splitlines()[-1])
         lg.debug('Exception Logged', exc_info=True)
         lg.critical('An error occured. Please contact the administrator for more information.')

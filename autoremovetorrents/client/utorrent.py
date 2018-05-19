@@ -4,10 +4,10 @@ import time
 import sys
 from requests.auth import HTTPBasicAuth
 import requests
-from .base.clientbase import ClientBase
-from .base.torrentstatus import TorrentStatus
+from ..torrent import Torrent
+from ..torrentstatus import TorrentStatus
 
-class uTorrent(ClientBase):
+class uTorrent(object):
     def __init__(self, host):
         # Token
         self._token = ''
@@ -58,7 +58,7 @@ class uTorrent(ClientBase):
         # Get hash for each torrent
         for torrent in result['torrents']:
             torrents_hash.append(torrent[0])
-        return ClientBase._torrents_list(self, torrents_hash)
+        return torrents_hash
     
     # Get Torrent Job Properties
     def _torrent_job_properties(self, torrent_hash):
@@ -91,7 +91,7 @@ class uTorrent(ClientBase):
                     status = TorrentStatus.Unknown
                 # Get torrent's tracker
                 trackers = self._torrent_job_properties(torrent_hash)['trackers'].split()
-                return ClientBase._torrent_properties(self,
+                return Torrent(
                     torrent[0], torrent[2], torrent[11], trackers, status, torrent[3], torrent[7]/1000, 
                     torrent[6], sys.maxsize, -1)
         # Not Found

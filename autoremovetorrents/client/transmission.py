@@ -1,10 +1,10 @@
 #-*- coding:utf-8 -*-
 import requests
 from requests.auth import HTTPBasicAuth
-from .base.clientbase import ClientBase
-from .base.torrentstatus import TorrentStatus
+from ..torrent import Torrent
+from ..torrentstatus import TorrentStatus
 
-class Transmission(ClientBase):
+class Transmission(object):
     def __init__(self, host):
         # Host
         self._host = host
@@ -78,7 +78,7 @@ class Transmission(ClientBase):
             TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
         ]
         status = status_list[torrent['status']]
-        return ClientBase._torrent_properties(self, 
+        return Torrent( 
             torrent['hashString'], torrent['name'], '',
             [tracker['announce'] for tracker in torrent['trackers']],
             status, torrent['totalSize'], torrent['uploadRatio'],
