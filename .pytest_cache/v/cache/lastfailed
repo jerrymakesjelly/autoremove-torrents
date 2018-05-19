@@ -1,4 +1,0 @@
-{
-  "tests/test_ratio.py::TestRatioClass::()::test_ratio": true,
-  "tests/test_ratio.py::test_func": true
-}
