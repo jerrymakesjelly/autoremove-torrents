@@ -6,7 +6,7 @@ from autoremovetorrents.version import __version__
 setup(name = 'autoremove-torrents',
     version = __version__,
     description = 'Automatically remove torrents according to your strategies.',
-    long_description = open('README.rst', encoding='utf-8').read(),
+    long_description = open('README.rst').read(),
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',

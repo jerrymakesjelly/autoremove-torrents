@@ -1,10 +1,10 @@
 ﻿Auto Remove Torrents
 ======================
-|Codacy| |TravisCI| |Coverage| |MIT|
+|PyPI| |TravisCI| |Coverage| |Codacy| |MIT|
 
-This script can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, for each category and tracker, the script will check each torrent if it satisfies the remove condition; If so, delete it automatically.
+This program can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, for each category and tracker, the program will check each torrent if it satisfies the remove condition; If so, delete it automatically.
 
-This smart script supports qBittorrent/Transmission/μTorrent. If you like, star it :sparkles: :)
+This program supports qBittorrent/Transmission/μTorrent. If you like, star it :sparkles: :)
 
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/6e5509ecb4714ed697c65f35d71cff65
     :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
@@ -14,18 +14,30 @@ This smart script supports qBittorrent/Transmission/μTorrent. If you like, star
    :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Coverage
 .. |MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
+.. |PyPI| image:: https://badge.fury.io/py/autoremove-torrents.svg
+    :target: https://badge.fury.io/py/autoremove-torrents
 
 Requirements
 -------------
 * Python 3
 
-That's all. It's a simple but smart script.
+That's all. It's a simple but smart program.
 
 
-Installation
+Quick Start
 -------------
-Download the codes and set up
+Installation
 +++++++++++++++++++
+Install from pip
+^^^^^^^^^^^^^^^^^
+::
+
+    pip install autoremove-torrents
+
+or
+
+Install from GitHub
+^^^^^^^^^^^^^^^^^^^^
 ::
 
     git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
@@ -58,7 +70,7 @@ The grammar is quite easy, for example::
       delete_data: true
 
 
-The script will delete those torrents whose categories are IPT, seeding time is above 1209600 seconds **or** ratio is greater than 1. Visit `Wiki`_ to learn more.
+The program will delete those torrents whose categories are IPT, seeding time is above 1209600 seconds **or** ratio is greater than 1. Visit `Wiki`_ to learn more.
 
 .. _Wiki: https://github.com/jerrymakesjelly/autoremove-torrents/wiki
 
@@ -77,7 +89,7 @@ If you want to check whether there is any torrent can be removed every 15 minute
 
     crontab -e
 
-And then, add a line at the end of the file (please confirm the path of the autoremove-torrents and your script)::
+And then, add a line at the end of the file (please confirm the path of the autoremove-torrents and your program)::
 
 */15 * * * * /usr/bin/autoremove-torrents --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml
 
@@ -86,7 +98,12 @@ The *conf=* indicates the path to the configuration file.
 
 Changelog
 ----------
-**Mon, 14 May 2018**: Created *setup.py*.
+**Sat, 26 May 2018**: Version 1.2.0. Refactoring was completed, and was published to PyPI.
+
+    * New features will be added soon.
+    * Now we can install it via *pip*.
+
+**Mon, 14 May 2018**: Version 1.1.0. Created *setup.py*.
 
     You can now use the *autoremove-torrents* command directly instead of *python3 main.py*.
 
@@ -104,37 +121,7 @@ Depend on users' feedback.
 
 * Add remove condition: Max/Min average UL/DL speed
 
-* The file *autoremove.py* is too long to maintain, I should reconstruct it using OOP.
-
 If you have any problem, please submit `Issues`_.
 
 .. _Issues: https://github.com/jerrymakesjelly/autoremove-torrents/issues
 
-
-Uninstall
-----------
-However, the *setup.py* program doesn't provide the uninstall options, so you need to remove all the files manually.
-
-Step1
-++++++
-::
-
-    cd autoremove-torrents
-
-Step2
-++++++
-Reinstall the program and record a list of installed files::
-
-    python3 setup.py install --record files.txt
-
-Step3
-++++++
-Use *xargs* to remove each file::
-
-    cat files.txt | xargs rm -rf
-
-Or if you're running Windows, use Powershell::
-
-    Get-Content files.txt | ForEach-Object {Remove-Item $_ -Recurse -Force}
-
-Reference: https://stackoverflow.com/questions/1550226/python-setup-py-uninstall
