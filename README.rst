@@ -1,6 +1,6 @@
 ﻿Auto Remove Torrents
 ======================
-|Codacy| |TravisCI| |MIT|
+|Codacy| |TravisCI| |Coverage| |MIT|
 
 This script can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, for each category and tracker, the script will check each torrent if it satisfies the remove condition; If so, delete it automatically.
 
@@ -10,6 +10,8 @@ This smart script supports qBittorrent/Transmission/μTorrent. If you like, star
     :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
 .. |TravisCI| image:: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents.svg?branch=master
    :target: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents
+.. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/6e5509ecb4714ed697c65f35d71cff65    
+   :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Coverage
 .. |MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
 

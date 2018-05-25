@@ -1,0 +1,83 @@
+{
+    "create_time": [
+        "Torrent - 2",
+        "Torrent - 4",
+        "Torrent - 5",
+        "Torrent - 9"
+    ],
+    "ratio": [
+        "Torrent - 4",
+        "Torrent - 5",
+        "Torrent - 8"
+    ],
+    "seeding_time": [
+        "Torrent - 3",
+        "Torrent - 4",
+        "Torrent - 5",
+        "Torrent - 7"
+    ],
+    "torrent_size": {
+        "remove-old-seeds": [
+            "Torrent - 10",
+            "Torrent - 8",
+            "Torrent - 2",
+            "Torrent - 5",
+            "Torrent - 4",
+            "Torrent - 9"
+        ],
+        "remove-new-seeds": [
+            "Torrent - 6",
+            "Torrent - 8",
+            "Torrent - 10",
+            "Torrent - 7",
+            "Torrent - 1",
+            "Torrent - 11",
+            "Torrent - 12"
+        ],
+        "remove-big-seeds": [
+            "Torrent - 6",
+            "Torrent - 1",
+            "Torrent - 11",
+            "Torrent - 10",
+            "Torrent - 2"
+        ],
+        "remove-small-seeds": [
+            "Torrent - 9",
+            "Torrent - 12",
+            "Torrent - 7",
+            "Torrent - 8",
+            "Torrent - 5",
+            "Torrent - 6",
+            "Torrent - 1",
+            "Torrent - 11"
+        ]
+    },
+    "categories": {
+        "all_categories": [
+            "Torrent - 1",
+            "Torrent - 2",
+            "Torrent - 3",
+            "Torrent - 4",
+            "Torrent - 5",
+            "Torrent - 6",
+            "Torrent - 7",
+            "Torrent - 8",
+            "Torrent - 9",
+            "Torrent - 10",
+            "Torrent - 11",
+            "Torrent - 12"
+        ],
+        "category_1": [
+            "Torrent - 1",
+            "Torrent - 7",
+            "Torrent - 11"
+        ],
+        "category_1_and_category_3": [
+            "Torrent - 1",
+            "Torrent - 4",
+            "Torrent - 7",
+            "Torrent - 9",
+            "Torrent - 11"
+        ]
+    }
+}

@@ -24,7 +24,8 @@ setup(name = 'autoremove-torrents',
     zip_safe = True,
     install_requires = [
         'requests',
-        'pyyaml'
+        'pyyaml',
+        'enum34'
     ],
     entry_points = {
         'console_scripts':[

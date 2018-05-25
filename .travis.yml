@@ -1,2 +1,17 @@
 language: python
-script: true
+python:
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.6-dev" # Python 3.6 development branch
+# Command to install dependencies
+install:
+  - pip install requests pyyaml enum34
+  - pip install pytest pytest-cov codacy-coverage
+# Command to run tests
+script:
+  - py.test --cov-report=xml --cov=./
+# Command after success
+after_success:
+  - python-codacy-coverage -r coverage.xml

@@ -8,9 +8,11 @@ class CreateTimeCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._create_time = ct
     
-    def apply(self, torrents):
+    def apply(self, torrents, now = 0):
+        if now == 0:
+            now = time.time()
         for torrent in torrents:
-            if time.time() - torrent.create_time <= self._create_time:
+            if now - torrent.create_time <= self._create_time:
                 self.remain.append(torrent)
             else:
                 self.remove.append(torrent)
