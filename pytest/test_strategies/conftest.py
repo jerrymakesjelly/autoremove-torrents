@@ -12,7 +12,7 @@ from autoremovetorrents.torrentstatus import TorrentStatus
 def load_data():
     # Load input data
     input = []
-    with open('pytest/data.json', encoding='utf-8') as f:
+    with open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
         data = json.load(f)
     for torrent in data:
         input.append(Torrent(
@@ -29,7 +29,7 @@ def load_data():
         ))
 
     # Load output data
-    with open('pytest/test_filters/output.json', encoding='utf-8') as f:
+    with open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'output.json'), encoding='utf-8') as f:
         output = json.load(f)
     
     return {

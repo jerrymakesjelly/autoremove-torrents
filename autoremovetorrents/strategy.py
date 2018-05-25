@@ -7,6 +7,7 @@ from .condition.seedingtime import SeedingTimeCondition
 from .condition.createtime import CreateTimeCondition
 from .condition.ratio import RatioCondition
 from .condition.torrentsize import TorrentSizeCondition
+from .condition.donothing import EmptyCondition
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -49,11 +50,11 @@ class Strategy(object):
         # Condition collection
         condition_field = [
             'seeding_time', 'create_time', 
-            'ratio', 'seed_size'
+            'ratio', 'seed_size', 'nothing'
         ]
         condition_obj = [
             SeedingTimeCondition, CreateTimeCondition, 
-            RatioCondition, TorrentSizeCondition
+            RatioCondition, TorrentSizeCondition, EmptyCondition
         ]
         for i in range(0, len(condition_field)):
             # Apply each condition

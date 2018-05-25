@@ -79,5 +79,8 @@
             "Torrent - 9",
             "Torrent - 11"
         ]
-    }
+    },
+    "test_strategy": [
+        "Torrent - 4"
+    ]
 }
