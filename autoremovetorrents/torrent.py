@@ -6,10 +6,10 @@ import time
 from .torrentstatus import TorrentStatus
 
 class Torrent(object):
-    def __init__(self, hash, name, category, tracker, status, size, ratio,
+    def __init__(self, hash_value, name, category, tracker, status, size, ratio,
         uploaded, create_time, seeding_time):
         # Save Properties
-        self.hash = hash
+        self.hash = hash_value
         self.name = name
         self.category = category
         self.tracker = tracker
@@ -19,16 +19,16 @@ class Torrent(object):
         self.uploaded = uploaded
         self.create_time = create_time
         self.seeding_time = seeding_time
-    
+
     # Format torrent info
     def format_info(self):
         return "%s\nSize:%s\tRatio:%.3f\tTotal Uploaded:%s\tSeeding Time:%s\tCategory:%s\nCreate Time:%s" % \
-            (self.name, 
-            self._convert_bytes(self.size), 
+            (self.name,
+            self._convert_bytes(self.size),
             self.ratio,
             self._convert_bytes(self.uploaded),
-            self._convert_seconds(self.seeding_time), 
-            self.category, 
+            self._convert_seconds(self.seeding_time),
+            self.category,
             self._convert_timestamp(self.create_time)
             )
     

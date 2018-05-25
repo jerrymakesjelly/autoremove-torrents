@@ -29,7 +29,7 @@ class Strategy(object):
             else not 'categories' in conf
         self._all_trackers = conf['all_trackers'] if 'all_trackers' in conf \
             else not 'trackers' in conf
-    
+
     # Apply Filters
     def _apply_filters(self):
         filter_conf = [
@@ -49,11 +49,11 @@ class Strategy(object):
     def _apply_conditions(self):
         # Condition collection
         condition_field = [
-            'seeding_time', 'create_time', 
+            'seeding_time', 'create_time',
             'ratio', 'seed_size', 'nothing'
         ]
         condition_obj = [
-            SeedingTimeCondition, CreateTimeCondition, 
+            SeedingTimeCondition, CreateTimeCondition,
             RatioCondition, TorrentSizeCondition, EmptyCondition
         ]
         for i in range(0, len(condition_field)):

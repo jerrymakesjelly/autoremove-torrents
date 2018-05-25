@@ -31,7 +31,7 @@ class Task(object):
         self._remove = []
 
     # Login client
-    def _login(self): 
+    def _login(self):
         # Find the type of client
         clients = [qBittorrent, Transmission, uTorrent]
         client_names = ['qbittorrent', 'transmission', 'utorrent']
@@ -52,12 +52,12 @@ class Task(object):
     def _get_torrents(self):
         self._logger.info('Getting all the torrents...')
         last_time = time.time()
-        for hash in self._client.torrents_list():
+        for hash_value in self._client.torrents_list():
             # Append new torrent
-            self._torrents.append(self._client.torrent_properties(hash))
+            self._torrents.append(self._client.torrent_properties(hash_value))
             # For a long waiting
             if time.time() - last_time > 10:
-                self._logger.info('Please wait...We have found %d seed(s).' % 
+                self._logger.info('Please wait...We have found %d seed(s).' %
                     len(self._torrents))
                 last_time = time.time()
         self._logger.info('Found %d seed(s) in the client.' % len(self._torrents))

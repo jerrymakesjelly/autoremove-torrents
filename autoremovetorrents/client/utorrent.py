@@ -21,7 +21,7 @@ class uTorrent(object):
         self._torrents_list_cache = []
         self._refresh_cycle = 30
         self._refresh_time = 0
-    
+
     # Login to uTorrent
     def login(self, username, password):
         # HTTP Authorization
@@ -45,7 +45,7 @@ class uTorrent(object):
     def torrents_list(self):
         # Request torrents list
         torrents_hash = []
-        request = requests.get(self._host+'/gui/', params={'list':1, 'token':self._token}, 
+        request = requests.get(self._host+'/gui/', params={'list':1, 'token':self._token},
             cookies=self._cookies, auth=self._auth)
         request.encoding = 'utf-8'
         if request.status_code != 200: # Error
@@ -62,7 +62,7 @@ class uTorrent(object):
     
     # Get Torrent Job Properties
     def _torrent_job_properties(self, torrent_hash):
-        request = requests.get(self._host+'/gui/', 
+        request = requests.get(self._host+'/gui/',
             params={'action':'getprops', 'token':self._token, 'hash':torrent_hash},
             cookies=self._cookies, auth=self._auth)
         request.encoding = 'utf-8'
@@ -92,14 +92,14 @@ class uTorrent(object):
                 # Get torrent's tracker
                 trackers = self._torrent_job_properties(torrent_hash)['trackers'].split()
                 return Torrent(
-                    torrent[0], torrent[2], torrent[11], trackers, status, torrent[3], torrent[7]/1000, 
+                    torrent[0], torrent[2], torrent[11], trackers, status, torrent[3], torrent[7]/1000,
                     torrent[6], sys.maxsize, -1)
         # Not Found
         raise RuntimeError('No such torrent.')
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        requests.get(self._host+'/gui/', 
+        requests.get(self._host+'/gui/',
             params={'action':'remove', 'token':self._token, 'hash':torrent_hash},
             cookies=self._cookies, auth=self._auth
             )

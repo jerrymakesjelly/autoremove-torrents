@@ -7,7 +7,7 @@ class SeedingTimeCondition(Condition):
     def __init__(self, st):
         Condition.__init__(self) # Initialize remain and remove list
         self._seeding_time = st
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if torrent.status == TorrentStatus.Uploading and \

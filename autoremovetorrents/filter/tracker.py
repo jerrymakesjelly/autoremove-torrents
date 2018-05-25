@@ -4,8 +4,8 @@ import urllib.parse
 from .filter import Filter
 
 class TrackerFilter(Filter):
-    def __init__(self, all, ac, re):
-        Filter.__init__(self, all, ac, re)
+    def __init__(self, all_tracker, ac, re):
+        Filter.__init__(self, all_tracker, ac, re)
 
     def apply(self, torrents):
         result = []

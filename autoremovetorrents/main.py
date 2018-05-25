@@ -30,7 +30,7 @@ def main():
             conf_path = arg
         elif opt in ('-t', '--task'):
             task = arg
-    
+
     # Run autoremove
     try:
         # Load configurations

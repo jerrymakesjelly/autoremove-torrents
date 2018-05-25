@@ -4,7 +4,7 @@ from autoremovetorrents.strategy import Strategy
 def test_strategy(load_data):
     # Reference to 'test_category', 'test_tracker', 'test_ratio' and 'test_seeding_time'
     # The result is the union of their results
-    stgy = Strategy('test_strategy', 
+    stgy = Strategy('test_strategy',
         {
             'categories': ['Category - 1', 'Category - 3'],
             'trackers': ['tracker.site3.com'],

@@ -6,7 +6,7 @@ class ConditionWithSort(Condition):
     def __init__(self, action):
         Condition.__init__(self)
         self._action = action
-    
+
     def sort_torrents(self, torrents):
         actions = [
             'remove-old-seeds',

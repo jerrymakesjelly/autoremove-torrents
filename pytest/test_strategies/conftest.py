@@ -11,11 +11,11 @@ from autoremovetorrents.torrentstatus import TorrentStatus
 @pytest.fixture(scope="module")
 def load_data():
     # Load input data
-    input = []
+    input_torrents = []
     with open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
         data = json.load(f)
     for torrent in data:
-        input.append(Torrent(
+        input_torrents.append(Torrent(
             torrent['hash'],
             torrent['name'],
             torrent['category'],
@@ -31,8 +31,8 @@ def load_data():
     # Load output data
     with open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'output.json'), encoding='utf-8') as f:
         output = json.load(f)
-    
+
     return {
-        'input':input,
+        'input':input_torrents,
         'output':output
     }

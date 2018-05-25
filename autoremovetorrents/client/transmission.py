@@ -15,7 +15,7 @@ class Transmission(object):
         # username & password
         self._username = None
         self._password = None
-    
+
     # Login to Transmission
     def login(self, username, password):
         # Login when requesting
@@ -28,7 +28,7 @@ class Transmission(object):
         while retry > 0:
             retry -= 1
             # Make request
-            request = requests.post(self._host+'/transmission/rpc', 
+            request = requests.post(self._host+'/transmission/rpc',
                 json={'method':method, 'arguments':arguments, 'tag':self._request_id},
                 headers={'X-Transmission-Session-Id': self._session_id},
                 auth=HTTPBasicAuth(self._username, self._password))
@@ -59,8 +59,8 @@ class Transmission(object):
 
     # Get Torrent Properties
     def torrent_properties(self, torrent_hash):
-        result = self._make_transmission_request('torrent-get', 
-            {'ids': [torrent_hash], 
+        result = self._make_transmission_request('torrent-get',
+            {'ids': [torrent_hash],
             'fields': ['hashString', 'name', 'trackers', 'status', 'totalSize', 'uploadRatio', 'uploadedEver', 'addedDate', 'secondsSeeding']}
             )
         if len(result['torrents']) == 0: # No such torrent
@@ -78,7 +78,7 @@ class Transmission(object):
             TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
         ]
         status = status_list[torrent['status']]
-        return Torrent( 
+        return Torrent(
             torrent['hashString'], torrent['name'], '',
             [tracker['announce'] for tracker in torrent['trackers']],
             status, torrent['totalSize'], torrent['uploadRatio'],

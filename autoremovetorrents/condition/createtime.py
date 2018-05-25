@@ -7,7 +7,7 @@ class CreateTimeCondition(Condition):
     def __init__(self, ct):
         Condition.__init__(self) # Initialize remain and remove list
         self._create_time = ct
-    
+
     def apply(self, torrents, now = 0):
         if now == 0:
             now = time.time()

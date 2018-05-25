@@ -20,7 +20,7 @@ class qBittorrent(object):
         self._torrents_list_cache = []
         self._refresh_cycle = 30
         self._refresh_time = 0
-    
+
     # Login to qBittorrent
     def login(self, username, password):
         request = requests.post(self._host+'/login', data={'username':username, 'password':password})
@@ -86,7 +86,7 @@ class qBittorrent(object):
                 properties = self._torrent_generic_properties(torrent_hash)
                 trackers = self._torrent_trackers(torrent_hash)
                 return Torrent(
-                    torrent['hash'], torrent['name'], 
+                    torrent['hash'], torrent['name'],
                     torrent['category'] if 'category' in torrent else torrent['label'],
                     [tracker['url'] for tracker in trackers],
                     status, torrent['size'], torrent['ratio'],
@@ -95,7 +95,7 @@ class qBittorrent(object):
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        requests.post(self._host+'/command/delete', 
+        requests.post(self._host+'/command/delete',
             data={'hashes':torrent_hash}, cookies=self._cookies)
     
     # Remove Torrent and Data

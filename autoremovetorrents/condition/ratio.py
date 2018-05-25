@@ -7,7 +7,7 @@ class RatioCondition(Condition):
     def __init__(self, r):
         Condition.__init__(self) # Initialize remain and remove list
         self._ratio = r
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if torrent.status != TorrentStatus.Uploading or \
