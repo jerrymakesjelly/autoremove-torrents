@@ -1,4 +1,4 @@
-﻿Auto Remove Torrents
+Auto Remove Torrents
 ======================
 |PyPI| |TravisCI| |Coverage| |Codacy| |MIT|
 
@@ -98,6 +98,8 @@ The *conf=* indicates the path to the configuration file.
 
 Changelog
 ----------
+**Sat, 26 May 2018**: Fixed issue in *setup.py*.
+
 **Sat, 26 May 2018**: Version 1.2.0. Refactoring was completed, and was published to PyPI.
 
     * New features will be added soon.

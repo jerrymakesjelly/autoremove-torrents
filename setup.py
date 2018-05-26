@@ -8,7 +8,7 @@ setup(name = 'autoremove-torrents',
     description = 'Automatically remove torrents according to your strategies.',
     long_description = open('README.rst').read(),
     classifiers = [
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3 :: Only',
