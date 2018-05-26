@@ -79,8 +79,8 @@ class Strategy(object):
         if len(self.remove_list) > 0:
             self._logger.info('To be deleted:')
             for torrent in self.remove_list:
-                self._logger.info(torrent.format_info())
+                self._logger.info(torrent)
         #self._logger.info('To be remained:')
         #for torrent in self.remain_list:
-        #    self._logger.info(torrent.format_info())
+        #    self._logger.info(torrent)
         #return self.remove_list

@@ -21,7 +21,7 @@ class Torrent(object):
         self.seeding_time = seeding_time
 
     # Format torrent info
-    def format_info(self):
+    def __str__(self):
         return "%s\nSize:%s\tRatio:%.3f\tTotal Uploaded:%s\tSeeding Time:%s\tCategory:%s\nCreate Time:%s" % \
             (self.name,
             self._convert_bytes(self.size),
@@ -31,6 +31,9 @@ class Torrent(object):
             self.category,
             self._convert_timestamp(self.create_time)
             )
+    
+    def __repr__(self):
+        return self.__str__()
     
     # Convert Seconds
     @staticmethod

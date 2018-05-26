@@ -49,7 +49,7 @@ Write your configuration file
 ++++++++++++++++++++++++++++++
 In order to satisfactory your needs, you have to learn how to write a configuration file. 
 
-You can put the configuration file anywhere on your disk. The autoremove-torrents looks for *config.yml* in the Shell's current working directory.::
+You can put the configuration file anywhere on your disk. The autoremove-torrents looks for *config.yml* in the Shell's current working directory::
 
     vim ./config.yml
 
@@ -95,6 +95,11 @@ And then, add a line at the end of the file (please confirm the path of the auto
 
 The *conf=* indicates the path to the configuration file.
 
+Screenshot
+-----------
+|Screenshot|
+
+.. |Screenshot| image:: https://user-images.githubusercontent.com/6760674/40576720-a78097fe-612d-11e8-9dda-8aac0c5011a2.png
 
 Changelog
 ----------
