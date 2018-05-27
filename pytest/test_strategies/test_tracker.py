@@ -22,7 +22,7 @@ def test_all_trackers_and_trackers(load_data):
         == load_data['output']['categories']['all_categories']
 
 def test_all_trackers_and_excluded_trackers(load_data):
-    tracker_filt = TrackerFilter(True, [], ['www.site2.org'])
+    tracker_filt = TrackerFilter(True, [], ['www.site2.org', 'tracker.site4.io'])
     assert [x.name for x in tracker_filt.apply(load_data['input'])] \
         == load_data['output']['categories']['category_1_and_category_3']
 

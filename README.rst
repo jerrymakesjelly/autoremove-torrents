@@ -103,7 +103,12 @@ Screenshot
 
 Changelog
 ----------
-**Sat, 26 May 2018**: Fixed issue in *setup.py*.
+**Sun, 27 May 2018**: Version 1.2.2. Added new features :smile:
+
+    * Added new filter: Torrent Status
+    * Added new condition: Maximum number of torrents
+
+**Sat, 26 May 2018**: Version 1.2.1. Fixed issue in *setup.py*.
 
 **Sat, 26 May 2018**: Version 1.2.0. Refactoring was completed, and was published to PyPI.
 

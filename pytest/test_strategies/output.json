@@ -18,12 +18,12 @@
     ],
     "torrent_size": {
         "remove-old-seeds": [
-            "Torrent - 10",
-            "Torrent - 8",
-            "Torrent - 2",
-            "Torrent - 5",
+            "Torrent - 9",
             "Torrent - 4",
-            "Torrent - 9"
+            "Torrent - 5",
+            "Torrent - 2",
+            "Torrent - 6",
+            "Torrent - 10"
         ],
         "remove-new-seeds": [
             "Torrent - 6",
@@ -32,7 +32,9 @@
             "Torrent - 7",
             "Torrent - 1",
             "Torrent - 11",
-            "Torrent - 12"
+            "Torrent - 12",
+            "Torrent - 13",
+            "Torrent - 15"
         ],
         "remove-big-seeds": [
             "Torrent - 6",
@@ -42,6 +44,9 @@
             "Torrent - 2"
         ],
         "remove-small-seeds": [
+            "Torrent - 16",
+            "Torrent - 13",
+            "Torrent - 15",
             "Torrent - 9",
             "Torrent - 12",
             "Torrent - 7",
@@ -50,6 +55,20 @@
             "Torrent - 6",
             "Torrent - 1",
             "Torrent - 11"
+        ]
+    },
+    "torrent_number": {
+        "remove-old-seeds": [
+            "Torrent - 9"
+        ],
+        "remove-new-seeds": [
+            "Torrent - 15"
+        ],
+        "remove-small-seeds": [
+            "Torrent - 14"
+        ],
+        "remove-big-seeds": [
+            "Torrent - 2"
         ]
     },
     "categories": {
@@ -65,7 +84,11 @@
             "Torrent - 9",
             "Torrent - 10",
             "Torrent - 11",
-            "Torrent - 12"
+            "Torrent - 12",
+            "Torrent - 13",
+            "Torrent - 14",
+            "Torrent - 15",
+            "Torrent - 16"
         ],
         "category_1": [
             "Torrent - 1",
@@ -78,6 +101,22 @@
             "Torrent - 7",
             "Torrent - 9",
             "Torrent - 11"
+        ]
+    },
+    "status": {
+        "checking_and_queued": [
+            "Torrent - 13",
+            "Torrent - 14"
+        ],
+        "except_uploading": [
+            "Torrent - 1",
+            "Torrent - 2",
+            "Torrent - 11",
+            "Torrent - 12",
+            "Torrent - 13",
+            "Torrent - 14",
+            "Torrent - 15",
+            "Torrent - 16"
         ]
     },
     "test_strategy": [

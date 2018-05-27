@@ -22,7 +22,7 @@ def test_all_categories_and_categories(load_data):
         == load_data['output']['categories']['all_categories']
 
 def test_all_categories_and_excluded_categories(load_data):
-    category_filt = CategoryFilter(True, [], ['Category - 2'])
+    category_filt = CategoryFilter(True, [], ['Category - 2', 'Category - 4'])
     assert [x.name for x in category_filt.apply(load_data['input'])] \
         == load_data['output']['categories']['category_1_and_category_3']
 

@@ -3,10 +3,12 @@
 from . import logger
 from .filter.category import CategoryFilter
 from .filter.tracker import TrackerFilter
+from .filter.status import StatusFilter
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.createtime import CreateTimeCondition
 from .condition.ratio import RatioCondition
 from .condition.torrentsize import TorrentSizeCondition
+from .condition.torrentnumber import TorrentNumberCondition
 from .condition.donothing import EmptyCondition
 
 class Strategy(object):
@@ -29,14 +31,17 @@ class Strategy(object):
             else not 'categories' in conf
         self._all_trackers = conf['all_trackers'] if 'all_trackers' in conf \
             else not 'trackers' in conf
+        self._all_status = conf['all_status'] if 'all_status' in conf \
+            else not 'status' in conf
 
     # Apply Filters
     def _apply_filters(self):
         filter_conf = [
             {'all':self._all_categories, 'ac':'categories', 're':'excluded_categories'}, # Category filter
-            {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'} # Tracker filter
+            {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
+            {'all':self._all_status, 'ac':'status', 're':'excluded_status'} # Status filter
         ]
-        filter_obj = [CategoryFilter, TrackerFilter]
+        filter_obj = [CategoryFilter, TrackerFilter, StatusFilter]
         for i in range(0, len(filter_conf)):
             # Apply each filter
             self.remain_list = filter_obj[i](
@@ -50,11 +55,11 @@ class Strategy(object):
         # Condition collection
         condition_field = [
             'seeding_time', 'create_time',
-            'ratio', 'seed_size', 'nothing'
+            'ratio', 'seed_size', 'maximum_number', 'nothing'
         ]
         condition_obj = [
             SeedingTimeCondition, CreateTimeCondition,
-            RatioCondition, TorrentSizeCondition, EmptyCondition
+            RatioCondition, TorrentSizeCondition, TorrentNumberCondition, EmptyCondition
         ]
         for i in range(0, len(condition_field)):
             # Apply each condition
