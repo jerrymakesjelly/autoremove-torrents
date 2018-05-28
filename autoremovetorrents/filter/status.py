@@ -18,7 +18,7 @@ class StatusFilter(Filter):
                     % str(status)
                 )
         return result
-    
+
     def apply(self, torrents):
         # Generate accpet and reject lists
         accept = self._convert_status(self._accept)
