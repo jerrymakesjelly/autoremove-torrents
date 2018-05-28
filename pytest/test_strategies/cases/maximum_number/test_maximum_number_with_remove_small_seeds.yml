@@ -1,0 +1,6 @@
+test:
+  maximum_number:
+    limit: 15
+    action: remove-small-seeds
+remove:
+  - Torrent - 14

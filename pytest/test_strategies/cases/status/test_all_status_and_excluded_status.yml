@@ -1,0 +1,12 @@
+test:
+  excluded_status:
+    - uploading
+remain:
+  - Torrent - 1
+  - Torrent - 2
+  - Torrent - 11
+  - Torrent - 12
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16

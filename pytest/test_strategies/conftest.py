@@ -9,7 +9,7 @@ from autoremovetorrents.torrent import Torrent
 from autoremovetorrents.torrentstatus import TorrentStatus
 
 @pytest.fixture(scope="module")
-def load_data():
+def test_data():
     # Load input data
     input_torrents = []
     with open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
@@ -28,11 +28,4 @@ def load_data():
             torrent['seeding_time']
         ))
 
-    # Load output data
-    with open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'output.json'), encoding='utf-8') as f:
-        output = json.load(f)
-
-    return {
-        'input':input_torrents,
-        'output':output
-    }
+    return input_torrents

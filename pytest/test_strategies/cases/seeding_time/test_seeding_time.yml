@@ -1,0 +1,7 @@
+test:
+  seeding_time: 21600
+remove:
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 7

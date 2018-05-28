@@ -1,0 +1,10 @@
+test:
+  categories:
+    - Category - 1
+    - Category - 2
+  excluded_categories:
+    - Category - 2
+remain:
+  - Torrent - 1
+  - Torrent - 7
+  - Torrent - 11
