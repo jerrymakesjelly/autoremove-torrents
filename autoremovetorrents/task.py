@@ -27,9 +27,8 @@ class Task(object):
         for key in replace_keys:
             if key in conf:
                 env = pattern.match(conf[key])
-                if env is not None and env[1] in os.environ:
-                    conf[key] = os.environ[env[1]]
-                    print('%s -> %s' % (env[1], os.environ[env[1]]))
+                if env is not None and env.group(1) in os.environ:
+                    conf[key] = os.environ[env.group(1)]
 
         # Read configurations
         self._client_name = conf['client']
