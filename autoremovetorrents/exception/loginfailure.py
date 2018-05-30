@@ -2,4 +2,4 @@
 
 class LoginFailure(RuntimeError):
     def __init__(self, arg):
-        self.args = arg
+        self.args = (arg,)

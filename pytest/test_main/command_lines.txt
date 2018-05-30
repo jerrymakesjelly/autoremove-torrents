@@ -1,0 +1,8 @@
+--conf=pytest/test_main/config.yml
+-c pytest/test_main/config.yml
+-v -c pytest/test_main/config.yml
+--view -c pytest/test_main/config.yml
+-v --task=task1 -c pytest/test_main/config.yml
+-t task1 -c pytest/test_main/config.yml
+-t task10000 -c pytest/test_main/config.yml
+abcdefghijklmnopqrstuvwxyz

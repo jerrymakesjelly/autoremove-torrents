@@ -6,8 +6,9 @@ import traceback
 import yaml
 from . import logger
 from .task import Task
+from autoremovetorrents.version import __version__
 
-def main():
+def main(argv):
     # View Mode
     view_mode = False
     # The path of the configuration file
@@ -19,7 +20,7 @@ def main():
 
     # Get arguments
     try:
-        opts = getopt.getopt(sys.argv[1:], 'vc:t:', ['view', 'conf=', 'task='])[0]
+        opts = getopt.getopt(argv, 'vc:t:', ['view', 'conf=', 'task='])[0]
     except getopt.GetoptError:
         print('Invalid arguments.')
         sys.exit(255)
@@ -33,6 +34,8 @@ def main():
 
     # Run autoremove
     try:
+        # Show version
+        lg.info('Auto Remove Torrents %s' % __version__)
         # Load configurations
         lg.info('Loading configurations...')
         with open(conf_path, 'r') as stream:
@@ -51,4 +54,4 @@ def main():
         lg.critical('An error occured. Please contact the administrator for more information.')
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])
