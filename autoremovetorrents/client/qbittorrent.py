@@ -4,7 +4,9 @@ import requests
 import time
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
-from ..exception.loginfailed import LoginFailed
+from ..exception.loginfailure import LoginFailure
+from ..exception.deletionfailure import DeletionFailure
+from ..exception.connectionfailure import ConnectionFailure
 
 class qBittorrent(object):
     def __init__(self, host):
@@ -23,15 +25,19 @@ class qBittorrent(object):
 
     # Login to qBittorrent
     def login(self, username, password):
-        request = requests.post(self._host+'/login', data={'username':username, 'password':password})
-        self._logger.info(request.text)
+        try:
+            request = requests.post(self._host+'/login', data={'username':username, 'password':password})
+            self._logger.info(request.text)
+        except Exception as exc:
+            raise ConnectionFailure(str(exc))
+        
         if request.status_code == 200:
             if request.text == 'Ok.': # Success
                 self._cookies = request.cookies
             else:
-                raise LoginFailed(request.text)
+                raise LoginFailure(request.text)
         else:
-            raise LoginFailed('The server returned HTTP %d.' % request.status_code)
+            raise LoginFailure('The server returned HTTP %d.' % request.status_code)
     
     # Get qBittorrent Version
     def version(self):

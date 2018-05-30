@@ -32,9 +32,6 @@ class Torrent(object):
             self._convert_timestamp(self.create_time)
             )
     
-    def __repr__(self):
-        return self.__str__()
-    
     # Convert Seconds
     @staticmethod
     def _convert_seconds(sec):

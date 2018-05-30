@@ -5,6 +5,11 @@ import sys
 from requests.auth import HTTPBasicAuth
 import requests
 from ..torrent import Torrent
+from autoremovetorrents.exception.connectionfailure import ConnectionFailure
+from autoremovetorrents.exception.deletionfailure import DeletionFailure
+from autoremovetorrents.exception.loginfailure import LoginFailure
+from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
+from autoremovetorrents.exception.remotefailure import RemoteFailure
 from ..torrentstatus import TorrentStatus
 
 class uTorrent(object):
@@ -27,13 +32,21 @@ class uTorrent(object):
         # HTTP Authorization
         self._auth = HTTPBasicAuth(username, password)
         # Requests Token
-        request = requests.get(self._host+'/gui/token.html', auth=self._auth)
+        try:
+            request = requests.get(self._host+'/gui/token.html', auth=self._auth)
+        except Exception as exc:
+            raise ConnectionFailure(str(exc))
+        
         pattern = re.compile('<[^>]+>')
         text = request.text
-        if request.status_code != 200: # Error
-            raise RuntimeError(text)
-        self._token = pattern.sub('', text)
-        self._cookies = request.cookies
+        if request.status_code == 200:     
+            self._token = pattern.sub('', text)
+            self._cookies = request.cookies
+        elif request.status_code == 401: # Error
+            raise LoginFailure('401 Unauthorized.')
+        else:
+            raise RemoteFailure('The server responsed %d.' \
+                % request.status_code)
     
     # Get uTorrent Version
     def version(self):
@@ -49,7 +62,7 @@ class uTorrent(object):
             cookies=self._cookies, auth=self._auth)
         request.encoding = 'utf-8'
         if request.status_code != 200: # Error
-            raise RuntimeError(request.text)
+            raise RemoteFailure('The server reponsed %s.' % request.text)
         result = request.json()
         self._torrents_list_cache = result
         self._refresh_time = time.time()
@@ -95,7 +108,7 @@ class uTorrent(object):
                     torrent[0], torrent[2], torrent[11], trackers, status, torrent[3], torrent[7]/1000,
                     torrent[6], sys.maxsize, -1)
         # Not Found
-        raise RuntimeError('No such torrent.')
+        raise NoSuchTorrent('No such torrent.')
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):

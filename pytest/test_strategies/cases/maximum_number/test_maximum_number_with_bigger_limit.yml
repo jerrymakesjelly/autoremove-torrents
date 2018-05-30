@@ -1,0 +1,5 @@
+test:
+  maximum_number:
+    limit: 100
+    action: remove-big-seeds
+remove:

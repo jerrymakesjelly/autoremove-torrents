@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import sys
 import time
 import yaml
 from . import logger
@@ -7,6 +8,8 @@ from .client.transmission import Transmission
 from .client.utorrent import uTorrent
 from .exception.nosuchclient import NoSuchClient
 from .strategy import Strategy
+from autoremovetorrents.torrent import Torrent
+from autoremovetorrents.torrentstatus import TorrentStatus
 
 class Task(object):
     def __init__(self, name, conf, remove_torrents = True):
@@ -24,11 +27,27 @@ class Task(object):
         self._password = conf['password']
         self._enabled_remove = remove_torrents
         self._delete_data = conf['delete_data'] if 'delete_data' in conf else False
-        self._strategies = conf['strategies']
+        self._strategies = conf['strategies'] if 'strategies' in conf else []
 
         # Torrents
         self._torrents = []
         self._remove = []
+
+        # Allow removing specified torrents
+        if 'force_delete' in conf:
+            for hash in conf['force_delete']:
+                self._remove.append(Torrent(
+                    hash,
+                    hash,
+                    '(No Category)',
+                    [],
+                    TorrentStatus.Unknown,
+                    0,
+                    0,
+                    0,
+                    sys.maxsize, # No create time
+                    -1 # No seeding time
+                ))
 
     # Login client
     def _login(self):

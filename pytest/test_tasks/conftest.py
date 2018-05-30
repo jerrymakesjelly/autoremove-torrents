@@ -10,7 +10,4 @@ def env_dist():
     env = {}
     for x in os.environ:
         env[x] = os.environ[x].strip()
-    # Add test data
-    env['DELETE_DATA'] = False
-    env['STRATEGIES'] = {'test_strategies': {'all_categories':True, 'all_trackers': True, 'nothing': True}}
     return env

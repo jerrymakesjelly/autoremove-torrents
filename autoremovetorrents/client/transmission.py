@@ -3,6 +3,11 @@ import requests
 from requests.auth import HTTPBasicAuth
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
+from ..exception.connectionfailure import ConnectionFailure
+from ..exception.deletionfailure import DeletionFailure
+from ..exception.loginfailure import LoginFailure
+from ..exception.nosuchclient import NoSuchClient
+from ..exception.remotefailure import RemoteFailure
 
 class Transmission(object):
     def __init__(self, host):
@@ -28,22 +33,28 @@ class Transmission(object):
         while retry > 0:
             retry -= 1
             # Make request
-            request = requests.post(self._host+'/transmission/rpc',
-                json={'method':method, 'arguments':arguments, 'tag':self._request_id},
-                headers={'X-Transmission-Session-Id': self._session_id},
-                auth=HTTPBasicAuth(self._username, self._password))
-            self._request_id += 1
+            try:
+                request = requests.post(self._host+'/transmission/rpc',
+                    json={'method':method, 'arguments':arguments, 'tag':self._request_id},
+                    headers={'X-Transmission-Session-Id': self._session_id},
+                    auth=HTTPBasicAuth(self._username, self._password))
+                self._request_id += 1
+            except Exception as exc:
+                raise ConnectionFailure(str(exc))
+
             if request.status_code == 409: # Save Session ID and retry
                 self._session_id = request.headers['X-Transmission-Session-Id']
             elif request.status_code == 401: # Unauthorized user
-                raise RuntimeError('Unauthorized user.')
-            else:
+                raise LoginFailure('Unauthorized user.')
+            elif request.status_code == 200:
                 result = request.json()
                 if result['result'] == 'success': # Success
                     return result['arguments']
                 else:
-                    raise RuntimeError(result['result'])
-        raise RuntimeError('HTTP error on requesting '+method)
+                    raise RemoteFailure(result['result'])
+        raise RemoteFailure('The server responsed %d on method %s.' \
+            % (request.status_code, method)
+        )
     
     # Get Transmission Version
     def version(self):
@@ -64,7 +75,7 @@ class Transmission(object):
             'fields': ['hashString', 'name', 'trackers', 'status', 'totalSize', 'uploadRatio', 'uploadedEver', 'addedDate', 'secondsSeeding']}
             )
         if len(result['torrents']) == 0: # No such torrent
-            raise RuntimeError('No such torrent.')
+            raise NoSuchClient("No such torrent of hash '%s'." % torrent_hash)
         torrent = result['torrents'][0]
         # Judge status
         status_list = [
@@ -87,9 +98,9 @@ class Transmission(object):
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
         self._make_transmission_request('torrent-remove',
-            {'ids':[torrent_hash], 'delete-local-data':False})
+                {'ids':[torrent_hash], 'delete-local-data':False})
     
     # Remove Data
     def remove_data(self, torrent_hash):
         self._make_transmission_request('torrent-remove',
-            {'ids':[torrent_hash], 'delete-local-data':True})
+                {'ids':[torrent_hash], 'delete-local-data':True})

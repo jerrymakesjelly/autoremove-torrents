@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
 
-class LoginFailed(RuntimeError):
+class LoginFailure(RuntimeError):
     def __init__(self, arg):
         self.args = arg

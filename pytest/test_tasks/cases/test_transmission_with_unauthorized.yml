@@ -1,0 +1,7 @@
+task:
+  client: transmission
+  host: TRANSMISSION_HOST
+  username: transmission
+  password: transmission
+exceptions:
+  - LoginFailure

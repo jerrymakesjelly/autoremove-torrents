@@ -1,0 +1,7 @@
+task:
+  client: utorrent
+  host: http://127.0.0.1:65535
+  username: no_matter
+  password: what_it_is
+exceptions:
+  - ConnectionFailure
