@@ -1,8 +1,7 @@
 task:
   client: transmission
-  host: TRANSMISSION_HOST
-  username: TRANSMISSION_USERNAME
-  password: TRANSMISSION_PASSWORD
+  host: $(TRANSMISSION_HOST)
+  password: $(TRANSMISSION_PASSWORD)
   force_delete:
     - a_hash
 exceptions:

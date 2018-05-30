@@ -103,6 +103,12 @@ Screenshot
 
 Changelog
 ----------
+**Wed, 30 May 2018**: Version 1.2.3. Added new features.
+
+    * Allowed to use environment variables to specify *host*, *username* and *password*.
+    * Allowed *username* and *password* to be empty (or one of them is empty) to log in a WebUI without username and/or password.
+    * Now the program won't quit directly when a task goes failed.
+
 **Sun, 27 May 2018**: Version 1.2.2. Added new features :smile:
 
     * Added new filter: Torrent Status

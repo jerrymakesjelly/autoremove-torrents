@@ -1,7 +1,5 @@
 task:
   client: utorrent
-  host: UTORRENT_HOST
-  username: adminadmin
-  password: adminadminadmin
+  host: $(UTORRENT_HOST)
 exceptions:
   - LoginFailure

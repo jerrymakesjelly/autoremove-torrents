@@ -33,12 +33,6 @@ def test_task(env_dist):
             with open(file_path, encoding='utf-8') as f:
                 conf = yaml.safe_load(f)
 
-            # Replace host, username and password
-            replace_keys = ['host', 'username', 'password']
-            for key in replace_keys:
-                if key in conf['task'] and conf['task'][key] in env_dist:
-                    conf['task'][key] = env_dist[conf['task'][key]]
-
             # Make take and run
             try:
                 task = Task(file, conf['task'])

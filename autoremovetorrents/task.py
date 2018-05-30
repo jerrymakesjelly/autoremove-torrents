@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 import sys
+import os
 import time
+import re
 import yaml
 from . import logger
 from .client.qbittorrent import qBittorrent
@@ -19,12 +21,22 @@ class Task(object):
         # Save task name
         self._name = name
 
+        # Replace environment variables first
+        pattern = re.compile('\$\(([^\)]+)\)')
+        replace_keys = ['host', 'username', 'password']
+        for key in replace_keys:
+            if key in conf:
+                env = pattern.match(conf[key])
+                if env is not None and env[1] in os.environ:
+                    conf[key] = os.environ[env[1]]
+                    print('%s -> %s' % (env[1], os.environ[env[1]]))
+
         # Read configurations
         self._client_name = conf['client']
         self._client = None
         self._host = conf['host']
-        self._username = conf['username']
-        self._password = conf['password']
+        self._username = conf['username'] if 'username' in conf else ''
+        self._password = conf['password'] if 'password' in conf else ''
         self._enabled_remove = remove_torrents
         self._delete_data = conf['delete_data'] if 'delete_data' in conf else False
         self._strategies = conf['strategies'] if 'strategies' in conf else []
@@ -101,9 +113,13 @@ class Task(object):
 
     # Execute
     def execute(self):
-        self._logger.info('Running task %s...' % self._name)
-        self._login()
-        self._get_torrents()
-        self._apply_strategies()
-        if self._enabled_remove:
-            self._remove_torrents()
+        try:
+            self._logger.info("Running task '%s'..." % self._name)
+            self._login()
+            self._get_torrents()
+            self._apply_strategies()
+            if self._enabled_remove:
+                self._remove_torrents()
+        except Exception as exc:
+            self._logger.error(str(exc))
+            self._logger.error("Task '%s' fails." % self._name)

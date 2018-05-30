@@ -45,7 +45,7 @@ def main(argv):
         # Run tasks
         if task == None: # Task name specified
             for task_name in result:
-                Task(task_name, result[task_name], not view_mode).execute()
+                    Task(task_name, result[task_name], not view_mode).execute()
         else:
             Task(task, result[task], not view_mode).execute()
     except Exception:
