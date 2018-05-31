@@ -6,5 +6,3 @@ task:
   delete_data: true
   force_delete:
     - a_hash
-exceptions:
-  - DeletionFailure

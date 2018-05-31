@@ -112,13 +112,8 @@ class Task(object):
 
     # Execute
     def execute(self):
-        try:
-            self._logger.info("Running task '%s'..." % self._name)
-            self._login()
-            self._get_torrents()
-            self._apply_strategies()
-            if self._enabled_remove:
-                self._remove_torrents()
-        except Exception as exc:
-            self._logger.error(str(exc))
-            self._logger.error("Task '%s' fails." % self._name)
+        self._login()
+        self._get_torrents()
+        self._apply_strategies()
+        if self._enabled_remove:
+            self._remove_torrents()

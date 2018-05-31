@@ -103,6 +103,10 @@ Screenshot
 
 Changelog
 ----------
+**Thu, 31 May 2018**: Version 1.2.4.
+
+    * Fixed startup failure.
+
 **Wed, 30 May 2018**: Version 1.2.3. Added new features.
 
     * Allowed to use environment variables to specify *host*, *username* and *password*.

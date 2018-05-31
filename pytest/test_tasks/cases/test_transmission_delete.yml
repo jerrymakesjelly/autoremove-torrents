@@ -4,5 +4,3 @@ task:
   password: $(TRANSMISSION_PASSWORD)
   force_delete:
     - a_hash
-exceptions:
-  - DeletionFailure

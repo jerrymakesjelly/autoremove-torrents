@@ -5,5 +5,3 @@ task:
   password: $(UTORRENT_PASSWORD)
   force_delete:
     - a_hash
-exceptions:
-  - DeletionFailure

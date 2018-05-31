@@ -37,6 +37,8 @@ def test_task(env_dist):
             try:
                 task = Task(file, conf['task'])
                 task.execute()
+                if 'exceptions' in conf and len(conf['exceptions']) > 0:
+                    raise AssertionError("It didn't raise exceptions as expected")
             except Exception:
                 # Check if the excpetion is expected
                 found = False

@@ -8,7 +8,7 @@ from . import logger
 from .task import Task
 from autoremovetorrents.version import __version__
 
-def main(argv):
+def pre_processor(argv):
     # View Mode
     view_mode = False
     # The path of the configuration file
@@ -45,7 +45,12 @@ def main(argv):
         # Run tasks
         if task == None: # Task name specified
             for task_name in result:
+                try:
                     Task(task_name, result[task_name], not view_mode).execute()
+                except Exception:
+                    lg.error(traceback.format_exc().splitlines()[-1])
+                    lg.error('Task %s fails. ' % task_name)
+                    lg.debug('Exception Logged', exc_info=True)
         else:
             Task(task, result[task], not view_mode).execute()
     except Exception:
@@ -53,5 +58,8 @@ def main(argv):
         lg.debug('Exception Logged', exc_info=True)
         lg.critical('An error occured. Please contact the administrator for more information.')
 
+def main():
+    pre_processor(sys.argv[1:])
+
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main()

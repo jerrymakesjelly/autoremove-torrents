@@ -9,9 +9,12 @@ python:
 install:
   - pip install requests pyyaml enum34
   - pip install pytest pytest-cov codacy-coverage
+  - pip install setuptools
 # Command to run tests
 script:
   - py.test --cov-report=xml --cov=./
+  - python setup.py install
+  - autoremove-torrents -c pytest/test_main/config.yml -v
 # Command after success
 after_success:
   - python-codacy-coverage -r coverage.xml

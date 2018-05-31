@@ -1,5 +1,5 @@
 import os
-from autoremovetorrents.main import main
+from autoremovetorrents.main import pre_processor
 
 def test_main():
     basic_dir = os.path.realpath(os.path.dirname(__file__))
@@ -12,4 +12,4 @@ def test_main():
         for line in lines:
             print('Command line: %s' % line)
             argv = line.split()
-            main(argv) # Execute it
+            pre_processor(argv) # Execute it
