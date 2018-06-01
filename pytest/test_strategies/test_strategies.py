@@ -1,22 +1,26 @@
 import os
 import yaml
+from autoremovetorrents import logger
 from autoremovetorrents.strategy import Strategy
+
+# Logger
+lg = logger.register(__name__)
 
 def test_strategies(test_data):
     # Check each case
     base_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'cases')
-    print('Base directory: %s' % base_dir)
+    lg.info('Base directory: %s' % base_dir)
 
     for item in os.listdir(base_dir):
         if os.path.isdir(os.path.join(base_dir, item)):
             # Enter a directory
-            print("Entering directory '%s'..." % item)
+            lg.info("Entering directory '%s'..." % item)
 
             for conf_file in os.listdir(os.path.join(base_dir, item)):
                 conf_path = os.path.join(base_dir, item, conf_file)
                 if os.path.isfile(conf_path):
                     # Load file
-                    print('Loading file: %s' % conf_file)
+                    lg.info('Loading file: %s' % conf_file)
                     with open(conf_path, encoding='utf-8') as f:
                         conf = yaml.safe_load(f)
 
@@ -33,4 +37,4 @@ def test_strategies(test_data):
                             raise AssertionError()
 
             # Leave the directory
-            print("Leaving directory '%s'..." % item)
+            lg.info("Leaving directory '%s'..." % item)

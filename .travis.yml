@@ -12,7 +12,7 @@ install:
   - pip install setuptools
 # Command to run tests
 script:
-  - py.test --cov-report=xml --cov=./
+  - py.test -s --cov-report=xml --cov=./
   - python setup.py install
   - autoremove-torrents -c pytest/test_main/config.yml -v
 # Command after success

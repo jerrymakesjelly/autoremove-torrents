@@ -8,6 +8,9 @@ from . import logger
 from .task import Task
 from autoremovetorrents.version import __version__
 
+# Logger
+lg = logger.register(__name__)
+
 def pre_processor(argv):
     # View Mode
     view_mode = False
@@ -15,8 +18,6 @@ def pre_processor(argv):
     conf_path = 'config.yml'
     # Task
     task = None
-    # Logger
-    lg = logger.register(__name__)
 
     # Get arguments
     try:
