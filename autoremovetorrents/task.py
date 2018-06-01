@@ -14,9 +14,10 @@ from autoremovetorrents.torrent import Torrent
 from autoremovetorrents.torrentstatus import TorrentStatus
 
 class Task(object):
+    # Logger
+    _logger = logger.register(__name__)
+
     def __init__(self, name, conf, remove_torrents = True):
-        # Logger
-        self._logger = logger.register(__name__)
 
         # Save task name
         self._name = name
@@ -112,6 +113,7 @@ class Task(object):
 
     # Execute
     def execute(self):
+        self._logger.info("Running task '%s'..." % self._name)
         self._login()
         self._get_torrents()
         self._apply_strategies()
