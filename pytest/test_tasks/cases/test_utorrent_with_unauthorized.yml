@@ -1,0 +1,5 @@
+task:
+  client: utorrent
+  host: $(UTORRENT_HOST)
+exceptions:
+  - LoginFailure

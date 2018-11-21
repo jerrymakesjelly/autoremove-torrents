@@ -1,0 +1,10 @@
+test:
+  categories:
+    - Category - 1
+    - Category - 3
+  trackers:
+    - tracker.site3.com
+  ratio: 3
+  seeding_time: 21600
+remove:
+  - Torrent - 4

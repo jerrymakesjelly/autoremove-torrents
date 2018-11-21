@@ -2,10 +2,13 @@
 import logging
 import requests
 import time
-from .base.clientbase import ClientBase
-from .base.torrentstatus import TorrentStatus
+from ..torrent import Torrent
+from ..torrentstatus import TorrentStatus
+from ..exception.loginfailure import LoginFailure
+from ..exception.deletionfailure import DeletionFailure
+from ..exception.connectionfailure import ConnectionFailure
 
-class qBittorrent(ClientBase):
+class qBittorrent(object):
     def __init__(self, host):
         # Logger
         self._logger = logging.getLogger(__name__)
@@ -19,18 +22,22 @@ class qBittorrent(ClientBase):
         self._torrents_list_cache = []
         self._refresh_cycle = 30
         self._refresh_time = 0
-    
+
     # Login to qBittorrent
     def login(self, username, password):
-        request = requests.post(self._host+'/login', data={'username':username, 'password':password})
-        self._logger.info(request.text)
+        try:
+            request = requests.post(self._host+'/login', data={'username':username, 'password':password})
+            self._logger.info(request.text)
+        except Exception as exc:
+            raise ConnectionFailure(str(exc))
+        
         if request.status_code == 200:
             if request.text == 'Ok.': # Success
                 self._cookies = request.cookies
             else:
-                raise RuntimeError('Login failed: '+request.text+'.')
+                raise LoginFailure(request.text)
         else:
-            raise RuntimeError('The server returned HTTP '+request.status_code+'.')
+            raise LoginFailure('The server returned HTTP %d.' % request.status_code)
     
     # Get qBittorrent Version
     def version(self):
@@ -84,8 +91,8 @@ class qBittorrent(ClientBase):
                 # Get other information
                 properties = self._torrent_generic_properties(torrent_hash)
                 trackers = self._torrent_trackers(torrent_hash)
-                return ClientBase._torrent_properties(self,
-                    torrent['hash'], torrent['name'], 
+                return Torrent(
+                    torrent['hash'], torrent['name'],
                     torrent['category'] if 'category' in torrent else torrent['label'],
                     [tracker['url'] for tracker in trackers],
                     status, torrent['size'], torrent['ratio'],
@@ -94,7 +101,7 @@ class qBittorrent(ClientBase):
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        requests.post(self._host+'/command/delete', 
+        requests.post(self._host+'/command/delete',
             data={'hashes':torrent_hash}, cookies=self._cookies)
     
     # Remove Torrent and Data

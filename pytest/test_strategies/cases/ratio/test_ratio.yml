@@ -1,0 +1,6 @@
+test:
+  ratio: 3
+remove:
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 8

@@ -1,0 +1,16 @@
+test:
+  seed_size:
+    limit: 50
+    action: remove-small-seeds
+remove:
+  - Torrent - 16
+  - Torrent - 13
+  - Torrent - 15
+  - Torrent - 9
+  - Torrent - 12
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 5
+  - Torrent - 6
+  - Torrent - 1
+  - Torrent - 11

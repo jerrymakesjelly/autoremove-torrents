@@ -1,0 +1,10 @@
+test:
+  trackers:
+    - tracker.site1.com
+    - www.site2.org
+  excluded_trackers:
+    - www.site2.org
+remain:
+  - Torrent - 1
+  - Torrent - 7
+  - Torrent - 11

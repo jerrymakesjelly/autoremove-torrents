@@ -108,3 +108,5 @@ config.yml
 
 # vscode
 .vscode
+
+.pytest_cache/

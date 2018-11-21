@@ -1,0 +1,8 @@
+task:
+  client: utorrent
+  host: $(UTORRENT_HOST)
+  username: $(UTORRENT_USERNAME)
+  password: $(UTORRENT_PASSWORD)
+  delete_data: true
+  force_delete:
+    - a_hash

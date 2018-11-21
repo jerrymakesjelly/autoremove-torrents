@@ -1,0 +1,8 @@
+task:
+  client: transmission
+  host: $(TRANSMISSION_HOST)
+  password: $(TRANSMISSION_PASSWORD)
+  delete_data: true
+  strategies:
+    test_strategies:
+      nothing: true

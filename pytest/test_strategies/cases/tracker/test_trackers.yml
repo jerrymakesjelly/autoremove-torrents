@@ -1,0 +1,7 @@
+test:
+  trackers:
+    - tracker.site1.com
+remain:
+  - Torrent - 1
+  - Torrent - 7
+  - Torrent - 11

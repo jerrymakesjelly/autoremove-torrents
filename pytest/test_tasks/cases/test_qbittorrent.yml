@@ -1,0 +1,9 @@
+task:
+  client: qbittorrent
+  host: $(QBITTORRENT_HOST)
+  username: $(QBITTORRENT_USERNAME)
+  password: $(QBITTORRENT_PASSWORD)
+  delete_data: true
+  strategies:
+    test_strategies:
+      nothing: true

@@ -1,0 +1,8 @@
+test:
+  status:
+    - DOWNLOADING
+    - STOPPED
+  excluded_status:
+    - dowNLOADIng
+remain:
+  - Torrent - 16

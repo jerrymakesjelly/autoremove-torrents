@@ -1,0 +1,6 @@
+task:
+  client: transmission
+  host: $(TRANSMISSION_HOST)
+  password: $(TRANSMISSION_PASSWORD)
+  force_delete:
+    - a_hash

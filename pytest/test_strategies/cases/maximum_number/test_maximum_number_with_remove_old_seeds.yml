@@ -1,0 +1,6 @@
+test:
+  maximum_number:
+    limit: 15
+    action: remove-old-seeds
+remove:
+  - Torrent - 9

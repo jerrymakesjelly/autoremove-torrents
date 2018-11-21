@@ -1,0 +1,21 @@
+test:
+  all_trackers: true
+  trackers:
+    - www.github.com
+remain:
+  - Torrent - 1
+  - Torrent - 2
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 6
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9
+  - Torrent - 10
+  - Torrent - 11
+  - Torrent - 12
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16

@@ -1,0 +1,10 @@
+test:
+  excluded_trackers:
+    - www.site2.org
+    - tracker.site4.io
+remain:
+  - Torrent - 1
+  - Torrent - 4
+  - Torrent - 7
+  - Torrent - 9
+  - Torrent - 11
