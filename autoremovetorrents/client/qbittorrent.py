@@ -108,3 +108,8 @@ class qBittorrent(object):
     def remove_data(self, torrent_hash):
         requests.post(self._host+'/command/deletePerm',
             data={'hashes':torrent_hash}, cookies=self._cookies)
+    
+    # Move Data to the new location
+    def move_data(self, torrent_hash):
+        requests.post(self._host+'/command/setLocation',
+            data={'hashes':torrent_hash, 'location':self._location}, cookies=self._cookies)
