@@ -4,15 +4,15 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-  - "3.6-dev" # Python 3.6 development branch
 # Command to install dependencies
 install:
   - pip install requests pyyaml enum34
-  - pip install pytest pytest-cov codacy-coverage
+  - pip install --upgrade pytest 
+  - pip install pytest-cov codacy-coverage
   - pip install setuptools
 # Command to run tests
 script:
-  - py.test -s --cov-report=xml --cov=./
+  - py.test -s --cov-report=xml --cov
   - python setup.py install
   - autoremove-torrents -c pytest/test_main/config.yml -v
 # Command after success
