@@ -36,6 +36,13 @@ def test_task(env_dist):
             lg.info('Loading file: %s' % file)
             with open(file_path, encoding='utf-8') as f:
                 conf = yaml.safe_load(f)
+            # Replace system environment variables
+            keys = ['num-of-remaining', 'num-of-removed']
+            if 'result' in conf:
+                for key in keys:
+                    if key in conf['result'] and isinstance(conf['result'][key], str) \
+                        and conf['result'][key] in env_dist:
+                        conf['result'][key] = env_dist[conf['result'][key]]
 
             # Make take and run
             try:
@@ -43,7 +50,14 @@ def test_task(env_dist):
                 task.execute()
                 if 'exceptions' in conf and len(conf['exceptions']) > 0:
                     raise AssertionError("It didn't raise exceptions as expected")
-            except Exception:
+                if 'result' in conf:
+                    if len(task.get_remaining_torrents()) != int(conf['result']['num-of-remaining']):
+                        raise AssertionError('The actual number of remaining seeds does not match the assumption: %d != %d.' \
+                            % (len(task.get_remaining_torrents()), int(conf['result']['num-of-remaining'])))
+                    if len(task.get_removed_torrents()) != int(conf['result']['num-of-removed']):
+                        raise AssertionError('The actual number of removed seeds does not match the assumption: %d != %d.' \
+                            % (len(task.get_remaining_torrents()), int(conf['result']['num-of-removed'])))
+            except Exception as e:
                 # Check if the excpetion is expected
                 found = False
                 for e in exception_map:
@@ -53,4 +67,4 @@ def test_task(env_dist):
                             found = True
                             break # An expected exception
                 if not found:
-                    raise AssertionError() # Unexpected exception
+                    raise e # Unexpected exception

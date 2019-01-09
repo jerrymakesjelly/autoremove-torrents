@@ -3,3 +3,6 @@ task:
   host: $(UTORRENT_HOST)
   username: $(UTORRENT_USERNAME)
   password: $(UTORRENT_PASSWORD)
+result:
+  num-of-remaining: UTORRENT_TORRENT_NUM
+  num-of-removed: 0

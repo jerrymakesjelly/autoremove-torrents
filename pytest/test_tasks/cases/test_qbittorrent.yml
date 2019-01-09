@@ -7,3 +7,6 @@ task:
   strategies:
     test_strategies:
       nothing: true
+result:
+  num-of-remaining: QBITTORRENT_TORRENT_NUM
+  num-of-removed: 0
