@@ -1,9 +1,11 @@
 language: python
 python:
-  - "3.3"
   - "3.4"
   - "3.5"
   - "3.6"
+  - "3.7"
+dist: xenial
+sudo: true
 # Command to install dependencies
 install:
   - pip install requests pyyaml enum34
