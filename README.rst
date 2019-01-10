@@ -105,6 +105,7 @@ Changelog
 ----------
 **Mon, 7 Jan 2019**: Version 1.2.5.
 
+    * Fixed bug: Incorrect number of torrents in multiple strategies (`Issue #10 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/10>`_, thanks to @momokoo for the report and PR).
     * Fixed bug: Incorrect number of torrents in qBittorrent (`Issue #13 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/13>`_).
 
 **Thu, 31 May 2018**: Version 1.2.4.

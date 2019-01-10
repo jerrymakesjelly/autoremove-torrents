@@ -46,14 +46,14 @@ def test_task(env_dist):
 
             # Make take and run
             try:
-                task = Task(file, conf['task'])
+                if 'view' in conf:
+                    task = Task(file, conf['task'], not conf['view'])
+                else:
+                    task = Task(file, conf['task'])
                 task.execute()
                 if 'exceptions' in conf and len(conf['exceptions']) > 0:
                     raise AssertionError("It didn't raise exceptions as expected")
                 if 'result' in conf:
-                    if len(task.get_remaining_torrents()) != int(conf['result']['num-of-remaining']):
-                        raise AssertionError('The actual number of remaining seeds does not match the assumption: %d != %d.' \
-                            % (len(task.get_remaining_torrents()), int(conf['result']['num-of-remaining'])))
                     if len(task.get_removed_torrents()) != int(conf['result']['num-of-removed']):
                         raise AssertionError('The actual number of removed seeds does not match the assumption: %d != %d.' \
                             % (len(task.get_remaining_torrents()), int(conf['result']['num-of-removed'])))

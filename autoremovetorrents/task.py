@@ -100,7 +100,6 @@ class Task(object):
                 % (strategy_name, len(self._torrents)))
             strategy = Strategy(strategy_name, self._strategies[strategy_name])
             strategy.execute(self._torrents)
-            self._torrents = strategy.remain_list
             self._remove.extend(strategy.remove_list)
 
     # Remove torrents
