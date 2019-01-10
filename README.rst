@@ -103,6 +103,11 @@ Screenshot
 
 Changelog
 ----------
+**Mon, 10 Jan 2019**: Version 1.2.5.
+
+    * Fixed bug: Incorrect number of torrents in multiple strategies (`Issue #10 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/10>`_, thanks to @momokoo for the report and PR).
+    * Fixed bug: Incorrect number of torrents in qBittorrent (`Issue #13 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/13>`_).
+
 **Thu, 31 May 2018**: Version 1.2.4.
 
     * Fixed startup failure.
@@ -143,7 +148,7 @@ Depend on users' feedback.
 
 * Add remove condition: Max/Min average UL/DL speed
 
-If you have any problem, please submit `Issues`_.
+If you have any problem, please submit `issues`_.
 
-.. _Issues: https://github.com/jerrymakesjelly/autoremove-torrents/issues
+.. _issues: https://github.com/jerrymakesjelly/autoremove-torrents/issues
 

@@ -5,5 +5,15 @@ task:
   password: $(QBITTORRENT_PASSWORD)
   delete_data: true
   strategies:
-    test_strategies:
-      nothing: true
+    strategy_1:
+      categories:
+        - cata1
+      ratio: 0.009
+    strategy_2:
+      categories:
+        - cata2
+      seeding_time: 86400
+view: true
+result:
+  num-of-remaining: 0
+  num-of-removed: QBITTORRENT_TORRENT_NUM
