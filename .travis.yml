@@ -10,13 +10,12 @@ sudo: true
 install:
   - pip install requests pyyaml enum34
   - pip install --upgrade pytest 
-  - pip install pytest-cov codacy-coverage
+  - pip install pytest-cov codacy-coverage requests_mock
   - pip install setuptools
 # Command to run tests
 script:
   - py.test -s --cov-report=xml --cov
   - python setup.py install
-  - autoremove-torrents -c pytest/test_main/config.yml -v
 # Command after success
 after_success:
   - python-codacy-coverage -r coverage.xml
