@@ -1,7 +1,7 @@
 task:
   client: qbittorrent
-  host: http://127.0.0.1:65535
+  host: $(QBITTORRENT_4_HOST)
   username: admin
   password: adminadmin
 exceptions:
-  - ConnectionFailure
+  - LoginFailure

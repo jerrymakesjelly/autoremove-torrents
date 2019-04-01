@@ -1,0 +1,5 @@
+task:
+  client: qbittorrent
+  host: $(QBITTORRENT_3_HOST)
+  username: $(QBITTORRENT_3_USERNAME)
+  password: $(QBITTORRENT_3_PASSWORD)
