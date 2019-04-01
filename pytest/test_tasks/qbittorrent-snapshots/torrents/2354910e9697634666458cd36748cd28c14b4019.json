@@ -1,0 +1,79 @@
+{
+    "properties": {
+        "addition_date": 1547136801,
+        "comment": "",
+        "completion_date": 1547136842,
+        "created_by": "ruTorrent (PHP Class - Adrien Gibrat)",
+        "creation_date": 1445759264,
+        "dl_limit": -1,
+        "dl_speed": 0,
+        "dl_speed_avg": 101261,
+        "eta": 8640000,
+        "last_seen": 1554089378,
+        "nb_connections": 2,
+        "nb_connections_limit": -1,
+        "peers": 1,
+        "peers_total": 36,
+        "piece_size": 8388608,
+        "pieces_have": 1,
+        "pieces_num": 1,
+        "reannounce": 3461,
+        "save_path": "/mystery",
+        "seeding_time": 5144251,
+        "seeds": 0,
+        "seeds_total": 239,
+        "share_ratio": 2.9990025852740212,
+        "time_elapsed": 5144289,
+        "total_downloaded": 3847948,
+        "total_downloaded_session": 0,
+        "total_size": 3773990,
+        "total_uploaded": 11540006,
+        "total_uploaded_session": 0,
+        "total_wasted": 0,
+        "up_limit": -1,
+        "up_speed": 0,
+        "up_speed_avg": 2
+    },
+    "trackers": [
+        {
+            "msg": "This torrent is private",
+            "num_downloaded": 0,
+            "num_leeches": 0,
+            "num_peers": 0,
+            "num_seeds": 0,
+            "status": 0,
+            "tier": "",
+            "url": "** [DHT] **"
+        },
+        {
+            "msg": "This torrent is private",
+            "num_downloaded": 0,
+            "num_leeches": 0,
+            "num_peers": 0,
+            "num_seeds": 0,
+            "status": 0,
+            "tier": "",
+            "url": "** [PeX] **"
+        },
+        {
+            "msg": "This torrent is private",
+            "num_downloaded": 0,
+            "num_leeches": 0,
+            "num_peers": 0,
+            "num_seeds": 0,
+            "status": 0,
+            "tier": "",
+            "url": "** [LSD] **"
+        },
+        {
+            "msg": "",
+            "num_downloaded": -1,
+            "num_leeches": 0,
+            "num_peers": 0,
+            "num_seeds": 241,
+            "status": 2,
+            "tier": 0,
+            "url": "https://fake.tracker.com"
+        }
+    ]
+}

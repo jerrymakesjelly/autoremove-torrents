@@ -1,13 +1,41 @@
-#-*- coding:utf-8 -*-
-import sys, os
-sys.path.append(os.path.realpath(os.path.dirname(__file__))+"/../..")
-
+import os
+import json
 import pytest
+import requests_mock
 
-@pytest.fixture(scope="module")
-def env_dist():
-    # Load Environment Settings
-    env = {}
-    for x in os.environ:
-        env[x] = os.environ[x].strip()
-    return env
+@pytest.fixture(scope="function")
+def qbittorrent_mocker(requests_mock):
+    def runner():
+        # Set root directory
+        root_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)))
+
+        # Mock qBittorrent version
+        requests_mock.get('mock://qbittorrent/version/qbittorrent', text='Fake qBittorrent')
+        #lg.info('qBittorrent version was mocked.')
+
+        # Mock qBittorrent logging in interface
+        requests_mock.post('mock://qbittorrent/login', text='Ok.')
+        #lg.info('Logging in was mocked.')
+
+        # Mock qBittorrent torrents list
+        with open(os.path.join(root_dir, 'qbittorrent-snapshots', '4-1-5.json'),
+            'r', encoding='utf-8') as f:
+            torrent_list = json.load(f)
+            requests_mock.get('mock://qbittorrent/query/torrents', json=torrent_list)
+            #lg.info('Torrents list was mocked.')
+        
+        # Mock qBittorent torrent details
+        for torrent in torrent_list:
+            with open(os.path.join(
+                root_dir, 'qbittorrent-snapshots', 
+                'torrents', '%s.json' % torrent['hash'])) as fp:
+                metadata = json.load(fp)
+                requests_mock.get(
+                    'mock://qbittorrent/query/propertiesGeneral/%s' % torrent['hash'],
+                    json=metadata['properties'])
+                requests_mock.get(
+                    'mock://qbittorrent/query/propertiesTrackers/%s' % torrent['hash'],
+                    json=metadata['trackers']
+                )
+                #lg.info('Torrent %s was mocked.', torrent['hash'])
+    return runner
