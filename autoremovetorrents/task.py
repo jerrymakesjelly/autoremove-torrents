@@ -23,7 +23,7 @@ class Task(object):
         self._name = name
 
         # Replace environment variables first
-        pattern = re.compile('\$\(([^\)]+)\)')
+        pattern = re.compile(r'\$\(([^\)]+)\)')
         replace_keys = ['host', 'username', 'password']
         for key in replace_keys:
             if key in conf:
