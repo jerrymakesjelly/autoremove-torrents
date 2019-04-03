@@ -1,5 +1,6 @@
 #-*- coding:utf-8 -*-
 
+from .base import Comparer
 from .base import Condition
 from ..torrentstatus import TorrentStatus
 
@@ -11,7 +12,7 @@ class SeedingTimeCondition(Condition):
     def apply(self, torrents):
         for torrent in torrents:
             if torrent.status == TorrentStatus.Uploading and \
-                torrent.seeding_time > self._seeding_time:
+                self.compare(torrent.seeding_time, self._seeding_time, Comparer.GT):
                 self.remove.append(torrent)
             else:
                 self.remain.append(torrent)

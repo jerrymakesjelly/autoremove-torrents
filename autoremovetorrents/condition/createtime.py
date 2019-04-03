@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 
 import time
+from .base import Comparer
 from .base import Condition
 
 class CreateTimeCondition(Condition):
@@ -17,7 +18,7 @@ class CreateTimeCondition(Condition):
             now = time.time()
         # Execute
         for torrent in torrents:
-            if now - torrent.create_time <= self._create_time:
-                self.remain.append(torrent)
-            else:
+            if self.compare(now - torrent.create_time, self._create_time, Comparer.GT):
                 self.remove.append(torrent)
+            else:
+                self.remain.append(torrent)
