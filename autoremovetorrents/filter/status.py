@@ -3,10 +3,10 @@ from ..torrentstatus import TorrentStatus
 from .. import logger
 
 class StatusFilter(Filter):
-    _logger = logger.register(__name__) # Register a logger
-    
     def __init__(self, all_status, ac, re):
         Filter.__init__(self, all_status, ac, re)
+
+        self._logger = logger.register(__name__) # Register a logger
 
     def _convert_status(self, status_list):
         result = []

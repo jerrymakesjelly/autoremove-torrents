@@ -11,8 +11,12 @@ FILE_LOG_LEVEL = logging.DEBUG
 OUTPUT_LOG_LEVEL = logging.INFO
 
 def register(name):
-    # Configure logging
     logger = logging.getLogger(name)
+
+    # Remove old loggers
+    logger.handlers = []
+
+    # Configure logging
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter(OUTPUT_FORMAT, datefmt=DATE_FORMAT)
 

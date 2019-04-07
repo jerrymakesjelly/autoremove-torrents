@@ -8,9 +8,6 @@ from . import logger
 from .task import Task
 from autoremovetorrents.version import __version__
 
-# Logger
-lg = logger.register(__name__)
-
 def pre_processor(argv):
     # View Mode
     view_mode = False
@@ -32,6 +29,9 @@ def pre_processor(argv):
             conf_path = arg
         elif opt in ('-t', '--task'):
             task = arg
+
+    # Logger
+    lg = logger.register(__name__)
 
     # Run autoremove
     try:

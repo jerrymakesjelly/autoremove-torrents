@@ -12,10 +12,9 @@ from .condition.torrentnumber import TorrentNumberCondition
 from .condition.donothing import EmptyCondition
 
 class Strategy(object):
-    # Logger
-    _logger = logger.register(__name__)
-
     def __init__(self, name, conf):
+        # Logger
+        self._logger = logger.register(__name__)
 
         # Save name
         self._name = name
