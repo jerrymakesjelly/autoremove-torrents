@@ -5,4 +5,6 @@
 -v --task=task1 -c pytest/test_main/config.yml
 -t task1 -c pytest/test_main/config.yml
 -t task10000 -c pytest/test_main/config.yml
+-c pytest/test_main/config.yml -l pytest
+--conf=pytest/test_main/config.yml --log=pytest
 abcdefghijklmnopqrstuvwxyz
