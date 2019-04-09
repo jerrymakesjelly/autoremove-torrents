@@ -1,5 +1,4 @@
 #-*- coding:utf-8 -*-
-import logging
 import requests
 import time
 from ..torrent import Torrent
@@ -10,8 +9,6 @@ from ..exception.connectionfailure import ConnectionFailure
 
 class qBittorrent(object):
     def __init__(self, host):
-        # Logger
-        self._logger = logging.getLogger(__name__)
         # Host
         self._host = host
         # Cookies
@@ -27,7 +24,6 @@ class qBittorrent(object):
     def login(self, username, password):
         try:
             request = requests.post(self._host+'/login', data={'username':username, 'password':password})
-            self._logger.info(request.text)
         except Exception as exc:
             raise ConnectionFailure(str(exc))
         
