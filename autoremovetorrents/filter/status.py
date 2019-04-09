@@ -6,7 +6,7 @@ class StatusFilter(Filter):
     def __init__(self, all_status, ac, re):
         Filter.__init__(self, all_status, ac, re)
 
-        self._logger = logger.register(__name__) # Register a logger
+        self._logger = logger.Logger.register(__name__) # Register a logger
 
     def _convert_status(self, status_list):
         result = []

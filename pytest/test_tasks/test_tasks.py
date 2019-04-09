@@ -4,10 +4,10 @@ import os
 from autoremovetorrents import logger
 from autoremovetorrents.task import Task
 
-# Loggger
-lg = logger.register(__name__)
-
 def test_task(qbittorrent_mocker):
+    # Loggger
+    lg = logger.Logger.register(__name__)
+
     # Set root directory
     root_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)))
     lg.info('Root directory: %s', root_dir)

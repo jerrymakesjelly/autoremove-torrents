@@ -17,7 +17,7 @@ def pre_processor(argv):
     task = None
 
     # Set default logging path to current working directory
-    logger.set_log_path('')
+    logger.Logger.log_path = ''
 
     # Get arguments
     try:
@@ -33,10 +33,10 @@ def pre_processor(argv):
         elif opt in ('-t', '--task'):
             task = arg
         elif opt in ('-l', '--log'):
-            logger.set_log_path(arg)
+            logger.Logger.log_path = arg
 
     # Logger
-    lg = logger.register(__name__)
+    lg = logger.Logger.register(__name__)
 
     # Run autoremove
     try:

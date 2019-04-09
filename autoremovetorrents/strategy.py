@@ -14,7 +14,7 @@ from .condition.donothing import EmptyCondition
 class Strategy(object):
     def __init__(self, name, conf):
         # Logger
-        self._logger = logger.register(__name__)
+        self._logger = logger.Logger.register(__name__)
 
         # Save name
         self._name = name

@@ -10,10 +10,10 @@ from autoremovetorrents.exception.nosuchclient import NoSuchClient
 from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
 from autoremovetorrents.exception.remotefailure import RemoteFailure
 
-# Logger
-lg = logger.register(__name__)
-
 def test_client(env_dist):
+    # Logger
+    lg = logger.Logger.register(__name__)
+
     # Mapping of exceptions
     exception_map = {
         ConnectionFailure: 'ConnectionFailure',

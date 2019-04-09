@@ -3,10 +3,10 @@ import requests_mock
 from autoremovetorrents import logger
 from autoremovetorrents.main import pre_processor
 
-# Logger
-lg = logger.register(__name__)
-
 def test_main(requests_mock):
+    # Logger
+    lg = logger.Logger.register(__name__)
+
     basic_dir = os.path.realpath(os.path.dirname(__file__))
     lg.info('Basic directory: %s' % basic_dir)
 
