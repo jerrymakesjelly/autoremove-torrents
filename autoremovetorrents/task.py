@@ -86,7 +86,7 @@ class Task(object):
             # Append new torrent
             self._torrents.append(self._client.torrent_properties(hash_value))
             # For a long waiting
-            if time.time() - last_time > 10:
+            if time.time() - last_time > 1:
                 self._logger.info('Please wait...We have found %d seed(s).' %
                     len(self._torrents))
                 last_time = time.time()
