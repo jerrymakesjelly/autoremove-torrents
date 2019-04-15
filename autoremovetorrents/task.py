@@ -90,6 +90,7 @@ class Task(object):
                 self._logger.info('Please wait...We have found %d seed(s).' %
                     len(self._torrents))
                 last_time = time.time()
+            time.sleep(0.01)
         self._logger.info('Found %d seed(s) in the client.' % len(self._torrents))
 
     # Apply strategies
