@@ -13,19 +13,18 @@ class Transmission(object):
     def __init__(self, host):
         # Host
         self._host = host
-        # X-Transmission-Session-id
-        self._session_id = ''
         # Request id
         self._request_id = 0
         # username & password
         self._username = None
         self._password = None
+        # Requests Session
+        self._session = requests.Session()
 
     # Login to Transmission
     def login(self, username, password):
-        # Login when requesting
-        self._username = username
-        self._password = password
+        # Save authentication of session
+        self._session.auth = (username, password)
     
     # Make Transmission Request
     def _make_transmission_request(self, method, arguments=None):
@@ -34,16 +33,16 @@ class Transmission(object):
             retry -= 1
             # Make request
             try:
-                request = requests.post(self._host+'/transmission/rpc',
-                    json={'method':method, 'arguments':arguments, 'tag':self._request_id},
-                    headers={'X-Transmission-Session-Id': self._session_id},
-                    auth=HTTPBasicAuth(self._username, self._password))
+                request = self._session.post(self._host+'/transmission/rpc',
+                    json={'method':method, 'arguments':arguments, 'tag':self._request_id})
                 self._request_id += 1
             except Exception as exc:
                 raise ConnectionFailure(str(exc))
 
             if request.status_code == 409: # Save Session ID and retry
-                self._session_id = request.headers['X-Transmission-Session-Id']
+                self._session.headers.update({
+                    'X-Transmission-Session-Id': request.headers['X-Transmission-Session-Id']
+                })
             elif request.status_code == 401: # Unauthorized user
                 raise LoginFailure('Unauthorized user.')
             elif request.status_code == 200:
