@@ -100,7 +100,7 @@ class Strategy(object):
         # Apply Conditions
         self._apply_conditions()
         # Print remove list
-        self._logger.info("Total: %d seed(s). %d seed(s) can be removed." %
+        self._logger.info("Total: %d torrent(s). %d torrent(s) can be removed." %
             (len(self.remain_list)+len(self.remove_list), len(self.remove_list)))
         if len(self.remove_list) > 0:
             self._logger.info('To be deleted:')

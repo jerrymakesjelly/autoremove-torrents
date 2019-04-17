@@ -87,10 +87,10 @@ class Task(object):
             self._torrents.append(self._client.torrent_properties(hash_value))
             # For a long waiting
             if time.time() - last_time > 1:
-                self._logger.info('Please wait...We have found %d seed(s).' %
+                self._logger.info('Please wait...We have found %d torrent(s).' %
                     len(self._torrents))
                 last_time = time.time()
-        self._logger.info('Found %d seed(s) in the client.' % len(self._torrents))
+        self._logger.info('Found %d torrent(s) in the client.' % len(self._torrents))
 
     # Apply strategies
     def _apply_strategies(self):
