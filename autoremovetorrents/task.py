@@ -95,8 +95,6 @@ class Task(object):
     # Apply strategies
     def _apply_strategies(self):
         for strategy_name in self._strategies:
-            self._logger.debug('Strategy `%s` was specified to process %d torrent(s).' \
-                % (strategy_name, len(self._torrents)))
             strategy = Strategy(strategy_name, self._strategies[strategy_name])
             strategy.execute(self._torrents)
             self._remove.extend(strategy.remove_list)
