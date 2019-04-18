@@ -41,18 +41,8 @@ class Strategy(object):
             {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
             {'all':self._all_status, 'ac':'status', 're':'excluded_status'} # Status filter
         ]
-        filter_name = ['Category', 'Tracker', 'Status']
         filter_obj = [CategoryFilter, TrackerFilter, StatusFilter]
         for i in range(0, len(filter_conf)):
-            # Logging
-            self._logger.debug('Filter `%s` is working to process %d torrent(s): Accept All: %s, Accept: %s, Reject: %s.' \
-                % (
-                    filter_name[i],
-                    len(self.remain_list),
-                    'Yes' if filter_conf[i]['all'] else 'No',
-                    str(len(self._conf[filter_conf[i]['ac']])) if filter_conf[i]['ac'] in self._conf else 'Not Specified',
-                    str(len(self._conf[filter_conf[i]['re']])) if filter_conf[i]['re'] in self._conf else 'Not Specified',
-                ))
             # Apply each filter
             self.remain_list = filter_obj[i](
                 filter_conf[i]['all'],
