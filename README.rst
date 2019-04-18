@@ -6,6 +6,10 @@ This program can help you to remove your torrents. Now you don't need to worry a
 
 This program supports qBittorrent/Transmission/μTorrent. If you like, star it :sparkles: :)
 
+Readme version in other languages: `简体中文`_.
+
+.. _简体中文: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/README-cn.rst
+
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/6e5509ecb4714ed697c65f35d71cff65
     :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
 .. |TravisCI| image:: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents.svg?branch=master
