@@ -1,0 +1,164 @@
+自动删种程序
+======================
+|PyPI| |TravisCI| |Coverage| |Codacy| |MIT|
+
+这个程序可以帮助你删除种子。现在你再也不用担心你的磁盘空间了——通过你设置的策略，程序会帮你检查每一个种子是否满足删除的条件；如果是，那就自动地删除它。
+
+这个程序支持 qBittorrent、Transmission 或 μTorrent。 如果你喜欢，可以点个星星 :sparkles: :)
+
+.. |Codacy| image:: https://api.codacy.com/project/badge/Grade/6e5509ecb4714ed697c65f35d71cff65
+    :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
+.. |TravisCI| image:: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents.svg?branch=master
+   :target: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents
+.. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/6e5509ecb4714ed697c65f35d71cff65    
+   :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Coverage
+.. |MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
+.. |PyPI| image:: https://badge.fury.io/py/autoremove-torrents.svg
+    :target: https://badge.fury.io/py/autoremove-torrents
+
+环境要求
+-------------
+
+* Python 3
+
+
+快速开始
+-------------
+安装
++++++++++++++++++++
+从 pip 安装
+^^^^^^^^^^^^^^^^^
+::
+
+    pip install autoremove-torrents
+
+或者
+
+从 GitHub 安装
+^^^^^^^^^^^^^^^^^^^^
+::
+
+    git clone https://github.com/jerrymakesjelly/autoremove-torrents.git
+    cd autoremove-torrents
+    python3 setup.py install
+
+
+编写配置文件
+++++++++++++++++++++++++++++++
+为了让程序能按照你的想法去工作，你需要学习如何编写配置文件。
+
+你可以把配置文件放在磁盘的任何地方。不过，在默认情况下，autoremove-torrents 只在 Shell 的当前工作目录去找 ``config.yml``::
+
+    vim ./config.yml
+
+
+语法也比较简单，下面是一个例子::
+
+    my_task:
+      client: qbittorrent
+      host: http://127.0.0.1
+      username: admin
+      password: adminadmin
+      strategies:
+        my_strategy:
+          categories:
+            - IPT
+          seeding_time: 1209600
+          ratio: 1
+      delete_data: true
+
+
+在这个例子中，程序会自动删除那些标签是 IPT，做种时间超过 1209600 秒 **或者** 分享率大于 1 的种子。请访问 `Wiki`_ 以获得更多信息。
+
+.. _Wiki: https://github.com/jerrymakesjelly/autoremove-torrents/wiki/%E4%B8%BB%E9%A1%B5
+
+运行
+++++
+::
+
+    autoremove-torrents
+
+如果你只是想看看哪些种子会被删除但并不想真的就删除它们，请使用 ``--view`` 命令行参数（``autoremove-torrents --view``）。
+
+
+设置计划任务
+-----------------------------
+如果你想每 15 分钟检查一次哪些种子可以被删除，Linux 的 ``crontab`` 程序可以帮你。首先::
+
+    crontab -e
+
+然后，在文件的最后加一行（请先确认 ``autoremove-torrents`` 在你系统中的路径）::
+
+*/15 * * * * /usr/bin/autoremove-torrents --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml --log=/home/jerrymakesjelly/autoremove-torrents/logs
+
+``--conf`` 参数指示了配置文件的路径。
+``--log`` 参数指定了存储日志文件的路径（必须存在）。
+
+截图
+-----------
+|Screenshot|
+
+.. |Screenshot| image:: https://user-images.githubusercontent.com/6760674/40576720-a78097fe-612d-11e8-9dda-8aac0c5011a2.png
+
+更新日志
+----------
+**2019-04-17 周三**: 1.3.0 版本。
+
+* 修复了在 qBittorrent 拥有大量的种子时程序会卡住的问题 (`Issue #22 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/22>`_)。
+* 修复了状态过滤器在工作时会写入重复的日志的问题。
+* 日志系统已更新： 
+    - 日志路径可以被指定（使用 ``--log`` 参数，例如 ``--log=/home/jerrymakesjelly/logs``） (`Issue #23 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/23>`_)。
+    - 日志文件将按天存储在不同的文件中（格式：``autoremove.%Y-%m-%d.log``）。
+* 全部单词 ``seed`` 修改为 ``torrent`` (`Issue #25 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/25>`_)。
+* 删去了所有不必要的调试日志。
+
+**2019-01-10 周一**: 1.2.5 版本。
+
+* 修复了在设置多个策略时种子数量不正确的问题 (`Issue #10 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/10>`_, 感谢 @momokoo 报告此问题并提出 PR).
+* 修复了在 qBittorrent 中种子数不正确的问题 (`Issue #13 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/13>`_)。
+
+**2018-05-31 周四**: 1.2.4 版本。
+
+* 修复了启动失败的问题。
+
+**2018-05-30 周三**: 1.2.3 版本。增加了一些功能。
+
+* 允许使用环境变量去指定 ``host``、``username`` 和 ``password``。
+* 允许 ``username`` 和 ``password`` 留空（或者其中之一留空），使得不用用户名或密码也可以登录 WebUI。
+* 现在程序在一个任务失败时不会直接退出。
+
+**2018-05-27 周日**: 1.2.2 版本。 增加了一些功能 :smile:
+
+* 增加了新过滤器：种子状态。
+* 增加了新条件：最大种子数量。
+
+**2018-05-26 周六**: 1.2.1 版本。 修复了 ``setup.py`` 的问题。
+
+**2018-05-26 周六**: 1.2.0 版本. 重构已完成，程序已发布至 PyPI。
+
+* 新特性很快会被加入。
+* 现在你可以通过 ``pip`` 安装程序。
+
+**2018-05-14 周一**: 1.1.0 版本。 创建了 ``setup.py``。
+
+现在你可以直接使用 ``autoremove-torrents`` 命令而不是 ``python3 main.py``。
+
+**2018-03-28 周三**: （更正文档） ``delete_data`` 字段不应该被缩进。
+
+**2018-03-22 周四**: 第一个版本 :bowtie:
+
+未来计划列表
+-----------
+取决于用户的反馈
+
+* 未来支持 Deluge 和 rtorrent
+
+* 添加删除条件：磁盘空闲空间
+
+* 添加删除条件：最大/最小平均上传/下载速度
+
+如果你有任何问题，欢迎提交 `issues`_.
+
+.. _issues: https://github.com/jerrymakesjelly/autoremove-torrents/issues
+

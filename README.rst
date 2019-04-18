@@ -91,9 +91,10 @@ If you want to check whether there is any torrent can be removed every 15 minute
 
 And then, add a line at the end of the file (please confirm the path of the autoremove-torrents and your program)::
 
-*/15 * * * * /usr/bin/autoremove-torrents --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml
+*/15 * * * * /usr/bin/autoremove-torrents --conf=/home/jerrymakesjelly/autoremove-torrents/config.yml --log=/home/jerrymakesjelly/autoremove-torrents/logs
 
 The ``--conf`` indicates the path to the configuration file.
+The ``--log`` argument specifies the path to store the log files (Must be existed).
 
 Screenshot
 -----------
@@ -103,6 +104,16 @@ Screenshot
 
 Changelog
 ----------
+**Wed, 17 Apr 2019**: Version 1.3.0.
+
+* Fixed bug: Program gets stuck when there are a lot of torrents in qBittorrent client (`Issue #22 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/22>`_).
+* Fixed bug: Duplicated logging in status filter.
+* Log system was updated:
+    - Log path can be specified (Use ``--log`` argument, e.g. ``--log=/home/jerrymakesjelly/logs``) (`Issue #23 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/23>`_).
+    - Logs are stored in different files by day (Format: ``autoremove.%Y-%m-%d.log``).
+* Changed the word ``seed`` to ``torrent`` (`Issue #25 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/25>`_).
+* Removed uncessary debug messages.
+
 **Mon, 10 Jan 2019**: Version 1.2.5.
 
 * Fixed bug: Incorrect number of torrents in multiple strategies (`Issue #10 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/10>`_, thanks to @momokoo for the report and PR).
