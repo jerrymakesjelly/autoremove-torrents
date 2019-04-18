@@ -1,6 +1,6 @@
 task:
   client: qbittorrent
-  host: $(QBITTORRENT_HOST)
+  host: $(QBITTORRENT_3_HOST)
   username: admin
   password: adminadmin
 exceptions:

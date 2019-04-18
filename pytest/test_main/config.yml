@@ -1,0 +1,11 @@
+task1:
+  client: qbittorrent
+  host: mock://qbittorrent
+  username: adminadminadminadminadminadmin
+  password: adminadmin
+
+task2:
+  client: transmission
+  host: mock://transmission
+  username: adminadmin
+  password: adminadminadminadminadmin

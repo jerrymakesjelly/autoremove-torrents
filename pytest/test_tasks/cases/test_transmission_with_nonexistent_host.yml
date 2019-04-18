@@ -1,7 +1,0 @@
-task:
-  client: transmission
-  host: http://127.0.0.1:65535
-  username: transmission
-  password: transmission
-exceptions:
-  - ConnectionFailure

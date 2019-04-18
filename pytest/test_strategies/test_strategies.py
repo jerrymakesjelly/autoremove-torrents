@@ -3,10 +3,10 @@ import yaml
 from autoremovetorrents import logger
 from autoremovetorrents.strategy import Strategy
 
-# Logger
-lg = logger.register(__name__)
-
 def test_strategies(test_data):
+    # Logger
+    lg = logger.Logger.register(__name__)
+
     # Check each case
     base_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'cases')
     lg.info('Base directory: %s' % base_dir)

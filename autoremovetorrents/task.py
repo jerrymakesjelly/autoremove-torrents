@@ -14,16 +14,15 @@ from autoremovetorrents.torrent import Torrent
 from autoremovetorrents.torrentstatus import TorrentStatus
 
 class Task(object):
-    # Logger
-    _logger = logger.register(__name__)
-
     def __init__(self, name, conf, remove_torrents = True):
+        # Logger
+        self._logger = logger.Logger.register(__name__)
 
         # Save task name
         self._name = name
 
         # Replace environment variables first
-        pattern = re.compile('\$\(([^\)]+)\)')
+        pattern = re.compile(r'\$\(([^\)]+)\)')
         replace_keys = ['host', 'username', 'password']
         for key in replace_keys:
             if key in conf:
@@ -87,17 +86,15 @@ class Task(object):
             # Append new torrent
             self._torrents.append(self._client.torrent_properties(hash_value))
             # For a long waiting
-            if time.time() - last_time > 10:
-                self._logger.info('Please wait...We have found %d seed(s).' %
+            if time.time() - last_time > 1:
+                self._logger.info('Please wait...We have found %d torrent(s).' %
                     len(self._torrents))
                 last_time = time.time()
-        self._logger.info('Found %d seed(s) in the client.' % len(self._torrents))
+        self._logger.info('Found %d torrent(s) in the client.' % len(self._torrents))
 
     # Apply strategies
     def _apply_strategies(self):
         for strategy_name in self._strategies:
-            self._logger.debug('Strategy `%s` was specified to process %d torrent(s).' \
-                % (strategy_name, len(self._torrents)))
             strategy = Strategy(strategy_name, self._strategies[strategy_name])
             strategy.execute(self._torrents)
             self._remove.extend(strategy.remove_list)

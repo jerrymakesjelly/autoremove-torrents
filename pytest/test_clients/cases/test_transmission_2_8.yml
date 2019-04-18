@@ -1,0 +1,4 @@
+task:
+  client: transmission
+  host: $(TRANSMISSION_2_8_HOST)
+  password: $(TRANSMISSION_2_8_PASSWORD)

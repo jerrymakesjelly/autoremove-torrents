@@ -1,5 +1,4 @@
 #-*- coding:utf-8 -*-
-import logging
 import requests
 import time
 from ..torrent import Torrent
@@ -10,12 +9,10 @@ from ..exception.connectionfailure import ConnectionFailure
 
 class qBittorrent(object):
     def __init__(self, host):
-        # Logger
-        self._logger = logging.getLogger(__name__)
         # Host
         self._host = host
-        # Cookies
-        self._cookies = None
+        # Requests Session
+        self._session = requests.Session()
         # Host
         self._host = host
         # Torrents list cache
@@ -26,29 +23,26 @@ class qBittorrent(object):
     # Login to qBittorrent
     def login(self, username, password):
         try:
-            request = requests.post(self._host+'/login', data={'username':username, 'password':password})
-            self._logger.info(request.text)
+            request = self._session.post(self._host+'/login', data={'username':username, 'password':password})
         except Exception as exc:
             raise ConnectionFailure(str(exc))
         
         if request.status_code == 200:
-            if request.text == 'Ok.': # Success
-                self._cookies = request.cookies
-            else:
+            if request.text == 'Fails.': # Fail
                 raise LoginFailure(request.text)
         else:
             raise LoginFailure('The server returned HTTP %d.' % request.status_code)
     
     # Get qBittorrent Version
     def version(self):
-        request = requests.get(self._host+'/version/qbittorrent', cookies=self._cookies)
+        request = self._session.get(self._host+'/version/qbittorrent')
         return ('qBittorrent %s' % request.text)
     
     # Get Torrents List
     def torrents_list(self):
         # Request torrents list
         torrent_hash = []
-        request = requests.get(self._host+'/query/torrents', cookies=self._cookies)
+        request = self._session.get(self._host+'/query/torrents')
         result = request.json()
         # Save to cache
         self._torrents_list_cache = result
@@ -60,13 +54,11 @@ class qBittorrent(object):
 
     # Get Torrent's Generic Properties
     def _torrent_generic_properties(self, torrent_hash):
-        return requests.get(self._host+'/query/propertiesGeneral/'+torrent_hash,
-            cookies=self._cookies).json()
+        return self._session.get(self._host+'/query/propertiesGeneral/'+torrent_hash).json()
     
     # Get Torrent's Tracker
     def _torrent_trackers(self, torrent_hash):
-        return requests.get(self._host+'/query/propertiesTrackers/'+torrent_hash,
-            cookies=self._cookies).json()
+        return self._session.get(self._host+'/query/propertiesTrackers/'+torrent_hash).json()
     
     # Get Torrent Properties
     def torrent_properties(self, torrent_hash):
@@ -101,10 +93,8 @@ class qBittorrent(object):
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        requests.post(self._host+'/command/delete',
-            data={'hashes':torrent_hash}, cookies=self._cookies)
+        self._session.post(self._host+'/command/delete', data={'hashes':torrent_hash})
     
     # Remove Torrent and Data
     def remove_data(self, torrent_hash):
-        requests.post(self._host+'/command/deletePerm',
-            data={'hashes':torrent_hash}, cookies=self._cookies)
+        self._session.post(self._host+'/command/deletePerm', data={'hashes':torrent_hash})

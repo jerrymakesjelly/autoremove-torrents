@@ -8,9 +8,6 @@ from . import logger
 from .task import Task
 from autoremovetorrents.version import __version__
 
-# Logger
-lg = logger.register(__name__)
-
 def pre_processor(argv):
     # View Mode
     view_mode = False
@@ -19,9 +16,12 @@ def pre_processor(argv):
     # Task
     task = None
 
+    # Set default logging path to current working directory
+    logger.Logger.log_path = ''
+
     # Get arguments
     try:
-        opts = getopt.getopt(argv, 'vc:t:', ['view', 'conf=', 'task='])[0]
+        opts = getopt.getopt(argv, 'vc:t:l:', ['view', 'conf=', 'task=', 'log='])[0]
     except getopt.GetoptError:
         print('Invalid arguments.')
         sys.exit(255)
@@ -32,6 +32,11 @@ def pre_processor(argv):
             conf_path = arg
         elif opt in ('-t', '--task'):
             task = arg
+        elif opt in ('-l', '--log'):
+            logger.Logger.log_path = arg
+
+    # Logger
+    lg = logger.Logger.register(__name__)
 
     # Run autoremove
     try:

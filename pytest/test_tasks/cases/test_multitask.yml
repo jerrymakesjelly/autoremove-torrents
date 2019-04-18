@@ -1,0 +1,18 @@
+task:
+  client: qbittorrent
+  host: mock://qbittorrent
+  username: abcdefghijklmn
+  password: opqrstuvwxyz
+  delete_data: true
+  strategies:
+    strategy_1:
+      categories:
+        - cata2
+      ratio: 2.5
+    strategy_2:
+      categories:
+        - cata1
+      seeding_time: 5144151
+result:
+  num-of-remaining: 3
+  num-of-removed: 2
