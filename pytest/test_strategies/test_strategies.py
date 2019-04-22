@@ -29,12 +29,10 @@ def test_strategies(test_data):
                     stgy.execute(test_data)
 
                     # Check result
-                    if 'remain' in conf and set([x.name for x in stgy.remain_list]) \
-                            != set(conf['remain'] if conf['remain'] is not None else []) \
-                            or \
-                            'remove' in conf and set([x.name for x in stgy.remove_list]) \
-                            != set(conf['remove'] if conf['remove'] is not None else []):
-                            raise AssertionError()
+                    if 'remain' in conf:
+                        assert set([x.name for x in stgy.remain_list]) == set(conf['remain'] if conf['remain'] is not None else [])
+                    if 'remove' in conf:
+                        assert set([x.name for x in stgy.remove_list]) == set(conf['remove'] if conf['remove'] is not None else [])
 
             # Leave the directory
             lg.info("Leaving directory '%s'..." % item)
