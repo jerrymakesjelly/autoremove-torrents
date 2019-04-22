@@ -19,6 +19,6 @@ class CreateTimeCondition(Condition):
         # Execute
         for torrent in torrents:
             if self.compare(now - torrent.create_time, self._create_time, Comparer.GT):
-                self.remove.append(torrent)
+                self.remove.add(torrent)
             else:
-                self.remain.append(torrent)
+                self.remain.add(torrent)

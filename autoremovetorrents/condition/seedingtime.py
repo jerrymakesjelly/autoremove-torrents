@@ -13,6 +13,6 @@ class SeedingTimeCondition(Condition):
         for torrent in torrents:
             if torrent.status == TorrentStatus.Uploading and \
                 self.compare(torrent.seeding_time, self._seeding_time, Comparer.GT):
-                self.remove.append(torrent)
+                self.remove.add(torrent)
             else:
-                self.remain.append(torrent)
+                self.remain.add(torrent)

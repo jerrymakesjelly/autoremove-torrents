@@ -23,8 +23,8 @@ class Strategy(object):
         self._conf = conf
 
         # Results
-        self.remain_list = []
-        self.remove_list = []
+        self.remain_list = set()
+        self.remove_list = set()
 
         # Filter ALL
         self._all_categories = conf['all_categories'] if 'all_categories' in conf \
@@ -69,7 +69,7 @@ class Strategy(object):
                 cond.apply(self.remain_list)
                 # Output
                 self.remain_list = cond.remain
-                self.remove_list.extend(cond.remove)
+                self.remove_list.update(cond.remove)
 
     # Execute this strategy
     def execute(self, torrents):

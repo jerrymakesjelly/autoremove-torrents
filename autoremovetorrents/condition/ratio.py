@@ -13,6 +13,6 @@ class RatioCondition(Condition):
         for torrent in torrents:
             if torrent.status == TorrentStatus.Uploading and \
                 self.compare(torrent.ratio, self._ratio, Comparer.GT):
-                self.remove.append(torrent)
+                self.remove.add(torrent)
             else:
-                self.remain.append(torrent)
+                self.remain.add(torrent)
