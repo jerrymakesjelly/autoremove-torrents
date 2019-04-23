@@ -12,8 +12,7 @@ class RatioCondition(Condition):
 
     def apply(self, torrents):
         for torrent in torrents:
-            if torrent.status == TorrentStatus.Uploading and \
-                self.compare(torrent.ratio, self._ratio, self._comparer):
+            if self.compare(torrent.ratio, self._ratio, self._comparer):
                 self.remove.add(torrent)
             else:
                 self.remain.add(torrent)
