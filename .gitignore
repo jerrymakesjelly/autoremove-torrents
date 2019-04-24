@@ -107,3 +107,7 @@ venv.bak/
 .vscode
 
 .pytest_cache/
+
+# python yacc file
+parser.out
+parsetab.py

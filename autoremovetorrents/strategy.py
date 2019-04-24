@@ -10,6 +10,7 @@ from .condition.ratio import RatioCondition
 from .condition.torrentsize import TorrentSizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
 from .condition.donothing import EmptyCondition
+from .conditionparser import ConditionParser
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -54,10 +55,12 @@ class Strategy(object):
     def _apply_conditions(self):
         # Condition collection
         condition_field = [
+            'remove',
             'seeding_time', 'create_time',
             'ratio', 'seed_size', 'maximum_number', 'nothing'
         ]
         condition_obj = [
+            ConditionParser,
             SeedingTimeCondition, CreateTimeCondition,
             RatioCondition, TorrentSizeCondition, TorrentNumberCondition, EmptyCondition
         ]
