@@ -1,0 +1,5 @@
+test:
+  remove: ratio < 1
+remove:
+  - Torrent - 14
+  - Torrent - 16

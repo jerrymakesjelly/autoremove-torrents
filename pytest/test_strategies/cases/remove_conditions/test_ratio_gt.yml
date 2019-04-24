@@ -1,0 +1,8 @@
+test:
+  remove: ratio > 2.5
+remove:
+  - Torrent - 2
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 7
+  - Torrent - 8
