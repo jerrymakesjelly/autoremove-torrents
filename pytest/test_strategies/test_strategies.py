@@ -3,7 +3,7 @@ import yaml
 from autoremovetorrents import logger
 from autoremovetorrents.strategy import Strategy
 
-def test_strategies(test_data):
+def test_strategies(mocker, test_data, test_env):
     # Logger
     lg = logger.Logger.register(__name__)
 
@@ -25,8 +25,9 @@ def test_strategies(test_data):
                         conf = yaml.safe_load(f)
 
                     # Make strategy and run
-                    stgy = Strategy(conf_file, conf['test'])
-                    stgy.execute(test_data)
+                    with mocker.patch('time.time', return_value=test_env['time.time']):
+                        stgy = Strategy(conf_file, conf['test'])
+                        stgy.execute(test_data)
 
                     # Check result
                     if 'remain' in conf:
