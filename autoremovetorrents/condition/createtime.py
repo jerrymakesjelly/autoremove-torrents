@@ -10,16 +10,9 @@ class CreateTimeCondition(Condition):
         self._create_time = ct
         self._comparer = comp
 
-    def apply(self, torrents, now = 0):
-        # In order to test this condition, let's make something different
-        if isinstance(self._create_time, dict) and 'timestamp' in self._create_time:
-            now = self._create_time['timestamp']
-            self._create_time = self._create_time['value']
-        else:
-            now = time.time()
-        # Execute
+    def apply(self, torrents):
         for torrent in torrents:
-            if self.compare(now - torrent.create_time, self._create_time, self._comparer):
+            if self.compare(time.time() - torrent.create_time, self._create_time, self._comparer):
                 self.remove.add(torrent)
             else:
                 self.remain.add(torrent)
