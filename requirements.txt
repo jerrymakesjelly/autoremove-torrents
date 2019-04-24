@@ -1,0 +1,4 @@
+requests
+pyyaml
+enum34
+ply

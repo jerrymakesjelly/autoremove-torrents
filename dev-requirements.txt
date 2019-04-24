@@ -1,0 +1,5 @@
+pytest-cov
+codacy-coverage
+requests_mock
+pytest-mock
+setuptools
