@@ -8,7 +8,7 @@ dist: xenial
 sudo: true
 # Command to install dependencies
 install:
-  - pip install requests pyyaml enum34
+  - pip install requests pyyaml enum34 ply
   - pip install --upgrade pytest 
   - pip install pytest-cov codacy-coverage requests_mock pytest-mock
   - pip install setuptools
