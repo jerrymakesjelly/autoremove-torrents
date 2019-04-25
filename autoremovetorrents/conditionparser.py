@@ -63,6 +63,13 @@ class ConditionParser(object):
         else:
             self._logger.warning('The condition \'%s\' is not supported, therefore no torrents satify this condition.', t[1])
         t[0] = result
+
+    def p_error(self, p):
+        if p:
+            self._logger.error('Syntax Error: Unexpected token \'%s\'.', p.value)
+        else:
+            self._logger.error('Syntax Error: Unexpected EOF.')
+        self.remain = self._torrent_list
     
     def __init__(self, expression):
         # Initialize lexer and parser
