@@ -1,0 +1,4 @@
+test:
+  remove: ratio
+exceptions:
+  - ConditionSyntaxError

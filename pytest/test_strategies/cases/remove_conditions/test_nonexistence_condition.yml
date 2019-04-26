@@ -1,0 +1,4 @@
+test:
+  remove: radioo < 0.5
+exceptions:
+  - NoSuchCondition

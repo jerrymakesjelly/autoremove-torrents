@@ -5,6 +5,8 @@ from .condition.base import Comparer
 from .condition.createtime import CreateTimeCondition
 from .condition.ratio import RatioCondition
 from .condition.seedingtime import SeedingTimeCondition
+from .exception.nosuchcondition import NoSuchCondition
+from .exception.syntaxerror import ConditionSyntaxError
 
 class ConditionParser(object):
     # Condition Map (as constant)
@@ -61,14 +63,14 @@ class ConditionParser(object):
                 obj.apply(self._torrent_list)
                 result = obj.remove
         else:
-            self._logger.warning('The condition \'%s\' is not supported, therefore no torrents satify this condition.', t[1])
+            raise NoSuchCondition('The condition \'%s\' is not supported.' % t[1])
         t[0] = result
 
     def p_error(self, p):
         if p:
-            self._logger.error('Syntax Error: Unexpected token \'%s\'.', p.value)
+            raise ConditionSyntaxError('Syntax Error: Unexpected token \'%s\'.' % p.value)
         else:
-            self._logger.error('Syntax Error: Unexpected EOF.')
+            raise ConditionSyntaxError('Syntax Error: Unexpected EOF.')
         self.remain = self._torrent_list
     
     def __init__(self, expression):

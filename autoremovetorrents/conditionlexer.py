@@ -1,5 +1,6 @@
 import ply.lex as lex
 from . import logger
+from .exception.illegalcharacter import IllegalCharacter
 
 class ConditionLexer(object):
     tokens = (
@@ -23,16 +24,11 @@ class ConditionLexer(object):
     
     def t_NUMBER(self, t):
         r'\d+(\.\d+)?'
-        try:
-            t.value = float(t.value)
-        except ValueError:
-            self._logger.warning('Cannot convert %s to float number; Set to 0.', t.value)
-            t.value = 0
+        t.value = float(t.value)
         return t
     
     def t_error(self, t):
-        self._logger.warning('Illegal character \'%s\'.', t.value[0])
-        t.lexer.skip(1)
+        raise IllegalCharacter('Illegal character \'%s\'.' % t.value[0])
 
     def __init__(self):
         # Build the lexer
