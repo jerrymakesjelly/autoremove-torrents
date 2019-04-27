@@ -30,6 +30,7 @@ class ConditionLexer(object):
 
     def t_CONDITION(self, t):
         r'[a-zA-Z_]+'
+        t.value = t.value.lower()
         t.type = self.reserved.get(t.value, 'CONDITION')
         return t
     
