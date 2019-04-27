@@ -1,0 +1,7 @@
+test:
+  remove: ratio < 1 or seeding_time > 60000
+remove:
+  - Torrent - 1
+  - Torrent - 7
+  - Torrent - 14
+  - Torrent - 16
