@@ -84,28 +84,31 @@ class uTorrent(object):
             self.torrents_list()
         for torrent in self._torrents_list_cache['torrents']:
             if torrent[0] == torrent_hash:
-                # Judge status
-                state = torrent[1]
-                if state & 32: # Paused
-                    status = TorrentStatus.Paused
-                elif state & 1: # Started
-                    if torrent[4] == 1000: # Progess: 100.0%
-                        status = TorrentStatus.Uploading
-                    else:
-                        status = TorrentStatus.Downloading
-                elif state & 2: # Checking
-                    status = TorrentStatus.Checking
-                elif state & 128: # Loaded
-                    status = TorrentStatus.Stopped
-                else:
-                    status = TorrentStatus.Unknown
                 # Get torrent's tracker
                 trackers = self._torrent_job_properties(torrent_hash)['trackers'].split()
                 return Torrent(
-                    torrent[0], torrent[2], torrent[11], trackers, status, torrent[3], torrent[7]/1000,
+                    torrent[0], torrent[2], torrent[11], trackers, uTorrent._judge_status(torrent[1], torrent[4]), torrent[3], torrent[7]/1000,
                     torrent[6], sys.maxsize, -1)
         # Not Found
         raise NoSuchTorrent('No such torrent.')
+
+    # Judge Torrent Status
+    @staticmethod
+    def _judge_status(state, progress):
+        if state & 32: # Paused
+            status = TorrentStatus.Paused
+        elif state & 1: # Started
+            if progress == 1000: # Progess: 100.0%
+                status = TorrentStatus.Uploading
+            else:
+                status = TorrentStatus.Downloading
+        elif state & 2: # Checking
+            status = TorrentStatus.Checking
+        elif state & 128: # Loaded
+            status = TorrentStatus.Stopped
+        else:
+            status = TorrentStatus.Unknown
+        return status
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):

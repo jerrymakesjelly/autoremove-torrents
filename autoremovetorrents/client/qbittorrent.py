@@ -66,20 +66,6 @@ class qBittorrent(object):
             self.torrents_list()
         for torrent in self._torrents_list_cache:
             if torrent['hash'] == torrent_hash:
-                # Judge Status(qBittorrent doesn't have stopped status)
-                state = torrent['state']
-                if state == 'downloading' or state == 'stalledDL':
-                    status = TorrentStatus.Downloading
-                elif state == 'queuedDL' or state == 'queuedUP':
-                    status = TorrentStatus.Queued
-                elif state == 'uploading' or state == 'stalledUP':
-                    status = TorrentStatus.Uploading
-                elif state == 'checkingUP' or state == 'checkingDL':
-                    status = TorrentStatus.Checking
-                elif state == 'pausedUP' or state == 'pausedDL':
-                    status = TorrentStatus.Paused
-                else:
-                    status = TorrentStatus.Unknown
                 # Get other information
                 properties = self._torrent_generic_properties(torrent_hash)
                 trackers = self._torrent_trackers(torrent_hash)
@@ -87,9 +73,26 @@ class qBittorrent(object):
                     torrent['hash'], torrent['name'],
                     torrent['category'] if 'category' in torrent else torrent['label'],
                     [tracker['url'] for tracker in trackers],
-                    status, torrent['size'], torrent['ratio'],
+                    qBittorrent._judge_status(torrent['state']), torrent['size'], torrent['ratio'],
                     properties['total_uploaded'], properties['addition_date'],
                     properties['seeding_time'])
+
+    # Judge Torrent Status (qBittorrent doesn't have stopped status)
+    @staticmethod
+    def _judge_status(state):
+        if state == 'downloading' or state == 'stalledDL':
+            status = TorrentStatus.Downloading
+        elif state == 'queuedDL' or state == 'queuedUP':
+            status = TorrentStatus.Queued
+        elif state == 'uploading' or state == 'stalledUP':
+            status = TorrentStatus.Uploading
+        elif state == 'checkingUP' or state == 'checkingDL':
+            status = TorrentStatus.Checking
+        elif state == 'pausedUP' or state == 'pausedDL':
+            status = TorrentStatus.Paused
+        else:
+            status = TorrentStatus.Unknown
+        return status
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
