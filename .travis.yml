@@ -8,10 +8,9 @@ dist: xenial
 sudo: true
 # Command to install dependencies
 install:
-  - pip install requests pyyaml enum34
+  - pip install -r requirements.txt
   - pip install --upgrade pytest 
-  - pip install pytest-cov codacy-coverage requests_mock
-  - pip install setuptools
+  - pip install -r dev-requirements.txt
 # Command to run tests
 script:
   - py.test -s --cov-report=xml --cov

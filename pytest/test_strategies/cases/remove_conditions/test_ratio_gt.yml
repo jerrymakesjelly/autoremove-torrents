@@ -1,5 +1,5 @@
 test:
-  ratio: 2.5
+  remove: ratio > 2.5
 remove:
   - Torrent - 2
   - Torrent - 4

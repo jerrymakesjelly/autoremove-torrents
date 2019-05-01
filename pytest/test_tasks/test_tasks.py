@@ -26,5 +26,4 @@ def test_task(qbittorrent_mocker):
             # Run task
             instance = Task(file, conf['task'], False)
             instance.execute()
-            #assert len(instance.get_remaining_torrents()) == conf['result']['num-of-remaining']
             assert len(instance.get_removed_torrents()) == conf['result']['num-of-removed']

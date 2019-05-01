@@ -1,0 +1,6 @@
+test:
+  remove: seeding_time > 60000 or (ratio > 3 and create_time > 1400000)
+remove:
+  - Torrent - 1
+  - Torrent - 4
+  - Torrent - 7

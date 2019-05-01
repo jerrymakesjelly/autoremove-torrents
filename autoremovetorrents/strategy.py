@@ -10,6 +10,7 @@ from .condition.ratio import RatioCondition
 from .condition.torrentsize import TorrentSizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
 from .condition.donothing import EmptyCondition
+from .conditionparser import ConditionParser
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -23,8 +24,8 @@ class Strategy(object):
         self._conf = conf
 
         # Results
-        self.remain_list = []
-        self.remove_list = []
+        self.remain_list = set()
+        self.remove_list = set()
 
         # Filter ALL
         self._all_categories = conf['all_categories'] if 'all_categories' in conf \
@@ -54,10 +55,12 @@ class Strategy(object):
     def _apply_conditions(self):
         # Condition collection
         condition_field = [
+            'remove',
             'seeding_time', 'create_time',
             'ratio', 'seed_size', 'maximum_number', 'nothing'
         ]
         condition_obj = [
+            ConditionParser,
             SeedingTimeCondition, CreateTimeCondition,
             RatioCondition, TorrentSizeCondition, TorrentNumberCondition, EmptyCondition
         ]
@@ -69,7 +72,7 @@ class Strategy(object):
                 cond.apply(self.remain_list)
                 # Output
                 self.remain_list = cond.remain
-                self.remove_list.extend(cond.remove)
+                self.remove_list.update(cond.remove)
 
     # Execute this strategy
     def execute(self, torrents):

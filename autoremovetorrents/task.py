@@ -41,13 +41,13 @@ class Task(object):
         self._strategies = conf['strategies'] if 'strategies' in conf else []
 
         # Torrents
-        self._torrents = []
-        self._remove = []
+        self._torrents = set()
+        self._remove = set()
 
         # Allow removing specified torrents
         if 'force_delete' in conf:
             for hash in conf['force_delete']:
-                self._remove.append(Torrent(
+                self._remove.add(Torrent(
                     hash,
                     hash,
                     '(No Category)',
@@ -84,7 +84,7 @@ class Task(object):
         last_time = time.time()
         for hash_value in self._client.torrents_list():
             # Append new torrent
-            self._torrents.append(self._client.torrent_properties(hash_value))
+            self._torrents.add(self._client.torrent_properties(hash_value))
             # For a long waiting
             if time.time() - last_time > 1:
                 self._logger.info('Please wait...We have found %d torrent(s).' %
@@ -97,7 +97,7 @@ class Task(object):
         for strategy_name in self._strategies:
             strategy = Strategy(strategy_name, self._strategies[strategy_name])
             strategy.execute(self._torrents)
-            self._remove.extend(strategy.remove_list)
+            self._remove.update(strategy.remove_list)
 
     # Remove torrents
     def _remove_torrents(self):

@@ -29,3 +29,9 @@ def test_data():
         ))
 
     return input_torrents
+
+@pytest.fixture(scope="module")
+def test_env():
+    with open(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'environment.json'), encoding='utf-8') as f:
+        env = json.load(f)
+    return env

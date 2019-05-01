@@ -69,10 +69,8 @@ The grammar is quite easy, for example::
         my_strategy:
           categories:
             - IPT
-          seeding_time: 1209600
-          ratio: 1
+          remove: seeding_time > 1209600 or ratio > 1
       delete_data: true
-
 
 The program will delete those torrents whose categories are ``IPT``, seeding time is above 1209600 seconds **or** ratio is greater than 1. Visit `Wiki`_ to learn more.
 
@@ -108,6 +106,16 @@ Screenshot
 
 Changelog
 ----------
+**Wed, 1 May 2019**: Version 1.4.0.
+
+* Removed torrent status restriction in ``seeding_time`` and ``ratio`` condition (#19).
+    - Before this version, ``seeding_time`` and ``ratio`` condition will only remove those torrents whose status are seeding. We set this restriction to provide a method for users to avoid a torrent being removed by changing its status (e.g. pause seeding).
+    - But now we have a ``status`` filter, this restriction becomes unnecessary, and its behavior may be different from users expectation.
+* Supported custom remove expressions (#15).
+    - Now we can write the condition that we want directly and clearly, e.g. ``remove: ratio > 1``.
+    - Composite condition expressions are also supported, e.g. ``remove: (seeding_time < 86400 and ratio > 1) or (seeding_time > 86400 and ratio > 3)``. Visit Wiki to learn more.
+    - The old remove conditions are still available.
+
 **Wed, 17 Apr 2019**: Version 1.3.0.
 
 * Fixed bug: Program gets stuck when there are a lot of torrents in qBittorrent client (`Issue #22 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/22>`_).

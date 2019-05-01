@@ -13,6 +13,6 @@ class TorrentSizeCondition(ConditionWithSort):
         for torrent in torrents:
             if size_sum+torrent.size < self._limit:
                 size_sum += torrent.size
-                self.remain.append(torrent)
+                self.remain.add(torrent)
             else:
-                self.remove.append(torrent)
+                self.remove.add(torrent)

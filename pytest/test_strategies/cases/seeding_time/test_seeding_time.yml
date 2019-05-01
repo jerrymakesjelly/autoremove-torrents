@@ -1,7 +1,10 @@
 test:
   seeding_time: 21600
 remove:
+  - Torrent - 1
   - Torrent - 3
   - Torrent - 4
   - Torrent - 5
   - Torrent - 7
+  - Torrent - 11
+  - Torrent - 12

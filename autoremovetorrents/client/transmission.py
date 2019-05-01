@@ -76,8 +76,16 @@ class Transmission(object):
         if len(result['torrents']) == 0: # No such torrent
             raise NoSuchClient("No such torrent of hash '%s'." % torrent_hash)
         torrent = result['torrents'][0]
-        # Judge status
-        status_list = [
+        return Torrent(
+            torrent['hashString'], torrent['name'], '',
+            [tracker['announce'] for tracker in torrent['trackers']],
+            Transmission._judge_status(torrent['status']), torrent['totalSize'], torrent['uploadRatio'],
+            torrent['uploadedEver'], torrent['addedDate'], torrent['secondsSeeding'])
+
+    # Judge Torrent Status
+    @staticmethod
+    def _judge_status(state):
+        return [
             TorrentStatus.Stopped,  # 0:STOPPED
             TorrentStatus.Queued,   # 1:CHECK_WAIT
             TorrentStatus.Checking, # 2:CHECK
@@ -86,13 +94,7 @@ class Transmission(object):
             TorrentStatus.Queued, # 5:SEED_WAIT
             TorrentStatus.Uploading, # 6:SEED
             TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
-        ]
-        status = status_list[torrent['status']]
-        return Torrent(
-            torrent['hashString'], torrent['name'], '',
-            [tracker['announce'] for tracker in torrent['trackers']],
-            status, torrent['totalSize'], torrent['uploadRatio'],
-            torrent['uploadedEver'], torrent['addedDate'], torrent['secondsSeeding'])
+        ][state]
 
     # Remove Torrent
     def remove_torrent(self, torrent_hash):

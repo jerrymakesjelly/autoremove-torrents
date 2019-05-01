@@ -1,11 +1,22 @@
+import sys
 import os
 import yaml
 from autoremovetorrents import logger
 from autoremovetorrents.strategy import Strategy
+from autoremovetorrents.exception.illegalcharacter import IllegalCharacter
+from autoremovetorrents.exception.syntaxerror import ConditionSyntaxError
+from autoremovetorrents.exception.nosuchcondition import NoSuchCondition
 
-def test_strategies(test_data):
+def test_strategies(mocker, test_data, test_env):
     # Logger
     lg = logger.Logger.register(__name__)
+
+    # Exceptions mapping
+    exception_map = {
+        IllegalCharacter: 'IllegalCharacter',
+        ConditionSyntaxError: 'ConditionSyntaxError',
+        NoSuchCondition: 'NoSuchCondition'
+    }
 
     # Check each case
     base_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'cases')
@@ -24,17 +35,22 @@ def test_strategies(test_data):
                     with open(conf_path, encoding='utf-8') as f:
                         conf = yaml.safe_load(f)
 
-                    # Make strategy and run
-                    stgy = Strategy(conf_file, conf['test'])
-                    stgy.execute(test_data)
+                    try:
+                        # Make strategy and run
+                        with mocker.patch('time.time', return_value=test_env['time.time']):
+                            stgy = Strategy(conf_file, conf['test'])
+                            stgy.execute(test_data)
 
-                    # Check result
-                    if 'remain' in conf and set([x.name for x in stgy.remain_list]) \
-                            != set(conf['remain'] if conf['remain'] is not None else []) \
-                            or \
-                            'remove' in conf and set([x.name for x in stgy.remove_list]) \
-                            != set(conf['remove'] if conf['remove'] is not None else []):
-                            raise AssertionError()
+                        # Check result
+                        if 'remain' in conf:
+                            assert set([x.name for x in stgy.remain_list]) == set(conf['remain'] if conf['remain'] is not None else [])
+                        if 'remove' in conf:
+                            assert set([x.name for x in stgy.remove_list]) == set(conf['remove'] if conf['remove'] is not None else [])
+                    except Exception as e:
+                        if 'exceptions' in conf and exception_map[sys.exc_info()[0]] in conf['exceptions']:
+                            pass
+                        else:
+                            raise e
 
             # Leave the directory
             lg.info("Leaving directory '%s'..." % item)

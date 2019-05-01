@@ -64,8 +64,7 @@
         my_strategy:
           categories:
             - IPT
-          seeding_time: 1209600
-          ratio: 1
+          remove: seeding_time > 1209600 or ratio > 1
       delete_data: true
 
 
@@ -103,6 +102,16 @@
 
 更新日志
 ----------
+**2018-05-01 周三**: 1.4.0 版本。
+
+* 删除了 ``seeding_time`` 和 ``ratio`` 条件中的限制 (#19)。
+    - 在之前的版本，``seeding_time`` 和 ``ratio`` 条件只会删除那些正在做种的种子。设置这个限制是为了给用户提供一个通过修改种子的状态（例如暂停做种）来避免种子被删除的方法。
+    - 不过现在我们有状态过滤器（``status``），所以这个限制就显得多余了，而且可能会使它的行为跟用户预想的不一样。
+* 支持自定义删除表达式 (#15)。
+    - 现在我们可以直接而明确地写出我们想要的表达式了，例如 ``remove: ratio > 1``。
+    - 复合的条件表达式也支持，例如 ``remove: (seeding_time < 86400 and ratio > 1) or (seeding_time > 86400 and ratio > 3)``。
+    - 旧的写法仍然可用。
+
 **2019-04-17 周三**: 1.3.0 版本。
 
 * 修复了在 qBittorrent 拥有大量的种子时程序会卡住的问题 (`Issue #22 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/22>`_)。
