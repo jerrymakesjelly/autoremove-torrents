@@ -62,7 +62,7 @@ def pre_processor(argv):
     except Exception:
         lg.error(traceback.format_exc().splitlines()[-1])
         lg.debug('Exception Logged', exc_info=True)
-        lg.critical('An error occured. Please contact the administrator for more information.')
+        lg.critical('An error occured. If you think this is a bug or need help, you can submit an issue.')
 
 def main():
     pre_processor(sys.argv[1:])
