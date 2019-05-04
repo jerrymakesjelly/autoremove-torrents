@@ -25,7 +25,8 @@ setup(name = 'autoremove-torrents',
     install_requires = [
         'requests',
         'pyyaml',
-        'enum34'
+        'enum34',
+        'ply'
     ],
     entry_points = {
         'console_scripts':[
