@@ -10,7 +10,6 @@ class ConditionLexer(object):
     tokens = [
         'CONDITION', 'NUMBER',
         'LT', 'GT',
-        'AND', 'OR',
         'LPAREN', 'RPAREN',
     ] + list(reserved.values())
 
