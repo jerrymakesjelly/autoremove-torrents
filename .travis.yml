@@ -8,13 +8,12 @@ dist: xenial
 sudo: true
 # Command to install dependencies
 install:
-  - pip install -r requirements.txt
+  - python setup.py install
   - pip install --upgrade pytest 
   - pip install -r dev-requirements.txt
 # Command to run tests
 script:
   - py.test -s --cov-report=xml --cov
-  - python setup.py install
 # Command after success
 after_success:
   - python-codacy-coverage -r coverage.xml
