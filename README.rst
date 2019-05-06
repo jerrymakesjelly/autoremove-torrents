@@ -106,6 +106,15 @@ Screenshot
 
 Changelog
 ----------
+**Mon, 6 May 2019**: Version 1.4.1.
+
+* Fixed missing dependency: `ply`.
+* Fixed the warning of duplicate definition in condition `remove`.
+
+**Mon, 6 May 2019**: Updated Wiki.
+
+* Added the description of `remove` condition into Simplified-Chinese Wiki.
+
 **Wed, 1 May 2019**: Version 1.4.0.
 
 * Removed torrent status restriction in ``seeding_time`` and ``ratio`` condition (#19).
