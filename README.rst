@@ -106,6 +106,11 @@ Screenshot
 
 Changelog
 ----------
+**Mon, 13 May 2019**: Version 1.4.2.
+
+* Fixed missing parser files. (#32)
+* Fixed association of operators. (#32) Now the operator `and` and `or` are guaranteed to be left-associative.
+
 **Mon, 6 May 2019**: Version 1.4.1.
 
 * Fixed missing dependency: `ply`.
