@@ -28,6 +28,10 @@ class ConditionParser(object):
 
     tokens = ConditionLexer.tokens
 
+    precedence = (
+        ('left', 'AND', 'OR'),
+    )
+
     def p_statement(self, t):
         'statement : expression'
         self.remove = t[1]
