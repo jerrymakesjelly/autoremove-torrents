@@ -1,0 +1,199 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> expression
+Rule 2     expression -> LPAREN expression RPAREN
+Rule 3     expression -> expression AND expression
+Rule 4     expression -> expression OR expression
+Rule 5     expression -> CONDITION LT NUMBER
+Rule 6     expression -> CONDITION GT NUMBER
+
+Terminals, with rules where they appear
+
+AND                  : 3
+CONDITION            : 5 6
+GT                   : 6
+LPAREN               : 2
+LT                   : 5
+NUMBER               : 5 6
+OR                   : 4
+RPAREN               : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 3 3 4 4
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . expression
+    (2) expression -> . LPAREN expression RPAREN
+    (3) expression -> . expression AND expression
+    (4) expression -> . expression OR expression
+    (5) expression -> . CONDITION LT NUMBER
+    (6) expression -> . CONDITION GT NUMBER
+
+    LPAREN          shift and go to state 3
+    CONDITION       shift and go to state 4
+
+    statement                      shift and go to state 1
+    expression                     shift and go to state 2
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> expression .
+    (3) expression -> expression . AND expression
+    (4) expression -> expression . OR expression
+
+    $end            reduce using rule 1 (statement -> expression .)
+    AND             shift and go to state 5
+    OR              shift and go to state 6
+
+
+state 3
+
+    (2) expression -> LPAREN . expression RPAREN
+    (2) expression -> . LPAREN expression RPAREN
+    (3) expression -> . expression AND expression
+    (4) expression -> . expression OR expression
+    (5) expression -> . CONDITION LT NUMBER
+    (6) expression -> . CONDITION GT NUMBER
+
+    LPAREN          shift and go to state 3
+    CONDITION       shift and go to state 4
+
+    expression                     shift and go to state 7
+
+state 4
+
+    (5) expression -> CONDITION . LT NUMBER
+    (6) expression -> CONDITION . GT NUMBER
+
+    LT              shift and go to state 8
+    GT              shift and go to state 9
+
+
+state 5
+
+    (3) expression -> expression AND . expression
+    (2) expression -> . LPAREN expression RPAREN
+    (3) expression -> . expression AND expression
+    (4) expression -> . expression OR expression
+    (5) expression -> . CONDITION LT NUMBER
+    (6) expression -> . CONDITION GT NUMBER
+
+    LPAREN          shift and go to state 3
+    CONDITION       shift and go to state 4
+
+    expression                     shift and go to state 10
+
+state 6
+
+    (4) expression -> expression OR . expression
+    (2) expression -> . LPAREN expression RPAREN
+    (3) expression -> . expression AND expression
+    (4) expression -> . expression OR expression
+    (5) expression -> . CONDITION LT NUMBER
+    (6) expression -> . CONDITION GT NUMBER
+
+    LPAREN          shift and go to state 3
+    CONDITION       shift and go to state 4
+
+    expression                     shift and go to state 11
+
+state 7
+
+    (2) expression -> LPAREN expression . RPAREN
+    (3) expression -> expression . AND expression
+    (4) expression -> expression . OR expression
+
+    RPAREN          shift and go to state 12
+    AND             shift and go to state 5
+    OR              shift and go to state 6
+
+
+state 8
+
+    (5) expression -> CONDITION LT . NUMBER
+
+    NUMBER          shift and go to state 13
+
+
+state 9
+
+    (6) expression -> CONDITION GT . NUMBER
+
+    NUMBER          shift and go to state 14
+
+
+state 10
+
+    (3) expression -> expression AND expression .
+    (3) expression -> expression . AND expression
+    (4) expression -> expression . OR expression
+
+    AND             reduce using rule 3 (expression -> expression AND expression .)
+    OR              reduce using rule 3 (expression -> expression AND expression .)
+    $end            reduce using rule 3 (expression -> expression AND expression .)
+    RPAREN          reduce using rule 3 (expression -> expression AND expression .)
+
+  ! AND             [ shift and go to state 5 ]
+  ! OR              [ shift and go to state 6 ]
+
+
+state 11
+
+    (4) expression -> expression OR expression .
+    (3) expression -> expression . AND expression
+    (4) expression -> expression . OR expression
+
+    AND             reduce using rule 4 (expression -> expression OR expression .)
+    OR              reduce using rule 4 (expression -> expression OR expression .)
+    $end            reduce using rule 4 (expression -> expression OR expression .)
+    RPAREN          reduce using rule 4 (expression -> expression OR expression .)
+
+  ! AND             [ shift and go to state 5 ]
+  ! OR              [ shift and go to state 6 ]
+
+
+state 12
+
+    (2) expression -> LPAREN expression RPAREN .
+
+    AND             reduce using rule 2 (expression -> LPAREN expression RPAREN .)
+    OR              reduce using rule 2 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 2 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 2 (expression -> LPAREN expression RPAREN .)
+
+
+state 13
+
+    (5) expression -> CONDITION LT NUMBER .
+
+    AND             reduce using rule 5 (expression -> CONDITION LT NUMBER .)
+    OR              reduce using rule 5 (expression -> CONDITION LT NUMBER .)
+    $end            reduce using rule 5 (expression -> CONDITION LT NUMBER .)
+    RPAREN          reduce using rule 5 (expression -> CONDITION LT NUMBER .)
+
+
+state 14
+
+    (6) expression -> CONDITION GT NUMBER .
+
+    AND             reduce using rule 6 (expression -> CONDITION GT NUMBER .)
+    OR              reduce using rule 6 (expression -> CONDITION GT NUMBER .)
+    $end            reduce using rule 6 (expression -> CONDITION GT NUMBER .)
+    RPAREN          reduce using rule 6 (expression -> CONDITION GT NUMBER .)
+
