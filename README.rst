@@ -23,7 +23,7 @@ Readme version in other languages: `简体中文`_.
 
 Requirements
 -------------
-* Python 3
+* Python 2.7 or Python 3
 
 That's all. It's a simple but smart program.
 
@@ -106,6 +106,11 @@ Screenshot
 
 Changelog
 ----------
+**Sun, 19 May 2019**: Version 1.4.3.
+
+* Supported Python 2.7. (#29)
+* Stopped supporting Python 3.4. (kennethreitz/requests#5092)
+
 **Mon, 13 May 2019**: Version 1.4.2.
 
 * Fixed missing parser files. (#32)
