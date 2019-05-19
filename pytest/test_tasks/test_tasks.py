@@ -3,6 +3,7 @@ import json
 import os
 from autoremovetorrents import logger
 from autoremovetorrents.task import Task
+from autoremovetorrents.compatibility.open import _open
 
 def test_task(qbittorrent_mocker):
     # Loggger
@@ -20,7 +21,7 @@ def test_task(qbittorrent_mocker):
 
         if os.path.isfile(file_path):
             lg.info('Loading file: %s', file)
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with _open(file_path, 'r', encoding='utf-8') as f:
                 conf = yaml.safe_load(f)
 
             # Run task

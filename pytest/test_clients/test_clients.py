@@ -9,6 +9,7 @@ from autoremovetorrents.exception.loginfailure import LoginFailure
 from autoremovetorrents.exception.nosuchclient import NoSuchClient
 from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
 from autoremovetorrents.exception.remotefailure import RemoteFailure
+from autoremovetorrents.compatibility.open import _open
 
 def test_client(env_dist):
     # Logger
@@ -34,7 +35,7 @@ def test_client(env_dist):
         if os.path.isfile(file_path):
             # Load file
             lg.info('Loading file: %s' % file)
-            with open(file_path, encoding='utf-8') as f:
+            with _open(file_path, encoding='utf-8') as f:
                 conf = yaml.safe_load(f)
 
             # Make take and run
