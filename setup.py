@@ -12,7 +12,7 @@ setup(name = 'autoremove-torrents',
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3 :: Only',
+        'Programming Language :: Python',
         'Topic :: Utilities'
     ], # Get classifiers from https://pypi.org/pypi?%3Aaction=list_classifiers
     keywords = 'python autoremove torrent',
