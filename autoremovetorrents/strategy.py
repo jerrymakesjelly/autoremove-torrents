@@ -54,21 +54,19 @@ class Strategy(object):
     # Apply Conditions
     def _apply_conditions(self):
         # Condition collection
-        condition_field = [
-            'remove',
-            'seeding_time', 'create_time',
-            'ratio', 'seed_size', 'maximum_number', 'nothing'
-        ]
-        condition_obj = [
-            ConditionParser,
-            SeedingTimeCondition, CreateTimeCondition,
-            RatioCondition, TorrentSizeCondition, TorrentNumberCondition, EmptyCondition
-        ]
-        for i in range(0, len(condition_field)):
-            # Apply each condition
-            if condition_field[i] in self._conf:
+        conditions = {
+            'remove': ConditionParser,
+            'seeding_time': SeedingTimeCondition,
+            'create_time': CreateTimeCondition,
+            'ratio': RatioCondition,
+            'seed_size': TorrentSizeCondition,
+            'maximum_number': TorrentNumberCondition,
+            'nothing': EmptyCondition
+        }
+        for conf in self._conf:
+            if conf in conditions:
                 # Applying condition processor
-                cond = condition_obj[i](self._conf[condition_field[i]])
+                cond = conditions[conf](self._conf[conf])
                 cond.apply(self.remain_list)
                 # Output
                 self.remain_list = cond.remain
