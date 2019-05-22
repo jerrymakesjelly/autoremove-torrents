@@ -44,6 +44,11 @@ class Strategy(object):
         ]
         filter_obj = [CategoryFilter, TrackerFilter, StatusFilter]
         for i in range(0, len(filter_conf)):
+            # User can use a single line to represent one item instead of using list
+            if filter_conf[i]['ac'] in self._conf and type(self._conf[filter_conf[i]['ac']]) != list:
+                self._conf[filter_conf[i]['ac']] = [self._conf[filter_conf[i]['ac']]]
+            if filter_conf[i]['re'] in self._conf and type(self._conf[filter_conf[i]['re']]) != list:
+                self._conf[filter_conf[i]['re']] = [self._conf[filter_conf[i]['re']]]
             # Apply each filter
             self.remain_list = filter_obj[i](
                 filter_conf[i]['all'],
