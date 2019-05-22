@@ -106,6 +106,11 @@ Screenshot
 
 Changelog
 ----------
+**Wed, 22 May 2019**: Version 1.4.4.
+
+* Fixed a bug that when condition `seed_size` / `maximum_number` is used together with condtion `ratio` / `create_time` / `seeding_time`, the task will fail. (#33)
+* New feature: if the content of `filter` has only one line, now it is allowed to write down directly without using list.
+
 **Sun, 19 May 2019**: Version 1.4.3.
 
 * Supported Python 2.7. (#29)
