@@ -8,6 +8,7 @@ class TorrentSizeCondition(ConditionWithSort):
         self._limit = settings['limit'] * 1073741824 # limit = limit * 1GiB
 
     def apply(self, torrents):
+        torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
         size_sum = 0
         for torrent in torrents:

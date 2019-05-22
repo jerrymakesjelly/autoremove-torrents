@@ -6,6 +6,7 @@ class TorrentNumberCondition(ConditionWithSort):
         self._max_limit = settings['limit']
 
     def apply(self, torrents):
+        torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
         if self._max_limit == 0:
             self.remove = torrents
