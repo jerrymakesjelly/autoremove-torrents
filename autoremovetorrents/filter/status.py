@@ -25,7 +25,7 @@ class StatusFilter(Filter):
         accept = self._convert_status(self._accept)
         reject = self._convert_status(self._reject)
 
-        return [torrent for torrent in torrents 
+        return set([torrent for torrent in torrents 
             if (self._all or torrent.status in accept)
             and not (torrent.status in reject)
-        ]
+        ])
