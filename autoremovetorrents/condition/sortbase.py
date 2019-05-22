@@ -8,18 +8,11 @@ class ConditionWithSort(Condition):
         self._action = action
 
     def sort_torrents(self, torrents):
-        actions = [
-            'remove-old-seeds',
-            'remove-new-seeds',
-            'remove-big-seeds',
-            'remove-small-seeds'
-        ]
-        parameter = [
-            {'key':lambda torrent: torrent.create_time, 'reverse':True},
-            {'key':lambda torrent: torrent.create_time, 'reverse':False},
-            {'key':lambda torrent: torrent.size, 'reverse':False},
-            {'key':lambda torrent: torrent.size, 'reverse':True}
-        ]
-        for i in range(0, len(actions)):
-            if self._action == actions[i]:
-                torrents.sort(key=parameter[i]['key'], reverse=parameter[i]['reverse'])
+        handlers = {
+            'remove-old-seeds': {'key':lambda torrent: torrent.create_time, 'reverse':True},
+            'remove-new-seeds': {'key':lambda torrent: torrent.create_time, 'reverse':False},
+            'remove-big-seeds': {'key':lambda torrent: torrent.size, 'reverse':False},
+            'remove-small-seeds': {'key':lambda torrent: torrent.size, 'reverse':True}
+        }
+        if self._action in handlers.keys():
+            torrents.sort(key=handlers[self._action]['key'], reverse=handlers[self._action]['reverse'])
