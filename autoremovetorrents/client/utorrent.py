@@ -90,11 +90,17 @@ class uTorrent(object):
             if torrent[0] == torrent_hash:
                 # Get torrent's tracker
                 trackers = self._torrent_job_properties(torrent_hash)['trackers'].split()
-                return Torrent(
-                    torrent[0], torrent[2], torrent[11], trackers, uTorrent._judge_status(torrent[1], torrent[4]), 
-                    False, # uTorrent never has stall status
-                    torrent[3], torrent[7]/1000,
-                    torrent[6], sys.maxsize, -1)
+                # Create torrent object
+                torrent_obj = Torrent()
+                torrent_obj.hash = torrent[0]
+                torrent_obj.name = torrent[2]
+                torrent_obj.category = torrent[11]
+                torrent_obj.tracker = trackers
+                torrent_obj.status = uTorrent._judge_status(torrent[1], torrent[4])
+                torrent_obj.size = torrent[3]
+                torrent_obj_ratio = torrent[7]/1000
+                torrent_obj.seeding_time = torrent[6]
+                return torrent_obj
         # Not Found
         raise NoSuchTorrent('No such torrent.')
 

@@ -16,19 +16,18 @@ def test_data():
     with _open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
         data = json.load(f)
     for torrent in data:
-        input_torrents.append(Torrent(
-            torrent['hash'],
-            torrent['name'],
-            torrent['category'],
-            torrent['tracker'],
-            TorrentStatus[str(torrent['state']).capitalize()],
-            torrent['is_stalled'],
-            torrent['size'],
-            torrent['ratio'],
-            torrent['uploaded'],
-            torrent['added_on'],
-            torrent['seeding_time']
-        ))
+        torrent_obj = Torrent()
+        torrent_obj.hash = torrent['hash']
+        torrent_obj.name = torrent['name']
+        torrent_obj.category = torrent['category']
+        torrent_obj.tracker = torrent['tracker']
+        torrent_obj.status = TorrentStatus(torrent['state'])
+        torrent_obj.size = torrent['size']
+        torrent_obj.ratio = torrent['ratio']
+        torrent_obj.uploaded = torrent['uploaded']
+        torrent_obj.create_time = torrent['added_on']
+        torrent_obj.seeding_time = torrent['seeding_time']
+        input_torrents.append(torrent_obj)
 
     return input_torrents
 

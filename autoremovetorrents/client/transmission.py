@@ -81,13 +81,18 @@ class Transmission(object):
         if len(result['torrents']) == 0: # No such torrent
             raise NoSuchClient("No such torrent of hash '%s'." % torrent_hash)
         torrent = result['torrents'][0]
-        return Torrent(
-            torrent['hashString'], torrent['name'], '',
-            [tracker['announce'] for tracker in torrent['trackers']],
-            Transmission._judge_status(torrent['status'], torrent['error']), 
-            torrent['isStalled'],
-            torrent['totalSize'], torrent['uploadRatio'],
-            torrent['uploadedEver'], torrent['addedDate'], torrent['secondsSeeding'])
+        # Create torrent object
+        torrent_obj = Torrent()
+        torrent_obj.hash = torrent['hashString']
+        torrent_obj.name = torrent['name']
+        torrent_obj.tracker = [tracker['announce'] for tracker in torrent['trackers']]
+        torrent_obj.status = Transmission._judge_status(torrent['status'], torrent['error'])
+        torrent_obj.size = torrent['totalSize']
+        torrent_obj.ratio = torrent['uploadRatio']
+        torrent_obj.uploaded = torrent['uploadedEver']
+        torrent_obj.create_time = torrent['addedDate']
+        torrent_obj.seeding_time = torrent['secondsSeeding']
+        return torrent_obj
 
     # Judge Torrent Status
     @staticmethod
