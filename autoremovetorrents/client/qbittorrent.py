@@ -168,15 +168,19 @@ class qBittorrent(object):
                 # Get other information
                 properties = self._request_handler.torrent_generic_properties(torrent_hash).json()
                 trackers = self._request_handler.torrent_trackers(torrent_hash).json()
-                return Torrent(
-                    torrent['hash'], torrent['name'],
-                    torrent['category'] if 'category' in torrent else torrent['label'],
-                    [tracker['url'] for tracker in trackers],
-                    qBittorrent._judge_status(torrent['state']), 
-                    torrent['state'] == 'stalledUP' or torrent['state'] == 'stalledDL',
-                    torrent['size'], torrent['ratio'],
-                    properties['total_uploaded'], properties['addition_date'],
-                    properties['seeding_time'])
+                # Create torrent object
+                torrent_obj = Torrent()
+                torrent_obj.hash = torrent['hash']
+                torrent_obj.name = torrent['name']
+                torrent_obj.category = torrent['category'] if 'category' in torrent else torrent['label']
+                torrent_obj.tracker = [tracker['url'] for tracker in trackers]
+                torrent_obj.status = qBittorrent._judge_status(torrent['state'])
+                torrent_obj.size = torrent['size']
+                torrent_obj.ratio = torrent['ratio']
+                torrent_obj.uploaded = properties['total_uploaded']
+                torrent_obj.create_time = properties['addition_date']
+                torrent_obj.seeding_time = properties['seeding_time']
+                return torrent_obj
 
     # Judge Torrent Status (qBittorrent doesn't have stopped status)
     @staticmethod
