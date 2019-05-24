@@ -76,7 +76,7 @@ class Transmission(object):
     def torrent_properties(self, torrent_hash):
         result = self._make_transmission_request('torrent-get',
             {'ids': [torrent_hash],
-            'fields': ['hashString', 'name', 'trackers', 'status', 'totalSize', 'uploadRatio', 'uploadedEver', 'addedDate', 'secondsSeeding', 'isStalled']}
+            'fields': ['hashString', 'name', 'trackers', 'status', 'totalSize', 'uploadRatio', 'uploadedEver', 'addedDate', 'secondsSeeding', 'isStalled', 'error']}
             )
         if len(result['torrents']) == 0: # No such torrent
             raise NoSuchClient("No such torrent of hash '%s'." % torrent_hash)
@@ -84,24 +84,27 @@ class Transmission(object):
         return Torrent(
             torrent['hashString'], torrent['name'], '',
             [tracker['announce'] for tracker in torrent['trackers']],
-            Transmission._judge_status(torrent['status']), 
+            Transmission._judge_status(torrent['status'], torrent['error']), 
             torrent['isStalled'],
             torrent['totalSize'], torrent['uploadRatio'],
             torrent['uploadedEver'], torrent['addedDate'], torrent['secondsSeeding'])
 
     # Judge Torrent Status
     @staticmethod
-    def _judge_status(state):
-        return [
-            TorrentStatus.Stopped,  # 0:STOPPED
-            TorrentStatus.Queued,   # 1:CHECK_WAIT
-            TorrentStatus.Checking, # 2:CHECK
-            TorrentStatus.Queued,   # 3: DOWNLOAD_WAIT
-            TorrentStatus.Downloading, # 4:DOWNLOAD
-            TorrentStatus.Queued, # 5:SEED_WAIT
-            TorrentStatus.Uploading, # 6:SEED
-            TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
-        ][state]
+    def _judge_status(state, errno):
+        if errno != 0:
+            return TorrentStatus.Error
+        else:
+            return [
+                TorrentStatus.Stopped,  # 0:STOPPED
+                TorrentStatus.Queued,   # 1:CHECK_WAIT
+                TorrentStatus.Checking, # 2:CHECK
+                TorrentStatus.Queued,   # 3: DOWNLOAD_WAIT
+                TorrentStatus.Downloading, # 4:DOWNLOAD
+                TorrentStatus.Queued, # 5:SEED_WAIT
+                TorrentStatus.Uploading, # 6:SEED
+                TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
+            ][state]
 
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
