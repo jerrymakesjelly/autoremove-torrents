@@ -110,6 +110,8 @@ class uTorrent(object):
                 status = TorrentStatus.Downloading
         elif state & 2: # Checking
             status = TorrentStatus.Checking
+        elif state & 16: # Error
+            status = TorrentStatus.Error
         elif state & 64: # Queued
             status = TorrentStatus.Queued
         elif state & 128: # Loaded
