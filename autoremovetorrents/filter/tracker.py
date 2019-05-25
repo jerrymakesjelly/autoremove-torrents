@@ -17,8 +17,7 @@ class TrackerFilter(Filter):
             for tracker in torrent.tracker: # For each tracker
                 tracker = urlparse(tracker).hostname
                 if self._all or tracker in self._accept:
-                    if torrent not in result:
-                        result.add(torrent)
+                    result.add(torrent)
                 if tracker in self._reject:
                     result.remove(torrent)
                     break # Reject this seed
