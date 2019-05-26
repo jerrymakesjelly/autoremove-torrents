@@ -19,7 +19,7 @@ def test_data():
         torrent_obj = Torrent()
         torrent_obj.hash = torrent['hash']
         torrent_obj.name = torrent['name']
-        torrent_obj.category = torrent['category']
+        torrent_obj.category = [torrent['category']]
         torrent_obj.tracker = torrent['tracker']
         torrent_obj.status = TorrentStatus(torrent['state'])
         torrent_obj.size = torrent['size']

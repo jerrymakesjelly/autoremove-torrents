@@ -172,7 +172,7 @@ class qBittorrent(object):
                 torrent_obj = Torrent()
                 torrent_obj.hash = torrent['hash']
                 torrent_obj.name = torrent['name']
-                torrent_obj.category = torrent['category'] if 'category' in torrent else torrent['label']
+                torrent_obj.category = [torrent['category'] if 'category' in torrent else torrent['label']]
                 torrent_obj.tracker = [tracker['url'] for tracker in trackers]
                 torrent_obj.status = qBittorrent._judge_status(torrent['state'])
                 torrent_obj.size = torrent['size']
