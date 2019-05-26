@@ -1,6 +1,6 @@
 自动删种程序
 ======================
-|PyPI| |TravisCI| |Coverage| |Codacy| |MIT|
+|PyPI| |TravisCI| |Coverage| |Codacy| |Downloads| |MIT|
 
 这个程序可以帮助你删除种子。现在你再也不用担心你的磁盘空间了——通过你设置的策略，程序会帮你检查每一个种子是否满足删除的条件；如果是，那就自动地删除它。
 
@@ -16,6 +16,8 @@
    :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
 .. |PyPI| image:: https://badge.fury.io/py/autoremove-torrents.svg
     :target: https://badge.fury.io/py/autoremove-torrents
+.. |Downloads| image:: https://img.shields.io/pypi/dm/autoremove-torrents.svg
+    :target: https://pypi.org/project/autoremove-torrents/
 
 环境要求
 -------------

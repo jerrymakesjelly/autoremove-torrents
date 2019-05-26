@@ -1,6 +1,6 @@
 Auto Remove Torrents
 ======================
-|PyPI| |TravisCI| |Coverage| |Codacy| |MIT|
+|PyPI| |TravisCI| |Coverage| |Codacy| |Downloads| |MIT|
 
 This program can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, the program will check each torrent if it satisfies the remove condition; If so, delete it automatically.
 
@@ -20,6 +20,8 @@ Readme version in other languages: `简体中文`_.
    :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
 .. |PyPI| image:: https://badge.fury.io/py/autoremove-torrents.svg
     :target: https://badge.fury.io/py/autoremove-torrents
+.. |Downloads| image:: https://img.shields.io/pypi/dm/autoremove-torrents.svg
+    :target: https://pypi.org/project/autoremove-torrents/
 
 Requirements
 -------------
