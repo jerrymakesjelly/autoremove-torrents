@@ -7,5 +7,12 @@ class CategoryFilter(Filter):
         Filter.__init__(self, all_category, ac, re)
 
     def apply(self, torrents):
-        return set([torrent for torrent in torrents if (self._all or torrent.category in self._accept)
-            and not (torrent.category in self._reject)])
+        result = set()
+        for torrent in torrents:
+            for category in torrent.category: # For each category
+                if self._all or category in self._accept:
+                    result.add(torrent)
+                if category in self._reject:
+                    result.remove(torrent)
+                    break # Reject this seed
+        return result

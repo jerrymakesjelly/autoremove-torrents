@@ -94,7 +94,7 @@ class uTorrent(object):
                 torrent_obj = Torrent()
                 torrent_obj.hash = torrent[0]
                 torrent_obj.name = torrent[2]
-                torrent_obj.category = torrent[11]
+                torrent_obj.category = [torrent[11]]
                 torrent_obj.tracker = trackers
                 torrent_obj.status = uTorrent._judge_status(torrent[1], torrent[4])
                 torrent_obj.size = torrent[3]

@@ -28,7 +28,7 @@ class Torrent(object):
             disp('ratio'),
             disp('uploaded', self._convert_bytes),
             disp('seeding_time', self._convert_seconds),
-            disp('category'),
+            disp('category', ','.join),
             disp('create_time', self._convert_timestamp)
             )
     
