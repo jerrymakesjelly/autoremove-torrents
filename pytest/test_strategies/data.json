@@ -28,7 +28,7 @@
         "seen_complete": 1526742547,
         "seq_dl": false,
         "size": 13762548460,
-        "state": 1,
+        "state": "Downloading",
         "super_seeding": false,
         "total_size": 13762548460,
         "tracker": [
@@ -68,7 +68,7 @@
         "seen_complete": 1526739352,
         "seq_dl": false,
         "size": 27918469580,
-        "state": 1,
+        "state": "Downloading",
         "super_seeding": false,
         "total_size": 27918469580,
         "tracker": [
@@ -108,7 +108,7 @@
         "seen_complete": 1526741130,
         "seq_dl": false,
         "size": 347000034,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 347000034,
         "tracker": [
@@ -148,7 +148,7 @@
         "seen_complete": 1526614351,
         "seq_dl": false,
         "size": 10152029087,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 10152029087,
         "tracker": [
@@ -188,7 +188,7 @@
         "seen_complete": 1526742181,
         "seq_dl": false,
         "size": 9627866528,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 9627866528,
         "tracker": [
@@ -228,7 +228,7 @@
         "seen_complete": 1526742572,
         "seq_dl": false,
         "size": 13200820552,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 13200820552,
         "tracker": [
@@ -268,7 +268,7 @@
         "seen_complete": 1526739648,
         "seq_dl": false,
         "size": 7239185152,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 7239185152,
         "tracker": [
@@ -308,7 +308,7 @@
         "seen_complete": 1526742225,
         "seq_dl": false,
         "size": 7619309310,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 7619309310,
         "tracker": [
@@ -348,7 +348,7 @@
         "seen_complete": 1526730169,
         "seq_dl": false,
         "size": 3022394751,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 3022394751,
         "tracker": [
@@ -388,7 +388,7 @@
         "seen_complete": 1526742579,
         "seq_dl": false,
         "size": 14844911534,
-        "state": 2,
+        "state": "Uploading",
         "super_seeding": false,
         "total_size": 14844911534,
         "tracker": [
@@ -428,7 +428,7 @@
         "seen_complete": 1526742464,
         "seq_dl": false,
         "size": 13767802684,
-        "state": 1,
+        "state": "Downloading",
         "super_seeding": false,
         "total_size": 13767802684,
         "tracker": [
@@ -468,7 +468,7 @@
         "seen_complete": 1526742614,
         "seq_dl": false,
         "size": 4030908717,
-        "state": 1,
+        "state": "Downloading",
         "super_seeding": false,
         "total_size": 4030908717,
         "tracker": [
@@ -508,7 +508,7 @@
         "seen_complete": 1527349645,
         "seq_dl": false,
         "size": 1746686185,
-        "state": 3,
+        "state": "Checking",
         "super_seeding": false,
         "total_size": 1746686185,
         "tracker": [
@@ -548,7 +548,7 @@
         "seen_complete": 1527349962,
         "seq_dl": false,
         "size": 312186667,
-        "state": 4,
+        "state": "Queued",
         "super_seeding": false,
         "total_size": 312186667,
         "tracker": [
@@ -588,7 +588,7 @@
         "seen_complete": 1527351233,
         "seq_dl": false,
         "size": 2126568405,
-        "state": 5,
+        "state": "Paused",
         "super_seeding": false,
         "total_size": 2126568405,
         "tracker": [
@@ -628,7 +628,7 @@
         "seen_complete": 1527345392,
         "seq_dl": false,
         "size": 1132013553,
-        "state": 6,
+        "state": "Stopped",
         "super_seeding": false,
         "total_size": 1132013553,
         "tracker": [

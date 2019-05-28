@@ -21,7 +21,7 @@ def test_data():
             torrent['name'],
             torrent['category'],
             torrent['tracker'],
-            TorrentStatus(torrent['state']),
+            TorrentStatus[str(torrent['state']).capitalize()],
             torrent['size'],
             torrent['ratio'],
             torrent['uploaded'],
