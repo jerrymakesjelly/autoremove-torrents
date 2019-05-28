@@ -82,22 +82,18 @@ class qBittorrent(object):
     def _judge_status(state):
         if state == 'downloading' or state == 'stalledDL':
             status = TorrentStatus.Downloading
-        elif state == 'stalledDL':
+        elif state == 'stalledDL': #equal to "downloading but speed is 0"
             status = TorrentStatus.StalledDL
         elif state == 'queuedDL' or state == 'queuedUP':
             status = TorrentStatus.Queued
         elif state == 'uploading' or state == 'stalledUP':
             status = TorrentStatus.Uploading
-        elif state == 'stalledUP':
+        elif state == 'stalledUP': #equal to "seeding but speed is 0"
             status = TorrentStatus.StalledUP
         elif state == 'checkingUP' or state == 'checkingDL':
             status = TorrentStatus.Checking
         elif state == 'pausedUP' or state == 'pausedDL':
             status = TorrentStatus.Paused
-        elif state == 'stalledDL' or state == 'stalledUP':
-            status = TorrentStatus.Inactive
-        elif state == 'downloading' or state == 'uploading':
-            status = TorrentStatus.Active
         else:
             status = TorrentStatus.Unknown
         return status
