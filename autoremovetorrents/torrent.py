@@ -6,7 +6,7 @@ import time
 from .torrentstatus import TorrentStatus
 
 class Torrent(object):
-    def __init__(self, hash_value, name, category, tracker, status, size, ratio,
+    def __init__(self, hash_value, name, category, tracker, status, stalled, size, ratio,
         uploaded, create_time, seeding_time):
         # Save Properties
         self.hash = hash_value
@@ -14,6 +14,7 @@ class Torrent(object):
         self.category = category
         self.tracker = tracker
         self.status = status
+        self.stalled = stalled
         self.size = size
         self.ratio = ratio
         self.uploaded = uploaded

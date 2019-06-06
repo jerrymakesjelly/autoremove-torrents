@@ -53,6 +53,7 @@ class Task(object):
                     '(No Category)',
                     [],
                     TorrentStatus.Unknown,
+                    False,
                     0,
                     0,
                     0,

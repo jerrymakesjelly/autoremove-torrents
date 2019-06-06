@@ -73,7 +73,9 @@ class qBittorrent(object):
                     torrent['hash'], torrent['name'],
                     torrent['category'] if 'category' in torrent else torrent['label'],
                     [tracker['url'] for tracker in trackers],
-                    qBittorrent._judge_status(torrent['state']), torrent['size'], torrent['ratio'],
+                    qBittorrent._judge_status(torrent['state']), 
+                    torrent['state'] == 'stalledUP' or torrent['state'] == 'stalledDL',
+                    torrent['size'], torrent['ratio'],
                     properties['total_uploaded'], properties['addition_date'],
                     properties['seeding_time'])
 

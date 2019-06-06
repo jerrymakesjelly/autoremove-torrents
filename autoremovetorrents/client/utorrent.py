@@ -87,7 +87,9 @@ class uTorrent(object):
                 # Get torrent's tracker
                 trackers = self._torrent_job_properties(torrent_hash)['trackers'].split()
                 return Torrent(
-                    torrent[0], torrent[2], torrent[11], trackers, uTorrent._judge_status(torrent[1], torrent[4]), torrent[3], torrent[7]/1000,
+                    torrent[0], torrent[2], torrent[11], trackers, uTorrent._judge_status(torrent[1], torrent[4]), 
+                    False, # uTorrent never has stall status
+                    torrent[3], torrent[7]/1000,
                     torrent[6], sys.maxsize, -1)
         # Not Found
         raise NoSuchTorrent('No such torrent.')

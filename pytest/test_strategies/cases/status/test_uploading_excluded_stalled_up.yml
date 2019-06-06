@@ -1,0 +1,10 @@
+test:
+  status: Uploading
+  excluded_status: StalledUpload
+remain:
+  - Torrent - 4
+  - Torrent - 6
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9
+  - Torrent - 10
