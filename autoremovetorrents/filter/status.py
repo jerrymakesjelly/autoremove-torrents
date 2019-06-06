@@ -7,6 +7,8 @@ class StatusFilter(Filter):
         Filter.__init__(self, all_status, ac, re)
 
         self._logger = logger.Logger.register(__name__) # Register a logger
+        self._acc_status = self._convert_status(self._accept)
+        self._rej_status = self._convert_status(self._reject)
 
     def _convert_status(self, status_list):
         result = []
@@ -21,11 +23,7 @@ class StatusFilter(Filter):
         return result
 
     def apply(self, torrents):
-        # Generate accpet and reject lists
-        accept = self._convert_status(self._accept)
-        reject = self._convert_status(self._reject)
-
         return set([torrent for torrent in torrents 
-            if (self._all or torrent.status in accept)
-            and not (torrent.status in reject)
+            if (self._all or torrent.status in self._acc_status)
+            and not (torrent.status in self._rej_status)
         ])
