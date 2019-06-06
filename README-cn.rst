@@ -104,6 +104,10 @@
 
 更新日志
 ----------
+**2019-06-06 周四**: 1.4.5 版本。
+
+* 添加了 `StalledUpload` 与 `StalledDownload` 状态。
+
 **2019-05-22 周三**: 1.4.4 版本。
 
 * 修复了当 `seed_size` / `maximum_number` 条件与 `ratio` / `create_time` / `seeding_time` 条件同时使用时任务会失败的问题。(#33)

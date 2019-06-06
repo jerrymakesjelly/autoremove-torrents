@@ -108,6 +108,10 @@ Screenshot
 
 Changelog
 ----------
+**Thu, 6 Jun 2019**: Version 1.4.5.
+
+* Added status `StalledUpload` and `StalledDownload`. (#34)
+
 **Wed, 22 May 2019**: Version 1.4.4.
 
 * Fixed a bug that when condition `seed_size` / `maximum_number` is used together with condtion `ratio` / `create_time` / `seeding_time`, the task will fail. (#33)
