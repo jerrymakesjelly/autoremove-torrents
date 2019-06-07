@@ -68,8 +68,7 @@
       password: adminadmin
       strategies:
         my_strategy:
-          categories:
-            - IPT
+          categories: IPT
           remove: seeding_time > 1209600 or ratio > 1
       delete_data: true
 
