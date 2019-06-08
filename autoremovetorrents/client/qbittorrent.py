@@ -180,6 +180,8 @@ class qBittorrent(object):
                 torrent_obj.uploaded = properties['total_uploaded']
                 torrent_obj.create_time = properties['addition_date']
                 torrent_obj.seeding_time = properties['seeding_time']
+                torrent_obj.upload_speed = properties['up_speed']
+                torrent_obj.download_speed = properties['dl_speed']
                 return torrent_obj
 
     # Judge Torrent Status (qBittorrent doesn't have stopped status)
