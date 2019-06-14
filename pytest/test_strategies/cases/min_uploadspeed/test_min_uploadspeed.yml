@@ -1,0 +1,9 @@
+test:
+  min_uploadspeed: 100
+remove:
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9

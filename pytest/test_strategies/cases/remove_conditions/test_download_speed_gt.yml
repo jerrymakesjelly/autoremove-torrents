@@ -1,0 +1,4 @@
+test:
+  remove: download_speed > 2000
+remove:
+  - Torrent - 1
