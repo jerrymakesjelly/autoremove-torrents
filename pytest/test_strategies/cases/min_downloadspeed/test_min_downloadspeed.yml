@@ -1,0 +1,5 @@
+test:
+  min_downloadspeed: 1000
+remove:
+  - Torrent - 11
+  - Torrent - 12

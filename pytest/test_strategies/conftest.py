@@ -28,6 +28,8 @@ def test_data():
         torrent_obj.uploaded = torrent['uploaded']
         torrent_obj.create_time = torrent['added_on']
         torrent_obj.seeding_time = torrent['seeding_time']
+        torrent_obj.upload_speed = torrent['upspeed']
+        torrent_obj.download_speed = torrent['dlspeed']
         input_torrents.append(torrent_obj)
 
     return input_torrents
