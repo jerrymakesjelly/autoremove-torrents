@@ -21,7 +21,8 @@ def test_data():
         torrent_obj.name = torrent['name']
         torrent_obj.category = [torrent['category']]
         torrent_obj.tracker = torrent['tracker']
-        torrent_obj.status = TorrentStatus(torrent['state'])
+        torrent_obj.status = TorrentStatus[torrent['state']]
+        torrent_obj.stalled = torrent['is_stalled']
         torrent_obj.size = torrent['size']
         torrent_obj.ratio = torrent['ratio']
         torrent_obj.uploaded = torrent['uploaded']
