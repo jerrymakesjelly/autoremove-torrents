@@ -11,7 +11,7 @@ class TorrentNumberCondition(ConditionWithSort):
         if self._max_limit == 0:
             self.remove = torrents
         elif self._max_limit < len(torrents):
-            self.remain = set(torrents[0:self._max_limit-1])
-            self.remove = set(torrents[self._max_limit:])
+            self.remove = set(torrents[0:len(torrents)-self._max_limit])
+            self.remain = set(torrents[len(torrents)-self._max_limit:])
         else:
             self.remain = torrents

@@ -10,6 +10,7 @@ class TorrentSizeCondition(ConditionWithSort):
     def apply(self, torrents):
         torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
+        torrents.reverse()
         size_sum = 0
         for torrent in torrents:
             if size_sum+torrent.size < self._limit:
