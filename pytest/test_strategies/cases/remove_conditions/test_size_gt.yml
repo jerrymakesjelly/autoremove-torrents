@@ -1,0 +1,8 @@
+test:
+  remove: size > 10
+remove:
+  - Torrent - 1
+  - Torrent - 2
+  - Torrent - 6
+  - Torrent - 10
+  - Torrent - 11
