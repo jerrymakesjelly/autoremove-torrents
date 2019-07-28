@@ -102,6 +102,11 @@ class uTorrent(object):
                 torrent_obj.seeding_time = torrent[6]
                 torrent_obj.upload_speed = properties['ulrate']
                 torrent_obj.download_speed = properties['dlrate']
+                torrent_obj.seeder = torrent[15]
+                torrent_obj.connected_seeder = torrent[14]
+                torrent_obj.leecher = torrent[13]
+                torrent_obj.connected_leecher = torrent[12]
+                
                 return torrent_obj
         # Not Found
         raise NoSuchTorrent('No such torrent.')
