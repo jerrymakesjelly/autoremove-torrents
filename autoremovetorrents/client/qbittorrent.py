@@ -182,6 +182,11 @@ class qBittorrent(object):
                 torrent_obj.seeding_time = properties['seeding_time']
                 torrent_obj.upload_speed = properties['up_speed']
                 torrent_obj.download_speed = properties['dl_speed']
+                torrent_obj.seeder = properties['seeds_total']
+                torrent_obj.connected_seeder = properties['seeds']
+                torrent_obj.leecher = properties['peers_total']
+                torrent_obj.connected_leecher = properties['peers']
+
                 return torrent_obj
 
     # Judge Torrent Status (qBittorrent doesn't have stopped status)
