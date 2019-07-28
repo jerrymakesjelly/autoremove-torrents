@@ -7,6 +7,7 @@ from .condition.ratio import RatioCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .condition.downloadspeed import DownloadSpeedCondition
+from .condition.size import SizeCondition
 from .exception.nosuchcondition import NoSuchCondition
 from .exception.syntaxerror import ConditionSyntaxError
 
@@ -17,7 +18,8 @@ class ConditionParser(object):
         'ratio': RatioCondition,
         'seeding_time': SeedingTimeCondition,
         'upload_speed': UploadSpeedCondition,
-        'download_speed': DownloadSpeedCondition
+        'download_speed': DownloadSpeedCondition,
+        'size': SizeCondition
     }
 
     # Condition expression
