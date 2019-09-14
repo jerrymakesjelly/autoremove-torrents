@@ -525,7 +525,7 @@
         "super_seeding": false,
         "total_size": 1746686185,
         "tracker": [
-            "https://tracker.site4.io/"
+            "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
         "uploaded": 1898576526,
@@ -566,7 +566,7 @@
         "super_seeding": false,
         "total_size": 312186667,
         "tracker": [
-            "https://tracker.site4.io/"
+            "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
         "uploaded": 107814988,
@@ -607,7 +607,7 @@
         "super_seeding": false,
         "total_size": 2126568405,
         "tracker": [
-            "https://tracker.site4.io/"
+            "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
         "uploaded": 3323768148,
@@ -648,7 +648,7 @@
         "super_seeding": false,
         "total_size": 1132013553,
         "tracker": [
-            "https://tracker.site4.io/"
+            "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
         "uploaded": 395526144,

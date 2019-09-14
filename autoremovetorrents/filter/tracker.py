@@ -15,7 +15,7 @@ class TrackerFilter(Filter):
         result = set()
         for torrent in torrents:
             for tracker in torrent.tracker: # For each tracker
-                tracker = urlparse(tracker).netloc
+                tracker = urlparse(tracker).hostname
                 if self._all or tracker in self._accept:
                     if torrent not in result:
                         result.add(torrent)
