@@ -108,6 +108,10 @@ Screenshot
 
 Changelog
 ----------
+**Tue, 17 Sep 2019**: Version 1.4.6.
+
+* Fix problem that the tracker filter needs to specific ports when the tracker URL includes port number. (#38)
+
 **Thu, 6 Jun 2019**: Version 1.4.5.
 
 * Added status `StalledUpload` and `StalledDownload`. (#34)
