@@ -8,6 +8,7 @@ from .condition.seedingtime import SeedingTimeCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.size import SizeCondition
+from .condition.lastactivity import LastActivityCondition
 from .exception.nosuchcondition import NoSuchCondition
 from .exception.syntaxerror import ConditionSyntaxError
 
@@ -20,6 +21,7 @@ class ConditionParser(object):
         'upload_speed': UploadSpeedCondition,
         'download_speed': DownloadSpeedCondition,
         'size': SizeCondition
+        'last_activity': LastActivityCondition
     }
 
     # Condition expression

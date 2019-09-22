@@ -1,0 +1,4 @@
+test:
+  remove: last_activity > 800000
+remove:
+  - Torrent - 4

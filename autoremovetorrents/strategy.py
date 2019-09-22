@@ -12,6 +12,7 @@ from .condition.torrentsize import TorrentSizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
 from .condition.freespace import FreeSpaceCondition
 from .condition.size import SizeCondition
+from .condition.lastactivity import LastActivityCondition
 from .condition.donothing import EmptyCondition
 from .conditionparser import ConditionParser
 from .exception.unsupportedproperty import UnsupportedProperty
@@ -75,6 +76,7 @@ class Strategy(object):
             'maximum_number': TorrentNumberCondition,
             'free_space': FreeSpaceCondition,
             'size': SizeCondition,
+            'last_activity': LastActivityCondition,
             'nothing': EmptyCondition
         }
         for conf in self._conf:
