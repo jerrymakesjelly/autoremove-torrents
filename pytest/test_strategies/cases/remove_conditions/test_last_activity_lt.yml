@@ -1,0 +1,7 @@
+test:
+  remove: last_activity < 100000
+remove:
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16
