@@ -26,7 +26,7 @@ class qBittorrent(object):
     # Login to qBittorrent
     def login(self, username, password):
         try:
-            request = requests.post(self._host+'/login', data={'username':username, 'password':password})
+            request = requests.post(self._host+'/api/v2/auth/login', data={'username':username, 'password':password})
             self._logger.info(request.text)
         except Exception as exc:
             raise ConnectionFailure(str(exc))
@@ -41,14 +41,14 @@ class qBittorrent(object):
     
     # Get qBittorrent Version
     def version(self):
-        request = requests.get(self._host+'/version/qbittorrent', cookies=self._cookies)
+        request = requests.get(self._host+'/api/v2/app/version', cookies=self._cookies)
         return ('qBittorrent %s' % request.text)
     
     # Get Torrents List
     def torrents_list(self):
         # Request torrents list
         torrent_hash = []
-        request = requests.get(self._host+'/query/torrents', cookies=self._cookies)
+        request = requests.get(self._host+'/api/v2/torrents/info', cookies=self._cookies)
         result = request.json()
         # Save to cache
         self._torrents_list_cache = result
@@ -60,12 +60,12 @@ class qBittorrent(object):
 
     # Get Torrent's Generic Properties
     def _torrent_generic_properties(self, torrent_hash):
-        return requests.get(self._host+'/query/propertiesGeneral/'+torrent_hash,
+        return requests.get(self._host+'/api/v2/torrents/properties?hash='+torrent_hash,
             cookies=self._cookies).json()
     
     # Get Torrent's Tracker
     def _torrent_trackers(self, torrent_hash):
-        return requests.get(self._host+'/query/propertiesTrackers/'+torrent_hash,
+        return requests.get(self._host+'/api/v2/torrents/trackers?hash='+torrent_hash,
             cookies=self._cookies).json()
     
     # Get Torrent Properties
@@ -101,10 +101,9 @@ class qBittorrent(object):
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        requests.post(self._host+'/command/delete',
-            data={'hashes':torrent_hash}, cookies=self._cookies)
+        requests.get(self._host+'/api/v2/torrents/delete?hashes='+torrent_hash+'&deleteFiles=false', cookies=self._cookies)
     
     # Remove Torrent and Data
     def remove_data(self, torrent_hash):
-        requests.post(self._host+'/command/deletePerm',
-            data={'hashes':torrent_hash}, cookies=self._cookies)
+        requests.get(self._host+'/api/v2/torrents/delete?hashes='+torrent_hash+'&deleteFiles=true', cookies=self._cookies)
+        
