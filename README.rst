@@ -108,6 +108,10 @@ Screenshot
 
 Changelog
 ----------
+**Mon, 6 Jan 2020**: Version 1.4.7.
+
+* Add support for new API in qBittorrent 4.2.1. (#46)
+
 **Tue, 17 Sep 2019**: Version 1.4.6.
 
 * Fix problem that the tracker filter needs to specific ports when the tracker URL includes port number. (#38)
