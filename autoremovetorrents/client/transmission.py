@@ -60,6 +60,11 @@ class Transmission(object):
         ver = self._make_transmission_request('session-get')['version']
         return ('Transmission %s' % ver)
     
+    # Get API Version
+    def api_version(self):
+        ver = self._make_transmission_request('session-get')['rpc-version']
+        return str(ver)
+
     # Get Torrents List
     def torrents_list(self):
         torrents_hash = []

@@ -10,6 +10,11 @@ def qbittorrent_mocker(requests_mock):
         # Set root directory
         root_dir = os.path.join(os.path.realpath(os.path.dirname(__file__)))
 
+        # Mock qBittorrent API version
+        # Force caller to use API v1.0
+        requests_mock.get('mock://qbittorrent/api/v2/app/webapiVersion', status_code=404)
+        requests_mock.get('mock://qbittorrent/version/api', text='10')
+
         # Mock qBittorrent version
         requests_mock.get('mock://qbittorrent/version/qbittorrent', text='Fake qBittorrent')
         #lg.info('qBittorrent version was mocked.')
