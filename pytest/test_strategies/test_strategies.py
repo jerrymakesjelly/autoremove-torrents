@@ -38,9 +38,9 @@ def test_strategies(mocker, test_data, test_env):
 
                     try:
                         # Make strategy and run
-                        with mocker.patch('time.time', return_value=test_env['time.time']):
-                            stgy = Strategy(conf_file, conf['test'])
-                            stgy.execute(test_data)
+                        mocker.patch('time.time', return_value=test_env['time.time'])
+                        stgy = Strategy(conf_file, conf['test'])
+                        stgy.execute(test_data)
 
                         # Check result
                         if 'remain' in conf:
