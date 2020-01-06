@@ -78,6 +78,7 @@ class Task(object):
         else:
             raise NoSuchClient("The client `%s` doesn't exist." % self._client_name)
         self._logger.info('Login successfully. The client is %s.' % self._client.version())
+        self._logger.info('WebUI API version: %s' % self._client.api_version())
 
     # Get all the torrents and properties
     def _get_torrents(self):

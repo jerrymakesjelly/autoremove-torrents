@@ -53,6 +53,10 @@ class uTorrent(object):
             self.torrents_list()
         return ('uTorrent (bulid %s)' % str(self._version))
     
+    # Get API Version
+    def api_version(self):
+        return 'Unknown' # There is no interfaces to check the API version
+    
     # Get Torrents List
     def torrents_list(self):
         # Request torrents list
