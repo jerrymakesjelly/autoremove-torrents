@@ -108,9 +108,13 @@ Screenshot
 
 Changelog
 ----------
+**Tue, 7 Jan 2020**: Version 1.4.8.
+
+* Fix bug that cannot delete torrents in qBittorrent v4.2.1+. Sorry for any inconvenience. (#53)
+
 **Mon, 6 Jan 2020**: Version 1.4.7.
 
-* Add support for new API in qBittorrent 4.2.1. (#46)
+* Add support for new API in qBittorrent 4.2.1. (#46) **Note: This version has a bug. Please upgrade to v1.4.8 or higher.**
 
 **Tue, 17 Sep 2019**: Version 1.4.6.
 
