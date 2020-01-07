@@ -101,11 +101,11 @@ class qBittorrent(object):
         
         # Delete torrent
         def delete_torrent(self, torrent_hash):
-            return self._session.get(self._host+'/api/v2/torrents/delete', data={'hashes':torrent_hash, 'deleteFiles': False})
+            return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':torrent_hash, 'deleteFiles': False})
         
         # Delete torrent and data
         def delete_torrent_and_data(self, torrent_hash):
-            return self._session.get(self._host+'/api/v2/torrents/delete', data={'hashes':torrent_hash, 'deleteFiles': True})
+            return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':torrent_hash, 'deleteFiles': True})
 
     def __init__(self, host):
         # Torrents list cache
