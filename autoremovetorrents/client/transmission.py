@@ -105,10 +105,16 @@ class Transmission(object):
 
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        self._make_transmission_request('torrent-remove',
-                {'ids':[torrent_hash], 'delete-local-data':False})
+        try:
+            self._make_transmission_request('torrent-remove',
+                    {'ids':[torrent_hash], 'delete-local-data':False})
+        except Exception as e:
+            raise DeletionFailure('Cannot delete torrent %s. %s' % (torrent_hash, str(e)))
     
     # Remove Data
     def remove_data(self, torrent_hash):
-        self._make_transmission_request('torrent-remove',
-                {'ids':[torrent_hash], 'delete-local-data':True})
+        try:
+            self._make_transmission_request('torrent-remove',
+                    {'ids':[torrent_hash], 'delete-local-data':True})
+        except Exception as e:
+            raise DeletionFailure('Cannot delete torrent %s and its data. %s' % (torrent_hash, str(e)))

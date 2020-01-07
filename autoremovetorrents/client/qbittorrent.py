@@ -56,7 +56,7 @@ class qBittorrent(object):
         
         # Delete torrent and data
         def delete_torrent_and_data(self, torrent_hash):
-            self._session.post(self._host+'/command/deletePerm', data={'hashes':torrent_hash})
+            return self._session.post(self._host+'/command/deletePerm', data={'hashes':torrent_hash})
 
     # API Handler for v2
     class qBittorrentAPIHandlerV2(object):
@@ -101,11 +101,11 @@ class qBittorrent(object):
         
         # Delete torrent
         def delete_torrent(self, torrent_hash):
-            return self._session.get(self._host+'/command/delete', data={'hashes':torrent_hash, 'deleteFiles': False})
+            return self._session.get(self._host+'/api/v2/torrents/delete', data={'hashes':torrent_hash, 'deleteFiles': False})
         
         # Delete torrent and data
         def delete_torrent_and_data(self, torrent_hash):
-            self._session.post(self._host+'/command/delete', data={'hashes':torrent_hash, 'deleteFiles': True})
+            return self._session.get(self._host+'/api/v2/torrents/delete', data={'hashes':torrent_hash, 'deleteFiles': True})
 
     def __init__(self, host):
         # Torrents list cache
@@ -197,8 +197,12 @@ class qBittorrent(object):
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        self._request_handler.delete_torrent(torrent_hash)
+        request = self._request_handler.delete_torrent(torrent_hash)
+        if request.status_code != 200:
+            raise DeletionFailure('Cannot delete torrent %s. The server responses HTTP %d.' % (torrent_hash, request.status_code))
     
     # Remove Torrent and Data
     def remove_data(self, torrent_hash):
-        self._request_handler.delete_torrent_and_data(torrent_hash)
+        request = self._request_handler.delete_torrent_and_data(torrent_hash)
+        if request.status_code != 200:
+            raise DeletionFailure('Cannot delete torrent %s and its data. The server responses HTTP %d.' % (torrent_hash, request.status_code))
