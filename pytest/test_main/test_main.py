@@ -11,6 +11,8 @@ def test_main(requests_mock):
     lg.info('Basic directory: %s' % basic_dir)
 
     # Mock requests
+    requests_mock.get('mock://qbittorrent/api/v2/app/webapiVersion', status_code=404)
+    requests_mock.get('mock://qbittorrent/version/api', text='10')
     requests_mock.post('mock://qbittorrent/login', text='Fails.')
     requests_mock.post('mock://transmission/transmission/rpc', status_code=401)
     
