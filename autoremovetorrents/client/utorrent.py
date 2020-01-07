@@ -118,10 +118,14 @@ class uTorrent(object):
     
     # Remove Torrent
     def remove_torrent(self, torrent_hash):
-        self._session.get(self._host+'/gui/',
+        request = self._session.get(self._host+'/gui/',
             params={'action':'remove', 'token':self._token, 'hash':torrent_hash})
+        if request.status_code != 200:
+            raise DeletionFailure('Cannot delete torrent %s. The server responses HTTP %d.' % (torrent_hash, request.status_code))
     
     # Remove Torrent and Data
     def remove_data(self, torrent_hash):
-        self._session.get(self._host+'/gui/', 
+        request = self._session.get(self._host+'/gui/', 
             params={'action':'removedata', 'token':self._token, 'hash':torrent_hash})
+        if request.status_code != 200:
+            raise DeletionFailure('Cannot delete torrent %s and its data. The server responses HTTP %d.' % (torrent_hash, request.status_code))
