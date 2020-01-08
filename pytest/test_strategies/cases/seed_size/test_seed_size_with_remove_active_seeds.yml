@@ -1,0 +1,12 @@
+test:
+  seed_size:
+    limit: 50
+    action: remove-active-seeds
+remove:
+  - Torrent - 2
+  - Torrent - 6
+  - Torrent - 10
+  - Torrent - 11
+  - Torrent - 12
+  - Torrent - 13
+  - Torrent - 15

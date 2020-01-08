@@ -1,0 +1,6 @@
+test:
+  maximum_number:
+    limit: 15
+    action: remove-active-seeds
+remove:
+  - Torrent - 16
