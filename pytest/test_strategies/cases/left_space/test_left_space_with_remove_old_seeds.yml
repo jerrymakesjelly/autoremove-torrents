@@ -1,0 +1,8 @@
+test:
+  left_space:
+    limit: 110
+    path:
+    action: remove-old-seeds
+remove:
+  - Torrent - 9
+  - Torrent - 4

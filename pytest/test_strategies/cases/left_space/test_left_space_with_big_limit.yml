@@ -1,0 +1,6 @@
+test:
+  left_space:
+    limit: 10000
+    path:
+    action: remove-old-seeds
+remain:
