@@ -1,0 +1,12 @@
+test:
+  left_space:
+    limit: 110
+    path:
+    action: remove-new-seeds
+remove:
+  - Torrent - 15
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 16
+  - Torrent - 12
+  - Torrent - 11

@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
-
+from condition.leftspace import LeftSpaceCondition
 from . import logger
 from .filter.category import CategoryFilter
 from .filter.tracker import TrackerFilter
@@ -66,7 +66,8 @@ class Strategy(object):
             'ratio': RatioCondition,
             'seed_size': TorrentSizeCondition,
             'maximum_number': TorrentNumberCondition,
-            'nothing': EmptyCondition
+            'nothing': EmptyCondition,
+            'left_space': LeftSpaceCondition,
         }
         for conf in self._conf:
             if conf in conditions:
