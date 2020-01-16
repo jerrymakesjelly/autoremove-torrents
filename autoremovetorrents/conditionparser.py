@@ -20,7 +20,7 @@ class ConditionParser(object):
         'seeding_time': SeedingTimeCondition,
         'upload_speed': UploadSpeedCondition,
         'download_speed': DownloadSpeedCondition,
-        'size': SizeCondition
+        'size': SizeCondition,
         'last_activity': LastActivityCondition
     }
 
