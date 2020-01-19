@@ -1,5 +1,4 @@
 #-*- coding:utf-8 -*-
-from condition.leftspace import LeftSpaceCondition
 from . import logger
 from .filter.category import CategoryFilter
 from .filter.tracker import TrackerFilter
@@ -11,6 +10,8 @@ from .condition.torrentsize import TorrentSizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
 from .condition.donothing import EmptyCondition
 from .conditionparser import ConditionParser
+from .condition.freespace import FreeSpaceCondition
+
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -67,7 +68,7 @@ class Strategy(object):
             'seed_size': TorrentSizeCondition,
             'maximum_number': TorrentNumberCondition,
             'nothing': EmptyCondition,
-            'left_space': LeftSpaceCondition,
+            'free_space': FreeSpaceCondition,
         }
         for conf in self._conf:
             if conf in conditions:
