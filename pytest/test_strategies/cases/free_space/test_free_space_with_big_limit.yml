@@ -1,6 +1,6 @@
 test:
-  left_space:
-    limit: 10000
+  free_space:
+    min: 10000
     path:
     action: remove-old-seeds
 remain:

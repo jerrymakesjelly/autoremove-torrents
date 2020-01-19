@@ -1,6 +1,6 @@
 test:
-  left_space:
-    limit: 0
+  free_space:
+    min: 0
     path:
     action: remove-big-seeds
 remove:

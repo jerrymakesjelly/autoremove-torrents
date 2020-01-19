@@ -1,6 +1,6 @@
 test:
-  left_space:
-    limit: 110
+  free_space:
+    min: 110
     path:
     action: remove-new-seeds
 remove:

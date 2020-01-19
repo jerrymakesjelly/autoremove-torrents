@@ -1,6 +1,6 @@
 test:
-  left_space:
-    limit: 105
+  free_space:
+    min: 105
     path:
     action: remove-small-seeds
 remove:
