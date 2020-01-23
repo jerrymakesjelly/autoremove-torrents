@@ -27,7 +27,8 @@ setup(name = 'autoremove-torrents',
         'requests',
         'pyyaml',
         'enum34',
-        'ply'
+        'ply',
+        'psutil'
     ],
     entry_points = {
         'console_scripts':[
