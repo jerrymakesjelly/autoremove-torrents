@@ -4,5 +4,5 @@ test:
     path:
     action: remove-old-seeds
 remove:
-  - Torrent - 9
   - Torrent - 4
+  - Torrent - 9

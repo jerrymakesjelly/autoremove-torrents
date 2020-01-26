@@ -8,9 +8,9 @@ from .condition.createtime import CreateTimeCondition
 from .condition.ratio import RatioCondition
 from .condition.torrentsize import TorrentSizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
+from .condition.freespace import FreeSpaceCondition
 from .condition.donothing import EmptyCondition
 from .conditionparser import ConditionParser
-from .condition.freespace import FreeSpaceCondition
 
 
 class Strategy(object):
