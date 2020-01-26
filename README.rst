@@ -108,6 +108,10 @@ Screenshot
 
 Changelog
 ----------
+**Sun, 26 Jan 2020**: Version 1.4.9.
+
+* Add `free_space` condition.
+
 **Tue, 7 Jan 2020**: Version 1.4.8.
 
 * Fix bug that cannot delete torrents in qBittorrent v4.2.1+. Sorry for any inconvenience. (#53)
