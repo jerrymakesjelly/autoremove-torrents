@@ -10,7 +10,9 @@ Welcome to autoremove-torrents's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   intro
+   inst
+   config
 
 Indices and tables
 ==================
