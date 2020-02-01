@@ -45,6 +45,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The master toctree document.
 master_doc = 'index'
 
+# The language for content
+language = "en"
+
 
 # -- Options for HTML output -------------------------------------------------
 
