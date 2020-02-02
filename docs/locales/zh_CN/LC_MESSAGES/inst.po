@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, jerrymakesjelly
+# This file is distributed under the same license as the autoremove-torrents
+# package.
+# jerrymakesjelly <ganzhaoyu037@gmail.com>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: autoremove-torrents \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-02 15:13+0800\n"
+"PO-Revision-Date: 2020-02-02 17:24+0800\n"
+"Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
+"Language-Team: Chinese (Simplified)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:4
+msgid "Install and Run"
+msgstr "安装与运行"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:7
+msgid "Install"
+msgstr "安装"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:9
+msgid ""
+"There are two ways to install ``autoremove-torrents``, but I highly "
+"recommend installing from pip."
+msgstr "有两个方法可以安装 ``autoremove-torrents``。强烈推荐使用pip安装。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:12
+msgid "Install from pip"
+msgstr "从 pip 安装"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:19
+msgid "Install from GitHub"
+msgstr "从 GitHub 安装"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:28
+msgid "Run"
+msgstr "运行"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:30
+msgid "Just type the following command line in your terminal:"
+msgstr "只需在你的终端中输入以下命令："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:36
+msgid ""
+"``autoremove-torrents`` will look for the ``config.yml`` in the current "
+"working directory. For more command line arguments, please see the table "
+"below."
+msgstr "``autoremove-torrents`` 会在当前工作目录中寻找 ``config.yml`` 文件。有关更多命令行参数，请查看下面的表格。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:39
+msgid "Arguments List"
+msgstr "参数列表"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:43
+msgid ""
+"When you are using the full name of the arguments, you need to lead the "
+"values of the arguments with a equal sign. But if you are using the "
+"abbreviation, you only need a space to lead the argument values."
+msgstr "如果你使用参数的全名，你需要用等号来引出参数的值；不过，如果你使用参数的缩写，你只需要用一个空格把参数的值引出来。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:48
+msgid "Arugments"
+msgstr "参数名"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:49
+msgid "Argument Abbreviations"
+msgstr "参数缩写"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:50
+msgid "Description"
+msgstr "描述"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:51
+msgid "`--view`"
+msgstr "`--view`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:52
+msgid "`-v`"
+msgstr "`-v`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:53
+msgid "Run and see which torrents will be removed, but don't really remove them."
+msgstr "运行并查看有哪些种子可以删除，但不要真正地删除它们。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:54
+msgid "`--conf`"
+msgstr "`--conf`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:55
+msgid "`-c`"
+msgstr "`-c`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:56
+msgid "Specify the path of the configuration file."
+msgstr "指定配置文件的路径。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:57
+msgid "`--task`"
+msgstr "`--task`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:58
+msgid "`-t`"
+msgstr "`-t`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:59
+msgid "Run a specific task only. The argument value is the task name."
+msgstr "运行指定的任务。参数值就是要执行的任务名。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:60
+msgid "`--log`"
+msgstr "`--log`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:61
+msgid "`-l`"
+msgstr "`-l`"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:62
+msgid "Sepcify the path of the log file."
+msgstr "指定日志文件的路径。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:64
+msgid "For example:"
+msgstr "例如："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:70
+msgid "Also, it equals to:"
+msgstr "它等价于："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:78
+msgid "Uninstall"
+msgstr "卸载"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:81
+msgid "Uninstall from pip"
+msgstr "通过 pip 卸载"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:83
+msgid ""
+"If your autoremove-torrents was installed via pip, you can simply "
+"uninstall it by using pip:"
+msgstr "如果你的 autoremove-torrents 是通过 pip 安装的，你就可以用 pip 简单地卸载掉它："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:91
+msgid "Uninstall manually"
+msgstr "手动卸载"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:93
+msgid ""
+"However, if it was installed by ``setup.py``, you need to remove all the "
+"files manually."
+msgstr "然而，如果你的 autoremove-torrents 是通过 ``setup.py`` 安装的，你需要手动地删除所有的文件。"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:96
+msgid "Step1"
+msgstr "第一步"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:104
+msgid "Step2"
+msgstr "第二步"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:106
+msgid "Reinstall the program and record which files were copied:"
+msgstr "重新安装这个程序并记录复制了哪些文件："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:114
+msgid "Step3"
+msgstr "第三步"
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:116
+msgid "Use ``xargs`` to remove each file:"
+msgstr "用 ``xargs`` 去删除文件："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:123
+msgid "Or if you're running Windows, use Powershell:"
+msgstr "或者，如果你在用 Windows，可以使用 Powershell："
+
+#: D:/codes/autoremove-torrents/docs/inst.rst:130
+msgid "Reference: `https://stackoverflow.com/questions/1550226/python-setup-py-"
+"uninstall <https://stackoverflow.com/questions/1550226/python-setup-py-"
+"uninstall>`_"
+msgstr "参考：`https://stackoverflow.com/questions/1550226/python-setup-py-"
+"uninstall <https://stackoverflow.com/questions/1550226/python-setup-py-"
+"uninstall>`_"
+

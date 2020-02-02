@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, jerrymakesjelly
+# This file is distributed under the same license as the autoremove-torrents
+# package.
+# jerrymakesjelly <ganzhaoyu037@gmail.com>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: autoremove-torrents \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-02 15:13+0800\n"
+"PO-Revision-Date: 2020-02-02 17:29+0800\n"
+"Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
+"Language-Team: Chinese (Simplified)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:4
+msgid "Introduction"
+msgstr "介绍"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:6
+msgid ""
+"This program is a tool that can help you remove torrents automatically. "
+"Now, you don't need to worry about your disk space anymore - according to"
+" your strategies, the program will check each torrent if it satisfies the"
+" remove condition; If so, delete it automatically."
+msgstr "这个程序是一个可以帮助您自动删除种子的工具。现在，你不再需要担心你的磁盘空间——根据你的策略，程序可以检查每个种子是否满足删除条件；如果是，那就自动删掉它。"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:8
+msgid ""
+"Let's start here. By reading this documentation, we can learn how to "
+"install, config and run this tool."
+msgstr "让我们从这里开始。通过阅读文档，我们可以知道如何安装、配置和运行这个工具。"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:11
+msgid "Supported Clients"
+msgstr "支持的客户端"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:13
+msgid ""
+"Until now, this program supports qBittorrent/Transmission/μTorrent. "
+"Deluge and rTorrent are both on my planning list."
+msgstr "截至目前，程序支持 qBittorrent/Transmission/μTorrent。Deluge 和 rTorrent 正在计划之中。"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:18
+msgid "Client"
+msgstr "客户端"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:19
+msgid "Support"
+msgstr "支持情况"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:20
+msgid "qBittorrent"
+msgstr "qBittorrent"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:21
+#: D:/codes/autoremove-torrents/docs/intro.rst:23
+#: D:/codes/autoremove-torrents/docs/intro.rst:25
+msgid "Yes"
+msgstr "是"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:22
+msgid "Transmission"
+msgstr "Transmission"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:24
+msgid "μTorrent"
+msgstr "μTorrent"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:26
+msgid "Deluge"
+msgstr "Deluge"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:27
+#: D:/codes/autoremove-torrents/docs/intro.rst:29
+msgid "On Planning"
+msgstr "计划中"
+
+#: D:/codes/autoremove-torrents/docs/intro.rst:28
+msgid "rTorrent"
+msgstr "rTorrent"
+
