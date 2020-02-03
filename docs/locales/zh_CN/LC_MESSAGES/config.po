@@ -509,7 +509,7 @@ msgstr "该语法直接选出符合条件的种子，并直接删除它们或者
 msgid ""
 "``<Expression 1> and <Expression 2>`` and ``<Expression 1> or <Expression"
 " 2>``"
-msgstr "``<表达式1> and <表达式2>` `以及 ``<表达式1> or <表达式2>``"
+msgstr "``<表达式1> and <表达式2>`` 以及 ``<表达式1> or <表达式2>``"
 
 #: D:/codes/autoremove-torrents/docs/config.rst:255
 msgid "This syntax is a compound expression."
@@ -519,25 +519,25 @@ msgstr "该语法是复合表达式。"
 msgid ""
 "``and``: Select torrents that meet both the ``Expression 1`` and "
 "``Expression 2`` (intersection)."
-msgstr "``and``：选择同时满足``表达式1``和``表达式2``的种子（交集）。"
+msgstr "``and``：选择同时满足 ``表达式1`` 和 ``表达式2`` 的种子（交集）。"
 
 #: D:/codes/autoremove-torrents/docs/config.rst:258
 msgid ""
 "``or``: Select torrents that meet one or both of the ``Expression 1`` and"
 " ``Expression 2`` (Union)."
-msgstr "``or``：选择满足``表达式1``或者``表达式2``或者同时满足两个表达式的种子（并集）。"
+msgstr "``or``：选择满足 ``表达式1`` 或者 ``表达式2`` 或者同时满足两个表达式的种子（并集）。"
 
 #: D:/codes/autoremove-torrents/docs/config.rst:260
 msgid ""
 "Here is an example. It removes the torrents which ratio is greater than 2"
 " **and** seeding time is more than 60000 seconds:"
-msgstr "这是一个例子，它删除分享率超过2**而且**做种时间超过60000秒的种子："
+msgstr "这是一个例子，它删除分享率超过2 **而且** 做种时间超过60000秒的种子："
 
 #: D:/codes/autoremove-torrents/docs/config.rst:267
 msgid ""
 "Here is another example. It removes the torrents which ratio is less than"
 " 1 **or** seeding time is more than 60000:"
-msgstr "这又是一个例子，它删除分享率小于1**或者**做种时间超过60000秒的种子："
+msgstr "这又是一个例子，它删除分享率小于1 **或者** 做种时间超过60000秒的种子："
 
 #: D:/codes/autoremove-torrents/docs/config.rst:274
 msgid "``(<Expression>)``"
@@ -555,7 +555,7 @@ msgid ""
 "Here is an example. It removes torrents which seeding time is more than "
 "60000 seconds, **or** those torrents which ratio is greater than 3 "
 "**and** added time is more than 1400000 seconds:"
-msgstr "这是一个例子，它删除做种时间超过60000秒的种子，**或者**分享率大于3**而且**添加时间超过1400000秒的种子："
+msgstr "这是一个例子，它删除做种时间超过60000秒的种子， **或者** 分享率大于3 **而且** 添加时间超过1400000秒的种子："
 
 #: D:/codes/autoremove-torrents/docs/config.rst:286
 msgid "Part 4: Delete data"
@@ -565,7 +565,7 @@ msgstr "第四部分：删除数据"
 msgid ""
 "Determine whether to delete data at the same time. If this field isn't "
 "specificed, the default value is ``false``."
-msgstr "决定是否在删除种子的同时也删除数据。如果此字段未指定，则默认值为``false``。"
+msgstr "决定是否在删除种子的同时也删除数据。如果此字段未指定，则默认值为 ``false`` 。"
 
 #: D:/codes/autoremove-torrents/docs/config.rst:291
 msgid "The Last Step..."
