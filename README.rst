@@ -1,10 +1,12 @@
 Auto Remove Torrents
 ======================
-|PyPI| |TravisCI| |Coverage| |Codacy| |Downloads| |MIT|
+|PyPI| |TravisCI| |ReadTheDocs| |Coverage| |Codacy| |Downloads| |MIT|
 
 This program can help you to remove your torrents. Now you don't need to worry about your disk space - according to your strategies, the program will check each torrent if it satisfies the remove condition; If so, delete it automatically.
 
-This program supports qBittorrent/Transmission/μTorrent. If you like, star it :sparkles: :)
+This program supports qBittorrent/Transmission/μTorrent. If you like, star it :star2: :)
+
+Documentation: https://autoremove-torrents.readthedocs.io/en/latest/
 
 Readme version in other languages: `简体中文`_.
 
@@ -14,6 +16,8 @@ Readme version in other languages: `简体中文`_.
     :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
 .. |TravisCI| image:: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents.svg?branch=master
    :target: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/autoremove-torrents/badge/?version=latest
+   :target: https://autoremove-torrents.readthedocs.io/en/latest/?badge=latest
 .. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/6e5509ecb4714ed697c65f35d71cff65    
    :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Coverage
 .. |MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
@@ -74,9 +78,9 @@ The grammar is quite easy, for example::
           remove: seeding_time > 1209600 or ratio > 1
       delete_data: true
 
-The program will delete those torrents whose categories are ``IPT``, seeding time is above 1209600 seconds **or** ratio is greater than 1. Visit `Wiki`_ to learn more.
+The program will delete those torrents whose categories are ``IPT``, seeding time is above 1209600 seconds **or** ratio is greater than 1. Read the `documents`_ to learn more.
 
-.. _Wiki: https://github.com/jerrymakesjelly/autoremove-torrents/wiki
+.. _documents: https://autoremove-torrents.readthedocs.io/en/latest
 
 Run
 ++++
@@ -108,6 +112,8 @@ Screenshot
 
 Changelog
 ----------
+**Mon, 3 Feb 2020**: Migrate documents to Read the Docs.
+
 **Sun, 26 Jan 2020**: Version 1.4.9.
 
 * Add `free_space` condition.
