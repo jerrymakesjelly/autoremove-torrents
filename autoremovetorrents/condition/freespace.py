@@ -13,7 +13,6 @@ class FreeSpaceCondition(ConditionWithSort):
     def apply(self, torrents):
         torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
-        torrents = reversed(torrents)
         _, _, free_space, _ = psutil.disk_usage(self._path)
         for torrent in torrents:
             if free_space < self._min:
