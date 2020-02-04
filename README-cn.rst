@@ -209,17 +209,12 @@
 
 **2018-03-22 周四**: 第一个版本 :bowtie:
 
-未来计划列表
+计划列表
 -----------
-取决于用户的反馈
-
-* 未来支持 Deluge 和 rtorrent
-
-* 添加删除条件：磁盘空闲空间
-
-* 添加删除条件：最大/最小平均上传/下载速度
-
-如果你有任何问题，欢迎提交 `issues`_.
+看你们的反馈。如果你有任何问题，欢迎提交 `issues`_。
 
 .. _issues: https://github.com/jerrymakesjelly/autoremove-torrents/issues
 
+`点击这里`_ 查看TODO列表。
+
+.. _点击这里: https://github.com/jerrymakesjelly/autoremove-torrents/issues/63

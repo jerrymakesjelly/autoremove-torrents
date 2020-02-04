@@ -215,15 +215,10 @@ You can now use the *autoremove-torrents* command directly instead of *python3 m
 
 TODO List
 -----------
-Depend on users' feedback.
-
-* Support Deluge and rtorrent in the future
-
-* Add remove condition: Disk free space
-
-* Add remove condition: Max/Min average UL/DL speed
-
-If you have any problem, please submit `issues`_.
+Depend on users' feedback. If you have any problem, please submit `issues`_.
 
 .. _issues: https://github.com/jerrymakesjelly/autoremove-torrents/issues
 
+`Click here`_ to see the TODO List.
+
+.. _Click here: https://github.com/jerrymakesjelly/autoremove-torrents/issues/63
