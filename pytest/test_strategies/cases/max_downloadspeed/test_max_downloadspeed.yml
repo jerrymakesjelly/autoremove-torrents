@@ -1,0 +1,5 @@
+test:
+  max_downloadspeed: 1000
+remove:
+  - Torrent - 1
+  - Torrent - 2
