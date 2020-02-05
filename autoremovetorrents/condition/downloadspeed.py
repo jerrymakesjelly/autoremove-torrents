@@ -3,7 +3,7 @@ from .base import Condition
 from ..torrentstatus import TorrentStatus
 
 class DownloadSpeedCondition(Condition):
-    def __init__(self, downspeed, comp = Comparer.LT):
+    def __init__(self, downspeed, comp = Comparer.GT):
         Condition.__init__(self) # Initialize remain and remove list
         self._downspeed = downspeed
         self._comparer = comp

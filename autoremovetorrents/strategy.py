@@ -70,13 +70,13 @@ class Strategy(object):
             'seeding_time': SeedingTimeCondition,
             'create_time': CreateTimeCondition,
             'ratio': RatioCondition,
-            'min_downloadspeed': DownloadSpeedCondition,
+            'max_downloadspeed': DownloadSpeedCondition,
             'min_uploadspeed': UploadSpeedCondition,
+            'size': SizeCondition,
+            'last_activity': LastActivityCondition,
             'seed_size': TorrentSizeCondition,
             'maximum_number': TorrentNumberCondition,
             'free_space': FreeSpaceCondition,
-            'size': SizeCondition,
-            'last_activity': LastActivityCondition,
             'nothing': EmptyCondition
         }
         for conf in self._conf:
