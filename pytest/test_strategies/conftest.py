@@ -31,6 +31,8 @@ def test_data():
         torrent_obj.upload_speed = torrent['upspeed']
         torrent_obj.download_speed = torrent['dlspeed']
         torrent_obj.last_activity = torrent['last_activity']
+        torrent_obj.seeder = torrent['num_complete']
+        torrent_obj.leecher = torrent['num_incomplete']
         input_torrents.append(torrent_obj)
 
     return input_torrents

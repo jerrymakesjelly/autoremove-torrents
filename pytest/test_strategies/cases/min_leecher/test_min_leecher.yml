@@ -1,0 +1,10 @@
+test:
+  min_leecher: 10
+remove:
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9
+  - Torrent - 13
+  - Torrent - 14
