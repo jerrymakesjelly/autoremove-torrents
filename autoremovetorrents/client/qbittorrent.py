@@ -186,6 +186,8 @@ class qBittorrent(object):
                 torrent_obj.connected_seeder = properties['seeds']
                 torrent_obj.leecher = properties['peers_total']
                 torrent_obj.connected_leecher = properties['peers']
+                torrent_obj.average_upload_speed = properties['up_speed_avg']
+                torrent_obj.average_download_speed = properties['dl_speed_avg']
                 # For qBittorrent 3.x, the last activity field doesn't exist.
                 # We need to check the existence
                 if 'last_activity' in torrent:

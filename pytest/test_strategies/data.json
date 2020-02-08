@@ -5,6 +5,7 @@
         "completed": 5707223927,
         "completion_on": 4294967295,
         "dl_limit": 0,
+        "dl_speed_avg": 499524,
         "dlspeed": 2270401,
         "downloaded": 5710905998,
         "downloaded_session": 5710905998,
@@ -36,6 +37,7 @@
             "https://tracker.site1.com/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 78804,
         "uploaded": 8564552428,
         "uploaded_session": 8564552428,
         "upspeed": 984644
@@ -46,6 +48,7 @@
         "completed": 19054854172,
         "completion_on": 4294967295,
         "dl_limit": 0,
+        "dl_speed_avg": 188567,
         "dlspeed": 1583918,
         "downloaded": 19053990510,
         "downloaded_session": 19053990510,
@@ -77,6 +80,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 808605,
         "uploaded": 51623504177,
         "uploaded_session": 51623504177,
         "upspeed": 2886504
@@ -87,6 +91,7 @@
         "completed": 347000034,
         "completion_on": 1526732525,
         "dl_limit": 0,
+        "dl_speed_avg": 5584975,
         "dlspeed": 0,
         "downloaded": 347198660,
         "downloaded_session": 347198660,
@@ -118,6 +123,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 456008,
         "uploaded": 812985418,
         "uploaded_session": 812985418,
         "upspeed": 0
@@ -128,6 +134,7 @@
         "completed": 10152029087,
         "completion_on": 1525970677,
         "dl_limit": 0,
+        "dl_speed_avg": 5019202,
         "dlspeed": 0,
         "downloaded": 0,
         "downloaded_session": 0,
@@ -159,6 +166,7 @@
             "http://tracker.site3.com/?action=announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 832684,
         "uploaded": 43783272788,
         "uploaded_session": 0,
         "upspeed": 0
@@ -169,6 +177,7 @@
         "completed": 9627866528,
         "completion_on": 1526723020,
         "dl_limit": 0,
+        "dl_speed_avg": 7858040,
         "dlspeed": 0,
         "downloaded": 9628171953,
         "downloaded_session": 9628171953,
@@ -200,6 +209,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 851779,
         "uploaded": 29372377819,
         "uploaded_session": 29372377819,
         "upspeed": 0
@@ -211,6 +221,7 @@
         "completion_on": 1526736296,
         "dl_limit": 0,
         "dlspeed": 0,
+        "dl_speed_avg": 4633382,
         "downloaded": 13201638292,
         "downloaded_session": 13201638292,
         "eta": 8640000,
@@ -241,6 +252,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 37146,
         "uploaded": 23420454865,
         "uploaded_session": 23420454865,
         "upspeed": 121201
@@ -252,6 +264,7 @@
         "completion_on": 1526738269,
         "dl_limit": 0,
         "dlspeed": 0,
+        "dl_speed_avg": 9855309,
         "downloaded": 7240240790,
         "downloaded_session": 7240240790,
         "eta": 8640000,
@@ -282,6 +295,7 @@
             "https://tracker.site1.com/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 812996,
         "uploaded": 18854220629,
         "uploaded_session": 18854220629,
         "upspeed": 0
@@ -293,6 +307,7 @@
         "completion_on": 1526731123,
         "dl_limit": 0,
         "dlspeed": 0,
+        "dl_speed_avg": 7062911,
         "downloaded": 7621738011,
         "downloaded_session": 7621738011,
         "eta": 8640000,
@@ -323,6 +338,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 801737,
         "uploaded": 32700782429,
         "uploaded_session": 32700782429,
         "upspeed": 87463
@@ -333,6 +349,7 @@
         "completed": 3022394751,
         "completion_on": 1525969428,
         "dl_limit": 0,
+        "dl_speed_avg": 6112945,
         "dlspeed": 0,
         "downloaded": 0,
         "downloaded_session": 0,
@@ -364,6 +381,7 @@
             "http://tracker.site3.com/?action=announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 900793,
         "uploaded": 6949286694,
         "uploaded_session": 26198016,
         "upspeed": 0
@@ -374,6 +392,7 @@
         "completed": 14844911534,
         "completion_on": 1526735607,
         "dl_limit": 0,
+        "dl_speed_avg": 4306811,
         "dlspeed": 0,
         "downloaded": 14846696889,
         "downloaded_session": 14846696889,
@@ -405,6 +424,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 152048,
         "uploaded": 32388045222,
         "uploaded_session": 32388045222,
         "upspeed": 327541
@@ -415,6 +435,7 @@
         "completed": 2321891132,
         "completion_on": 4294967295,
         "dl_limit": 0,
+        "dl_speed_avg": 6403655,
         "dlspeed": 302084,
         "downloaded": 2321882559,
         "downloaded_session": 2321882559,
@@ -446,6 +467,7 @@
             "https://tracker.site1.com/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 586125,
         "uploaded": 5750836550,
         "uploaded_session": 5750836550,
         "upspeed": 442042
@@ -456,6 +478,7 @@
         "completed": 1715653161,
         "completion_on": 4294967295,
         "dl_limit": 0,
+        "dl_speed_avg": 3792899,
         "dlspeed": 269870,
         "downloaded": 1716876766,
         "downloaded_session": 1716876766,
@@ -487,6 +510,7 @@
             "https://www.site2.org/tracker/announce"
         ],
         "up_limit": 0,
+        "up_speed_avg": 254117,
         "uploaded": 4056422836,
         "uploaded_session": 4056422836,
         "upspeed": 668038
@@ -497,6 +521,7 @@
         "completed": 1746686185,
         "completion_on": 1527342372,
         "dl_limit": 0,
+        "dl_speed_avg": 10211715,
         "dlspeed": 0,
         "downloaded": 1747429022,
         "downloaded_session": 1747429022,
@@ -528,6 +553,7 @@
             "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
+        "up_speed_avg": 661650,
         "uploaded": 1898576526,
         "uploaded_session": 1898576526,
         "upspeed": 0
@@ -538,6 +564,7 @@
         "completed": 312186667,
         "completion_on": 1527335960,
         "dl_limit": 0,
+        "dl_speed_avg": 9987804,
         "dlspeed": 0,
         "downloaded": 312891624,
         "downloaded_session": 312891624,
@@ -569,6 +596,7 @@
             "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
+        "up_speed_avg": 482248,
         "uploaded": 107814988,
         "uploaded_session": 107814988,
         "upspeed": 0
@@ -579,6 +607,7 @@
         "completed": 2126568405,
         "completion_on": 1527350573,
         "dl_limit": 0,
+        "dl_speed_avg": 2708163,
         "dlspeed": 0,
         "downloaded": 2127119819,
         "downloaded_session": 2127119819,
@@ -610,6 +639,7 @@
             "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
+        "up_speed_avg": 950107,
         "uploaded": 3323768148,
         "uploaded_session": 3323768148,
         "upspeed": 0
@@ -620,6 +650,7 @@
         "completed": 1132013553,
         "completion_on": 1527335868,
         "dl_limit": 0,
+        "dl_speed_avg": 7002425,
         "dlspeed": 0,
         "downloaded": 1139339147,
         "downloaded_session": 1139339147,
@@ -651,6 +682,7 @@
             "https://tracker.site4.io:2710/"
         ],
         "up_limit": 0,
+        "up_speed_avg": 924258,
         "uploaded": 395526144,
         "uploaded_session": 395526144,
         "upspeed": 8055
