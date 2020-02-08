@@ -1,0 +1,5 @@
+test:
+  max_connected_seeder: 0
+remove:
+  - Torrent - 1
+  - Torrent - 12

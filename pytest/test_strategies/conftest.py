@@ -32,7 +32,9 @@ def test_data():
         torrent_obj.download_speed = torrent['dlspeed']
         torrent_obj.last_activity = torrent['last_activity']
         torrent_obj.seeder = torrent['num_complete']
+        torrent_obj.connected_seeder = torrent['num_seeds']
         torrent_obj.leecher = torrent['num_incomplete']
+        torrent_obj.connected_leecher = torrent['num_leechs']
         input_torrents.append(torrent_obj)
 
     return input_torrents
