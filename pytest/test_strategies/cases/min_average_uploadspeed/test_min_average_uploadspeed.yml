@@ -1,0 +1,9 @@
+test:
+  min_average_uploadspeed: 512
+remove:
+  - Torrent - 1
+  - Torrent - 3
+  - Torrent - 6
+  - Torrent - 10
+  - Torrent - 12
+  - Torrent - 14

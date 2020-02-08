@@ -10,7 +10,9 @@ from .condition.seeder import SeederCondition
 from .condition.connectedseeder import ConnectedSeederCondition
 from .condition.leecher import LeecherCondition
 from .condition.connectedleecher import ConnectedLeecherCondition
+from .condition.avgdownloadspeed import AverageDownloadSpeedCondition
 from .condition.downloadspeed import DownloadSpeedCondition
+from .condition.avguploadspeed import AverageUploadSpeedCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .condition.torrentsize import TorrentSizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
@@ -79,7 +81,9 @@ class Strategy(object):
             'min_leecher': LeecherCondition,
             'min_connected_leecher': ConnectedLeecherCondition,
             'max_downloadspeed': DownloadSpeedCondition,
+            'max_average_downloadspeed': AverageDownloadSpeedCondition,
             'min_uploadspeed': UploadSpeedCondition,
+            'min_average_uploadspeed': AverageUploadSpeedCondition,
             'size': SizeCondition,
             'last_activity': LastActivityCondition,
             'seed_size': TorrentSizeCondition,
