@@ -1,5 +1,6 @@
 from .base import Comparer
 from .base import Condition
+from ..torrentstatus import TorrentStatus
 
 class ConnectedLeecherCondition(Condition):
     def __init__(self, cl, comp = Comparer.LT):
@@ -9,7 +10,9 @@ class ConnectedLeecherCondition(Condition):
     
     def apply(self, torrents):
         for torrent in torrents:
-            if self.compare(torrent.connected_leecher, self._connected_leecher, self._comparer):
+            # Note: This condition is only available for the uploading and the downloading torrents
+            if (torrent.status == TorrentStatus.Downloading or torrent.status == TorrentStatus.Uploading) \
+                and self.compare(torrent.connected_leecher, self._connected_leecher, self._comparer):
                 self.remove.add(torrent)
             else:
                 self.remain.add(torrent)

@@ -7,7 +7,9 @@ from .condition.seedingtime import SeedingTimeCondition
 from .condition.createtime import CreateTimeCondition
 from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
+from .condition.connectedseeder import ConnectedSeederCondition
 from .condition.leecher import LeecherCondition
+from .condition.connectedleecher import ConnectedLeecherCondition
 from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .condition.torrentsize import TorrentSizeCondition
@@ -73,7 +75,9 @@ class Strategy(object):
             'create_time': CreateTimeCondition,
             'ratio': RatioCondition,
             'max_seeder': SeederCondition,
+            'max_connected_seeder': ConnectedSeederCondition,
             'min_leecher': LeecherCondition,
+            'min_connected_leecher': ConnectedLeecherCondition,
             'max_downloadspeed': DownloadSpeedCondition,
             'min_uploadspeed': UploadSpeedCondition,
             'size': SizeCondition,
