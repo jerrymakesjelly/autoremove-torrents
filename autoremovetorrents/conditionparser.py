@@ -3,12 +3,12 @@ from . import logger
 from .conditionlexer import ConditionLexer
 from .condition.base import Comparer
 from .condition.createtime import CreateTimeCondition
+from .condition.downloadspeed import DownloadSpeedCondition
+from .condition.lastactivity import LastActivityCondition
 from .condition.ratio import RatioCondition
 from .condition.seedingtime import SeedingTimeCondition
-from .condition.uploadspeed import UploadSpeedCondition
-from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.size import SizeCondition
-from .condition.lastactivity import LastActivityCondition
+from .condition.uploadspeed import UploadSpeedCondition
 from .exception.nosuchcondition import NoSuchCondition
 from .exception.syntaxerror import ConditionSyntaxError
 
@@ -16,12 +16,12 @@ class ConditionParser(object):
     # Condition Map (as constant)
     _condition_map = {
         'create_time': CreateTimeCondition,
+        'download_speed': DownloadSpeedCondition,
+        'last_activity': LastActivityCondition,
         'ratio': RatioCondition,
         'seeding_time': SeedingTimeCondition,
-        'upload_speed': UploadSpeedCondition,
-        'download_speed': DownloadSpeedCondition,
         'size': SizeCondition,
-        'last_activity': LastActivityCondition
+        'upload_speed': UploadSpeedCondition,
     }
 
     # Condition expression
