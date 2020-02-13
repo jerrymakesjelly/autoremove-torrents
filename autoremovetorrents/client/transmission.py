@@ -100,6 +100,7 @@ class Transmission(object):
                     'secondsSeeding',
                     'downloadedEver',
                     'secondsDownloading',
+                    'percentDone',
                 ]}
             )
         if len(result['torrents']) == 0: # No such torrent
@@ -127,6 +128,7 @@ class Transmission(object):
         torrent_obj.last_activity = torrent['activityDate']
         torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding']
         torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading']
+        torrent_obj.progress = torrent['percentDone']
 
         return torrent_obj
 

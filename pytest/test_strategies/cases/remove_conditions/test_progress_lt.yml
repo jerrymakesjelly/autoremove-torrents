@@ -1,0 +1,7 @@
+test:
+  remove: progress < 50
+remove:
+  - Torrent - 1
+  - Torrent - 11
+  - Torrent - 12
+  

@@ -106,6 +106,7 @@ class uTorrent(object):
                 torrent_obj.connected_seeder = torrent[14]
                 torrent_obj.leecher = torrent[13]
                 torrent_obj.connected_leecher = torrent[12]
+                torrent_obj.progress = torrent[4]
                 
                 return torrent_obj
         # Not Found

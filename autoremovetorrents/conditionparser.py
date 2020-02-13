@@ -9,10 +9,12 @@ from .condition.createtime import CreateTimeCondition
 from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.lastactivity import LastActivityCondition
 from .condition.leecher import LeecherCondition
+from .condition.progress import ProgressCondition
 from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.size import SizeCondition
+from .condition.uploadratio import UploadRatioCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .conditionlexer import ConditionLexer
 from .exception.nosuchcondition import NoSuchCondition
@@ -29,10 +31,12 @@ class ConditionParser(object):
         'download_speed': DownloadSpeedCondition,
         'last_activity': LastActivityCondition,
         'leecher': LeecherCondition,
+        'progress': ProgressCondition,
         'ratio': RatioCondition,
         'seeder': SeederCondition,
         'seeding_time': SeedingTimeCondition,
         'size': SizeCondition,
+        'upload_ratio': UploadRatioCondition,
         'upload_speed': UploadSpeedCondition,
     }
 

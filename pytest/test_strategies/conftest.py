@@ -37,6 +37,7 @@ def test_data():
         torrent_obj.connected_seeder = torrent['num_seeds']
         torrent_obj.leecher = torrent['num_incomplete']
         torrent_obj.connected_leecher = torrent['num_leechs']
+        torrent_obj.progress = torrent['progress']
         input_torrents.append(torrent_obj)
 
     return input_torrents

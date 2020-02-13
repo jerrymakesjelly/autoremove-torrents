@@ -1,0 +1,7 @@
+test:
+  remove: upload_ratio < 1
+remove:
+  - Torrent - 1
+  - Torrent - 11
+  - Torrent - 14
+  - Torrent - 16
