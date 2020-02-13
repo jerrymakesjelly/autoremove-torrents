@@ -1,0 +1,8 @@
+test:
+  remove: seeder < 2
+remove:
+  - Torrent - 1
+  - Torrent - 2
+  - Torrent - 11
+  - Torrent - 12
+  - Torrent - 15

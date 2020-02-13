@@ -1,24 +1,36 @@
 import ply.yacc as yacc
 from . import logger
-from .conditionlexer import ConditionLexer
+from .condition.avgdownloadspeed import AverageDownloadSpeedCondition
+from .condition.avguploadspeed import AverageUploadSpeedCondition
 from .condition.base import Comparer
+from .condition.connectedleecher import ConnectedLeecherCondition
+from .condition.connectedseeder import ConnectedSeederCondition
 from .condition.createtime import CreateTimeCondition
 from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.lastactivity import LastActivityCondition
+from .condition.leecher import LeecherCondition
 from .condition.ratio import RatioCondition
+from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.size import SizeCondition
 from .condition.uploadspeed import UploadSpeedCondition
+from .conditionlexer import ConditionLexer
 from .exception.nosuchcondition import NoSuchCondition
 from .exception.syntaxerror import ConditionSyntaxError
 
 class ConditionParser(object):
     # Condition Map (as constant)
     _condition_map = {
+        'average_downloadspeed': AverageDownloadSpeedCondition,
+        'average_uploadspeed': AverageUploadSpeedCondition,
+        'connected_leecher': ConnectedLeecherCondition,
+        'connected_seeder': ConnectedSeederCondition,
         'create_time': CreateTimeCondition,
         'download_speed': DownloadSpeedCondition,
         'last_activity': LastActivityCondition,
+        'leecher': LeecherCondition,
         'ratio': RatioCondition,
+        'seeder': SeederCondition,
         'seeding_time': SeedingTimeCondition,
         'size': SizeCondition,
         'upload_speed': UploadSpeedCondition,

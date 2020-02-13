@@ -1,0 +1,5 @@
+test:
+  remove: average_downloadspeed < 500
+remove:
+  - Torrent - 1
+  - Torrent - 2

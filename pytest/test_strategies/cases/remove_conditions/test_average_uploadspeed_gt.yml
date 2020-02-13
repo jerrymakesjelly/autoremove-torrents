@@ -1,0 +1,5 @@
+test:
+  remove: average_uploadspeed > 900
+remove:
+  - Torrent - 15
+  - Torrent - 16
