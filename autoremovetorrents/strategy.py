@@ -10,12 +10,14 @@ from .condition.donothing import EmptyCondition
 from .condition.freespace import FreeSpaceCondition
 from .condition.lastactivity import LastActivityCondition
 from .condition.leecher import LeecherCondition
+from .condition.progress import ProgressCondition
 from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.size import SizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
 from .condition.torrentsize import TorrentSizeCondition
+from .condition.uploadratio import UploadRatioCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .conditionparser import ConditionParser
 from .exception.unsupportedproperty import UnsupportedProperty
@@ -77,6 +79,7 @@ class Strategy(object):
             'max_average_downloadspeed': AverageDownloadSpeedCondition,
             'max_connected_seeder': ConnectedSeederCondition,
             'max_downloadspeed': DownloadSpeedCondition,
+            'max_progress': ProgressCondition,
             'max_seeder': SeederCondition,
             'maximum_number': TorrentNumberCondition,
             'min_average_uploadspeed': AverageUploadSpeedCondition,
@@ -89,6 +92,7 @@ class Strategy(object):
             'seed_size': TorrentSizeCondition,
             'seeding_time': SeedingTimeCondition,
             'size': SizeCondition,
+            'upload_ratio': UploadRatioCondition,
         }
         for conf in self._conf:
             if conf in conditions:
