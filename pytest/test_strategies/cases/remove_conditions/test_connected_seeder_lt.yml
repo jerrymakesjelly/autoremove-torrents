@@ -1,0 +1,13 @@
+test:
+  remove: connected_seeder < 1
+remove:
+  - Torrent - 2
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 6
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9
+  - Torrent - 10
+  - Torrent - 11

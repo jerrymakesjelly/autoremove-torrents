@@ -1,0 +1,14 @@
+test:
+  remove: seeder > 1
+remove:
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 6
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9
+  - Torrent - 10
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 16

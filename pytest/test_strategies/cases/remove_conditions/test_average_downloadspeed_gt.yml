@@ -1,0 +1,4 @@
+test:
+  remove: average_downloadspeed > 9800
+remove:
+  - Torrent - 13

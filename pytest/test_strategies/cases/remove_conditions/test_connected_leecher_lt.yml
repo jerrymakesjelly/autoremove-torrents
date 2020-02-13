@@ -1,0 +1,7 @@
+test:
+  remove: connected_leecher < 1
+remove:
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 7
+  - Torrent - 9
