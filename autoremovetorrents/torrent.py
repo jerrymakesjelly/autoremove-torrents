@@ -3,6 +3,7 @@
 import sys
 import time
 
+from .compatibility.urlparse import _urlparse
 from .torrentstatus import TorrentStatus
 
 class Torrent(object):
@@ -22,14 +23,32 @@ class Torrent(object):
             else:
                 return '(Not Provided)'
         
-        return "%s\nSize:%s\tRatio:%.3f\tTotal Uploaded:%s\tSeeding Time:%s\tCategory:%s\nCreate Time:%s" % \
-            (disp('name'),
-            disp('size', self._convert_bytes),
-            disp('ratio'),
-            disp('uploaded', self._convert_bytes),
-            disp('seeding_time', self._convert_seconds),
-            disp('category', ','.join),
-            disp('create_time', self._convert_timestamp)
+        return ("%s\n" + 
+            "\tProgress:%.2f%%\tSize:%s\tRatio:%.3f\tTotal Uploaded:%s\n" + 
+            "\tSeeder(connected/total):%d/%d\tLeecher(connected/total):%d/%d\tStatus:%s\n" +
+            "\tDownload Speed:%s(Avg.:%s)\tUpload Speed:%s(Avg.:%s)\n" +
+            "\tCreate Time:%s\tSeeding Time:%s\tLast Activity:%s\n" +
+            "\tCategory:%s\tTracker:%s") % \
+            (
+                disp('name'),
+                disp('progress', lambda x: x*100),
+                disp('size', self._convert_bytes),
+                disp('ratio'),
+                disp('uploaded', self._convert_bytes),
+                disp('connected_seeder'),
+                disp('seeder'),
+                disp('connected_leecher'),
+                disp('leecher'),
+                disp('status', self._convert_status),
+                disp('download_speed', self._convert_speed),
+                disp('average_download_speed', self._convert_speed),
+                disp('upload_speed', self._convert_speed),
+                disp('average_upload_speed', self._convert_speed),
+                disp('create_time', self._convert_timestamp),
+                disp('seeding_time', self._convert_seconds),
+                disp('last_activity', self._convert_timestamp),
+                disp('category', self._convert_category),
+                disp('tracker', self._convert_tracker),
             )
     
     # Convert Seconds
@@ -52,7 +71,29 @@ class Torrent(object):
                 byte /= 1024
         return ('%.2lf%s' % (byte, x))
     
+    # Convert Speed
+    @staticmethod
+    def _convert_speed(byte):
+        return ('%s/s' % Torrent._convert_bytes(byte))
+    
     # Convert Timestamp
     @staticmethod
     def _convert_timestamp(timestamp):
-        time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
+        return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
+    
+    # Convert Category
+    @staticmethod
+    def _convert_category(categories):
+        return ','.join(categories)
+    
+    # Convert Tracker
+    @staticmethod
+    def _convert_tracker(trackers):
+        return ','.join(
+            [_urlparse(x).hostname if _urlparse(x).hostname is not None else x for x in trackers]
+        )
+    
+    # Convert Status
+    @staticmethod
+    def _convert_status(status):
+        return status.name
