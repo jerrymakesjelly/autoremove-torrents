@@ -1,10 +1,6 @@
 #-*- coding:utf-8 -*-
 
-try: # for Python 3
-    from urllib.parse import urlparse
-except ImportError: # for Python 2.7
-    from urlparse import urlparse
-
+from ..compatibility.urlparse import _urlparse
 from .filter import Filter
 
 class TrackerFilter(Filter):
@@ -15,7 +11,7 @@ class TrackerFilter(Filter):
         result = set()
         for torrent in torrents:
             for tracker in torrent.tracker: # For each tracker
-                tracker = urlparse(tracker).hostname
+                tracker = _urlparse(tracker).hostname
                 if self._all or tracker in self._accept:
                     result.add(torrent)
                 if tracker in self._reject:
