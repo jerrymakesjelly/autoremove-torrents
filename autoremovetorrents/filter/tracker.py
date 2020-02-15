@@ -9,12 +9,15 @@ class TrackerFilter(Filter):
 
     def apply(self, torrents):
         result = set()
-        for torrent in torrents:
-            for tracker in torrent.tracker: # For each tracker
-                tracker = _urlparse(tracker).hostname
-                if self._all or tracker in self._accept:
-                    result.add(torrent)
-                if tracker in self._reject:
-                    result.remove(torrent)
-                    break # Reject this seed
+        if self._all:
+            result = torrents
+        else:
+            for torrent in torrents:
+                for tracker in torrent.tracker: # For each tracker
+                    tracker = _urlparse(tracker).hostname
+                    if tracker in self._accept:
+                        result.add(torrent)
+                    if tracker in self._reject:
+                        result.remove(torrent)
+                        break # Reject this seed
         return result
