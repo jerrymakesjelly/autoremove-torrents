@@ -8,14 +8,11 @@ class CategoryFilter(Filter):
 
     def apply(self, torrents):
         result = set()
-        if self._all:
-            result = torrents
-        else:
-            for torrent in torrents:
-                for category in torrent.category: # For each category
-                    if category in self._accept:
-                        result.add(torrent)
-                    if category in self._reject:
-                        result.remove(torrent)
-                        break # Reject this seed
+        for torrent in torrents:
+            for category in torrent.category: # For each category
+                if self._all or category in self._accept:
+                    result.add(torrent)
+                if category in self._reject:
+                    result.remove(torrent)
+                    break # Reject this seed
         return result

@@ -34,21 +34,18 @@ class StatusFilter(Filter):
     def apply(self, torrents):
         result = set()
 
-        if self._all:
-            result = torrents
-        else:
-            for torrent in torrents:
-                if torrent.status in self._acc_status:
-                    result.add(torrent)
-                if self._acc_stallup and torrent.status == TorrentStatus.Uploading and torrent.stalled:
-                    result.add(torrent)
-                if self._acc_stalldown and torrent.status == TorrentStatus.Downloading and torrent.stalled:
-                    result.add(torrent)
-                if torrent in result and torrent.status in self._rej_status:
-                    result.remove(torrent)
-                if torrent in result and self._rej_stallup and torrent.status == TorrentStatus.Uploading and torrent.stalled:
-                    result.remove(torrent)
-                if torrent in result and self._rej_stalldown and torrent.status == TorrentStatus.Downloading and torrent.stalled:
-                    result.remove(torrent)
+        for torrent in torrents:
+            if self._all or torrent.status in self._acc_status:
+                result.add(torrent)
+            if self._acc_stallup and torrent.status == TorrentStatus.Uploading and torrent.stalled:
+                result.add(torrent)
+            if self._acc_stalldown and torrent.status == TorrentStatus.Downloading and torrent.stalled:
+                result.add(torrent)
+            if torrent in result and torrent.status in self._rej_status:
+                result.remove(torrent)
+            if torrent in result and self._rej_stallup and torrent.status == TorrentStatus.Uploading and torrent.stalled:
+                result.remove(torrent)
+            if torrent in result and self._rej_stalldown and torrent.status == TorrentStatus.Downloading and torrent.stalled:
+                result.remove(torrent)
         
         return result
