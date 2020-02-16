@@ -63,17 +63,11 @@ class Strategy(object):
             if filter_conf[i]['re'] in self._conf and type(self._conf[filter_conf[i]['re']]) != list:
                 self._conf[filter_conf[i]['re']] = [self._conf[filter_conf[i]['re']]]
             # Apply each filter
-            try:
-                self.remain_list = filter_obj[i](
-                    filter_conf[i]['all'],
-                    self._conf[filter_conf[i]['ac']] if filter_conf[i]['ac'] in self._conf else [],
-                    self._conf[filter_conf[i]['re']] if filter_conf[i]['re'] in self._conf else []
-                ).apply(self.remain_list)
-            except AttributeError as e:
-                raise UnsupportedProperty(
-                    '%s. Your client may not support this property, so the filter %s does not work.' % \
-                    (str(e), filter_conf[i]['ac'])
-                )
+            self.remain_list = filter_obj[i](
+                filter_conf[i]['all'],
+                self._conf[filter_conf[i]['ac']] if filter_conf[i]['ac'] in self._conf else [],
+                self._conf[filter_conf[i]['re']] if filter_conf[i]['re'] in self._conf else []
+            ).apply(self.remain_list)
 
     # Apply Conditions
     def _apply_conditions(self):
