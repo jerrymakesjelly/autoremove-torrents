@@ -40,7 +40,7 @@ def test_client(env_dist):
 
             # Make take and run
             try:
-                Task(file, conf['task'], True).execute()
+                Task(file, conf['task'], False).execute()
                 if 'exceptions' in conf and len(conf['exceptions']) > 0: # No exceptions was raised
                     raise AssertionError("It didn't raise exceptions as expected")
             except Exception as e:
