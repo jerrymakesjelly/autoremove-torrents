@@ -1,10 +1,12 @@
 test:
   excluded_categories:
     - Category - 2
-    - Category - 4
+    - Category - 3
 remain:
   - Torrent - 1
-  - Torrent - 4
   - Torrent - 7
-  - Torrent - 9
   - Torrent - 11
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16

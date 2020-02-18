@@ -8,13 +8,22 @@ class TrackerFilter(Filter):
         Filter.__init__(self, all_tracker, ac, re)
 
     def apply(self, torrents):
-        result = set()
-        for torrent in torrents:
-            for tracker in torrent.tracker: # For each tracker
-                tracker = _urlparse(tracker).hostname
-                if self._all or tracker in self._accept:
-                    result.add(torrent)
-                if tracker in self._reject:
-                    result.remove(torrent)
-                    break # Reject this seed
-        return result
+        # Pick accepted torrents
+        accepts = set()
+        if self._all: # Accpet all torrents (all_trackers)
+            accepts = set(torrents)
+        elif len(self._accept) > 0: # Accept specific tracker torrents (trackers)
+            for torrent in torrents:
+                for tracker in torrent.tracker:
+                    hostname = _urlparse(tracker).hostname
+                    if hostname in self._accept or tracker in self._accept:
+                        accepts.add(torrent)
+        # Pick rejected torrents
+        rejects = set()
+        if len(self._reject) > 0: # Reject specific tracker torrents (excluded_trackers)
+            for torrent in accepts:
+                for tracker in torrent.tracker:
+                    hostname = _urlparse(tracker).hostname
+                    if hostname in self._reject or tracker in self._reject:
+                        rejects.add(torrent)
+        return accepts.difference(rejects) # Return their difference
