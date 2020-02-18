@@ -1,7 +1,7 @@
 test:
   all_categories: true
   categories:
-    - Category - 4
+    - Category - 3
 remain:
   - Torrent - 1
   - Torrent - 2

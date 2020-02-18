@@ -517,7 +517,7 @@
     },
     {
         "added_on": 1527339181,
-        "category": "Category - 4",
+        "category": "",
         "completed": 1746686185,
         "completion_on": 1527342372,
         "dl_limit": 0,
@@ -549,9 +549,7 @@
         "state": "Checking",
         "super_seeding": false,
         "total_size": 1746686185,
-        "tracker": [
-            "https://tracker.site4.io:2710/"
-        ],
+        "tracker": [],
         "up_limit": 0,
         "up_speed_avg": 661650,
         "uploaded": 1898576526,
@@ -560,7 +558,7 @@
     },
     {
         "added_on": 1527335909,
-        "category": "Category - 4",
+        "category": "",
         "completed": 312186667,
         "completion_on": 1527335960,
         "dl_limit": 0,
@@ -592,9 +590,7 @@
         "state": "Queued",
         "super_seeding": false,
         "total_size": 312186667,
-        "tracker": [
-            "https://tracker.site4.io:2710/"
-        ],
+        "tracker": [],
         "up_limit": 0,
         "up_speed_avg": 482248,
         "uploaded": 107814988,
@@ -603,7 +599,7 @@
     },
     {
         "added_on": 1527343104,
-        "category": "Category - 4",
+        "category": "",
         "completed": 2126568405,
         "completion_on": 1527350573,
         "dl_limit": 0,
@@ -635,9 +631,7 @@
         "state": "Paused",
         "super_seeding": false,
         "total_size": 2126568405,
-        "tracker": [
-            "https://tracker.site4.io:2710/"
-        ],
+        "tracker": [],
         "up_limit": 0,
         "up_speed_avg": 950107,
         "uploaded": 3323768148,
@@ -646,7 +640,7 @@
     },
     {
         "added_on": 1527335739,
-        "category": "Category - 4",
+        "category": "",
         "completed": 1132013553,
         "completion_on": 1527335868,
         "dl_limit": 0,
@@ -678,9 +672,7 @@
         "state": "Stopped",
         "super_seeding": false,
         "total_size": 1132013553,
-        "tracker": [
-            "https://tracker.site4.io:2710/"
-        ],
+        "tracker": [],
         "up_limit": 0,
         "up_speed_avg": 924258,
         "uploaded": 395526144,
