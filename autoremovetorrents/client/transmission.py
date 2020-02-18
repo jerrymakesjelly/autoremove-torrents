@@ -126,8 +126,8 @@ class Transmission(object):
         torrent_obj.leecher = sum([tracker['leecherCount'] for tracker in torrent['trackerStats']])
         torrent_obj.connected_leecher = torrent['peersGettingFromUs']
         torrent_obj.last_activity = torrent['activityDate']
-        torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding']
-        torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading']
+        torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding'] if torrent['secondsSeeding'] != 0 else 0
+        torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading'] if torrent['secondsDownloading'] != 0 else 0
         torrent_obj.progress = torrent['percentDone']
 
         return torrent_obj
