@@ -26,7 +26,7 @@ class Task(object):
         replace_keys = ['host', 'username', 'password']
         for key in replace_keys:
             if key in conf:
-                env = pattern.match(conf[key])
+                env = pattern.match(str(conf[key]))
                 if env is not None and env.group(1) in os.environ:
                     conf[key] = os.environ[env.group(1)]
 
