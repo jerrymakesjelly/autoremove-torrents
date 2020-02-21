@@ -11,7 +11,7 @@ class UploadRatioCondition(Condition):
     
     def apply(self, torrents):
         for torrent in torrents:
-            if self.compare(torrent.uploaded/torrent.size, self._ratio, self._comparer):
+            if self.compare(float(torrent.uploaded)/float(torrent.size), self._ratio, self._comparer):
                 self.remove.add(torrent)
             else:
                 self.remain.add(torrent)

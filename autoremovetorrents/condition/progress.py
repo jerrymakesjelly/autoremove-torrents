@@ -9,7 +9,7 @@ class ProgressCondition(Condition):
     
     def apply(self, torrents):
         for torrent in torrents:
-            if self.compare(torrent.progress, self._progress / 100, self._comparer):
+            if self.compare(torrent.progress, float(self._progress) / 100, self._comparer):
                 self.remove.add(torrent)
             else:
                 self.remain.add(torrent)
