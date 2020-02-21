@@ -2,14 +2,13 @@
 
 from setuptools import setup, find_packages
 from autoremovetorrents.version import __version__
-from autoremovetorrents.compatibility.open import _open
+from autoremovetorrents.compatibility.open_ import open_
 
 setup(name = 'autoremove-torrents',
     version = __version__,
     description = 'Automatically remove torrents according to your strategies.',
-    long_description = _open('README.rst', 'r', encoding='utf-8').read(),
+    long_description = open_('README.rst', 'r', encoding='utf-8').read(),
     classifiers = [
-        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',

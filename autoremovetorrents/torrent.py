@@ -3,7 +3,7 @@
 import sys
 import time
 
-from .compatibility.urlparse import _urlparse
+from .compatibility.urlparse_ import urlparse_
 from .torrentstatus import TorrentStatus
 
 class Torrent(object):
@@ -90,7 +90,7 @@ class Torrent(object):
     @staticmethod
     def _convert_tracker(trackers):
         return ','.join(
-            [_urlparse(x).hostname if _urlparse(x).hostname is not None else x for x in trackers]
+            [urlparse_(x).hostname if urlparse_(x).hostname is not None else x for x in trackers]
         )
     
     # Convert Status
