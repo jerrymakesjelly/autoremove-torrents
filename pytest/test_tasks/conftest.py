@@ -2,7 +2,7 @@ import os
 import json
 import pytest
 import requests_mock
-from autoremovetorrents.compatibility.open import _open
+from autoremovetorrents.compatibility.open_ import open_
 
 @pytest.fixture(scope="function")
 def qbittorrent_mocker(requests_mock):
@@ -24,7 +24,7 @@ def qbittorrent_mocker(requests_mock):
         #lg.info('Logging in was mocked.')
 
         # Mock qBittorrent torrents list
-        with _open(os.path.join(root_dir, 'qbittorrent-snapshots', '4-1-5.json'),
+        with open_(os.path.join(root_dir, 'qbittorrent-snapshots', '4-1-5.json'),
             'r', encoding='utf-8') as f:
             torrent_list = json.load(f)
             requests_mock.get('mock://qbittorrent/query/torrents', json=torrent_list)
@@ -32,7 +32,7 @@ def qbittorrent_mocker(requests_mock):
         
         # Mock qBittorent torrent details
         for torrent in torrent_list:
-            with _open(os.path.join(
+            with open_(os.path.join(
                 root_dir, 'qbittorrent-snapshots', 
                 'torrents', '%s.json' % torrent['hash'])) as fp:
                 metadata = json.load(fp)

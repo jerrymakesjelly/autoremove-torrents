@@ -1,4 +1,4 @@
-def _open(name, mode='r', **kwargs):
+def open_(name, mode='r', **kwargs):
     try: # for Python 3
         return open(name, **kwargs)
     except TypeError: # for Python 2.7

@@ -7,13 +7,13 @@ import pytest
 import json
 from autoremovetorrents.torrent import Torrent
 from autoremovetorrents.torrentstatus import TorrentStatus
-from autoremovetorrents.compatibility.open import _open
+from autoremovetorrents.compatibility.open_ import open_
 
 @pytest.fixture(scope="module")
 def test_data():
     # Load input data
     input_torrents = []
-    with _open(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
+    with open_(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
         data = json.load(f)
     for torrent in data:
         torrent_obj = Torrent()
@@ -44,6 +44,6 @@ def test_data():
 
 @pytest.fixture(scope="module")
 def test_env():
-    with _open(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'environment.json'), encoding='utf-8') as f:
+    with open_(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'environment.json'), encoding='utf-8') as f:
         env = json.load(f)
     return env

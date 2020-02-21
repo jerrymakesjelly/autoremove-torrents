@@ -6,7 +6,7 @@ from autoremovetorrents.strategy import Strategy
 from autoremovetorrents.exception.illegalcharacter import IllegalCharacter
 from autoremovetorrents.exception.syntaxerror import ConditionSyntaxError
 from autoremovetorrents.exception.nosuchcondition import NoSuchCondition
-from autoremovetorrents.compatibility.open import _open
+from autoremovetorrents.compatibility.open_ import open_
 
 def test_strategies(mocker, test_data, test_env):
     # Logger
@@ -33,7 +33,7 @@ def test_strategies(mocker, test_data, test_env):
                 if os.path.isfile(conf_path):
                     # Load file
                     lg.info('Loading file: %s' % conf_file)
-                    with _open(conf_path, encoding='utf-8') as f:
+                    with open_(conf_path, encoding='utf-8') as f:
                         conf = yaml.safe_load(f)
 
                     try:

@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 
-from ..compatibility.urlparse import _urlparse
+from ..compatibility.urlparse_ import urlparse_
 from .filter import Filter
 
 class TrackerFilter(Filter):
@@ -15,7 +15,7 @@ class TrackerFilter(Filter):
         elif len(self._accept) > 0: # Accept specific tracker torrents (trackers)
             for torrent in torrents:
                 for tracker in torrent.tracker:
-                    hostname = _urlparse(tracker).hostname
+                    hostname = urlparse_(tracker).hostname
                     if hostname in self._accept or tracker in self._accept:
                         accepts.add(torrent)
         # Pick rejected torrents
@@ -23,7 +23,7 @@ class TrackerFilter(Filter):
         if len(self._reject) > 0: # Reject specific tracker torrents (excluded_trackers)
             for torrent in accepts:
                 for tracker in torrent.tracker:
-                    hostname = _urlparse(tracker).hostname
+                    hostname = urlparse_(tracker).hostname
                     if hostname in self._reject or tracker in self._reject:
                         rejects.add(torrent)
         return accepts.difference(rejects) # Return their difference
