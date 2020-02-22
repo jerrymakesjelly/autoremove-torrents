@@ -14,7 +14,6 @@ task:
         path: .
         min: 100000000
         action: remove-big-seeds
-      max_average_downloadspeed: 100000000
       max_connected_seeder: 100000000
       max_downloadspeed: 100000000
       max_progress: 100000000
@@ -22,7 +21,6 @@ task:
       maximum_number:
         limit: 100000000
         action: remove-big-seeds
-      min_average_uploadspeed: -1
       min_connected_leecher: -1
       min_leecher: -1
       min_uploadspeed: -1
