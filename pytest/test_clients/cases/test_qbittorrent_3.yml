@@ -15,7 +15,6 @@ task:
         path: .
         min: 100000000
         action: remove-old-seeds
-      last_activity: 100000000
       max_average_downloadspeed: 100000000
       max_connected_seeder: 100000000
       max_downloadspeed: 100000000
@@ -32,7 +31,7 @@ task:
       remove: ratio > 100000000
       seed_size:
         limit: 100000000
-        action: remove-active-seeds
+        action: remove-small-seeds
       seeding_time: 100000000
       size: 100000000
       upload_ratio: 100000000
