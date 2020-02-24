@@ -1,5 +1,5 @@
 test:
-  size: 10
+  max_size: 10
 remove:
   - Torrent - 1
   - Torrent - 2
