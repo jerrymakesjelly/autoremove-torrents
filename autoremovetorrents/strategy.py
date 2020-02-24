@@ -91,7 +91,7 @@ class Strategy(object):
             'remove': ConditionParser,
             'seed_size': TorrentSizeCondition,
             'seeding_time': SeedingTimeCondition,
-            'size': SizeCondition,
+            'max_size': SizeCondition,
             'upload_ratio': UploadRatioCondition,
         }
         for conf in self._conf:
