@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-02 15:13+0800\n"
+"POT-Creation-Date: 2020-02-22 21:28+0800\n"
 "PO-Revision-Date: 2020-02-02 17:29+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:4
+#: ../../intro.rst:4
 msgid "Introduction"
 msgstr "介绍"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:6
+#: ../../intro.rst:6
 msgid ""
 "This program is a tool that can help you remove torrents automatically. "
 "Now, you don't need to worry about your disk space anymore - according to"
@@ -30,58 +30,167 @@ msgid ""
 " remove condition; If so, delete it automatically."
 msgstr "这个程序是一个可以帮助您自动删除种子的工具。现在，你不再需要担心你的磁盘空间——根据你的策略，程序可以检查每个种子是否满足删除条件；如果是，那就自动删掉它。"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:8
+#: ../../intro.rst:8
 msgid ""
 "Let's start here. By reading this documentation, we can learn how to "
 "install, config and run this tool."
 msgstr "让我们从这里开始。通过阅读文档，我们可以知道如何安装、配置和运行这个工具。"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:11
+#: ../../intro.rst:11
 msgid "Supported Clients"
 msgstr "支持的客户端"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:13
+#: ../../intro.rst:13
 msgid ""
 "Until now, this program supports qBittorrent/Transmission/μTorrent. "
 "Deluge and rTorrent are both on my planning list."
 msgstr "截至目前，程序支持 qBittorrent/Transmission/μTorrent。Deluge 和 rTorrent 正在计划之中。"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:18
+#: ../../intro.rst:18
 msgid "Client"
 msgstr "客户端"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:19
+#: ../../intro.rst:19
 msgid "Support"
 msgstr "支持情况"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:20
+#: ../../intro.rst:20 ../../intro.rst:41
 msgid "qBittorrent"
 msgstr "qBittorrent"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:21
-#: D:/codes/autoremove-torrents/docs/intro.rst:23
-#: D:/codes/autoremove-torrents/docs/intro.rst:25
+#: ../../intro.rst:21 ../../intro.rst:23 ../../intro.rst:25
 msgid "Yes"
 msgstr "是"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:22
+#: ../../intro.rst:22 ../../intro.rst:42
 msgid "Transmission"
 msgstr "Transmission"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:24
+#: ../../intro.rst:24 ../../intro.rst:43
 msgid "μTorrent"
 msgstr "μTorrent"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:26
+#: ../../intro.rst:26
 msgid "Deluge"
 msgstr "Deluge"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:27
-#: D:/codes/autoremove-torrents/docs/intro.rst:29
+#: ../../intro.rst:27 ../../intro.rst:29
 msgid "On Planning"
 msgstr "计划中"
 
-#: D:/codes/autoremove-torrents/docs/intro.rst:28
+#: ../../intro.rst:28
 msgid "rTorrent"
 msgstr "rTorrent"
+
+#: ../../intro.rst:32
+msgid "Supported Properties"
+msgstr "支持的属性"
+
+#: ../../intro.rst:34
+msgid "✓ = Supported ✗ = Unsupported"
+msgstr "✓ = 支持 ✗ = 不支持"
+
+#: ../../intro.rst:40
+msgid "Properties/Clients"
+msgstr "属性/客户端"
+
+#: ../../intro.rst:44
+msgid "Average Download Speed"
+msgstr "平均下载速度"
+
+#: ../../intro.rst:45 ../../intro.rst:46 ../../intro.rst:49 ../../intro.rst:50
+#: ../../intro.rst:53 ../../intro.rst:55 ../../intro.rst:57 ../../intro.rst:58
+#: ../../intro.rst:59 ../../intro.rst:61 ../../intro.rst:62 ../../intro.rst:63
+#: ../../intro.rst:65 ../../intro.rst:66 ../../intro.rst:69 ../../intro.rst:70
+#: ../../intro.rst:71 ../../intro.rst:74 ../../intro.rst:77 ../../intro.rst:78
+#: ../../intro.rst:79 ../../intro.rst:81 ../../intro.rst:82 ../../intro.rst:83
+#: ../../intro.rst:85 ../../intro.rst:86 ../../intro.rst:87 ../../intro.rst:89
+#: ../../intro.rst:90 ../../intro.rst:91 ../../intro.rst:93 ../../intro.rst:94
+#: ../../intro.rst:95 ../../intro.rst:97 ../../intro.rst:98 ../../intro.rst:99
+#: ../../intro.rst:101 ../../intro.rst:102 ../../intro.rst:103
+#: ../../intro.rst:105 ../../intro.rst:106 ../../intro.rst:107
+#: ../../intro.rst:109 ../../intro.rst:110 ../../intro.rst:111
+#: ../../intro.rst:113 ../../intro.rst:114 ../../intro.rst:115
+msgid "✓"
+msgstr "✓"
+
+#: ../../intro.rst:47 ../../intro.rst:51 ../../intro.rst:67 ../../intro.rst:75
+msgid "✗"
+msgstr "✗"
+
+#: ../../intro.rst:48
+msgid "Average Upload Speed"
+msgstr "平均上传速度"
+
+#: ../../intro.rst:52
+msgid "Category"
+msgstr "类别"
+
+#: ../../intro.rst:54
+msgid "✓ :superscript:`3.00+ or later`"
+msgstr "✓ :superscript:`3.00+ 或更高版本`"
+
+#: ../../intro.rst:56
+msgid "Connected Leecher"
+msgstr "已连接的下载者"
+
+#: ../../intro.rst:60
+msgid "Connected Seeder"
+msgstr "已连接的做种者"
+
+#: ../../intro.rst:64
+msgid "Create Time"
+msgstr "创建时间"
+
+#: ../../intro.rst:68
+msgid "Download Speed"
+msgstr "下载速度"
+
+#: ../../intro.rst:72
+msgid "Last Activity"
+msgstr "最近活动"
+
+#: ../../intro.rst:73
+msgid "✓ :superscript:`v3.0 or later`"
+msgstr "✓ :superscript:`v3.0 或更高版本`"
+
+#: ../../intro.rst:76
+msgid "Leecher"
+msgstr "下载者"
+
+#: ../../intro.rst:80
+msgid "Progress"
+msgstr "进度（百分比）"
+
+#: ../../intro.rst:84
+msgid "Ratio"
+msgstr "分享率"
+
+#: ../../intro.rst:88
+msgid "Seeder"
+msgstr "做种者"
+
+#: ../../intro.rst:92
+msgid "Seeding Time"
+msgstr "做种时间"
+
+#: ../../intro.rst:96
+msgid "Size"
+msgstr "种子大小"
+
+#: ../../intro.rst:100
+msgid "Status"
+msgstr "状态"
+
+#: ../../intro.rst:104
+msgid "Tracker"
+msgstr "Tracker"
+
+#: ../../intro.rst:108
+msgid "Upload Ratio"
+msgstr "上传比率"
+
+#: ../../intro.rst:112
+msgid "Upload Speed"
+msgstr "上传速度"
 
