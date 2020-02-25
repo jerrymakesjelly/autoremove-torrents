@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-02 15:13+0800\n"
+"POT-Creation-Date: 2020-02-22 21:31+0800\n"
 "PO-Revision-Date: 2020-02-02 16:32+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:4
+#: ../../config.rst:4
 msgid "Configuration"
-msgstr "配置"
+msgstr ""
 
-#: D:/codes/autoremove-torrents/docs/config.rst:6
+#: ../../config.rst:6
 msgid ""
 "Before we run ``autoremove-torrents``, we need to create a ``config.yml``"
 " to save our configurations."
 msgstr "在我们运行 ``autoremove-torrents`` 之前，我们需要创建一个 ``config.yml`` 文件，它可以用来保存配置。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:8
+#: ../../config.rst:8
 msgid ""
 "The script uses the YAML language as the language of the configuration "
 "file. The YAML language has a clear structure, so I think it's more "
 "friendly than the JSON and easy to learn."
 msgstr "本脚本使用YAML语言作为配置文件的语言。YAML语言结构清晰，我认为它比JSON更友好，也更易于学习。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:10
+#: ../../config.rst:10
 msgid "Look at the example please, the task block can be divided into 3 parts."
 msgstr "请看下面的例子，这个任务块可以被分成 3 部分。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:42
+#: ../../config.rst:42
 msgid ""
 "Centainly, the configuration file can contain more than one task blocks, "
 "and a task block can contain more than one strategy blocks. Each task "
@@ -47,425 +47,433 @@ msgid ""
 "of torrents."
 msgstr "当然，一个配置文件可以包含多个任务块，并且每个任务块还可以包含多个策略块。每个任务块代表一个BT客户端，每个策略块代表一种种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:45
+#: ../../config.rst:45
 msgid "Part 1: Task Name"
 msgstr "第一部分：任务名称"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:47
+#: ../../config.rst:47
 msgid "Just name your task."
 msgstr "给任务取一个名字。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:51
+#: ../../config.rst:51
 msgid "No spaces are allowed before the task name."
 msgstr "任务名前面不能有空格。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:55
+#: ../../config.rst:55
 msgid "Part 2: Login Information"
 msgstr "第二部分：登录信息"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:57
+#: ../../config.rst:57
 msgid ""
 "This script works with your client's WebUI, and this part is your login "
 "inforamtion."
 msgstr "该脚本借助于客户端的 WebUI 工作，所以这部分填写的是 WebUI 的登录信息。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:59
+#: ../../config.rst:59
 msgid ""
 "``client``: Your client name. Now it supports "
 "qbittorrent/transmission/μTorrent."
 msgstr "``client``：客户端类型。目前支持qbittorrent/transmission/μTorrent。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:60
+#: ../../config.rst:60
 msgid ""
 "``host``: The URL of your client's WebUI, and the URL must have a socket "
 "(http:// or https://)."
 msgstr "``host``：WebUI的访问地址。该地址必须指明一个套接字（http:// 或 https:// ）。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:61
+#: ../../config.rst:61
 msgid "``username``: The username of the WebUI."
 msgstr "``username``：WebUI的用户名。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:62
+#: ../../config.rst:62
 msgid "``password``: The password of the WebUI."
 msgstr "``password``：WebUI的密码。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:65
+#: ../../config.rst:65
 msgid "Part 3: Strategy Block"
 msgstr "第三部分：策略块"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:66
+#: ../../config.rst:66
 msgid ""
 "This part contains strategy blocks. Each strategy block can be divided "
 "into 3 parts, too."
 msgstr "这个部分是策略块。每个策略块也可以分为3个部分。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:69
+#: ../../config.rst:69
 msgid "Part I: Strategy Name"
 msgstr "第1部分：策略名称"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:71
+#: ../../config.rst:71
 msgid "Just name your strategy like the task name."
 msgstr "就像给任务取名一样，给你的策略也取个名字。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:74
+#: ../../config.rst:74
 msgid "Part II: Filters"
 msgstr "第2部分：过滤器"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:76
+#: ../../config.rst:76
 msgid ""
 "This strategy is available only for the torrents you chosen. There are 9 "
 "filters available."
 msgstr "当前策略只会对你所选择的种子有效。有9个过滤器可以用。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:78
+#: ../../config.rst:78
 msgid ""
 "``all_trackers``/``all_categories``/``all_status``: Choose all the "
 "trackers/categories/status."
 msgstr "``all_trackers``/``all_categories``/``all_status``：选择所有的Tracker/分类/种子状态。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:79
+#: ../../config.rst:79
 msgid "``categories``: Choose torrents in these categories."
 msgstr "``categories``：选择这些分类的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:80
+#: ../../config.rst:80
 msgid "``excluded_categories``: Don't choose torrents in these categories."
 msgstr "``excluded_categories``：排除这些分类的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:81
+#: ../../config.rst:81
 msgid "``trackers``: Choose torrents in these trackers."
 msgstr "``trackers``：选择这些Tracker的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:82
+#: ../../config.rst:82
 msgid "``excluded_trackers``: Don't choose torrents in these trackers."
 msgstr "``excluded_trackers``：排除这些Tracker的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:83
+#: ../../config.rst:83
 msgid ""
 "``status``: Choose torrents in these status. Available status is as "
 "follows:"
 msgstr "``status``：选择这些状态的种子，可以选择的状态如下表："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:88
+#: ../../config.rst:88
 msgid "Status"
 msgstr "状态"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:89
+#: ../../config.rst:89
 msgid "Remarks"
 msgstr "备注"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:90
+#: ../../config.rst:90
 msgid "Downloading"
 msgstr "Downloading"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:91
-#: D:/codes/autoremove-torrents/docs/config.rst:93
-#: D:/codes/autoremove-torrents/docs/config.rst:95
-#: D:/codes/autoremove-torrents/docs/config.rst:97
-#: D:/codes/autoremove-torrents/docs/config.rst:223
+#: ../../config.rst:91 ../../config.rst:93 ../../config.rst:95
+#: ../../config.rst:97 ../../config.rst:223
 msgid "/"
 msgstr "/"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:92
+#: ../../config.rst:92
 msgid "Uploading"
 msgstr "Uploading"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:94
+#: ../../config.rst:94
 msgid "Checking"
 msgstr "Checking"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:96
+#: ../../config.rst:96
 msgid "Queued"
 msgstr "Queued"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:98
+#: ../../config.rst:98
 msgid "Paused"
 msgstr "Paused"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:99
+#: ../../config.rst:99
 msgid "Transmission doesn't have this status."
 msgstr "Transmission 无此状态。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:100
+#: ../../config.rst:100
 msgid "Stopped"
 msgstr "Stopped"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:101
+#: ../../config.rst:101
 msgid "qBittorrent doesn't have this status."
 msgstr "qBittorrent 无此状态。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:102
+#: ../../config.rst:102
 msgid "StalledUpload"
 msgstr "StalledUpload"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:103
-#: D:/codes/autoremove-torrents/docs/config.rst:105
+#: ../../config.rst:103 ../../config.rst:105
 msgid "μTorrent doesn't have this status."
 msgstr "μTorrent 无此状态。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:104
+#: ../../config.rst:104
 msgid "StalledDownload"
 msgstr "StalledDownload"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:107
+#: ../../config.rst:107
 msgid ""
 "``excluded_status``: Don't choose these torrents in these status. "
 "Available status is shown in the table above."
 msgstr "``excluded_status``：排除这些状态的种子，可选的状态如上表。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:109
+#: ../../config.rst:109
 msgid "The result of each filter is a set of torrents."
 msgstr "每个过滤器的结果都是一个种子的集合。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:113
+#: ../../config.rst:113
 msgid ""
 "When two or three of ``categories``, ``trackers`` and ``status`` filter "
 "are specificed, the program will take the intersection of these sets, and"
 " subtracts set ``excluded_categories``, ``excluded_trackers`` and "
 "``excluded_status``."
-msgstr "如果 ``categories``、``trackers``、``status`` 三个过滤器的其中两个或者三个同时存在，则程序会取这些集合的交集，并减去 ``excluded_categories`` 集合、``excluded_trackers`` 集合和 ``excluded_status`` 集合。"
+msgstr ""
+"如果 ``categories``、``trackers``、``status`` "
+"三个过滤器的其中两个或者三个同时存在，则程序会取这些集合的交集，并减去 ``excluded_categories`` "
+"集合、``excluded_trackers`` 集合和 ``excluded_status`` 集合。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:118
+#: ../../config.rst:118
 msgid ""
 "Don't write sockets in ``trackers``. The ``trackers`` field only needs "
 "hostname, for example, just fill ``tracker.site1.com`` for "
 "``https://tracker.site1.com``."
-msgstr "不要在 ``trackers`` 中写套接字，``trackers`` 字段只需要填主机名。例如 https://tracker.site1.com 只填写 tracker.site1.com。"
+msgstr ""
+"不要在 ``trackers`` 中写套接字，``trackers`` 字段只需要填主机名。例如 "
+"https://tracker.site1.com 只填写 tracker.site1.com。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:119
+#: ../../config.rst:119
 msgid ""
 "In 1.4.4 and later version, if there's only one item in ``categories``, "
 "``trackers`` or ``status``, it's not necessary to use list structure. A "
 "single-line text is enough, for example:"
-msgstr "在1.4.4以及以后的版本中，如果 ``categories``、``trackers`` 或 ``status`` 中的内容只有一项，可以不使用列表，写一个单行文本就行，例如："
+msgstr ""
+"在1.4.4以及以后的版本中，如果 ``categories``、``trackers`` 或 ``status`` "
+"中的内容只有一项，可以不使用列表，写一个单行文本就行，例如："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:131
+#: ../../config.rst:131
 msgid ""
 "The ``StalledUp`` and ``StalledDown`` is the new status in version 1.4.5."
 " In this program, ``Uploading`` inlcudes the torrents in "
 "``StalledUpload`` status, and ``Downloading`` includes the torrents in "
 "``StalledDownload`` status."
-msgstr "``StalledUp`` 与 ``StalledDown`` 为 1.4.5 版本新增的状态。在本程序中，``Uploading`` 包含 ``StalledUpload`` 状态的种子，``Downloading`` 包含 ``StallDownload`` 状态的种子。"
+msgstr ""
+"``StalledUp`` 与 ``StalledDown`` 为 1.4.5 版本新增的状态。在本程序中，``Uploading`` 包含 "
+"``StalledUpload`` 状态的种子，``Downloading`` 包含 ``StallDownload`` 状态的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:134
+#: ../../config.rst:134
 msgid "Part III: Remove Condition"
 msgstr "第三部分：删除条件"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:136
+#: ../../config.rst:136
 msgid "There are 2 ways to set removing condition."
 msgstr "有两种设置删除条件的方法。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:139
+#: ../../config.rst:139
 msgid "1. Use Removing Condition Keywords Directly"
 msgstr "1. 直接使用删除条件关键词"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:141
+#: ../../config.rst:141
 msgid ""
 "Use the removing condition keywords directly. There are 6 remove "
 "conditions."
 msgstr "直接使用删除条件关键词，有6个删除条件。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:145
+#: ../../config.rst:145
 msgid ""
 "As long as a chosen torrent satisfies one of these conditions, it will be"
 " removed."
 msgstr "只要选择的种子满足这些条件之一，它就会被删除。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:148
+#: ../../config.rst:148
 msgid "``ratio``: Maximum ratio."
 msgstr "``ratio``：分享率上限。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:149
+#: ../../config.rst:149
 msgid ""
 "``create_time``: The maximum time elapsed since the torrent was added to "
 "the client, in seconds. When a torrent reaches the limit, it will be "
 "removed (no matter what state it is)."
 msgstr "``create_time``：种子从添加到客户端到现在所经过的时间，以秒为单位。在这里设置一个添加时间的上限，当种子在客户端中存活时间超过此上限后，种子会被直接删除（不管种子现在正处于哪种状态）。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:150
+#: ../../config.rst:150
 msgid "``seeding_time``: Maximum seeding time of a torrent."
 msgstr "``seeding_time``：最长做种时间。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:151
+#: ../../config.rst:151
 msgid ""
 "``seed_size``: Calculate the total size of the torrents you chosen. If "
 "the total size exceeds the limit, some of the torrents will be removed. "
 "The following two properties must be specificed."
 msgstr "``seed_size``：计算上述选择的种子的总大小。如果总大小超过限制，一部分种子会被删除。需要设置以下两个属性："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:153
+#: ../../config.rst:153
 msgid "``limit``: Limit of the total size, in GiB."
 msgstr "``limit``：总大小限制，以GiB为单位。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:154
+#: ../../config.rst:154
 msgid ""
 "``action``: Determine which torrents will be removed. Can be the "
 "following values:"
 msgstr "``action``：确定哪部分种子将被删除。可以是以下值："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:159
+#: ../../config.rst:159
 msgid "Value"
 msgstr "值"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:160
-#: D:/codes/autoremove-torrents/docs/config.rst:221
-#: D:/codes/autoremove-torrents/docs/config.rst:238
+#: ../../config.rst:160 ../../config.rst:221 ../../config.rst:238
 msgid "Description"
 msgstr "说明"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:161
+#: ../../config.rst:161
 msgid "remove-old-seeds"
 msgstr "remove-old-seeds"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:162
+#: ../../config.rst:162
 msgid "Try to remove old seeds."
 msgstr "尽量删除旧的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:163
+#: ../../config.rst:163
 msgid "remove-new-seeds"
 msgstr "remove-new-seeds"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:164
+#: ../../config.rst:164
 msgid "Try to remove new seeds."
 msgstr "尽量删除新的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:165
+#: ../../config.rst:165
 msgid "remove-big-seeds"
 msgstr "remove-big-seeds"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:166
+#: ../../config.rst:166
 msgid "Try to remove large seeds."
 msgstr "尽量删除体积大的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:167
+#: ../../config.rst:167
 msgid "remove-small-seeds"
 msgstr "remove-small-seeds"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:168
+#: ../../config.rst:168
 msgid "Try to remove small seeds."
 msgstr "尽量删除体积小的种子。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:171
+#: ../../config.rst:171
 msgid ""
 "``maximum_number``: Set the maximum number of torrents. When the number "
 "of chosen torrents is exceed the maximum number, some of the torrents "
 "will be deleted, just like the condition `seed_size`. The following two "
 "properties must be specified:"
-msgstr "``maximum_number``：判断上述选择的选择的种子的总个数。如果个数超出设置的最大值，一部分种子会被删除，就像 `seed_size` 条件一样。需要设置以下两个属性："
+msgstr ""
+"``maximum_number``：判断上述选择的选择的种子的总个数。如果个数超出设置的最大值，一部分种子会被删除，就像 `seed_size`"
+" 条件一样。需要设置以下两个属性："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:173
+#: ../../config.rst:173
 msgid "``limit``: Maximum number limitation"
 msgstr "``limit``：总个数限制"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:174
+#: ../../config.rst:174
 msgid ""
 "``action``: Determine which torrents will be removed. The values and its "
 "meanings are in the table above."
 msgstr "``action``：确定哪些种子会被删除，取值与含义同上表。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:176
+#: ../../config.rst:176
 msgid ""
 "``free_space``: Check the free space on disk is enough or not. When the "
 "free space is not enough, some of the chosen torrents will be deleted, "
 "just like the condition `seed_size`. The following three properties "
 "should be specified:"
-msgstr "``free_space``：检查磁盘的剩余空间是否符合设定。如果空间不足，一部分种子会被删除，就像 seed_size 条件一样。需要设置以下三个属性："
+msgstr ""
+"``free_space``：检查磁盘的剩余空间是否符合设定。如果空间不足，一部分种子会被删除，就像 seed_size "
+"条件一样。需要设置以下三个属性："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:178
+#: ../../config.rst:178
 msgid ""
 "``min``: Minimum free space, in `GiB`. When the free space of the "
 "specified directory is less than this value, the removing strategy will "
 "be trigger."
 msgstr "``min``：剩余空间最小值，以`GiB`为单位；当目录的剩余空间小于这个值时，删除策略会被触发。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:179
+#: ../../config.rst:179
 msgid "``path``: Directory that needs to be monitored"
 msgstr "``path``：需要监控剩余空间的目录"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:180
+#: ../../config.rst:180
 msgid ""
 "``action``: Removing strategy, which determines which torrents will be "
 "removed. The values and its meanings are in the table above."
 msgstr "``action``：删除策略，用于确定哪些种子会被删除。取值与含义同上表"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:182
+#: ../../config.rst:182
 msgid ""
 "Here is an example. It removes the torrents which ratio is greater than 1"
 " or seeding time is more than 1209600 seconds:"
 msgstr "这是一个例子，它删除分享率大于1或者做种时间大于1209600秒的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:190
+#: ../../config.rst:190
 msgid ""
 "Here is another example. It removes the torrents which seeding time is "
 "greater than 259200 seconds:"
 msgstr "这也是一个例子，它删除做种时间大于259200秒的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:197
+#: ../../config.rst:197
 msgid ""
 "Here is another another example. When the free space in directory "
 "`/home/myserver/downloads` is less than 10GiB, the program will try to "
 "remove the big torrents:"
 msgstr "这还有一个例子，当`/home/myserver/downloads`的剩余空间小于10GiB时，程序会尝试删除体积大的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:208
+#: ../../config.rst:208
 msgid "2. Use ``remove`` Keyword"
 msgstr "2. 使用 ``remove`` 关键词"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:210
+#: ../../config.rst:210
 msgid ""
 "Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in "
 "version 1.4.0, which supports the complex removing condition. The "
 "``remove`` keyword is followed by an expression, which consists of the "
 "following syntax:"
-msgstr "使用 ``remove`` 关键词。``remove`` 关键词是在1.4.0版本中新增的关键词，用于支持复杂的删除条件的设置。``remove`` 关键词后接一个表达式，表达式由以下语法构成："
+msgstr ""
+"使用 ``remove`` 关键词。``remove`` "
+"关键词是在1.4.0版本中新增的关键词，用于支持复杂的删除条件的设置。``remove`` 关键词后接一个表达式，表达式由以下语法构成："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:212
+#: ../../config.rst:212
 msgid "``<Parameter> <Comparison Operator> <Value>``"
 msgstr "``<参数> <比较运算符> <数值>``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:214
+#: ../../config.rst:214
 msgid ""
 "``Parameter``: Available parameters are as follows, and they are case-"
 "insensitive. More parameters will be added to the program later."
 msgstr "``参数``：可选列表如下，不区分大小写。后续会有更多的参数会被添加到程序中。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:219
+#: ../../config.rst:219
 msgid "Parameter"
 msgstr "参数"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:220
+#: ../../config.rst:220
 msgid "Unit"
 msgstr "单位"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:222
+#: ../../config.rst:222
 msgid "``ratio``"
 msgstr "``ratio``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:224
+#: ../../config.rst:224
 msgid "Ratio"
 msgstr "分享率"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:225
+#: ../../config.rst:225
 msgid "``create_time``"
 msgstr "``create_time``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:226
-#: D:/codes/autoremove-torrents/docs/config.rst:229
+#: ../../config.rst:226 ../../config.rst:229
 msgid "Second"
 msgstr "秒"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:227
+#: ../../config.rst:227
 msgid "The elapsed time since the torrent was added to the client."
 msgstr "种子从添加到客户端到现在所经过的时间。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:228
+#: ../../config.rst:228
 msgid "``seeding_time``"
 msgstr "``seeding_time``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:230
+#: ../../config.rst:230
 msgid "Seeding time."
 msgstr "做种时间"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:232
+#: ../../config.rst:232
 msgid ""
 "``Comparison Operator``: Available parameters are as follows. This "
 "program doesn't provide the ``equal`` sign, because the status data of "
@@ -473,31 +481,31 @@ msgid ""
 "specific value."
 msgstr "``比较运算符``：可选列表如下。由于种子的状态数据变化快，通常情况下设置一个特定的数据没有意义，因此本程序不提供等号。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:237
+#: ../../config.rst:237
 msgid "Comparison Operator"
 msgstr "比较运算符"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:239
+#: ../../config.rst:239
 msgid "``<``"
 msgstr "``<``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:240
+#: ../../config.rst:240
 msgid "Less Than"
 msgstr "小于"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:241
+#: ../../config.rst:241
 msgid "``>``"
 msgstr "``>``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:242
+#: ../../config.rst:242
 msgid "Greater Than"
 msgstr "大于"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:244
+#: ../../config.rst:244
 msgid "``Value``: Specify a numeric value. Supports integers and floats."
 msgstr "``数值``：指定一个数值，支持整数和小数。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:246
+#: ../../config.rst:246
 msgid ""
 "This syntax selects the eligible torrents directly, and removes them "
 "directly or works with the following compound expressions. Here is an "
@@ -505,73 +513,73 @@ msgid ""
 "259200 seconds:"
 msgstr "该语法直接选出符合条件的种子，并直接删除它们或者与后面的复合表达式配合使用。这是一个例子，它直接删除做种时间大于259200秒的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:253
+#: ../../config.rst:253
 msgid ""
 "``<Expression 1> and <Expression 2>`` and ``<Expression 1> or <Expression"
 " 2>``"
 msgstr "``<表达式1> and <表达式2>`` 以及 ``<表达式1> or <表达式2>``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:255
+#: ../../config.rst:255
 msgid "This syntax is a compound expression."
 msgstr "该语法是复合表达式。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:257
+#: ../../config.rst:257
 msgid ""
 "``and``: Select torrents that meet both the ``Expression 1`` and "
 "``Expression 2`` (intersection)."
 msgstr "``and``：选择同时满足 ``表达式1`` 和 ``表达式2`` 的种子（交集）。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:258
+#: ../../config.rst:258
 msgid ""
 "``or``: Select torrents that meet one or both of the ``Expression 1`` and"
 " ``Expression 2`` (Union)."
 msgstr "``or``：选择满足 ``表达式1`` 或者 ``表达式2`` 或者同时满足两个表达式的种子（并集）。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:260
+#: ../../config.rst:260
 msgid ""
 "Here is an example. It removes the torrents which ratio is greater than 2"
 " **and** seeding time is more than 60000 seconds:"
 msgstr "这是一个例子，它删除分享率超过2 **而且** 做种时间超过60000秒的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:267
+#: ../../config.rst:267
 msgid ""
 "Here is another example. It removes the torrents which ratio is less than"
 " 1 **or** seeding time is more than 60000:"
 msgstr "这又是一个例子，它删除分享率小于1 **或者** 做种时间超过60000秒的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:274
+#: ../../config.rst:274
 msgid "``(<Expression>)``"
 msgstr "``(<表达式>)``"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:276
+#: ../../config.rst:276
 msgid ""
 "When an expression is enclosed in parentheses, it is still an expression."
 " Using parentheses can change the priority. And you can use multiple "
 "parentheses for nesting."
 msgstr "一个表达式加上括号以后，它仍然是表达式。使用括号可以改变优先级。可以使用多重括号嵌套。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:278
+#: ../../config.rst:278
 msgid ""
 "Here is an example. It removes torrents which seeding time is more than "
 "60000 seconds, **or** those torrents which ratio is greater than 3 "
 "**and** added time is more than 1400000 seconds:"
 msgstr "这是一个例子，它删除做种时间超过60000秒的种子， **或者** 分享率大于3 **而且** 添加时间超过1400000秒的种子："
 
-#: D:/codes/autoremove-torrents/docs/config.rst:286
+#: ../../config.rst:286
 msgid "Part 4: Delete data"
 msgstr "第四部分：删除数据"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:288
+#: ../../config.rst:288
 msgid ""
 "Determine whether to delete data at the same time. If this field isn't "
 "specificed, the default value is ``false``."
 msgstr "决定是否在删除种子的同时也删除数据。如果此字段未指定，则默认值为 ``false`` 。"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:291
+#: ../../config.rst:291
 msgid "The Last Step..."
 msgstr "最后一步……"
 
-#: D:/codes/autoremove-torrents/docs/config.rst:293
+#: ../../config.rst:293
 msgid ""
 "Remember to check your configuration file and make sure it works as you "
 "think. Use the following command line to see the torrents that will be "

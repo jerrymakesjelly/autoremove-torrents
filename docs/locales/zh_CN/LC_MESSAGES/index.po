@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-02 15:13+0800\n"
+"POT-Creation-Date: 2020-02-22 21:31+0800\n"
 "PO-Revision-Date: 2020-02-02 16:56+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -18,27 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: D:/codes/autoremove-torrents/docs/index.rst:9
+#: ../../index.rst:9
 msgid "Contents:"
 msgstr "目录："
 
-#: D:/codes/autoremove-torrents/docs/index.rst:7
+#: ../../index.rst:7
+#, fuzzy
 msgid "Welcome to autoremove-torrents's documentation!"
 msgstr "欢迎来到 autoremove-torrents 的文档！"
 
-#: D:/codes/autoremove-torrents/docs/index.rst:18
+#: ../../index.rst:18
 msgid "Indices and tables"
 msgstr "索引和表格"
 
-#: D:/codes/autoremove-torrents/docs/index.rst:20
+#: ../../index.rst:20
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: D:/codes/autoremove-torrents/docs/index.rst:21
+#: ../../index.rst:21
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: D:/codes/autoremove-torrents/docs/index.rst:22
+#: ../../index.rst:22
 msgid ":ref:`search`"
 msgstr ""
 
