@@ -27,3 +27,89 @@ Until now, this program supports qBittorrent/Transmission/μTorrent. Deluge and 
      - On Planning
    * - rTorrent
      - On Planning
+
+Supported Properties
+---------------------
+
+✓ = Supported
+✗ = Unsupported
+
+.. list-table::
+   :header-rows: 1
+
+   * - Properties/Clients
+     - qBittorrent
+     - Transmission
+     - μTorrent
+   * - Average Download Speed
+     - ✓
+     - ✓
+     - ✗
+   * - Average Upload Speed
+     - ✓
+     - ✓
+     - ✗
+   * - Category
+     - ✓
+     - ✓ :superscript:`3.00+ or later`
+     - ✓
+   * - Connected Leecher
+     - ✓
+     - ✓
+     - ✓
+   * - Connected Seeder
+     - ✓
+     - ✓
+     - ✓
+   * - Create Time
+     - ✓
+     - ✓
+     - ✗
+   * - Download Speed
+     - ✓
+     - ✓
+     - ✓
+   * - Last Activity
+     - ✓ :superscript:`v3.0 or later`
+     - ✓
+     - ✗
+   * - Leecher
+     - ✓
+     - ✓
+     - ✓
+   * - Progress
+     - ✓
+     - ✓
+     - ✓
+   * - Ratio
+     - ✓
+     - ✓
+     - ✓
+   * - Seeder
+     - ✓
+     - ✓
+     - ✓
+   * - Seeding Time
+     - ✓
+     - ✓
+     - ✓
+   * - Size
+     - ✓
+     - ✓
+     - ✓
+   * - Status
+     - ✓
+     - ✓
+     - ✓
+   * - Tracker
+     - ✓
+     - ✓
+     - ✓
+   * - Upload Ratio
+     - ✓
+     - ✓
+     - ✓
+   * - Upload Speed
+     - ✓
+     - ✓
+     - ✓

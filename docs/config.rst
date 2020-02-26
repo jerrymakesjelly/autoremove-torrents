@@ -99,6 +99,8 @@ This strategy is available only for the torrents you chosen. There are 9 filters
      - Transmission doesn't have this status.
    * - Stopped
      - qBittorrent doesn't have this status.
+   * - Error
+     - /
    * - StalledUpload
      - μTorrent doesn't have this status.
    * - StalledDownload
@@ -138,16 +140,68 @@ There are 2 ways to set removing condition.
 1. Use Removing Condition Keywords Directly
 ###########################################
 
-Use the removing condition keywords directly. There are 6 remove conditions. 
+Use the removing condition keywords directly. There are 18 remove conditions. 
 
 .. note::
 
    As long as a chosen torrent satisfies one of these conditions, it will be removed.
 
+The first 15 conditions are here.
 
-* ``ratio``: Maximum ratio.
-* ``create_time``: The maximum time elapsed since the torrent was added to the client, in seconds. When a torrent reaches the limit, it will be removed (no matter what state it is).
-* ``seeding_time``: Maximum seeding time of a torrent.
+.. list-table::
+   :header-rows: 1
+   
+   * - Condition
+     - Unit
+     - Description
+   * - ``ratio``
+     -
+     - Maximum ratio
+   * - ``create_time``
+     - Second
+     - The maximum time elapsed since the torrent was added to the client. When a torrent reaches the limit, it will be removed (no matter what state it is).
+   * - ``seeding_time``
+     - Second
+     - Maximum seeding time of a torrent.
+   * - ``max_downloadspeed``
+     - KiB/s
+     - Maximum download speed of a torrent. Torrents that exceed the limitation will be removed.
+   * - ``min_uploadspeed``
+     - KiB/s
+     - Minimum upload speed of a torrent. Torrents below this speed will be removed.
+   * - ``max_average_downloadspeed``
+     - KiB/s
+     - Maximum average download speed. Just like ``max_downloadspeed``.
+   * - ``min_average_uploadspeed``
+     - KiB/s
+     - Minimum average upload speed. Just like ``min_uploadspeed``.
+   * - ``max_size``
+     - GiB
+     - Torrent size limitation. Remove those torrents whose size exceeds the limit.
+   * - ``max_seeder``
+     - 
+     - Maximum number of seeders. When the seeders exceeds the limitation, the torrent will be removed.
+   * - ``min_leecher``
+     - 
+     - Minimum number of leechers. When the number of leechers is less than the settings, the torrent will be removed.
+   * - ``max_connected_seeder``
+     -
+     - Maximum number of connected seeders. Just like ``max_seeder``.
+   * - ``min_connected_leecher``
+     -
+     - Minimum number of connected leechers. Just like ``min_leecher``.
+   * - ``last_activity``
+     - Second
+     - The maximum time allowed since a torrent has stopped being active, that is, the maximum time without uploading or downloading. When the torrent reaches the limit, it will be removed.
+   * - ``max_progress``
+     - Percent (%)
+     - The maximum download progress. The maximum value is 100.
+   * - ``upload_ratio``
+     - 
+     - The maximum upload ratio. Note that the upload ratio here is different from the ratio. For each torrent, the upload ratio is ``uploaded size`` divided by its ``size``.
+
+Beside these condition, the other 3 remove conditions are here. The rest of the torrents will be removed if they trigger these conditions.
+
 * ``seed_size``: Calculate the total size of the torrents you chosen. If the total size exceeds the limit, some of the torrents will be removed. The following two properties must be specificed.
   
   - ``limit``: Limit of the total size, in GiB.
@@ -166,6 +220,10 @@ Use the removing condition keywords directly. There are 6 remove conditions.
        - Try to remove large seeds.
      * - remove-small-seeds
        - Try to remove small seeds.
+     * - remove-active-seeds
+       - Try to remove active seeds.
+     * - remove-inactive-seeds
+       - Try to remove inactive seeds.
 
 
 * ``maximum_number``: Set the maximum number of torrents. When the number of chosen torrents is exceed the maximum number, some of the torrents will be deleted, just like the condition `seed_size`. The following two properties must be specified:
@@ -219,15 +277,51 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
       * - Parameter
         - Unit
         - Description
-      * - ``ratio``
+      * - ``average_downloadspeed``
+        - KiB/s
+        - Average download speed.
+      * - ``average_uploadspeed``
+        - KiB/s
+        - Average upload speed.
+      * - ``connected_leecher``
         - /
-        - Ratio
+        - The number of connected leecher.
+      * - ``connected_seeder``
+        - /
+        - The number of connected seeder.
       * - ``create_time``
         - Second
         - The elapsed time since the torrent was added to the client.
+      * - ``download_speed``
+        - KiB/s
+        - Download speed.
+      * - ``last_activity``
+        - Second
+        - The elapsed time since the torrent has stopped being active (without uploading or downloading).
+      * - ``leecher``
+        - /
+        - The number of leechers.
+      * - ``progress``
+        - %
+        - The download progress.
+      * - ``ratio``
+        - /
+        - Ratio
+      * - ``seeder``
+        - /
+        - The number of seeders.
       * - ``seeding_time``
         - Second
         - Seeding time.
+      * - ``size``
+        - GiB
+        - The torrent size.
+      * - ``upload_ratio``
+        - /
+        - uploaded size / size
+      * - ``upload_speed``
+        - /
+        - Upload Speed
 
    ``Comparison Operator``: Available parameters are as follows. This program doesn't provide the ``equal`` sign, because the status data of the torrents change quickly, and usually it's meaningless to set a specific value.
 
