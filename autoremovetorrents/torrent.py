@@ -1,6 +1,5 @@
 #-*- coding:utf-8 -*-
 
-import sys
 import time
 
 from .compatibility.urlparse_ import urlparse_
