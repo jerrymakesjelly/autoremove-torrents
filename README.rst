@@ -111,6 +111,24 @@ Screenshot
 
 Changelog
 ----------
+**Fri, 28 Feb 2020**: Version 1.5.0.
+
+* Fix a problem: cannot login to client with numeric username or password. (#64)
+* Fix a problem: tasks could not be executed in a Transmission without label properties.
+* Fix a problem: removing conditions may not work for unlabeled and trackerless torrents.
+* Fix a problem: missing status ``Queued`` in μTorrent.
+* Add new status ``Error`` to filter ``status``.
+* Add support for Transmission labels. (#24)
+* Add removing conditions: Maximum Download Speed ``max_downloadspeed`` and Minimum Upload Speed ``min_uploadspeed``.
+* Add removing conditions: Maximum Average Download Speed ``max_average_downloadspeed`` and Minimum Average Upload Speed ``min_average_uploadspeed``. (#49)
+* Add removing conditions: Maximum Torrent Size ``max_size``. (#21)
+* Add removing conditions: Maximum Number of Seeders ``max_seeder`` and Minimum Number of Leechers ``min_leecher``. (#62)
+* Add removing conditions: Maximum Number of Connected Seeders ``max_connected_seeder`` and Minimum Number of Connected Leechers ``min_connected_leecher``.
+* Add a removing condition: Last Activity ``last_activity``, which removes torrents without upload or download speed for a period of time. (#1) (#9)
+* Add a removing condition: Maximum Download Progress ``max_progress``.
+* Add actions: add ``remove-active-seeds`` and ``remove-inactive-seeds`` to ``free_space``, ``maximum_number`` and ``seed_size`` in order to try to remove active or inactive torrents based on the last active time. (#9)
+* Add a removing condition: Upload Ratio ``upload_ratio``, which can remove torrents based on the ratio of uploaded size to torrent size. (#55)
+
 **Mon, 3 Feb 2020**: Migrate documents to Read the Docs.
 
 **Sun, 26 Jan 2020**: Version 1.4.9.

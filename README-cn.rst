@@ -107,6 +107,24 @@
 
 更新日志
 ----------
+**2020-02-28 周五**：1.5.0 版本。
+
+* 修复了无法登录使用纯数字用户名或密码的客户端的问题（#64）；
+* 修复了在没有标签属性的 Transmission 中任务无法执行的问题；
+* 修复了删种条件可能对未打标签以及没有Tracker的种子无效的问题；
+* 修复了 status 中遗漏的 μTorrent 状态“排队中”（``Queued``）；
+* ``status`` 中添加 ``Error`` 状态；
+* 添加对 Transmission 标签的支持（#24）；
+* 添加删除条件“最大下载速度” ``max_downloadspeed``、“最小上传速度” ``min_uploadspeed``；
+* 添加删除条件“最小平均上传速度” ``min_average_uploadspeed``、“最大平均下载速度” ``max_average_downloadspeed`` （#49）；
+* 添加删除条件“最大种子大小” ``max_size`` （#21）；
+* 添加删除条件“最大做种数” ``max_seeder``、“最小下载数” ``min_leecher`` （#62）；
+* 添加删除条件“最大已连接做种者” ``max_connected_seeder``、“最小已连接下载者” ``min_connected_leecher``；
+* 添加删除条件“最后活动时间” ``last_activity``，以删除一段时间内没有上传或下载速度的种子（#1）（#9)；
+* 添加删除条件“最大下载百分比” ``max_progress``；
+* ``free_space``、``maximum_number``、``seed_size`` 的 ``action`` 中添加 ``remove-active-seeds``、``remove-inactive-seeds`` 动作，用于根据最后活动时间去尽量删除活跃的种子或者不活跃的种子（#9）；
+* 添加了新的删除条件“上传比率” ``upload_ratio``，可以根据上传量占种子大小的比例删种（#55）；
+
 **2020-02-03 周一**：迁移文档到 Read the Docs。
 
 **2020-01-26 周日**: 1.4.9 版本。
