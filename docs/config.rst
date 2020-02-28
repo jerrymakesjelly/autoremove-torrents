@@ -73,7 +73,7 @@ Just name your strategy like the task name.
 Part II: Filters
 ++++++++++++++++
 
-This strategy is available only for the torrents you chosen. There are 9 filters available.
+The removing condtions are only available for the torrents you chosen. There are 9 filters available.
 
 * ``all_trackers``/``all_categories``/``all_status``: Choose all the trackers/categories/status.
 * ``categories``: Choose torrents in these categories.
@@ -132,13 +132,86 @@ The result of each filter is a set of torrents.
 
    3. The ``StalledUp`` and ``StalledDown`` is the new status in version 1.4.5. In this program, ``Uploading`` inlcudes the torrents in ``StalledUpload`` status, and ``Downloading`` includes the torrents in ``StalledDownload`` status.
 
+Let's see some examples. Select those torrents whose categories are Movies or Games:
+
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         categories:
+           - Movies
+           - Games
+         # Removing conditions are here
+         # ...
+
+
+Select those torrents whose hostnames of tracker are tracker.aaa.com or x.bbb.com:
+
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         trackers:
+           - tracker.aaa.com
+           - x.bbb.com
+         # Removing conditons are here
+         # ...
+
+Select torrents whose categories are Movies or Games, but exclude those torrents whose tracker is tracker.yyy.com:
+
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         categories:
+           - Movies
+           - Games
+         excluded_trackers:
+           - tracker.yyy.com
+         # Removing conditions are here
+         # ...
+
+Select those torrents whose categories is Movies and status is uploading:
+
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         categories:
+           - Movies
+         status:
+           - Uploading
+         # Removing conditions are here
+         # ...
+
+
 Part III: Remove Condition
 ++++++++++++++++++++++++++
 
 There are 2 ways to set removing condition.
 
-1. Use Removing Condition Keywords Directly
-###########################################
+1. Use Removing Condition Keywords Directly (Recommended)
+##########################################################
 
 Use the removing condition keywords directly. There are 18 remove conditions. 
 
@@ -237,33 +310,72 @@ Beside these condition, the other 3 remove conditions are here. The rest of the 
   - ``path``: Directory that needs to be monitored
   - ``action``: Removing strategy, which determines which torrents will be removed. The values and its meanings are in the table above.
 
-Here is an example. It removes the torrents which ratio is greater than 1 or seeding time is more than 1209600 seconds:
+Here is an example. For torrents whose categories are xxx or yyy, it removes the torrents which ratio is greater than 1 or seeding time is more than 1209600 seconds:
 
 .. code-block:: yaml
 
-   ratio: 1
-   seeding_time: 1209600
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         categories:
+           - xxx
+           - yyy
+         ratio: 1
+         seeding_time: 1209600
 
 
-Here is another example. It removes the torrents which seeding time is greater than 259200 seconds:
+Here is another example. For all torrents, it removes the torrents which seeding time is greater than 259200 seconds:
 
 .. code-block:: yaml
 
-   seeding_time: 259200
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         seeding_time: 259200
 
 
-Here is another another example. When the free space in directory `/home/myserver/downloads` is less than 10GiB, the program will try to remove the big torrents:
+Here is another another example. For all torrents, when the free space in directory `/home/myserver/downloads` is less than 10GiB, the program will try to remove the big torrents:
 
 .. code-block:: yaml    
 
-   free_space:
-     min: 10
-     path: /home/myserver/downloads
-     action: remove-big-seeds
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         free_space:
+           min: 10
+           path: /home/myserver/downloads
+           action: remove-big-seeds
 
+Here is the last example. For all torrents, remove those torrents whose ratio is greater than 3 first, and then if the total size of the rest of torrents is larger than 500 GiB, it will remove active torrents until the total size is less than 500 GiB:
 
-2. Use ``remove`` Keyword
-#########################
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         ratio: 3
+         seed_size:
+           limit: 500
+           action: remove-active-seeds
+
+2. Use ``remove`` Keyword (Advanced)
+#####################################
 
 Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1.4.0, which supports the complex removing condition. The ``remove`` keyword is followed by an expression, which consists of the following syntax:
 
@@ -341,7 +453,14 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
 
    .. code-block:: yaml
 
-      remove: seeding_time > 259200
+      my_task:
+        client: xxx
+        host: xxx
+        username: xxx
+        password: xxx
+        strategies:
+          my_strategy:
+            remove: seeding_time > 259200
     
 
 2. ``<Expression 1> and <Expression 2>`` and ``<Expression 1> or <Expression 2>``
@@ -351,29 +470,50 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
    * ``and``: Select torrents that meet both the ``Expression 1`` and ``Expression 2`` (intersection).
    * ``or``: Select torrents that meet one or both of the ``Expression 1`` and ``Expression 2`` (Union).
 
-   Here is an example. It removes the torrents which ratio is greater than 2 **and** seeding time is more than 60000 seconds:
+   Here is an example. For all torrents, it removes those torrents which ratio is greater than 2 **and** seeding time is more than 60000 seconds:
 
    .. code-block:: yaml
 
-      remove: ratio > 2 and seeding_time > 60000
+      my_task:
+        client: xxx
+        host: xxx
+        username: xxx
+        password: xxx
+        strategies:
+          my_strategy:
+            remove: ratio > 2 and seeding_time > 60000
       
 
-   Here is another example. It removes the torrents which ratio is less than 1 **or** seeding time is more than 60000:
+   Here is another example. For all torrents, it removes those torrents which ratio is less than 1 **or** seeding time is more than 60000:
 
    .. code-block:: yaml
 
-      remove: ratio < 1 or seeding_time > 60000
+      my_task:
+        client: xxx
+        host: xxx
+        username: xxx
+        password: xxx
+        strategies:
+          my_strategy:
+            remove: ratio < 1 or seeding_time > 60000
       
 
 3. ``(<Expression>)``
 
    When an expression is enclosed in parentheses, it is still an expression. Using parentheses can change the priority. And you can use multiple parentheses for nesting.
 
-   Here is an example. It removes torrents which seeding time is more than 60000 seconds, **or** those torrents which ratio is greater than 3 **and** added time is more than 1400000 seconds:
+   Here is an example. For all torrents, it removes those torrents which seeding time is more than 60000 seconds, **or** those torrents which ratio is greater than 3 **and** added time is more than 1400000 seconds:
 
    .. code-block:: yaml
 
-      remove: seeding_time > 60000 or (ratio > 3 and create_time > 1400000)
+      my_task:
+        client: xxx
+        host: xxx
+        username: xxx
+        password: xxx
+        strategies:
+          my_strategy:
+            remove: seeding_time > 60000 or (ratio > 3 and create_time > 1400000)
       
 
 Part 4: Delete data
