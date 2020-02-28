@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-import sys
 import os
 import time
 import re
@@ -11,7 +10,6 @@ from .client.utorrent import uTorrent
 from .exception.nosuchclient import NoSuchClient
 from .strategy import Strategy
 from autoremovetorrents.torrent import Torrent
-from autoremovetorrents.torrentstatus import TorrentStatus
 
 class Task(object):
     def __init__(self, name, conf, remove_torrents = True):
