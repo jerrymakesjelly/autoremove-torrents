@@ -6,7 +6,7 @@ class SeederCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._seeder = s
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if self.compare(torrent.seeder, self._seeder, self._comparer):

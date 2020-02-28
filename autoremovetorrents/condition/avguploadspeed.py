@@ -6,7 +6,7 @@ class AverageUploadSpeedCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._avg_ul_speed = avg_ul_speed # In KiB
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if self.compare(torrent.average_upload_speed, self._avg_ul_speed * 1024, self._comparer):
