@@ -8,7 +8,7 @@ class UploadRatioCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._ratio = ratio
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if self.compare(float(torrent.uploaded)/float(torrent.size), self._ratio, self._comparer):

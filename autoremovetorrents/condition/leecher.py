@@ -6,7 +6,7 @@ class LeecherCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._leecher = l
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if self.compare(torrent.leecher, self._leecher, self._comparer):

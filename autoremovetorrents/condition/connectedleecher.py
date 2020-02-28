@@ -7,7 +7,7 @@ class ConnectedLeecherCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._connected_leecher = cl
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             # Note: This condition is only available for the uploading and the downloading torrents

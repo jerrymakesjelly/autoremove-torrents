@@ -7,7 +7,7 @@ class DownloadSpeedCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._downspeed = downspeed
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             # Note: The speed unit is KiB/s

@@ -23,8 +23,8 @@ class Torrent(object):
             else:
                 return '(Not Provided)'
         
-        return ("%s\n" + 
-            "\tProgress:%.2f%%\tSize:%s\tRatio:%.3f\tTotal Uploaded:%s\n" + 
+        return ("%s\n" +
+            "\tProgress:%.2f%%\tSize:%s\tRatio:%.3f\tTotal Uploaded:%s\n" +
             "\tSeeder(connected/total):%d/%d\tLeecher(connected/total):%d/%d\tStatus:%s\n" +
             "\tDownload Speed:%s(Avg.:%s)\tUpload Speed:%s(Avg.:%s)\n" +
             "\tCreate Time:%s\tSeeding Time:%s\tLast Activity:%s\n" +

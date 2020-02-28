@@ -7,7 +7,7 @@ class LastActivityCondition(Condition):
         Condition.__init__(self)
         self._last_activity = la
         self._comparer = comp
-    
+
     def apply(self, torrents):
         for torrent in torrents:
             if self.compare(time.time() - torrent.last_activity, self._last_activity, self._comparer):
