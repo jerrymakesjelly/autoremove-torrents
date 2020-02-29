@@ -111,6 +111,10 @@ Screenshot
 
 Changelog
 ----------
+**Sat, 29 Feb 2020**: Version 1.5.1.
+
+* Fix missing status ``StalledUpload`` and ``StalledDownload`` in version 1.5.0. (#66)
+
 **Fri, 28 Feb 2020**: Version 1.5.0.
 
 * Fix a problem: cannot login to client with numeric username or password. (#64)
