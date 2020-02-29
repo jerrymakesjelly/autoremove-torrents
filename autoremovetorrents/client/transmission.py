@@ -114,6 +114,7 @@ class Transmission(object):
             torrent_obj.category = torrent['labels']
         torrent_obj.tracker = [tracker['announce'] for tracker in torrent['trackers']]
         torrent_obj.status = Transmission._judge_status(torrent['status'], torrent['error'])
+        torrent_obj.stalled = torrent['isStalled']
         torrent_obj.size = torrent['totalSize']
         torrent_obj.ratio = torrent['uploadRatio']
         torrent_obj.uploaded = torrent['uploadedEver']

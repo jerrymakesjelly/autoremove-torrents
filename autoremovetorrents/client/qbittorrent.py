@@ -179,6 +179,7 @@ class qBittorrent(object):
                     torrent_obj.category = [torrent['label']] if len(torrent['label']) > 0 else []
                 torrent_obj.tracker = [tracker['url'] for tracker in trackers]
                 torrent_obj.status = qBittorrent._judge_status(torrent['state'])
+                torrent_obj.stalled = torrent['state'] == 'stalledUP' or torrent['state'] == 'stalledDL'
                 torrent_obj.size = torrent['size']
                 torrent_obj.ratio = torrent['ratio']
                 torrent_obj.uploaded = properties['total_uploaded']

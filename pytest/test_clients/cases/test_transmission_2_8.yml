@@ -7,7 +7,16 @@ task:
   strategies:
     strategy1:
       excluded_trackers: tracker2
-      excluded_status: Error
+      # Test status
+      status:
+        - Downloading
+        - Uploading
+        - Checking
+        - Queued
+        - Stopped
+        - Error
+        - StalledUpload
+        - StalledDownload
       create_time: 100000000
       free_space:
         path: .
