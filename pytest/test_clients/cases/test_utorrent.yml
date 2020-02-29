@@ -9,7 +9,15 @@ task:
     strategy1:
       excluded_categories: cata1
       excluded_trackers: tracker2
-      excluded_status: Error
+      # Test status
+      status:
+        - Downloading
+        - Uploading
+        - Checking
+        - Queued
+        - Paused
+        - Stopped
+        - Error
       free_space:
         path: .
         min: 100000000
