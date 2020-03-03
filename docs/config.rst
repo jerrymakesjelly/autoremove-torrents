@@ -223,58 +223,74 @@ Use the removing condition keywords directly. There are 18 remove conditions.
 
    As long as a chosen torrent satisfies one of these conditions, it will be removed.
 
-The first 15 conditions are here.
+The first 15 conditions are here. In order to avoid torrents being mistakenly deleted, some conditions are only available for certain torrent status.
 
 .. list-table::
    :header-rows: 1
    
    * - Condition
      - Unit
+     - Available Status
      - Description
    * - ``ratio``
      -
+     - All
      - Maximum ratio
    * - ``create_time``
      - Second
+     - All
      - The maximum time elapsed since the torrent was added to the client. When a torrent reaches the limit, it will be removed (no matter what state it is).
    * - ``seeding_time``
      - Second
+     - All
      - Maximum seeding time of a torrent.
    * - ``max_downloadspeed``
      - KiB/s
+     - Downloading
      - Maximum download speed of a torrent. Torrents that exceed the limitation will be removed.
    * - ``min_uploadspeed``
      - KiB/s
+     - Downloading or Uploading
      - Minimum upload speed of a torrent. Torrents below this speed will be removed.
    * - ``max_average_downloadspeed``
      - KiB/s
+     - All
      - Maximum average download speed. Just like ``max_downloadspeed``.
    * - ``min_average_uploadspeed``
      - KiB/s
+     - All
      - Minimum average upload speed. Just like ``min_uploadspeed``.
    * - ``max_size``
      - GiB
+     - All
      - Torrent size limitation. Remove those torrents whose size exceeds the limit.
    * - ``max_seeder``
      - 
+     - All
      - Maximum number of seeders. When the seeders exceeds the limitation, the torrent will be removed.
    * - ``min_leecher``
      - 
+     - All
      - Minimum number of leechers. When the number of leechers is less than the settings, the torrent will be removed.
    * - ``max_connected_seeder``
      -
+     - Downloading or Uploading
      - Maximum number of connected seeders. Just like ``max_seeder``.
    * - ``min_connected_leecher``
      -
+     - Downloading or Uploading
      - Minimum number of connected leechers. Just like ``min_leecher``.
    * - ``last_activity``
      - Second
+     - All
      - The maximum time allowed since a torrent has stopped being active, that is, the maximum time without uploading or downloading. When the torrent reaches the limit, it will be removed.
    * - ``max_progress``
      - Percent (%)
+     - All
      - The maximum download progress. The maximum value is 100.
    * - ``upload_ratio``
      - 
+     - All
      - The maximum upload ratio. Note that the upload ratio here is different from the ratio. For each torrent, the upload ratio is ``uploaded size`` divided by its ``size``.
 
 Beside these condition, the other 3 remove conditions are here. The rest of the torrents will be removed if they trigger these conditions.
@@ -385,58 +401,78 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
 
 1. ``<Parameter> <Comparison Operator> <Value>``
 
-   ``Parameter``: Available parameters are as follows, and they are case-insensitive. More parameters will be added to the program later.
+   ``Parameter``: Available parameters are as follows, and they are case-insensitive. 
+   
+   .. note::
+   
+       Some properties can only be used in specific status. The torrents not in available status will not be removed.
 
    .. list-table::
       :header-rows: 1
        
       * - Parameter
         - Unit
+        - Available Status
         - Description
       * - ``average_downloadspeed``
         - KiB/s
+        - All
         - Average download speed.
       * - ``average_uploadspeed``
         - KiB/s
+        - All
         - Average upload speed.
       * - ``connected_leecher``
         - /
+        - Downloading or Uploading
         - The number of connected leecher.
       * - ``connected_seeder``
         - /
+        - Downloading or Uploading
         - The number of connected seeder.
       * - ``create_time``
         - Second
+        - All
         - The elapsed time since the torrent was added to the client.
       * - ``download_speed``
         - KiB/s
+        - Downloading
         - Download speed.
       * - ``last_activity``
         - Second
+        - All
         - The elapsed time since the torrent has stopped being active (without uploading or downloading).
       * - ``leecher``
         - /
+        - All
         - The number of leechers.
       * - ``progress``
         - %
+        - All
         - The download progress.
       * - ``ratio``
         - /
+        - All
         - Ratio
       * - ``seeder``
         - /
+        - All
         - The number of seeders.
       * - ``seeding_time``
         - Second
+        - All
         - Seeding time.
       * - ``size``
         - GiB
+        - All
         - The torrent size.
       * - ``upload_ratio``
         - /
+        - All
         - uploaded size / size
       * - ``upload_speed``
         - /
+        - Downloading or Uploading
         - Upload Speed
 
    ``Comparison Operator``: Available parameters are as follows. This program doesn't provide the ``equal`` sign, because the status data of the torrents change quickly, and usually it's meaningless to set a specific value.
