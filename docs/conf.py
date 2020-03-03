@@ -10,11 +10,12 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-import sphinx_rtd_theme
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..')) # For __version__ constant
 
+import sphinx_rtd_theme
+from autoremovetorrents.version import __version__
 
 # -- Project information -----------------------------------------------------
 
@@ -23,7 +24,7 @@ copyright = '2020, jerrymakesjelly'
 author = 'jerrymakesjelly'
 
 # The full version, including alpha/beta/rc tags
-release = '1.4.9'
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------
