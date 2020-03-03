@@ -471,7 +471,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - All
         - uploaded size / size
       * - ``upload_speed``
-        - /
+        - KiB/s
         - Downloading or Uploading
         - Upload Speed
 
