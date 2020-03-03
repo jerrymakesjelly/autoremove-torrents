@@ -5,6 +5,10 @@ Configuration
 
 Before we run ``autoremove-torrents``, we need to create a ``config.yml`` to save our configurations.
 
+.. warning::
+
+    In order to avoid the torrents being mistakenly deleted, we highly recommend you to run ``autoremove-torrents --view`` once to preview the results after modifying the configuration file.
+
 The script uses the YAML language as the language of the configuration file. The YAML language has a clear structure, so I think it's more friendly than the JSON and easy to learn.
 
 Look at the example please, the task block can be divided into 3 parts.
@@ -528,4 +532,4 @@ Remember to check your configuration file and make sure it works as you think. U
 
 .. code-block:: bash
 
-   python3 main.py --view
+   autoremove-torrents --view
