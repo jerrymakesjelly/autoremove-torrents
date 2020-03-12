@@ -7,6 +7,7 @@ from . import logger
 from .client.qbittorrent import qBittorrent
 from .client.transmission import Transmission
 from .client.utorrent import uTorrent
+from .client.deluge import Deluge
 from .exception.nosuchclient import NoSuchClient
 from .strategy import Strategy
 from autoremovetorrents.torrent import Torrent
@@ -53,8 +54,8 @@ class Task(object):
     # Login client
     def _login(self):
         # Find the type of client
-        clients = [qBittorrent, Transmission, uTorrent]
-        client_names = ['qbittorrent', 'transmission', 'utorrent']
+        clients = [qBittorrent, Transmission, uTorrent, Deluge]
+        client_names = ['qbittorrent', 'transmission', 'utorrent', 'deluge']
         for i in range(0, len(client_names)):
             if self._client_name == client_names[i]:
                 self._client = clients[i](self._host)

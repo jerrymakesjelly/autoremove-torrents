@@ -27,7 +27,8 @@ setup(name = 'autoremove-torrents',
         'pyyaml',
         'enum34',
         'ply',
-        'psutil'
+        'psutil',
+        'deluge-client',
     ],
     entry_points = {
         'console_scripts':[
