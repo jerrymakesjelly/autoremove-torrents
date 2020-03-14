@@ -67,7 +67,9 @@ class Deluge(object):
         # Get torrent list (and their properties)
         torrent_list = self._call('core.get_torrents_status', {}, [
             'active_time',
+            'all_time_download',
             'download_payload_rate',
+            'finished_time',
             'hash',
             'name',
             'num_peers',
@@ -77,6 +79,7 @@ class Deluge(object):
             'seeding_time',
             'state',
             'time_added',
+            'time_since_transfer',
             'total_peers',
             'total_seeds',
             'total_size',
@@ -117,6 +120,12 @@ class Deluge(object):
         torrent_obj.leecher = torrent['total_peers']
         torrent_obj.connected_leecher = torrent['num_peers']
         torrent_obj.average_upload_speed = torrent['total_uploaded'] / torrent['active_time'] if torrent['active_time'] > 0 else 0
+        if 'finished_time' in torrent:
+            download_time = torrent['active_time'] - torrent['finished_time']
+            torrent_obj.average_download_speed = torrent['all_time_download'] / download_time if download_time > 0 else 0
+        if 'time_since_transfer' in torrent:
+            # Set the last active time of those never active torrents to timestamp 0
+            torrent_obj.last_activity = torrent['time_since_transfer'] if torrent['time_since_transfer'] > 0 else 0
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
 
         return torrent_obj
