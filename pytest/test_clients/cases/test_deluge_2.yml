@@ -1,0 +1,44 @@
+task:
+  client: deluge
+  host: $(DELUGE_2_HOST)
+  username: $(DELUGE_2_USERNAME)
+  password: $(DELUGE_2_PASSWORD)
+  # This strategy is used to check whether all the filters and conditions can work correctly.
+  # The test will be failed if one or more of the following properties are not provided.
+  strategies:
+    strategy1:
+      excluded_trackers: tracker2
+      # Test status
+      status:
+        - Downloading
+        - Uploading
+        - Checking
+        - Queued
+        - Paused
+        - Error
+      create_time: 100000000
+      free_space:
+        path: .
+        min: 100000000
+        action: remove-old-seeds
+      last_activity: 10000000000
+      max_average_downloadsped: 1000000000
+      max_connected_seeder: 100000000
+      max_downloadspeed: 100000000
+      max_progress: 100000000
+      max_seeder: 100000000
+      maximum_number:
+        limit: 100000000
+        action: remove-big-seeds
+      min_average_uploadspeed: -1
+      min_connected_leecher: -1
+      min_leecher: -1
+      min_uploadspeed: -1
+      ratio: 100000000
+      remove: ratio > 100000000
+      seed_size:
+        limit: 100000000
+        action: remove-small-seeds
+      seeding_time: 100000000
+      size: 100000000
+      upload_ratio: 100000000

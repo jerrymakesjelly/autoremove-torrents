@@ -1,0 +1,10 @@
+task:
+  client: deluge
+  host: $(DELUGE_1_HOST)
+  username: $(DELUGE_1_USERNAME)
+  password: $(DELUGE_1_PASSWORD)
+  delete_data: true
+  force_delete:
+    - a_hash
+exceptions:
+  - DeletionFailure # The hash 'a_hash' is actually inexistent, therefore an exception will be raised.
