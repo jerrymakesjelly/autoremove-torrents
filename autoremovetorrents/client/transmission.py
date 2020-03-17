@@ -150,18 +150,18 @@ class Transmission(object):
                 TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
             ][state]
 
-    # Remove Torrent
-    def remove_torrent(self, torrent_hash):
+    # Batch Remove Torrents
+    def remove_torrents(self, torrent_hash_list):
         try:
             self._make_transmission_request('torrent-remove',
-                    {'ids':[torrent_hash], 'delete-local-data':False})
+                    {'ids':torrent_hash_list, 'delete-local-data':False})
         except Exception as e:
-            raise DeletionFailure('Cannot delete torrent %s. %s' % (torrent_hash, str(e)))
+            raise DeletionFailure('Cannot delete torrents %s. Reason: %s' % (','.join(torrent_hash_list), str(e)))
     
-    # Remove Data
-    def remove_data(self, torrent_hash):
+    # Batch Remove Data
+    def remove_data(self, torrent_hash_list):
         try:
             self._make_transmission_request('torrent-remove',
-                    {'ids':[torrent_hash], 'delete-local-data':True})
+                    {'ids':torrent_hash_list, 'delete-local-data':True})
         except Exception as e:
-            raise DeletionFailure('Cannot delete torrent %s and its data. %s' % (torrent_hash, str(e)))
+            raise DeletionFailure('Cannot delete torrent %s and their data. Reason: %s' % (','.join(torrent_hash_list), str(e)))

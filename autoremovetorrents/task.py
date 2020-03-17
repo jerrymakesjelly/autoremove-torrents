@@ -93,13 +93,16 @@ class Task(object):
 
     # Remove torrents
     def _remove_torrents(self):
-        for torrent in self._remove:
-            if self._delete_data:
-                self._client.remove_data(torrent.hash)
-                self._logger.info('The torrent %s and its data have been removed.', torrent.name)
-            else:
-                self._client.remove_torrent(torrent.hash)
-                self._logger.info('The torrent %s has been removed.', torrent.name)
+        delete_list = [torrent.hash for torrent in self._remove]
+        name_list = [torrent.name for torrent in self._remove]
+        if self._delete_data:
+            self._client.remove_data(delete_list)
+            for name in name_list:
+                self._logger.info('The torrent %s and its data have been removed.', name)
+        else:
+            self._client.remove_torrents(delete_list)
+            for name in name_list:
+                self._logger.info('The torrent %s has been removed.', name)
 
     # Execute
     def execute(self):

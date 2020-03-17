@@ -135,16 +135,16 @@ class uTorrent(object):
             status = TorrentStatus.Unknown
         return status
     
-    # Remove Torrent
-    def remove_torrent(self, torrent_hash):
+    # Batch Remove Torrents
+    def remove_torrents(self, torrent_hash_list):
         request = self._session.get(self._host+'/gui/',
-            params={'action':'remove', 'token':self._token, 'hash':torrent_hash})
+            params={'action':'remove', 'token':self._token, 'hash':torrent_hash_list})
         if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s. The server responses HTTP %d.' % (torrent_hash, request.status_code))
+            raise DeletionFailure('Cannot delete torrents %s. The server responses HTTP %d.' % (','.join(torrent_hash_list), request.status_code))
     
-    # Remove Torrent and Data
-    def remove_data(self, torrent_hash):
+    # Batch Remove Torrents and Data
+    def remove_data(self, torrent_hash_list):
         request = self._session.get(self._host+'/gui/',
-            params={'action':'removedata', 'token':self._token, 'hash':torrent_hash})
+            params={'action':'removedata', 'token':self._token, 'hash':torrent_hash_list})
         if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s and its data. The server responses HTTP %d.' % (torrent_hash, request.status_code))
+            raise DeletionFailure('Cannot delete torrents %s and their data. The server responses HTTP %d.' % (','.join(torrent_hash_list), request.status_code))

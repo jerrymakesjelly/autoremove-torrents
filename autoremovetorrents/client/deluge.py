@@ -147,16 +147,38 @@ class Deluge(object):
             'Seeding': TorrentStatus.Uploading,
         }[state]
     
-    # Remove Torrent
-    def remove_torrent(self, torrent_hash):
-        try:
-            self._call('core.remove_torrent', torrent_hash, False)
-        except RemoteFailure as e:
-            raise DeletionFailure('Cannot delete torrent %s. Reason: %s.' % (torrent_hash, e.args[0]))
+    # Batch Remove Torrents
+    def remove_torrents(self, torrent_hash_list):
+        if self._client.deluge_version >= 2: # Method 'core.remove_torrents' is only available in Deluge 2.x
+            failures_list = self._call('core.remove_torrents', torrent_hash_list, False)
+            if len(failures_list) > 0:
+                raise DeletionFailure('Cannot delete torrents %s. Reasons: %s.' % (
+                    ','.join([torrent[0] for torrent in failures_list]),
+                    ','.join([torrent[1] for torrent in failures_list]),
+                ))
+        else:
+            for torrent in torrent_hash_list: # Remove torrents one by one
+                try:
+                    self._call('core.remove_torrent', torrent, False)
+                except RemoteFailure as e:
+                    raise DeletionFailure('Cannot delete torrent %s. Reason: %s.' % (
+                        torrent, e.args[0]
+                    ))
     
-    # Remove Torrent and Data
-    def remove_data(self, torrent_hash):
-        try:
-            self._call('core.remove_torrent', torrent_hash, True)
-        except RemoteFailure as e:
-            raise DeletionFailure('Cannot delete torrent %s and its data. Reason: %s.' % (torrent_hash, e.args[0]))
+    # Batch Remove Torrents and Data
+    def remove_data(self, torrent_hash_list):
+        if self._client.deluge_version >= 2: # Method 'core.remove_torrents' is only available in Deluge 2.x
+            failures_list = self._call('core.remove_torrents', torrent_hash_list, True)
+            if len(failures_list) > 0:
+                raise DeletionFailure('Cannot delete torrents %s and their data. Reasons: %s.' % (
+                    ','.join([torrent[0] for torrent in failures_list]),
+                    ','.join([torrent[1] for torrent in failures_list]),
+                ))
+        else:
+            for torrent in torrent_hash_list: # Remove torrents one by one
+                try:
+                    self._call('core.remove_torrent', torrent, True)
+                except RemoteFailure as e:
+                    raise DeletionFailure('Cannot delete torrent %s and its data. Reason: %s.' % (
+                        torrent, e.args[0]
+                    ))
