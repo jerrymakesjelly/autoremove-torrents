@@ -142,6 +142,9 @@ class uTorrent(object):
             True: 'removedata',
             False: 'remove',
         }
+        # According to the tests, it looks like uTorrent can accept a very long URL
+        # (more than 10,000 torrents per request)
+        # Therefore we needn't to set a URL length limitation
         request = self._session.get(self._host+'/gui/',
             params={'action': actions[remove_data], 'token': self._token, 'hash': torrent_hash_list})
         # Note: uTorrent doesn't report the status of each torrent
