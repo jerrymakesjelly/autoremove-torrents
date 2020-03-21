@@ -221,13 +221,15 @@ class qBittorrent(object):
         return status
     
     # Batch Remove Torrents
-    def remove_torrents(self, torrent_hash_list):
-        request = self._request_handler.delete_torrents(torrent_hash_list)
+    # Return values: (success_hash_list, failed_list -> {hash: reason, ...})
+    def remove_torrents(self, torrent_hash_list, remove_data):
+        request = self._request_handler.delete_torrents_and_data(torrent_hash_list) if remove_data \
+            else self._request_handler.delete_torrents(torrent_hash_list)
         if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrents %s. The server responses HTTP %d.' % ('|'.join(torrent_hash_list), request.status_code))
-    
-    # Batch Remove Torrent and Data
-    def remove_data(self, torrent_hash_list):
-        request = self._request_handler.delete_torrents_and_data(torrent_hash_list)
-        if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s and its data. The server responses HTTP %d.' % ('|'.join(torrent_hash_list), request.status_code))
+            return ([], [{
+                'hash': torrent,
+                'reason': 'The server responses HTTP %d.' % request.status_code,
+            } for torrent in torrent_hash_list])
+        # Some of them may fail but we can't judge them,
+        # So we consider all of them as successful.
+        return (torrent_hash_list, [])

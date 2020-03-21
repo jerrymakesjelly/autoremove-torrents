@@ -136,15 +136,19 @@ class uTorrent(object):
         return status
     
     # Batch Remove Torrents
-    def remove_torrents(self, torrent_hash_list):
+    # Return values: (success_hash_list, failed_hash_list : {hash: failed_reason, ...})
+    def remove_torrents(self, torrent_hash_list, remove_data):
+        actions = {
+            True: 'removedata',
+            False: 'remove',
+        }
         request = self._session.get(self._host+'/gui/',
-            params={'action':'remove', 'token':self._token, 'hash':torrent_hash_list})
+            params={'action': actions[remove_data], 'token': self._token, 'hash': torrent_hash_list})
+        # Note: uTorrent doesn't report the status of each torrent
+        # We think that all the torrents are removed when the request is sent successfully
         if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrents %s. The server responses HTTP %d.' % (','.join(torrent_hash_list), request.status_code))
-    
-    # Batch Remove Torrents and Data
-    def remove_data(self, torrent_hash_list):
-        request = self._session.get(self._host+'/gui/',
-            params={'action':'removedata', 'token':self._token, 'hash':torrent_hash_list})
-        if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrents %s and their data. The server responses HTTP %d.' % (','.join(torrent_hash_list), request.status_code))
+            return ([], [{
+                'hash': torrent,
+                'reason': 'The server responses HTTP %d.' % request.status_code,
+            } for torrent in torrent_hash_list])
+        return (torrent_hash_list, [])

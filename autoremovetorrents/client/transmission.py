@@ -151,17 +151,16 @@ class Transmission(object):
             ][state]
 
     # Batch Remove Torrents
-    def remove_torrents(self, torrent_hash_list):
+    # Return values: (success_hash_list, failed_hash_list : {hash: reason, ...})
+    def remove_torrents(self, torrent_hash_list, remove_data):
         try:
             self._make_transmission_request('torrent-remove',
-                    {'ids':torrent_hash_list, 'delete-local-data':False})
+                {'ids': torrent_hash_list, 'delete-local-data': remove_data})
         except Exception as e:
-            raise DeletionFailure('Cannot delete torrents %s. Reason: %s' % (','.join(torrent_hash_list), str(e)))
-    
-    # Batch Remove Data
-    def remove_data(self, torrent_hash_list):
-        try:
-            self._make_transmission_request('torrent-remove',
-                    {'ids':torrent_hash_list, 'delete-local-data':True})
-        except Exception as e:
-            raise DeletionFailure('Cannot delete torrent %s and their data. Reason: %s' % (','.join(torrent_hash_list), str(e)))
+            # We couldn't judge which torrents are removed and which aren't when an exception was raised
+            # Therefore we think all the deletion have been failed
+            return ([], [{
+                'hash': torrent,
+                'reason': str(e),
+            } for torrent in torrent_hash_list])
+        return (torrent_hash_list, [])
