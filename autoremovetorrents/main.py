@@ -44,7 +44,7 @@ def pre_processor(argv):
         lg.info('Auto Remove Torrents %s' % __version__)
         # Load configurations
         lg.info('Loading configurations...')
-        with open(conf_path, 'r') as stream:
+        with open(conf_path, 'r', encoding='utf-8') as stream:
             result = yaml.safe_load(stream)
         lg.info('Found %d task(s) in the file.' % len(result))
 
