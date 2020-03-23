@@ -54,19 +54,22 @@ class Task(object):
     # Login client
     def _login(self):
         # Find the type of client
-        clients = [qBittorrent, Transmission, uTorrent, Deluge]
-        client_names = ['qbittorrent', 'transmission', 'utorrent', 'deluge']
-        for i in range(0, len(client_names)):
-            if self._client_name == client_names[i]:
-                self._client = clients[i](self._host)
-                break
+        clients = {
+            'qbittorrent': qBittorrent,
+            'transmission': Transmission,
+            'utorrent': uTorrent,
+            'deluge': Deluge,
+        }
+        self._client_name = self._client_name.lower() # Set the client name to be case insensitive
+        if self._client_name not in clients:
+            raise NoSuchClient("The client `%s` doesn't exist." % self._client_name)
+        
+        # Initialize client object
+        self._client = clients[self._client_name](self._host)
 
         # Login
         self._logger.info('Logging in...')
-        if self._client != None:
-            self._client.login(self._username, self._password)
-        else:
-            raise NoSuchClient("The client `%s` doesn't exist." % self._client_name)
+        self._client.login(self._username, self._password)
         self._logger.info('Login successfully. The client is %s.' % self._client.version())
         self._logger.info('WebUI API version: %s' % self._client.api_version())
 
