@@ -57,7 +57,8 @@ class Task(object):
         clients = {
             'qbittorrent': qBittorrent,
             'transmission': Transmission,
-            'utorrent': uTorrent,
+            'μtorrent': uTorrent, 
+            'utorrent': uTorrent, # Alias for μTorrent
             'deluge': Deluge,
         }
         self._client_name = self._client_name.lower() # Set the client name to be case insensitive
