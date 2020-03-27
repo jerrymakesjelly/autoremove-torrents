@@ -54,12 +54,13 @@ class Task(object):
     # Login client
     def _login(self):
         # Find the type of client
+        # Use unicode type for Python 2.7
         clients = {
-            'qbittorrent': qBittorrent,
-            'transmission': Transmission,
-            'μtorrent': uTorrent, 
-            'utorrent': uTorrent, # Alias for μTorrent
-            'deluge': Deluge,
+            u'qbittorrent': qBittorrent,
+            u'transmission': Transmission,
+            u'μtorrent': uTorrent, 
+            u'utorrent': uTorrent, # Alias for μTorrent
+            u'deluge': Deluge,
         }
         self._client_name = self._client_name.lower() # Set the client name to be case insensitive
         if self._client_name not in clients:
