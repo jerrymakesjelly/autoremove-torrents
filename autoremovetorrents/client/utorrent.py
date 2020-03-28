@@ -1,11 +1,9 @@
 #-*- coding:utf-8 -*-
 import re
 import time
-from requests.auth import HTTPBasicAuth
 import requests
 from ..torrent import Torrent
 from autoremovetorrents.exception.connectionfailure import ConnectionFailure
-from autoremovetorrents.exception.deletionfailure import DeletionFailure
 from autoremovetorrents.exception.loginfailure import LoginFailure
 from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
 from autoremovetorrents.exception.remotefailure import RemoteFailure
@@ -38,7 +36,7 @@ class uTorrent(object):
         
         pattern = re.compile('<[^>]+>')
         text = request.text
-        if request.status_code == 200:     
+        if request.status_code == 200:
             self._token = pattern.sub('', text)
         elif request.status_code == 401: # Error
             raise LoginFailure('401 Unauthorized.')
@@ -73,7 +71,7 @@ class uTorrent(object):
         for torrent in result['torrents']:
             torrents_hash.append(torrent[0])
         return torrents_hash
-    
+
     # Get Torrent Job Properties
     def _torrent_job_properties(self, torrent_hash):
         request = self._session.get(self._host+'/gui/',
@@ -108,7 +106,7 @@ class uTorrent(object):
                 torrent_obj.leecher = torrent[13]
                 torrent_obj.connected_leecher = torrent[12]
                 torrent_obj.progress = torrent[4]
-                
+
                 return torrent_obj
         # Not Found
         raise NoSuchTorrent('No such torrent.')
@@ -134,17 +132,24 @@ class uTorrent(object):
         else:
             status = TorrentStatus.Unknown
         return status
-    
-    # Remove Torrent
-    def remove_torrent(self, torrent_hash):
+
+    # Batch Remove Torrents
+    # Return values: (success_hash_list, failed_hash_list : {hash: failed_reason, ...})
+    def remove_torrents(self, torrent_hash_list, remove_data):
+        actions = {
+            True: 'removedata',
+            False: 'remove',
+        }
+        # According to the tests, it looks like uTorrent can accept a very long URL
+        # (more than 10,000 torrents per request)
+        # Therefore we needn't to set a URL length limitation
         request = self._session.get(self._host+'/gui/',
-            params={'action':'remove', 'token':self._token, 'hash':torrent_hash})
+            params={'action': actions[remove_data], 'token': self._token, 'hash': torrent_hash_list})
+        # Note: uTorrent doesn't report the status of each torrent
+        # We think that all the torrents are removed when the request is sent successfully
         if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s. The server responses HTTP %d.' % (torrent_hash, request.status_code))
-    
-    # Remove Torrent and Data
-    def remove_data(self, torrent_hash):
-        request = self._session.get(self._host+'/gui/',
-            params={'action':'removedata', 'token':self._token, 'hash':torrent_hash})
-        if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s and its data. The server responses HTTP %d.' % (torrent_hash, request.status_code))
+            return ([], [{
+                'hash': torrent,
+                'reason': 'The server responses HTTP %d.' % request.status_code,
+            } for torrent in torrent_hash_list])
+        return (torrent_hash_list, [])

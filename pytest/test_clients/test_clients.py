@@ -4,7 +4,6 @@ import yaml
 from autoremovetorrents import logger
 from autoremovetorrents.task import Task
 from autoremovetorrents.exception.connectionfailure import ConnectionFailure
-from autoremovetorrents.exception.deletionfailure import DeletionFailure
 from autoremovetorrents.exception.loginfailure import LoginFailure
 from autoremovetorrents.exception.nosuchclient import NoSuchClient
 from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
@@ -18,7 +17,6 @@ def test_client(env_dist):
     # Mapping of exceptions
     exception_map = {
         ConnectionFailure: 'ConnectionFailure',
-        DeletionFailure: 'DeletionFailure',
         LoginFailure: 'LoginFailure',
         NoSuchClient: 'NoSuchClient',
         NoSuchTorrent: 'NoSuchTorrent',
@@ -40,7 +38,7 @@ def test_client(env_dist):
 
             # Make take and run
             try:
-                Task(file, conf['task'], False).execute()
+                Task(file, conf['task'], True).execute()
                 if 'exceptions' in conf and len(conf['exceptions']) > 0: # No exceptions was raised
                     raise AssertionError("It didn't raise exceptions as expected")
             except Exception as e:

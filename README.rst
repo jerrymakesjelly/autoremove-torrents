@@ -111,6 +111,13 @@ Screenshot
 
 Changelog
 ----------
+**Fri, 27 Mar 2020**: Version 1.5.2.
+
+* Support Deluge. (#8)
+* Use batch delete to improve efficiency.
+* Fix multi-language support in config file. (#69)
+* Set the client names to be case-insensitive.
+
 **Sat, 29 Feb 2020**: Version 1.5.1.
 
 * Fix missing status ``StalledUpload`` and ``StalledDownload`` in version 1.5.0. (#66)

@@ -4,7 +4,6 @@ import time
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
-from ..exception.deletionfailure import DeletionFailure
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.incompatibleapi import IncompatibleAPIVersion
 
@@ -50,13 +49,13 @@ class qBittorrent(object):
         def torrent_trackers(self, torrent_hash):
             return self._session.get(self._host+'/query/propertiesTrackers/'+torrent_hash)
         
-        # Delete torrent
-        def delete_torrent(self, torrent_hash):
-            return self._session.post(self._host+'/command/delete', data={'hashes':torrent_hash})
+        # Batch Delete torrents
+        def delete_torrents(self, torrent_hash_list):
+            return self._session.post(self._host+'/command/delete', data={'hashes':'|'.join(torrent_hash_list)})
         
-        # Delete torrent and data
-        def delete_torrent_and_data(self, torrent_hash):
-            return self._session.post(self._host+'/command/deletePerm', data={'hashes':torrent_hash})
+        # Batch Delete torrents and data
+        def delete_torrents_and_data(self, torrent_hash_list):
+            return self._session.post(self._host+'/command/deletePerm', data={'hashes':'|'.join(torrent_hash_list)})
 
     # API Handler for v2
     class qBittorrentAPIHandlerV2(object):
@@ -99,13 +98,13 @@ class qBittorrent(object):
         def torrent_trackers(self, torrent_hash):
             return self._session.get(self._host+'/api/v2/torrents/trackers', params={'hash':torrent_hash})
         
-        # Delete torrent
-        def delete_torrent(self, torrent_hash):
-            return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':torrent_hash, 'deleteFiles': False})
+        # Batch Delete torrents
+        def delete_torrents(self, torrent_hash_list):
+            return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':'|'.join(torrent_hash_list), 'deleteFiles': False})
         
-        # Delete torrent and data
-        def delete_torrent_and_data(self, torrent_hash):
-            return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':torrent_hash, 'deleteFiles': True})
+        # Batch Delete torrents and data
+        def delete_torrents_and_data(self, torrent_hash_list):
+            return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':'|'.join(torrent_hash_list), 'deleteFiles': True})
 
     def __init__(self, host):
         # Torrents list cache
@@ -220,14 +219,16 @@ class qBittorrent(object):
             status = TorrentStatus.Unknown
         return status
     
-    # Remove Torrent
-    def remove_torrent(self, torrent_hash):
-        request = self._request_handler.delete_torrent(torrent_hash)
+    # Batch Remove Torrents
+    # Return values: (success_hash_list, failed_list -> {hash: reason, ...})
+    def remove_torrents(self, torrent_hash_list, remove_data):
+        request = self._request_handler.delete_torrents_and_data(torrent_hash_list) if remove_data \
+            else self._request_handler.delete_torrents(torrent_hash_list)
         if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s. The server responses HTTP %d.' % (torrent_hash, request.status_code))
-    
-    # Remove Torrent and Data
-    def remove_data(self, torrent_hash):
-        request = self._request_handler.delete_torrent_and_data(torrent_hash)
-        if request.status_code != 200:
-            raise DeletionFailure('Cannot delete torrent %s and its data. The server responses HTTP %d.' % (torrent_hash, request.status_code))
+            return ([], [{
+                'hash': torrent,
+                'reason': 'The server responses HTTP %d.' % request.status_code,
+            } for torrent in torrent_hash_list])
+        # Some of them may fail but we can't judge them,
+        # So we consider all of them as successful.
+        return (torrent_hash_list, [])

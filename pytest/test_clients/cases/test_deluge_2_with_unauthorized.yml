@@ -1,0 +1,6 @@
+task:
+  client: deluge
+  host: $(DELUGE_2_HOST)
+  password: deluge
+exceptions:
+  - LoginFailure

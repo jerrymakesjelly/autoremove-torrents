@@ -1,10 +1,8 @@
 #-*- coding:utf-8 -*-
 import requests
-from requests.auth import HTTPBasicAuth
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.connectionfailure import ConnectionFailure
-from ..exception.deletionfailure import DeletionFailure
 from ..exception.loginfailure import LoginFailure
 from ..exception.nosuchclient import NoSuchClient
 from ..exception.remotefailure import RemoteFailure
@@ -150,18 +148,17 @@ class Transmission(object):
                 TorrentStatus.Unknown # 7:ISOLATED(Torrent can't find peers)
             ][state]
 
-    # Remove Torrent
-    def remove_torrent(self, torrent_hash):
+    # Batch Remove Torrents
+    # Return values: (success_hash_list, failed_hash_list : {hash: reason, ...})
+    def remove_torrents(self, torrent_hash_list, remove_data):
         try:
             self._make_transmission_request('torrent-remove',
-                    {'ids':[torrent_hash], 'delete-local-data':False})
+                {'ids': torrent_hash_list, 'delete-local-data': remove_data})
         except Exception as e:
-            raise DeletionFailure('Cannot delete torrent %s. %s' % (torrent_hash, str(e)))
-    
-    # Remove Data
-    def remove_data(self, torrent_hash):
-        try:
-            self._make_transmission_request('torrent-remove',
-                    {'ids':[torrent_hash], 'delete-local-data':True})
-        except Exception as e:
-            raise DeletionFailure('Cannot delete torrent %s and its data. %s' % (torrent_hash, str(e)))
+            # We couldn't judge which torrents are removed and which aren't when an exception was raised
+            # Therefore we think all the deletion have been failed
+            return ([], [{
+                'hash': torrent,
+                'reason': str(e),
+            } for torrent in torrent_hash_list])
+        return (torrent_hash_list, [])
