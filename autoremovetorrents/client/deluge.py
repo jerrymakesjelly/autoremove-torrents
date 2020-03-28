@@ -21,7 +21,7 @@ class Deluge(object):
         self._refresh_expire_time = 30
         # Last Time of Refreshing Cache
         self._last_refresh = 0
-    
+
     # Login to Deluge
     def login(self, username, password):
         # Split IP(or domain name) and port
@@ -36,7 +36,7 @@ class Deluge(object):
         except DelugeClientException as e:
             # Display class name of the exception if there is no error messages
             raise LoginFailure(e.args[0].split('\n')[0] if len(e.args) > 0 else e.__class__.__name__)
-    
+
     # A caller to call deluge api; includes exception processing
     def _call(self, method, *args, **kwargs):
         try:
@@ -44,7 +44,7 @@ class Deluge(object):
         except DelugeClientException as e:
             # Raise our own exception
             raise RemoteFailure(e.args[0].split('\n')[0] if len(e.args) > 0 else e.__class__.__name__)
-    
+
     # Get Deluge version
     def version(self):
         funcs = {
@@ -94,7 +94,7 @@ class Deluge(object):
         for h in torrent_list:
             torrents_hash.append(h)
         return torrents_hash
-    
+
     # Get Torrent Properties
     def torrent_properties(self, torrent_hash):
         # Check cache expiration
@@ -131,7 +131,7 @@ class Deluge(object):
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
 
         return torrent_obj
-    
+
     # Judge Torrent Status
     @staticmethod
     def _judge_status(state):

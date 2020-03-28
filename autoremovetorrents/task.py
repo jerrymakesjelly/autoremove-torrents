@@ -57,14 +57,14 @@ class Task(object):
         clients = {
             u'qbittorrent': qBittorrent,
             u'transmission': Transmission,
-            u'μtorrent': uTorrent, 
+            u'μtorrent': uTorrent,
             u'utorrent': uTorrent, # Alias for μTorrent
             u'deluge': Deluge,
         }
         self._client_name = self._client_name.lower() # Set the client name to be case insensitive
         if self._client_name not in clients:
             raise NoSuchClient("The client `%s` doesn't exist." % self._client_name)
-        
+
         # Initialize client object
         self._client = clients[self._client_name](self._host)
 

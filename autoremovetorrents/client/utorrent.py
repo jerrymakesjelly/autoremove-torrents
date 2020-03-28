@@ -36,7 +36,7 @@ class uTorrent(object):
         
         pattern = re.compile('<[^>]+>')
         text = request.text
-        if request.status_code == 200:     
+        if request.status_code == 200:
             self._token = pattern.sub('', text)
         elif request.status_code == 401: # Error
             raise LoginFailure('401 Unauthorized.')
@@ -71,7 +71,7 @@ class uTorrent(object):
         for torrent in result['torrents']:
             torrents_hash.append(torrent[0])
         return torrents_hash
-    
+
     # Get Torrent Job Properties
     def _torrent_job_properties(self, torrent_hash):
         request = self._session.get(self._host+'/gui/',
@@ -106,7 +106,7 @@ class uTorrent(object):
                 torrent_obj.leecher = torrent[13]
                 torrent_obj.connected_leecher = torrent[12]
                 torrent_obj.progress = torrent[4]
-                
+
                 return torrent_obj
         # Not Found
         raise NoSuchTorrent('No such torrent.')
@@ -132,7 +132,7 @@ class uTorrent(object):
         else:
             status = TorrentStatus.Unknown
         return status
-    
+
     # Batch Remove Torrents
     # Return values: (success_hash_list, failed_hash_list : {hash: failed_reason, ...})
     def remove_torrents(self, torrent_hash_list, remove_data):
