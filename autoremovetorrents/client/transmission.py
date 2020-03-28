@@ -1,10 +1,8 @@
 #-*- coding:utf-8 -*-
 import requests
-from requests.auth import HTTPBasicAuth
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.connectionfailure import ConnectionFailure
-from ..exception.deletionfailure import DeletionFailure
 from ..exception.loginfailure import LoginFailure
 from ..exception.nosuchclient import NoSuchClient
 from ..exception.remotefailure import RemoteFailure

@@ -1,11 +1,9 @@
 #-*- coding:utf-8 -*-
 import re
 import time
-from requests.auth import HTTPBasicAuth
 import requests
 from ..torrent import Torrent
 from autoremovetorrents.exception.connectionfailure import ConnectionFailure
-from autoremovetorrents.exception.deletionfailure import DeletionFailure
 from autoremovetorrents.exception.loginfailure import LoginFailure
 from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
 from autoremovetorrents.exception.remotefailure import RemoteFailure

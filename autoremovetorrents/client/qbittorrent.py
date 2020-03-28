@@ -4,7 +4,6 @@ import time
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
-from ..exception.deletionfailure import DeletionFailure
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.incompatibleapi import IncompatibleAPIVersion
 

@@ -5,7 +5,6 @@ from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.remotefailure import RemoteFailure
-from ..exception.deletionfailure import DeletionFailure
 
 # Default port of Delgue
 DEFAULT_PORT = 58846

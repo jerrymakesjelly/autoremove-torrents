@@ -2,7 +2,6 @@
 import os
 import time
 import re
-import yaml
 from . import logger
 from .client.qbittorrent import qBittorrent
 from .client.transmission import Transmission
