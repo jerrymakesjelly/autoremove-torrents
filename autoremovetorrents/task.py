@@ -44,10 +44,10 @@ class Task(object):
 
         # Allow removing specified torrents
         if 'force_delete' in conf:
-            for hash in conf['force_delete']:
+            for hash_ in conf['force_delete']:
                 torrent_obj = Torrent()
-                torrent_obj.hash = hash
-                torrent_obj.name = hash
+                torrent_obj.hash = hash_
+                torrent_obj.name = hash_
                 self._remove.add(torrent_obj)
 
     # Login client
