@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from .sortbase import ConditionWithSort
-import psutil
-
+from autoremovetorrents.compatibility.disk_usage_ import disk_usage_
 
 class FreeSpaceCondition(ConditionWithSort):
     def __init__(self, settings):
@@ -13,7 +12,7 @@ class FreeSpaceCondition(ConditionWithSort):
     def apply(self, torrents):
         torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
-        _, _, free_space, _ = psutil.disk_usage(self._path)
+        free_space = disk_usage_(self._path)['free']
         for torrent in torrents:
             if free_space < self._min:
                 free_space += torrent.size
