@@ -1,0 +1,7 @@
+task:
+  client: deluge
+  host: $(DELUGE_1_HOST)
+  username: $(DELUGE_1_USERNAME)
+  password: $(DELUGE_1_PASSWORD)
+  force_delete:
+    - a_hash

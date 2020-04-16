@@ -58,12 +58,49 @@ Just name your task.
 Part 2: Login Information
 -------------------------
 
-This script works with your client's WebUI, and this part is your login inforamtion. 
+This part is your login inforamtion.
 
-* ``client``: Your client name. Now it supports qbittorrent/transmission/μTorrent.
-* ``host``: The URL of your client's WebUI, and the URL must have a socket (http:// or https://).
+For qBittorrent, Transmission or μTorrent
+++++++++++++++++++++++++++++++++++++++++++
+
+For qBittorrent/Transmission/μTorrent, this program works with your client's WebUI.
+
+* ``client``: Your client name. It's case-insensitive.
+* ``host``: The URL of your client's WebUI, and the URL must have a scheme (http:// or https://).
 * ``username``: The username of the WebUI.
 * ``password``: The password of the WebUI.
+
+For Deluge
++++++++++++
+
+This program accesses Deluge via its RPC protocol.
+
+* ``client``: Your client name. Here is Deluge.
+* ``host``: The IP address (or domain name) and the port number of your Deluge Daemon, for example, ``127.0.0.1:58846``.
+* ``username``: The username of the Deluge Daemon.
+* ``password``: The password of the Deluge Daemon.
+
+Example:
+
+.. code-block:: yaml
+
+   my_task:
+     client: deluge
+     host: 127.0.0.1:58846
+     username: localclient
+     password: 357a0d23f09b9f303f58846e41986b36fef2ac88
+
+.. note::
+
+   1. Don't write any schemes in ``host`` field. The program uses neither HTTP protocol nor HTTPS protocol to access Deluge.
+   2. The port number is the port number of the Deluge Daemon, not the WebUI. You can find it in the Connection Manager of your WebUI.
+   3. When you are running the autoremove-torrents and the Deluge on different computers, please make sure that your Deluge accepts remote connections. You can modify this setting at **Preferences -> Daemon -> Allow Remote Connections**.
+
+.. note::
+
+   Generally, you can find the username and password in ``~/.config/deluge/auth``. Also, you can create a new user by adding a new line to the end of the file.
+
+   For more information of the authentication, please visit https://dev.deluge-torrent.org/wiki/UserGuide/Authentication.
 
 Part 3: Strategy Block
 ----------------------

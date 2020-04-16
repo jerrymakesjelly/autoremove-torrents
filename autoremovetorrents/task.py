@@ -2,11 +2,11 @@
 import os
 import time
 import re
-import yaml
 from . import logger
 from .client.qbittorrent import qBittorrent
 from .client.transmission import Transmission
 from .client.utorrent import uTorrent
+from .client.deluge import Deluge
 from .exception.nosuchclient import NoSuchClient
 from .strategy import Strategy
 from autoremovetorrents.torrent import Torrent
@@ -44,28 +44,33 @@ class Task(object):
 
         # Allow removing specified torrents
         if 'force_delete' in conf:
-            for hash in conf['force_delete']:
+            for hash_ in conf['force_delete']:
                 torrent_obj = Torrent()
-                torrent_obj.hash = hash
-                torrent_obj.name = hash
+                torrent_obj.hash = hash_
+                torrent_obj.name = hash_
                 self._remove.add(torrent_obj)
 
     # Login client
     def _login(self):
         # Find the type of client
-        clients = [qBittorrent, Transmission, uTorrent]
-        client_names = ['qbittorrent', 'transmission', 'utorrent']
-        for i in range(0, len(client_names)):
-            if self._client_name == client_names[i]:
-                self._client = clients[i](self._host)
-                break
+        # Use unicode type for Python 2.7
+        clients = {
+            u'qbittorrent': qBittorrent,
+            u'transmission': Transmission,
+            u'μtorrent': uTorrent,
+            u'utorrent': uTorrent, # Alias for μTorrent
+            u'deluge': Deluge,
+        }
+        self._client_name = self._client_name.lower() # Set the client name to be case insensitive
+        if self._client_name not in clients:
+            raise NoSuchClient("The client `%s` doesn't exist." % self._client_name)
+
+        # Initialize client object
+        self._client = clients[self._client_name](self._host)
 
         # Login
         self._logger.info('Logging in...')
-        if self._client != None:
-            self._client.login(self._username, self._password)
-        else:
-            raise NoSuchClient("The client `%s` doesn't exist." % self._client_name)
+        self._client.login(self._username, self._password)
         self._logger.info('Login successfully. The client is %s.' % self._client.version())
         self._logger.info('WebUI API version: %s' % self._client.api_version())
 
@@ -92,13 +97,24 @@ class Task(object):
 
     # Remove torrents
     def _remove_torrents(self):
+        # Bulid a dict to store torrent hashes and names which to be deleted
+        delete_list = {}
         for torrent in self._remove:
-            if self._delete_data:
-                self._client.remove_data(torrent.hash)
-                self._logger.info('The torrent %s and its data have been removed.', torrent.name)
-            else:
-                self._client.remove_torrent(torrent.hash)
-                self._logger.info('The torrent %s has been removed.', torrent.name)
+            delete_list[torrent.hash] = torrent.name
+        # Run deletion
+        success, failed = self._client.remove_torrents([hash_ for hash_ in delete_list], self._delete_data)
+        # Output logs
+        for hash_ in success:
+            self._logger.info(
+                'The torrent %s and its data have been removed.' if self._delete_data \
+                else 'The torrent %s has been removed.',
+                delete_list[hash_]
+            )
+        for torrent in failed:
+            self._logger.error('The torrent %s and its data cannot be removed. Reason: %s' if self._delete_data \
+                else 'The torrent %s cannot be removed. Reason: %s',
+                delete_list[torrent['hash']], torrent['reason']
+            )
 
     # Execute
     def execute(self):
