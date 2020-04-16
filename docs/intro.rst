@@ -112,6 +112,11 @@ Supported Properties
      - ✓
      - ✓
      - ✓
+   * - Stall Status
+     - ✗
+     - ✓
+     - ✓
+     - ✗
    * - Status
      - ✓
      - ✓
