@@ -19,9 +19,8 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: ../../inst.rst:4
-#, fuzzy
 msgid "Install and Run"
-msgstr "手动卸载"
+msgstr "安装与运行"
 
 #: ../../inst.rst:7
 msgid "Install"
