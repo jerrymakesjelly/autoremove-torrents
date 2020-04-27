@@ -7,7 +7,7 @@ class SeederCondition(Condition):
         self._seeder = s
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(torrent.seeder, self._seeder, self._comparer):
                 self.remove.add(torrent)

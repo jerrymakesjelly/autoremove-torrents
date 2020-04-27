@@ -5,6 +5,8 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__))+"/../..")
 
 import pytest
 import json
+from autoremovetorrents.clientstatus import ClientStatus
+from autoremovetorrents.portstatus import PortStatus
 from autoremovetorrents.torrent import Torrent
 from autoremovetorrents.torrentstatus import TorrentStatus
 from autoremovetorrents.compatibility.open_ import open_
@@ -47,3 +49,18 @@ def test_env():
     with open_(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'environment.json'), encoding='utf-8') as f:
         env = json.load(f)
     return env
+
+@pytest.fixture(scope="module")
+def test_status():
+    cs = ClientStatus()
+    with open_(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'clientstatus.json'), encoding='utf-8') as f:
+        data = json.load(f)
+
+        cs.download_speed = data['download_speed']
+        cs.total_downloaded = data['total_downloaded']
+        cs.upload_speed = data['upload_speed']
+        cs.total_uploaded = data['total_uploaded']
+        cs.port_status = PortStatus[data['port_status']]
+        cs.free_space = lambda _: data['free_space']
+    
+    return cs

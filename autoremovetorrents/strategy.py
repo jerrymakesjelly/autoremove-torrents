@@ -70,7 +70,7 @@ class Strategy(object):
             ).apply(self.remain_list)
 
     # Apply Conditions
-    def _apply_conditions(self):
+    def _apply_conditions(self, client_status):
         # Condition collection
         conditions = {
             'create_time': CreateTimeCondition,
@@ -99,7 +99,7 @@ class Strategy(object):
                 # Applying condition processor
                 try:
                     cond = conditions[conf](self._conf[conf])
-                    cond.apply(self.remain_list)
+                    cond.apply(client_status, self.remain_list)
                 except AttributeError as e:
                     raise UnsupportedProperty(
                         "%s. Your client may not support this property, so the condition %s does not work." % \
@@ -110,13 +110,13 @@ class Strategy(object):
                 self.remove_list.update(cond.remove)
 
     # Execute this strategy
-    def execute(self, torrents):
+    def execute(self, client_status, torrents):
         self._logger.info('Running strategy %s...' % self._name)
         self.remain_list = torrents
         # Apply Filters
         self._apply_filters()
         # Apply Conditions
-        self._apply_conditions()
+        self._apply_conditions(client_status)
         # Print remove list
         self._logger.info("Total: %d torrent(s). %d torrent(s) can be removed." %
             (len(self.remain_list)+len(self.remove_list), len(self.remove_list)))

@@ -7,7 +7,7 @@ class LeecherCondition(Condition):
         self._leecher = l
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(torrent.leecher, self._leecher, self._comparer):
                 self.remove.add(torrent)

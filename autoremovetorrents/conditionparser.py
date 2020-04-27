@@ -84,11 +84,11 @@ class ConditionParser(object):
         if t[1] in self._condition_map:
             if t[2] == '<': # Less than
                 obj = self._condition_map[t[1]](t[3], Comparer.LT)
-                obj.apply(self._torrent_list)
+                obj.apply(self._client_status, self._torrent_list)
                 result = obj.remove
             elif t[2] == '>': # Greater than
                 obj = self._condition_map[t[1]](t[3], Comparer.GT)
-                obj.apply(self._torrent_list)
+                obj.apply(self._client_status, self._torrent_list)
                 result = obj.remove
         else:
             raise NoSuchCondition('The condition \'%s\' is not supported.' % t[1])
@@ -111,6 +111,7 @@ class ConditionParser(object):
         self._logger = logger.Logger.register(__name__)
     
     # Apply this strategy
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         self._torrent_list = set(torrents)
+        self._client_status = client_status
         self.parser.parse(self._expression)

@@ -42,6 +42,9 @@ class Task(object):
         self._torrents = set()
         self._remove = set()
 
+        # Client status
+        self._client_status = None
+
         # Allow removing specified torrents
         if 'force_delete' in conf:
             for hash_ in conf['force_delete']:
@@ -74,6 +77,10 @@ class Task(object):
         self._logger.info('Login successfully. The client is %s.' % self._client.version())
         self._logger.info('WebUI API version: %s' % self._client.api_version())
 
+        # Get client status
+        self._client_status = self._client.client_status()
+        self._logger.info(self._client_status)
+
     # Get all the torrents and properties
     def _get_torrents(self):
         self._logger.info('Getting all the torrents...')
@@ -92,7 +99,7 @@ class Task(object):
     def _apply_strategies(self):
         for strategy_name in self._strategies:
             strategy = Strategy(strategy_name, self._strategies[strategy_name])
-            strategy.execute(self._torrents)
+            strategy.execute(self._client_status, self._torrents)
             self._remove.update(strategy.remove_list)
 
     # Remove torrents

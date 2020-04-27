@@ -10,7 +10,7 @@ from autoremovetorrents.exception.nosuchcondition import NoSuchCondition
 from autoremovetorrents.compatibility.open_ import open_
 from autoremovetorrents.compatibility.disk_usage_ import SUPPORT_SHUTIL
 
-def test_strategies(mocker, test_data, test_env):
+def test_strategies(mocker, test_data, test_env, test_status):
     # Logger
     lg = logger.Logger.register(__name__)
 
@@ -60,7 +60,7 @@ def test_strategies(mocker, test_data, test_env):
                         
                         # Make strategy and run
                         stgy = Strategy(conf_file, conf['test'])
-                        stgy.execute(test_data)
+                        stgy.execute(test_status, test_data)
 
                         # Check result
                         if 'remain' in conf:

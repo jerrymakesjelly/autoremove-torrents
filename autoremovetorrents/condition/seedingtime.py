@@ -10,7 +10,7 @@ class SeedingTimeCondition(Condition):
         self._seeding_time = st
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(torrent.seeding_time, self._seeding_time, self._comparer):
                 self.remove.add(torrent)

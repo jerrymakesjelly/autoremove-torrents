@@ -3,6 +3,7 @@ import re
 import time
 import requests
 from ..torrent import Torrent
+from ..clientstatus import ClientStatus
 from autoremovetorrents.exception.connectionfailure import ConnectionFailure
 from autoremovetorrents.exception.loginfailure import LoginFailure
 from autoremovetorrents.exception.nosuchtorrent import NoSuchTorrent
@@ -43,6 +44,29 @@ class uTorrent(object):
         else:
             raise RemoteFailure('The server responsed %d.' \
                 % request.status_code)
+    
+    # Get client status
+    def client_status(self):
+        # In uTorrent we can only get the total download/upload speed,
+        # and we should get it by summing the torrents list manually.
+        
+        # Get torrent list
+        if time.time() - self._refresh_time > self._refresh_cycle:
+            self.torrents_list()
+        
+        # Get sum
+        download_speed = 0
+        upload_speed = 0
+        for torrent in self._torrents_list_cache['torrents']:
+            upload_speed += torrent[8]
+            download_speed += torrent[8]
+        
+        # Generate client status
+        cs = ClientStatus()
+        cs.download_speed = download_speed
+        cs.upload_speed = upload_speed
+
+        return cs
     
     # Get uTorrent Version
     def version(self):

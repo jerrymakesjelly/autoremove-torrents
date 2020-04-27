@@ -11,6 +11,27 @@
     "mock://qbittorrent/login": {
         "text": "Ok."
     },
+    "mock://qbittorrent/sync/maindata": {
+        "json": {
+            "categories": [],
+            "full_update": true,
+            "rid":16,
+            "server_state": {
+                "connection_status": "connected",
+                "dht_nodes": 849,
+                "dl_info_data": 0,
+                "dl_info_speed": 0, 
+                "dl_rate_limit": 0,
+                "queueing": true,
+                "refresh_interval": 1500,
+                "up_info_data": 0,
+                "up_info_speed": 0,
+                "up_rate_limit": 0,
+                "use_alt_speed_limits": false
+            },
+            "torrents": {}
+        }
+    },
     "mock://qbittorrent/query/torrents": {
         "json" : [
             {

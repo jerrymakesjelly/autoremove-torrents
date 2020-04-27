@@ -5,6 +5,6 @@ test:
   trackers:
     - tracker.site3.com
   ratio: 3
-  seeding_time: 21600
+  # seeding_time: 21600
 remove:
   - Torrent - 4

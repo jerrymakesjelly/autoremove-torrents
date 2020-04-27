@@ -5,7 +5,7 @@ class TorrentNumberCondition(ConditionWithSort):
         ConditionWithSort.__init__(self, settings['action'])
         self._max_limit = settings['limit']
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
         if self._max_limit == 0:

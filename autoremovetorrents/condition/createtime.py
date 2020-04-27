@@ -10,7 +10,7 @@ class CreateTimeCondition(Condition):
         self._create_time = ct
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(time.time() - torrent.create_time, self._create_time, self._comparer):
                 self.remove.add(torrent)

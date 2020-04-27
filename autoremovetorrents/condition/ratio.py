@@ -10,7 +10,7 @@ class RatioCondition(Condition):
         self._ratio = r
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(torrent.ratio, self._ratio, self._comparer):
                 self.remove.add(torrent)

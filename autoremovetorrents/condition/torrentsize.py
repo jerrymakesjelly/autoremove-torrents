@@ -7,7 +7,7 @@ class TorrentSizeCondition(ConditionWithSort):
         ConditionWithSort.__init__(self, settings['action'])
         self._limit = settings['limit'] * 1073741824 # limit = limit * 1GiB
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         torrents = list(torrents)
         ConditionWithSort.sort_torrents(self, torrents)
         torrents.reverse()
