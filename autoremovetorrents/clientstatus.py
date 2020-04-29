@@ -1,3 +1,6 @@
+from .util.convertbytes import convert_bytes
+from .util.convertspeed import convert_speed
+
 class ClientStatus(object):
     def __init__(self):
         # Proper attributes:
@@ -24,31 +27,9 @@ class ClientStatus(object):
             '\tUpload Speed: %s\tTotal: %s\n' +
             '\tOutgoing Port Status: %s') % \
             (
-                disp('download_speed', self._convert_speed),
-                disp('total_downloaded', self._convert_bytes),
-                disp('upload_speed', self._convert_speed),
-                disp('total_uploaded', self._convert_bytes),
-                disp('port_status', self._convert_port_status),
+                disp('download_speed', convert_speed),
+                disp('total_downloaded', convert_bytes),
+                disp('upload_speed', convert_speed),
+                disp('total_uploaded', convert_bytes),
+                disp('port_status', lambda s: s.name),
             )
-    
-    # Convert Bytes
-    @staticmethod
-    def _convert_bytes(byte):
-        units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB'
-            'YiB', 'BiB', 'NiB', 'DiB', 'CiB']
-        for x in units:
-            if divmod(byte, 1024)[0] == 0:
-                break
-            else:
-                byte /= 1024
-        return ('%.2lf%s' % (byte, x))
-    
-    # Convert Speed
-    @staticmethod
-    def _convert_speed(byte):
-        return ('%s/s' % ClientStatus._convert_bytes(byte))
-    
-    # Convert port status
-    @staticmethod
-    def _convert_port_status(status):
-        return status.name
