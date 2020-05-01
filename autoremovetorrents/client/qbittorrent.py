@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 import requests
 import time
+from .. import logger
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
 from ..torrentstatus import TorrentStatus
@@ -117,6 +118,9 @@ class qBittorrent(object):
             return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':'|'.join(torrent_hash_list), 'deleteFiles': True})
 
     def __init__(self, host):
+        # Logger
+        self._logger = logger.Logger.register(__name__)
+
         # Torrents list cache
         self._torrents_list_cache = []
         self._refresh_cycle = 30
@@ -236,6 +240,8 @@ class qBittorrent(object):
     # Get free space
     def remote_free_space(self, path):
         # Actually the path is ignored
+        self._logger.info('Get Free Space: The path is ignored ' +
+            'since qBitorrent does not support to specific a path to check the free space.')
         status = self._request_handler.server_state().json()['server_state']
 
         # There is no free space data in qBittorrent 3.x

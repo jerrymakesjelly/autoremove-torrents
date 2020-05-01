@@ -12,6 +12,7 @@ from .condition.lastactivity import LastActivityCondition
 from .condition.leecher import LeecherCondition
 from .condition.progress import ProgressCondition
 from .condition.ratio import RatioCondition
+from .condition.remotefreespace import RemoteFreeSpaceCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.size import SizeCondition
@@ -88,6 +89,7 @@ class Strategy(object):
             'min_uploadspeed': UploadSpeedCondition,
             'nothing': EmptyCondition,
             'ratio': RatioCondition,
+            'remote_free_space': RemoteFreeSpaceCondition,
             'remove': ConditionParser,
             'seed_size': TorrentSizeCondition,
             'seeding_time': SeedingTimeCondition,

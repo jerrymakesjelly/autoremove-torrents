@@ -1,0 +1,11 @@
+test:
+  free_space:
+    min: 105
+    path: /
+    action: remove-small-seeds
+remove:
+  - Torrent - 3
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16
