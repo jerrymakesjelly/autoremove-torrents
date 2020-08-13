@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 import requests
-from pathlib import Path
+import os
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.connectionfailure import ConnectionFailure
@@ -130,7 +130,7 @@ class Transmission(object):
         torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding'] if torrent['secondsSeeding'] != 0 else 0
         torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading'] if torrent['secondsDownloading'] != 0 else 0
         torrent_obj.progress = torrent['percentDone']
-        torrent_obj.root_path = Path(torrent['files'][0]['name']).parts[0]
+        torrent_obj.root_path = os.path.dirname(torrent['files'][0]['name'])
         return torrent_obj
 
     # Judge Torrent Status

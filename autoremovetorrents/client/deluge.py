@@ -1,5 +1,5 @@
 import time
-from pathlib import Path
+import os
 from deluge_client import DelugeRPCClient
 from deluge_client.client import DelugeClientException
 from ..torrent import Torrent
@@ -131,7 +131,7 @@ class Deluge(object):
             # Set the last active time of those never active torrents to timestamp 0
             torrent_obj.last_activity = torrent['time_since_transfer'] if torrent['time_since_transfer'] > 0 else 0
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
-        torrent_obj.root_path = Path(torrent['files'][0]['path']).parts[0]
+        torrent_obj.root_path = os.path.dirname(torrent['files'][0]['path'])
 
         return torrent_obj
 
