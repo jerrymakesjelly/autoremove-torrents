@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 import requests
 import time
+from pathlib import Path
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
@@ -93,6 +94,10 @@ class qBittorrent(object):
         # Get torrent's generic properties
         def torrent_generic_properties(self, torrent_hash):
             return self._session.get(self._host+'/api/v2/torrents/properties', params={'hash': torrent_hash})
+
+        # Get torrent's files
+        def torrent_files(self, torrent_hash):
+            return self._session.get(self._host+'/api/v2/torrents/files', params={'hash': torrent_hash})
         
         # Get torrent's tracker
         def torrent_trackers(self, torrent_hash):
@@ -167,6 +172,8 @@ class qBittorrent(object):
                 # Get other information
                 properties = self._request_handler.torrent_generic_properties(torrent_hash).json()
                 trackers = self._request_handler.torrent_trackers(torrent_hash).json()
+                files = self._request_handler.torrent_files(torrent_hash).json()
+
                 # Create torrent object
                 torrent_obj = Torrent()
                 torrent_obj.hash = torrent['hash']
@@ -197,6 +204,7 @@ class qBittorrent(object):
                 if 'last_activity' in torrent:
                     torrent_obj.last_activity = torrent['last_activity']
                 torrent_obj.progress = torrent['progress']
+                torrent_obj.root_path = Path(files[0]['name']).parts[0]
 
                 return torrent_obj
 

@@ -1,5 +1,7 @@
 #-*- coding:utf-8 -*-
+from collections import defaultdict
 from . import logger
+from .compatibility.urlparse_ import urlparse_
 from .condition.avgdownloadspeed import AverageDownloadSpeedCondition
 from .condition.avguploadspeed import AverageUploadSpeedCondition
 from .condition.connectedleecher import ConnectedLeecherCondition
@@ -26,7 +28,7 @@ from .filter.status import StatusFilter
 from .filter.tracker import TrackerFilter
 
 class Strategy(object):
-    def __init__(self, name, conf):
+    def __init__(self, name, conf, delete_data):
         # Logger
         self._logger = logger.Logger.register(__name__)
 
@@ -36,9 +38,19 @@ class Strategy(object):
         # Configuration
         self._conf = conf
 
+        self._delete_data = delete_data
+        # Default to not deleting cross-seeds
+        self._delete_cross_seeds = conf['remove_cross_seeds'] if 'remove_cross_seeds' in conf else []
+
+        # if all_trackers remove any cross-seeds. All other terms are
+        # considered tracker hostnames.
+        if self._delete_cross_seeds != "all_trackers" and type(self._delete_cross_seeds) != list:
+            self._delete_cross_seeds = [self._delete_cross_seeds]
+
         # Results
         self.remain_list = set()
         self.remove_list = set()
+        self.soft_remove_list = set()
 
         # Filter ALL
         self._all_categories = conf['all_categories'] if 'all_categories' in conf \
@@ -109,6 +121,52 @@ class Strategy(object):
                 self.remain_list = cond.remain
                 self.remove_list.update(cond.remove)
 
+    def _remove_cross_seeds(self, torrents):
+        delete_hash = {torrent.hash for torrent in self.remove_list}
+        remain = defaultdict(list)
+        self._logger.info("Searching for cross-seeds to delete")
+        for torrent in torrents:
+            if torrent.hash not in delete_hash:
+                remain[torrent.root_path].append(torrent)
+
+        remove_list = set()
+        soft_remove_list = set()
+        for torrent in self.remove_list:
+            if torrent.root_path in remain:
+                cross_seeds = remain[torrent.root_path]
+                marked_cross_seeds = set()
+                for cross_seed in cross_seeds:
+                    allowed_trackers = [urlparse_(tracker).hostname for tracker in cross_seed.tracker]
+                    if self._delete_cross_seeds == "all_trackers" or any(allowed_tracker in self._delete_cross_seeds for allowed_tracker in allowed_trackers):
+                        self._logger.info("Remove cross-seed: %s (trackers: %s)" % (cross_seed.name, ",".join(allowed_trackers)))
+                        marked_cross_seeds.add(cross_seed)
+                    else:
+                        self._logger.info("Retain cross-seed: %s (trackers: %s)" % (cross_seed.name, ",".join(allowed_trackers)))
+
+                if len(marked_cross_seeds) == len(cross_seeds):
+                    # All cross-seededed torrents are marked for
+                    # deletion we can safely allow the data to be
+                    # deleted
+                    #
+                    # TODO: change remove_list to soft_remove_list
+                    # (the data is removed by the original torrent)
+                    remove_list.update(marked_cross_seeds)
+                    remove_list.add(torrent)
+                else:
+                    # Only some of the cross-seeded torrents torrents
+                    # have been marked for deletion. We cannot allow
+                    # the torrents to be deleted from disk or the
+                    # cross-seed will fail
+                    soft_remove_list.update(marked_cross_seeds)
+                    soft_remove_list.add(torrent)
+            else:
+                # Torrent is not cross-seeded, we can safely remove
+                # the data
+                remove_list.add(torrent)
+
+        self.remove_list = remove_list
+        self.soft_remove_list = soft_remove_list
+
     # Execute this strategy
     def execute(self, torrents):
         self._logger.info('Running strategy %s...' % self._name)
@@ -117,10 +175,21 @@ class Strategy(object):
         self._apply_filters()
         # Apply Conditions
         self._apply_conditions()
+
+        # If we don't remove data, the cross-seeds should be handled
+        # by another strategy. If we delete the data we should also
+        # delete the cross-seed
+        if self._delete_data:
+            self._remove_cross_seeds(torrents)
+
         # Print remove list
-        self._logger.info("Total: %d torrent(s). %d torrent(s) can be removed." %
-            (len(self.remain_list)+len(self.remove_list), len(self.remove_list)))
+        self._logger.info("Total: %d torrent(s). %d torrent(s) can be removed. %d torrent(s) can be safe removed (without data)." %
+            (len(self.remain_list)+len(self.remove_list), len(self.remove_list), len(self.soft_remove_list)))
         if len(self.remove_list) > 0:
             self._logger.info('To be deleted:')
             for torrent in self.remove_list:
+                self._logger.info(torrent)
+        if len(self.soft_remove_list) > 0:
+            self._logger.info('To be safe-deleted (without data):')
+            for torrent in self.soft_remove_list:
                 self._logger.info(torrent)

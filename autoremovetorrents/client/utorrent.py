@@ -106,6 +106,7 @@ class uTorrent(object):
                 torrent_obj.leecher = torrent[13]
                 torrent_obj.connected_leecher = torrent[12]
                 torrent_obj.progress = torrent[4]
+                torrent_obj.root_path = None # unsupported
 
                 return torrent_obj
         # Not Found
