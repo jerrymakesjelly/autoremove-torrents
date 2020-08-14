@@ -6,6 +6,7 @@ from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.incompatibleapi import IncompatibleAPIVersion
+from ..compatibility.root_path_ import root_path
 
 class qBittorrent(object):
     # API Handler for v1
@@ -203,7 +204,7 @@ class qBittorrent(object):
                 if 'last_activity' in torrent:
                     torrent_obj.last_activity = torrent['last_activity']
                 torrent_obj.progress = torrent['progress']
-                torrent_obj.root_path = os.path.dirname(files[0]['name'])
+                torrent_obj.root_path = root_path(files[0]['name'])
 
                 return torrent_obj
 

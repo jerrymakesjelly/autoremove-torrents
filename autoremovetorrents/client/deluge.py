@@ -6,6 +6,7 @@ from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.remotefailure import RemoteFailure
+from ..compatibility.root_path_ import root_path
 
 # Default port of Delgue
 DEFAULT_PORT = 58846
@@ -131,7 +132,7 @@ class Deluge(object):
             # Set the last active time of those never active torrents to timestamp 0
             torrent_obj.last_activity = torrent['time_since_transfer'] if torrent['time_since_transfer'] > 0 else 0
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
-        torrent_obj.root_path = os.path.dirname(torrent['files'][0]['path'])
+        torrent_obj.root_path = root_path(torrent['files'][0]['path'])
 
         return torrent_obj
 
