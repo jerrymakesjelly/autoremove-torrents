@@ -1,11 +1,13 @@
 #-*- coding:utf-8 -*-
 import requests
+import os
 from ..torrent import Torrent
 from ..torrentstatus import TorrentStatus
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.loginfailure import LoginFailure
 from ..exception.nosuchclient import NoSuchClient
 from ..exception.remotefailure import RemoteFailure
+from ..compatibility.root_path_ import root_path
 
 class Transmission(object):
     def __init__(self, host):
@@ -99,6 +101,7 @@ class Transmission(object):
                     'downloadedEver',
                     'secondsDownloading',
                     'percentDone',
+                    'files'
                 ]}
             )
         if len(result['torrents']) == 0: # No such torrent
@@ -128,7 +131,7 @@ class Transmission(object):
         torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding'] if torrent['secondsSeeding'] != 0 else 0
         torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading'] if torrent['secondsDownloading'] != 0 else 0
         torrent_obj.progress = torrent['percentDone']
-
+        torrent_obj.root_path = root_path(torrent['files'][0]['name'])
         return torrent_obj
 
     # Judge Torrent Status

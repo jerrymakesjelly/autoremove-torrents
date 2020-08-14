@@ -41,6 +41,7 @@ class Task(object):
         # Torrents
         self._torrents = set()
         self._remove = set()
+        self._soft_remove = set()
 
         # Allow removing specified torrents
         if 'force_delete' in conf:
@@ -91,27 +92,28 @@ class Task(object):
     # Apply strategies
     def _apply_strategies(self):
         for strategy_name in self._strategies:
-            strategy = Strategy(strategy_name, self._strategies[strategy_name])
+            strategy = Strategy(strategy_name, self._strategies[strategy_name], self._delete_data)
             strategy.execute(self._torrents)
             self._remove.update(strategy.remove_list)
+            self._soft_remove.update(strategy.soft_remove_list)
 
     # Remove torrents
-    def _remove_torrents(self):
+    def _remove_torrents(self, remove, delete_data):
         # Bulid a dict to store torrent hashes and names which to be deleted
         delete_list = {}
-        for torrent in self._remove:
+        for torrent in remove:
             delete_list[torrent.hash] = torrent.name
         # Run deletion
-        success, failed = self._client.remove_torrents([hash_ for hash_ in delete_list], self._delete_data)
+        success, failed = self._client.remove_torrents([hash_ for hash_ in delete_list], delete_data)
         # Output logs
         for hash_ in success:
             self._logger.info(
-                'The torrent %s and its data have been removed.' if self._delete_data \
+                'The torrent %s and its data have been removed.' if delete_data \
                 else 'The torrent %s has been removed.',
                 delete_list[hash_]
             )
         for torrent in failed:
-            self._logger.error('The torrent %s and its data cannot be removed. Reason: %s' if self._delete_data \
+            self._logger.error('The torrent %s and its data cannot be removed. Reason: %s' if delete_data \
                 else 'The torrent %s cannot be removed. Reason: %s',
                 delete_list[torrent['hash']], torrent['reason']
             )
@@ -123,7 +125,8 @@ class Task(object):
         self._get_torrents()
         self._apply_strategies()
         if self._enabled_remove:
-            self._remove_torrents()
+            self._remove_torrents(self._remove, self._delete_data)
+            self._remove_torrents(self._soft_remove, False)
 
     # Get remaining torrents (for tester)
     def get_remaining_torrents(self):
