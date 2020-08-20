@@ -121,8 +121,8 @@ class uTorrent(object):
                 torrent_obj.status = uTorrent._judge_status(torrent[1], torrent[4])
                 torrent_obj.size = torrent[3]
                 torrent_obj.ratio = torrent[7]/1000
+                torrent_obj.downloaded = torrent[5]
                 torrent_obj.uploaded = torrent[6]
-                torrent_obj.seeding_time = torrent[6]
                 torrent_obj.upload_speed = properties['ulrate']
                 torrent_obj.download_speed = properties['dlrate']
                 torrent_obj.seeder = torrent[15]

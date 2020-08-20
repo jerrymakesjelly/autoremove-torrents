@@ -140,6 +140,7 @@ class Deluge(object):
         torrent_obj.size = torrent['total_size']
         torrent_obj.ratio = torrent['ratio']
         torrent_obj.uploaded = torrent['total_uploaded']
+        torrent_obj.downloaded = torrent['all_time_download']
         torrent_obj.create_time = int(torrent['time_added'])
         torrent_obj.seeding_time = torrent['seeding_time']
         torrent_obj.upload_speed = torrent['upload_payload_rate']

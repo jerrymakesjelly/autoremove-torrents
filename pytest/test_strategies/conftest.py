@@ -32,6 +32,7 @@ def test_data():
         torrent_obj.seeding_time = torrent['seeding_time']
         torrent_obj.upload_speed = torrent['upspeed']
         torrent_obj.average_upload_speed = torrent['up_speed_avg']
+        torrent_obj.downloaded = torrent['downloaded']
         torrent_obj.download_speed = torrent['dlspeed']
         torrent_obj.average_download_speed = torrent['dl_speed_avg']
         torrent_obj.last_activity = torrent['last_activity']

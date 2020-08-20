@@ -6,6 +6,7 @@ from .condition.base import Comparer
 from .condition.connectedleecher import ConnectedLeecherCondition
 from .condition.connectedseeder import ConnectedSeederCondition
 from .condition.createtime import CreateTimeCondition
+from .condition.downloaded import DownloadsCondition
 from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.lastactivity import LastActivityCondition
 from .condition.leecher import LeecherCondition
@@ -14,6 +15,7 @@ from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.size import SizeCondition
+from .condition.uploaded import UploadsCondition
 from .condition.uploadratio import UploadRatioCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .conditionlexer import ConditionLexer
@@ -28,6 +30,7 @@ class ConditionParser(object):
         'connected_leecher': ConnectedLeecherCondition,
         'connected_seeder': ConnectedSeederCondition,
         'create_time': CreateTimeCondition,
+        'download': DownloadsCondition,
         'download_speed': DownloadSpeedCondition,
         'last_activity': LastActivityCondition,
         'leecher': LeecherCondition,
@@ -36,6 +39,7 @@ class ConditionParser(object):
         'seeder': SeederCondition,
         'seeding_time': SeedingTimeCondition,
         'size': SizeCondition,
+        'upload': UploadsCondition,
         'upload_ratio': UploadRatioCondition,
         'upload_speed': UploadSpeedCondition,
     }

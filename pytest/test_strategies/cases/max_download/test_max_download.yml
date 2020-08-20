@@ -1,0 +1,6 @@
+test:
+  max_download: 10
+remove:
+  - Torrent - 2
+  - Torrent - 6
+  - Torrent - 10
