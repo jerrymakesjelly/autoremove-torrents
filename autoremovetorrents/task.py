@@ -31,7 +31,7 @@ class Task(object):
         # Read configurations
         self._client_name = conf['client']
         self._client = None
-        self._host = conf['host']
+        self._host = conf['host'].rstrip('/')
         self._username = conf['username'] if 'username' in conf else ''
         self._password = conf['password'] if 'password' in conf else ''
         self._enabled_remove = remove_torrents
