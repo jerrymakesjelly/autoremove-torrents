@@ -590,7 +590,9 @@
         "state": "Queued",
         "super_seeding": false,
         "total_size": 312186667,
-        "tracker": [],
+        "tracker": [
+            "https://www.site2.org/tracker/announce"
+        ],
         "up_limit": 0,
         "up_speed_avg": 482248,
         "uploaded": 107814988,
