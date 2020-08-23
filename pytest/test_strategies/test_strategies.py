@@ -11,7 +11,8 @@ from autoremovetorrents.compatibility.open_ import open_
 from autoremovetorrents.compatibility.disk_usage_ import SUPPORT_SHUTIL
 
 def test_strategies(mocker, test_data, test_env, test_status):
-    # Logger
+    # Init logger
+    logger.Logger.init()
     lg = logger.Logger.register(__name__)
 
     # Exceptions mapping

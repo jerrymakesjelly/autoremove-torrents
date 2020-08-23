@@ -45,13 +45,23 @@ class Task(object):
         # Client status
         self._client_status = None
 
-        # Allow removing specified torrents
+        # Allow removing specified torrents(for CI testing only)
         if 'force_delete' in conf:
             for hash_ in conf['force_delete']:
                 torrent_obj = Torrent()
                 torrent_obj.hash = hash_
                 torrent_obj.name = hash_
                 self._remove.add(torrent_obj)
+        
+        # Print debug logs
+        self._logger.debug("Configuration of task '%s':" % self._name)
+        self._logger.debug('Client: %s, Host: %s, Username: %s, Password: %s' % (
+            self._client_name, self._host, self._username, self._password
+        ))
+        self._logger.debug('Remove Torrents: %s, Remove Torrents and Data: %s' % (
+            self._enabled_remove, self._delete_data
+        ))
+        self._logger.debug('Strategies: %s' % ', '.join(self._strategies))
 
     # Login client
     def _login(self):

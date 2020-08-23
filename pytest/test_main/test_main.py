@@ -4,7 +4,8 @@ from autoremovetorrents import logger
 from autoremovetorrents.main import pre_processor
 
 def test_main(requests_mock):
-    # Logger
+    # Init logger
+    logger.Logger.init()
     lg = logger.Logger.register(__name__)
 
     basic_dir = os.path.realpath(os.path.dirname(__file__))

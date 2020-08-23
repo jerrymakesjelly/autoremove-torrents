@@ -50,6 +50,10 @@ class Strategy(object):
             else not 'trackers' in conf
         self._all_status = conf['all_status'] if 'all_status' in conf \
             else not 'status' in conf
+        
+        # Print debug log
+        self._logger.debug("Configuration of strategy '%s':" % self._name)
+        self._logger.debug('Configurated filters and conditions: %s' % ', '.join(self._conf))
 
     # Apply Filters
     def _apply_filters(self):
@@ -59,18 +63,44 @@ class Strategy(object):
             {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
         ]
         filter_obj = [CategoryFilter, StatusFilter, TrackerFilter]
+
         for i in range(0, len(filter_conf)):
+            # Initialize all of the filter arguments
             # User can use a single line to represent one item instead of using list
-            if filter_conf[i]['ac'] in self._conf and type(self._conf[filter_conf[i]['ac']]) != list:
-                self._conf[filter_conf[i]['ac']] = [self._conf[filter_conf[i]['ac']]]
-            if filter_conf[i]['re'] in self._conf and type(self._conf[filter_conf[i]['re']]) != list:
-                self._conf[filter_conf[i]['re']] = [self._conf[filter_conf[i]['re']]]
+            accept_field = filter_conf[i]['ac']
+            reject_field = filter_conf[i]['re']
+            if accept_field not in self._conf:
+                self._conf[accept_field] = []
+            if reject_field not in self._conf:
+                self._conf[reject_field] = []
+
+            if type(self._conf[accept_field]) != list:
+                self._conf[accept_field] = [self._conf[accept_field]] # Make it a list
+            if type(self._conf[reject_field]) != list:
+                self._conf[reject_field] = [self._conf[reject_field]]
+
+            # Print debug log
+            self._logger.debug('Applying filter %s...' % filter_obj[i].__name__)
+            self._logger.debug('Filter configrations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
+                filter_conf[i]['all'], 
+                ', '.join(self._conf[accept_field]), 
+                ', '.join(self._conf[reject_field])
+            ))
+            self._logger.debug('INPUT: %d torrent(s) before applying the filter.' % len(self.remain_list))
+            for torrent in self.remain_list:
+                self._logger.debug(torrent)
+
             # Apply each filter
             self.remain_list = filter_obj[i](
                 filter_conf[i]['all'],
-                self._conf[filter_conf[i]['ac']] if filter_conf[i]['ac'] in self._conf else [],
-                self._conf[filter_conf[i]['re']] if filter_conf[i]['re'] in self._conf else []
+                self._conf[accept_field],
+                self._conf[reject_field]
             ).apply(self.remain_list)
+
+            # Print debug log again
+            self._logger.debug('OUTPUT: %d torrent(s) after applying the filter.' % len(self.remain_list))
+            for torrent in self.remain_list:
+                self._logger.debug(torrent)
 
     # Apply Conditions
     def _apply_conditions(self, client_status):
@@ -102,6 +132,12 @@ class Strategy(object):
         }
         for conf in self._conf:
             if conf in conditions:
+                # Print debug log
+                self._logger.debug('Applying condition %s...' % conditions[conf].__name__)
+                self._logger.debug('INPUT: %d torrent(s) to be reserved before applying the condition.' % len(self.remain_list))
+                for torrent in self.remain_list:
+                    self._logger.debug(torrent)
+
                 # Applying condition processor
                 try:
                     cond = conditions[conf](self._conf[conf])
@@ -111,9 +147,18 @@ class Strategy(object):
                         "%s. Your client may not support this property, so the condition %s does not work." % \
                         (str(e), conf)
                     )
+                
                 # Output
                 self.remain_list = cond.remain
                 self.remove_list.update(cond.remove)
+
+                # Print updated list to debug log
+                self._logger.debug('OUTPUT: %d torrent(s) to be reserved after applying the condition.' % len(self.remain_list))
+                for torrent in self.remain_list:
+                    self._logger.debug(torrent)
+                self._logger.debug('OUTPUT: %d torrent(s) to be removed after applying the condition.' % len(self.remove_list))
+                for torrent in self.remove_list:
+                    self._logger.debug(torrent)
 
     # Execute this strategy
     def execute(self, client_status, torrents):

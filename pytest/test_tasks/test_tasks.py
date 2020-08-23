@@ -6,7 +6,8 @@ from autoremovetorrents.task import Task
 from autoremovetorrents.compatibility.open_ import open_
 
 def test_task(qbittorrent_mocker):
-    # Loggger
+    # Init loggger
+    logger.Logger.init()
     lg = logger.Logger.register(__name__)
 
     # Set root directory
