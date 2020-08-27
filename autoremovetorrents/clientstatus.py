@@ -21,7 +21,7 @@ class ClientStatus(object):
                     return converter(attr)
             else:
                 return '(Not Provided)'
-        
+
         return ('Status reported by the client: \n' +
             '\tDownload Speed: %s\tTotal: %s\n' +
             '\tUpload Speed: %s\tTotal: %s\n' +

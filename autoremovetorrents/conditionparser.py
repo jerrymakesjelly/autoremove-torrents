@@ -68,7 +68,7 @@ class ConditionParser(object):
     def p_sub_expression(self, t):
         'expression : LPAREN expression RPAREN'
         t[0] = t[2]
-    
+
     def p_and_or_expression(self, t):
         '''
         expression : expression AND expression

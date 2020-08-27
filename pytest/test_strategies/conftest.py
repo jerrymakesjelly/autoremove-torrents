@@ -63,5 +63,5 @@ def test_status():
         cs.total_uploaded = data['total_uploaded']
         cs.port_status = PortStatus[data['port_status']]
         cs.free_space = lambda _: data['free_space']
-    
+
     return cs
