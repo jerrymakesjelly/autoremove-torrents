@@ -111,6 +111,13 @@ Screenshot
 
 Changelog
 ----------
+**Thu, 27 Aug 2020**: Version 1.5.3.
+
+* Fix psutil's compatibility in Synology (use to check the free spaces). (#61)
+* Enable to output debug logs by specifying ``--debug`` or ``-d`` argument. (#76)
+* Fix API imcompatibility issue caused by the trailing ``/`` in host URL. (#81)
+* Add uploaded size and downloaded size conditions. (#79)
+
 **Fri, 27 Mar 2020**: Version 1.5.2.
 
 * Support Deluge. (#8)
