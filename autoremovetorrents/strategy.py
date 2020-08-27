@@ -74,9 +74,9 @@ class Strategy(object):
             if reject_field not in self._conf:
                 self._conf[reject_field] = []
 
-            if type(self._conf[accept_field]) != list:
+            if not isinstance(self._conf[accept_field], list):
                 self._conf[accept_field] = [self._conf[accept_field]] # Make it a list
-            if type(self._conf[reject_field]) != list:
+            if not isinstance(self._conf[reject_field], list):
                 self._conf[reject_field] = [self._conf[reject_field]]
 
             # Print debug log

@@ -47,7 +47,7 @@ class Torrent(object):
                 disp('create_time', convert_timestamp),
                 disp('seeding_time', convert_seconds),
                 disp('last_activity', convert_timestamp),
-                disp('category', lambda c: ','.join(c)),
+                disp('category', ','.join),
                 disp('tracker', lambda t: \
                     ','.join(
                         [urlparse_(x).hostname if urlparse_(x).hostname is not None else x for x in t]
