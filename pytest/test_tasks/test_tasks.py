@@ -1,5 +1,4 @@
 import yaml
-import json
 import os
 from autoremovetorrents import logger
 from autoremovetorrents.task import Task

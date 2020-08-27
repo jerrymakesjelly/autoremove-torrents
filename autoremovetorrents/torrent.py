@@ -1,9 +1,6 @@
 #-*- coding:utf-8 -*-
 
-import time
-
 from .compatibility.urlparse_ import urlparse_
-from .torrentstatus import TorrentStatus
 from .util.convertbytes import convert_bytes
 from .util.convertseconds import convert_seconds
 from .util.convertspeed import convert_speed

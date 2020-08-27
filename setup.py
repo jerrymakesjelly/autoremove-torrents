@@ -1,6 +1,5 @@
 #-*- coding:UTF-8 -*-
 
-import sys
 from setuptools import setup, find_packages
 from autoremovetorrents.version import __version__
 from autoremovetorrents.compatibility.disk_usage_ import SUPPORT_SHUTIL
@@ -28,7 +27,7 @@ setup(name = 'autoremove-torrents',
         'deluge-client',
         'enum34',
         'ply',
-        '' if SUPPORT_SHUTIL else 'psutil', 
+        '' if SUPPORT_SHUTIL else 'psutil',
         'pyyaml',
         'requests',
     ],
