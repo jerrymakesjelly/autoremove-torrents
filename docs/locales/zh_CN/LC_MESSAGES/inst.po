@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-22 21:31+0800\n"
+"POT-Creation-Date: 2020-08-25 15:01+0800\n"
 "PO-Revision-Date: 2020-02-02 17:24+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -126,63 +126,77 @@ msgstr "`-l`"
 msgid "Sepcify the path of the log file."
 msgstr "指定日志文件的路径。"
 
+#: ../../inst.rst:63
+#, fuzzy
+msgid "`--debug`"
+msgstr "`--log`"
+
 #: ../../inst.rst:64
+#, fuzzy
+msgid "`-d`"
+msgstr "`-v`"
+
+#: ../../inst.rst:65
+msgid "Enable debug mode and output more logs."
+msgstr ""
+
+#: ../../inst.rst:67
 msgid "For example:"
 msgstr "例如："
 
-#: ../../inst.rst:70
+#: ../../inst.rst:73
 msgid "Also, it equals to:"
 msgstr "它等价于："
 
-#: ../../inst.rst:78
+#: ../../inst.rst:81
 msgid "Uninstall"
 msgstr "卸载"
 
-#: ../../inst.rst:81
+#: ../../inst.rst:84
 msgid "Uninstall from pip"
 msgstr "通过 pip 卸载"
 
-#: ../../inst.rst:83
+#: ../../inst.rst:86
 msgid ""
 "If your autoremove-torrents was installed via pip, you can simply "
 "uninstall it by using pip:"
 msgstr "如果你的 autoremove-torrents 是通过 pip 安装的，你就可以用 pip 简单地卸载掉它："
 
-#: ../../inst.rst:91
+#: ../../inst.rst:94
 msgid "Uninstall manually"
 msgstr "手动卸载"
 
-#: ../../inst.rst:93
+#: ../../inst.rst:96
 msgid ""
 "However, if it was installed by ``setup.py``, you need to remove all the "
 "files manually."
 msgstr "然而，如果你的 autoremove-torrents 是通过 ``setup.py`` 安装的，你需要手动地删除所有的文件。"
 
-#: ../../inst.rst:96
+#: ../../inst.rst:99
 msgid "Step1"
 msgstr "第一步"
 
-#: ../../inst.rst:104
+#: ../../inst.rst:107
 msgid "Step2"
 msgstr "第二步"
 
-#: ../../inst.rst:106
+#: ../../inst.rst:109
 msgid "Reinstall the program and record which files were copied:"
 msgstr "重新安装这个程序并记录复制了哪些文件："
 
-#: ../../inst.rst:114
+#: ../../inst.rst:117
 msgid "Step3"
 msgstr "第三步"
 
-#: ../../inst.rst:116
+#: ../../inst.rst:119
 msgid "Use ``xargs`` to remove each file:"
 msgstr "用 ``xargs`` 去删除文件："
 
-#: ../../inst.rst:123
+#: ../../inst.rst:126
 msgid "Or if you're running Windows, use Powershell:"
 msgstr "或者，如果你在用 Windows，可以使用 Powershell："
 
-#: ../../inst.rst:130
+#: ../../inst.rst:133
 msgid ""
 "Reference: `https://stackoverflow.com/questions/1550226/python-setup-py-"
 "uninstall <https://stackoverflow.com/questions/1550226/python-setup-py-"

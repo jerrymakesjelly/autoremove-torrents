@@ -77,6 +77,16 @@ Supported Properties
      - ✓
      - ✓
      - ✓
+   * - Downloaded Size
+     - ✓
+     - ✓
+     - ✓
+     - ✓
+   * - Free Space
+     - ✓
+     - ✓
+     - ✓
+     - ✗
    * - Last Activity
      - ✓ :superscript:`2.0 or later`
      - ✓ :superscript:`v3.0 or later`
@@ -133,6 +143,11 @@ Supported Properties
      - ✓
      - ✓
    * - Upload Speed
+     - ✓
+     - ✓
+     - ✓
+     - ✓
+   * - Uploaded Size
      - ✓
      - ✓
      - ✓
