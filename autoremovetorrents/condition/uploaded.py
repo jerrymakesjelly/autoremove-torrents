@@ -6,7 +6,7 @@ class UploadsCondition(Condition):
         Condition.__init__(self) # Initialize remain and remove list
         self._uploads = uploads << 30 # Convert bytes to GiB
         self._comparer = comp
-    
+
     def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(torrent.uploaded, self._uploads, self._comparer):

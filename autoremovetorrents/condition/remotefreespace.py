@@ -11,7 +11,7 @@ class RemoteFreeSpaceCondition(FreeSpaceConditionBase):
 
         # Save path to be check
         self._path = settings['path']
-    
+
     def apply(self, client_status, torrents):
         # Check free space on the server
         free_space = client_status.free_space(self._path)

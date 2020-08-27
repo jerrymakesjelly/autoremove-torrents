@@ -52,7 +52,7 @@ class Task(object):
                 torrent_obj.hash = hash_
                 torrent_obj.name = hash_
                 self._remove.add(torrent_obj)
-        
+
         # Print debug logs
         self._logger.debug("Configuration of task '%s':" % self._name)
         self._logger.debug('Client: %s, Host: %s, Username: %s, Password: %s' % (

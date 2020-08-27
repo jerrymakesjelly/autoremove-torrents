@@ -25,7 +25,7 @@ class Torrent(object):
                     return converter(getattr(self, prop))
             else:
                 return '(Not Provided)'
-        
+
         return ("%s\n" +
             "\tProgress:%.2f%%\tSize:%s\tRatio:%.3f\tTotal Uploaded:%s\n" +
             "\tSeeder(connected/total):%d/%d\tLeecher(connected/total):%d/%d\tStatus:%s\n" +

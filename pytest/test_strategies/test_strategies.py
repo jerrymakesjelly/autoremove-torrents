@@ -52,13 +52,13 @@ def test_strategies(mocker, test_data, test_env, test_status):
                                 )(**test_env['shutil.disk_usage'])
                             )
                         else:
-                            mocker.patch('psutil.disk_usage', 
+                            mocker.patch('psutil.disk_usage',
                                 return_value=namedtuple(
-                                    'sdiskusage', 
+                                    'sdiskusage',
                                     ['total', 'used', 'free', 'percent'],
                                 )(**test_env['psutil.disk_usage'])
                             )
-                        
+
                         # Make strategy and run
                         stgy = Strategy(conf_file, conf['test'])
                         stgy.execute(test_status, test_data)

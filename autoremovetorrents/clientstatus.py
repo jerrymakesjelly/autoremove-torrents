@@ -10,7 +10,7 @@ class ClientStatus(object):
         # The type of free_space is a function because we need to specific a
         # directory to check its free space.
         pass
-    
+
     # Format client status info
     def __str__(self):
         # Attribute Formater

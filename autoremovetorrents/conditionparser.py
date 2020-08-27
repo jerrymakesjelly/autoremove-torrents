@@ -64,7 +64,7 @@ class ConditionParser(object):
         'statement : expression'
         self.remove = t[1]
         self.remain = self._torrent_list.difference(self.remove)
-    
+
     def p_sub_expression(self, t):
         'expression : LPAREN expression RPAREN'
         t[0] = t[2]

@@ -159,7 +159,7 @@ class Deluge(object):
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
 
         return torrent_obj
-    
+
     # Get free space
     def remote_free_space(self, path):
         return self._call('core.get_free_space', path)

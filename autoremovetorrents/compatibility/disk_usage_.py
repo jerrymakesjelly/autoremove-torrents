@@ -14,7 +14,7 @@ def disk_usage_(path):
     else:
         import psutil
         du = psutil.disk_usage(path)
-    
+
     # Unified format
     return {
         'total': du.total,
