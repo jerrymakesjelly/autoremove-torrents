@@ -46,7 +46,7 @@ class Torrent(object):
                 disp('average_upload_speed', convert_speed),
                 disp('create_time', convert_timestamp),
                 disp('seeding_time', convert_seconds),
-                disp('downloading_time', convert_seconds)
+                disp('downloading_time', convert_seconds),
                 disp('last_activity', convert_timestamp),
                 disp('category', ','.join),
                 disp('tracker', lambda t: \
