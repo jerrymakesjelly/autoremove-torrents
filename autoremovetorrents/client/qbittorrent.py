@@ -234,6 +234,8 @@ class qBittorrent(object):
                 # We need to check the existence
                 if 'last_activity' in torrent:
                     torrent_obj.last_activity = torrent['last_activity']
+                if 'downloading_time' in properties:
+                    torrent_obj.downloading_time = properties['downloading_time']
                 torrent_obj.progress = torrent['progress']
 
                 return torrent_obj

@@ -16,6 +16,7 @@ from .condition.ratio import RatioCondition
 from .condition.remotefreespace import RemoteFreeSpaceCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
+from .condition.downloadingtime import DownloadingTimeCondition
 from .condition.size import SizeCondition
 from .condition.torrentnumber import TorrentNumberCondition
 from .condition.torrentsize import TorrentSizeCondition
@@ -127,6 +128,7 @@ class Strategy(object):
             'remove': ConditionParser,
             'seed_size': TorrentSizeCondition,
             'seeding_time': SeedingTimeCondition,
+            'downloading_time': DownloadingTimeCondition,
             'max_size': SizeCondition,
             'upload_ratio': UploadRatioCondition,
         }
