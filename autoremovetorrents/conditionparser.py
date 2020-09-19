@@ -14,6 +14,7 @@ from .condition.progress import ProgressCondition
 from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
+from .condition.downloadingtime import DownloadingTimeCondition
 from .condition.size import SizeCondition
 from .condition.uploaded import UploadsCondition
 from .condition.uploadratio import UploadRatioCondition
@@ -38,6 +39,7 @@ class ConditionParser(object):
         'ratio': RatioCondition,
         'seeder': SeederCondition,
         'seeding_time': SeedingTimeCondition,
+        'downloading_time': DownloadingTimeCondition,
         'size': SizeCondition,
         'upload': UploadsCondition,
         'upload_ratio': UploadRatioCondition,
