@@ -18,11 +18,14 @@ def pre_processor(argv):
     task = None
 
     # Set default logging path to current working directory
-    logger.Logger.log_path = ''
+    log_path = ''
+
+    # Decide whether to output debug log
+    debug_mode = False
 
     # Get arguments
     try:
-        opts = getopt.getopt(argv, 'vc:t:l:', ['view', 'conf=', 'task=', 'log='])[0]
+        opts = getopt.getopt(argv, 'vc:t:l:d', ['view', 'conf=', 'task=', 'log=', 'debug'])[0]
     except getopt.GetoptError:
         print('Invalid arguments.')
         sys.exit(255)
@@ -34,9 +37,12 @@ def pre_processor(argv):
         elif opt in ('-t', '--task'):
             task = arg
         elif opt in ('-l', '--log'):
-            logger.Logger.log_path = arg
+            log_path = arg
+        elif opt in ('-d', '--debug'):
+            debug_mode = True
 
-    # Logger
+    # Init logger
+    logger.Logger.init(log_path, file_debug_log = debug_mode, output_debug_log = debug_mode)
     lg = logger.Logger.register(__name__)
 
     # Run autoremove

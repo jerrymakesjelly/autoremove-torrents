@@ -2,6 +2,7 @@
 
 from setuptools import setup, find_packages
 from autoremovetorrents.version import __version__
+from autoremovetorrents.compatibility.disk_usage_ import SUPPORT_SHUTIL
 from autoremovetorrents.compatibility.open_ import open_
 
 setup(name = 'autoremove-torrents',
@@ -23,12 +24,12 @@ setup(name = 'autoremove-torrents',
     include_package_data = True,
     zip_safe = True,
     install_requires = [
-        'requests',
-        'pyyaml',
+        'deluge-client',
         'enum34',
         'ply',
-        'psutil',
-        'deluge-client',
+        '' if SUPPORT_SHUTIL else 'psutil',
+        'pyyaml',
+        'requests',
     ],
     entry_points = {
         'console_scripts':[

@@ -7,7 +7,7 @@ class SizeCondition(Condition):
         self._size = s * (1 << 30) # Convert to GiB
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             if self.compare(torrent.size, self._size, self._comparer):
                 self.remove.add(torrent)

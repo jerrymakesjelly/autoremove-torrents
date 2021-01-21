@@ -31,7 +31,7 @@ class Task(object):
         # Read configurations
         self._client_name = conf['client']
         self._client = None
-        self._host = conf['host']
+        self._host = conf['host'].rstrip('/')
         self._username = conf['username'] if 'username' in conf else ''
         self._password = conf['password'] if 'password' in conf else ''
         self._enabled_remove = remove_torrents
@@ -42,13 +42,26 @@ class Task(object):
         self._torrents = set()
         self._remove = set()
 
-        # Allow removing specified torrents
+        # Client status
+        self._client_status = None
+
+        # Allow removing specified torrents(for CI testing only)
         if 'force_delete' in conf:
             for hash_ in conf['force_delete']:
                 torrent_obj = Torrent()
                 torrent_obj.hash = hash_
                 torrent_obj.name = hash_
                 self._remove.add(torrent_obj)
+
+        # Print debug logs
+        self._logger.debug("Configuration of task '%s':" % self._name)
+        self._logger.debug('Client: %s, Host: %s, Username: %s, Password: %s' % (
+            self._client_name, self._host, self._username, self._password
+        ))
+        self._logger.debug('Remove Torrents: %s, Remove Torrents and Data: %s' % (
+            self._enabled_remove, self._delete_data
+        ))
+        self._logger.debug('Strategies: %s' % ', '.join(self._strategies))
 
     # Login client
     def _login(self):
@@ -74,6 +87,10 @@ class Task(object):
         self._logger.info('Login successfully. The client is %s.' % self._client.version())
         self._logger.info('WebUI API version: %s' % self._client.api_version())
 
+        # Get client status
+        self._client_status = self._client.client_status()
+        self._logger.info(self._client_status)
+
     # Get all the torrents and properties
     def _get_torrents(self):
         self._logger.info('Getting all the torrents...')
@@ -92,7 +109,7 @@ class Task(object):
     def _apply_strategies(self):
         for strategy_name in self._strategies:
             strategy = Strategy(strategy_name, self._strategies[strategy_name])
-            strategy.execute(self._torrents)
+            strategy.execute(self._client_status, self._torrents)
             self._remove.update(strategy.remove_list)
 
     # Remove torrents

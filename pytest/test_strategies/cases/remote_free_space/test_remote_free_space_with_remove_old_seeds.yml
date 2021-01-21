@@ -1,0 +1,8 @@
+test:
+  free_space:
+    min: 110
+    path: /
+    action: remove-old-seeds
+remove:
+  - Torrent - 4
+  - Torrent - 9

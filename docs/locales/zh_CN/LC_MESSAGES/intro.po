@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-16 23:31+0800\n"
+"POT-Creation-Date: 2020-08-25 15:01+0800\n"
 "PO-Revision-Date: 2020-02-02 17:29+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -98,7 +98,7 @@ msgstr "属性/客户端"
 msgid "Average Download Speed"
 msgstr "平均下载速度"
 
-#: ../../intro.rst:46 ../../intro.rst:81
+#: ../../intro.rst:46 ../../intro.rst:91
 msgid "✓ :superscript:`2.0 or later`"
 msgstr "✓ :superscript:`2.0 或更高版本`"
 
@@ -107,25 +107,28 @@ msgstr "✓ :superscript:`2.0 或更高版本`"
 #: ../../intro.rst:62 ../../intro.rst:63 ../../intro.rst:64 ../../intro.rst:66
 #: ../../intro.rst:67 ../../intro.rst:68 ../../intro.rst:69 ../../intro.rst:71
 #: ../../intro.rst:72 ../../intro.rst:73 ../../intro.rst:76 ../../intro.rst:77
-#: ../../intro.rst:78 ../../intro.rst:79 ../../intro.rst:83 ../../intro.rst:86
-#: ../../intro.rst:87 ../../intro.rst:88 ../../intro.rst:89 ../../intro.rst:91
-#: ../../intro.rst:92 ../../intro.rst:93 ../../intro.rst:94 ../../intro.rst:96
-#: ../../intro.rst:97 ../../intro.rst:98 ../../intro.rst:99 ../../intro.rst:101
+#: ../../intro.rst:78 ../../intro.rst:79 ../../intro.rst:81 ../../intro.rst:82
+#: ../../intro.rst:83 ../../intro.rst:84 ../../intro.rst:86 ../../intro.rst:87
+#: ../../intro.rst:88 ../../intro.rst:93 ../../intro.rst:96 ../../intro.rst:97
+#: ../../intro.rst:98 ../../intro.rst:99 ../../intro.rst:101
 #: ../../intro.rst:102 ../../intro.rst:103 ../../intro.rst:104
 #: ../../intro.rst:106 ../../intro.rst:107 ../../intro.rst:108
 #: ../../intro.rst:109 ../../intro.rst:111 ../../intro.rst:112
-#: ../../intro.rst:113 ../../intro.rst:114 ../../intro.rst:117
-#: ../../intro.rst:118 ../../intro.rst:121 ../../intro.rst:122
-#: ../../intro.rst:123 ../../intro.rst:124 ../../intro.rst:126
-#: ../../intro.rst:127 ../../intro.rst:128 ../../intro.rst:129
-#: ../../intro.rst:131 ../../intro.rst:132 ../../intro.rst:133
-#: ../../intro.rst:134 ../../intro.rst:136 ../../intro.rst:137
-#: ../../intro.rst:138 ../../intro.rst:139
+#: ../../intro.rst:113 ../../intro.rst:114 ../../intro.rst:116
+#: ../../intro.rst:117 ../../intro.rst:118 ../../intro.rst:119
+#: ../../intro.rst:121 ../../intro.rst:122 ../../intro.rst:123
+#: ../../intro.rst:124 ../../intro.rst:126 ../../intro.rst:127
+#: ../../intro.rst:128 ../../intro.rst:129 ../../intro.rst:131
+#: ../../intro.rst:132 ../../intro.rst:133 ../../intro.rst:134
+#: ../../intro.rst:136 ../../intro.rst:137 ../../intro.rst:138
+#: ../../intro.rst:139 ../../intro.rst:141 ../../intro.rst:142
+#: ../../intro.rst:143 ../../intro.rst:144 ../../intro.rst:146
+#: ../../intro.rst:147 ../../intro.rst:148 ../../intro.rst:149
 msgid "✓"
 msgstr "✓"
 
-#: ../../intro.rst:49 ../../intro.rst:54 ../../intro.rst:74 ../../intro.rst:84
-#: ../../intro.rst:116 ../../intro.rst:119
+#: ../../intro.rst:49 ../../intro.rst:54 ../../intro.rst:74 ../../intro.rst:89
+#: ../../intro.rst:94
 msgid "✗"
 msgstr "✗"
 
@@ -162,54 +165,63 @@ msgid "Download Speed"
 msgstr "下载速度"
 
 #: ../../intro.rst:80
+#, fuzzy
+msgid "Downloaded Size"
+msgstr "下载速度"
+
+#: ../../intro.rst:85
+msgid "Free Space"
+msgstr ""
+
+#: ../../intro.rst:90
 msgid "Last Activity"
 msgstr "最近活动"
 
-#: ../../intro.rst:82
+#: ../../intro.rst:92
 msgid "✓ :superscript:`v3.0 or later`"
 msgstr "✓ :superscript:`v3.0 或更高版本`"
 
-#: ../../intro.rst:85
+#: ../../intro.rst:95
 msgid "Leecher"
 msgstr "下载者"
 
-#: ../../intro.rst:90
+#: ../../intro.rst:100
 msgid "Progress"
 msgstr "进度（百分比）"
 
-#: ../../intro.rst:95
+#: ../../intro.rst:105
 msgid "Ratio"
 msgstr "分享率"
 
-#: ../../intro.rst:100
+#: ../../intro.rst:110
 msgid "Seeder"
 msgstr "做种者"
 
-#: ../../intro.rst:105
+#: ../../intro.rst:115
 msgid "Seeding Time"
 msgstr "做种时间"
 
-#: ../../intro.rst:110
+#: ../../intro.rst:120
 msgid "Size"
 msgstr "种子大小"
 
-#: ../../intro.rst:115
-msgid "Stall Status"
-msgstr "无速度（Stall）状态"
-
-#: ../../intro.rst:120
+#: ../../intro.rst:125
 msgid "Status"
 msgstr "状态"
 
-#: ../../intro.rst:125
+#: ../../intro.rst:130
 msgid "Tracker"
 msgstr "Tracker"
 
-#: ../../intro.rst:130
+#: ../../intro.rst:135
 msgid "Upload Ratio"
 msgstr "上传比率"
 
-#: ../../intro.rst:135
+#: ../../intro.rst:140
 msgid "Upload Speed"
 msgstr "上传速度"
+
+#: ../../intro.rst:145
+msgid "Uploaded Size"
+msgstr ""
 

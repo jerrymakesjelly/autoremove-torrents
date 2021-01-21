@@ -1,8 +1,11 @@
 #-*- coding:utf-8 -*-
 import requests
 import time
+from .. import logger
 from ..torrent import Torrent
+from ..clientstatus import ClientStatus
 from ..torrentstatus import TorrentStatus
+from ..portstatus import PortStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.incompatibleapi import IncompatibleAPIVersion
@@ -36,6 +39,10 @@ class qBittorrent(object):
         # Login
         def login(self, username, password):
             return self._session.post(self._host+'/login', data={'username':username, 'password':password})
+
+        # Get server state
+        def server_state(self):
+            return self._session.get(self._host+'/sync/maindata')
 
         # Get torrent list
         def torrent_list(self):
@@ -86,6 +93,10 @@ class qBittorrent(object):
         def login(self, username, password):
             return self._session.post(self._host+'/api/v2/auth/login', data={'username':username, 'password':password})
 
+        # Get server state
+        def server_state(self):
+            return self._session.get(self._host+'/api/v2/sync/maindata')
+
         # Get torrent list
         def torrent_list(self):
             return self._session.get(self._host+'/api/v2/torrents/info')
@@ -107,6 +118,9 @@ class qBittorrent(object):
             return self._session.get(self._host+'/api/v2/torrents/delete', params={'hashes':'|'.join(torrent_hash_list), 'deleteFiles': True})
 
     def __init__(self, host):
+        # Logger
+        self._logger = logger.Logger.register(__name__)
+
         # Torrents list cache
         self._torrents_list_cache = []
         self._refresh_cycle = 30
@@ -135,6 +149,29 @@ class qBittorrent(object):
         else:
             raise LoginFailure('The server returned HTTP %d.' % request.status_code)
     
+    # Get client status
+    def client_status(self):
+        status = self._request_handler.server_state().json()['server_state']
+
+        cs = ClientStatus()
+        # Remote free space checker
+        cs.free_space = self.remote_free_space
+        # Downloading speed and downloaded size
+        cs.download_speed = status['dl_info_speed']
+        cs.total_downloaded = status['dl_info_data']
+        # Uploading speed and uploaded size
+        cs.upload_speed = status['up_info_speed']
+        cs.total_uploaded = status['up_info_data']
+        # Outgoing port status
+        if status['connection_status'] == 'connected':
+            cs.port_status = PortStatus.Open
+        elif status['connection_status'] == 'firewalled':
+            cs.port_status = PortStatus.Firewalled
+        else:
+            cs.port_status = PortStatus.Closed
+        
+        return cs
+
     # Get qBittorrent Version
     def version(self):
         request = self._request_handler.client_version()
@@ -182,6 +219,7 @@ class qBittorrent(object):
                 torrent_obj.size = torrent['size']
                 torrent_obj.ratio = torrent['ratio']
                 torrent_obj.uploaded = properties['total_uploaded']
+                torrent_obj.downloaded = properties['total_downloaded']
                 torrent_obj.create_time = properties['addition_date']
                 torrent_obj.seeding_time = properties['seeding_time']
                 torrent_obj.upload_speed = properties['up_speed']
@@ -199,6 +237,18 @@ class qBittorrent(object):
                 torrent_obj.progress = torrent['progress']
 
                 return torrent_obj
+
+    # Get free space
+    def remote_free_space(self, path):
+        # Actually the path is ignored
+        self._logger.info('Get Free Space: The path is ignored ' +
+            'since qBitorrent does not support to specific a path to check the free space.')
+        status = self._request_handler.server_state().json()['server_state']
+
+        # There is no free space data in qBittorrent 3.x
+        if 'free_space_on_disk' in status:
+            return status['free_space_on_disk']
+        return None
 
     # Judge Torrent Status (qBittorrent doesn't have stopped status)
     @staticmethod

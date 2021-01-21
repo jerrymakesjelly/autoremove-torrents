@@ -11,7 +11,8 @@ from autoremovetorrents.exception.remotefailure import RemoteFailure
 from autoremovetorrents.compatibility.open_ import open_
 
 def test_client(env_dist):
-    # Logger
+    # Init logger
+    logger.Logger.init()
     lg = logger.Logger.register(__name__)
 
     # Mapping of exceptions

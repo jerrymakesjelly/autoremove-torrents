@@ -7,4 +7,6 @@
 -t task10000 -c pytest/test_main/config.yml
 -c pytest/test_main/config.yml -l pytest
 --conf=pytest/test_main/config.yml --log=pytest
+--conf=pytest/test_main/config.yml --debug
+-c pytest/test_main/config.yml -d
 abcdefghijklmnopqrstuvwxyz

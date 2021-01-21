@@ -1,4 +1,14 @@
 {
     "time.time": 1527438305,
-    "psutil.disk_usage": [0, 0, 107374182400, 0]
+    "psutil.disk_usage": {
+        "total": 0,
+        "used": 0,
+        "free": 107374182400,
+        "percent": 0
+    },
+    "shutil.disk_usage": {
+        "total": 0,
+        "used": 0,
+        "free": 107374182400
+    }
 }

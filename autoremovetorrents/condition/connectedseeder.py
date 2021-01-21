@@ -8,7 +8,7 @@ class ConnectedSeederCondition(Condition):
         self._connected_seeder = cs
         self._comparer = comp
 
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         for torrent in torrents:
             # Note: This condition is only available for the uploading and downloading torrents
             if (torrent.status == TorrentStatus.Uploading or torrent.status == TorrentStatus.Downloading) and \

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-24 18:59+0800\n"
+"POT-Creation-Date: 2020-08-27 15:46+0800\n"
 "PO-Revision-Date: 2020-02-02 16:32+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -142,7 +142,9 @@ msgstr "不要在 ``host`` 字段中填写任何协议，本程序既不使用 H
 msgid ""
 "The port number is the port number of the Deluge Daemon, not the WebUI. "
 "You can find it in the Connection Manager of your WebUI."
-msgstr "端口号是 Deluge Daemon 的端口号，不是 WebUI 的端口号。可以在 WebUI 中的 Connection Manager 里看到端口号。"
+msgstr ""
+"端口号是 Deluge Daemon 的端口号，不是 WebUI 的端口号。可以在 WebUI 中的 Connection Manager "
+"里看到端口号。"
 
 #: ../../config.rst:97
 msgid ""
@@ -150,7 +152,10 @@ msgid ""
 "computers, please make sure that your Deluge accepts remote connections. "
 "You can modify this setting at **Preferences -> Daemon -> Allow Remote "
 "Connections**."
-msgstr "如果你的 autoremove-torrents 和 Deluge 运行在不同的计算机上，请确保您的 Deluge 允许接受远程计算机的连接。您可以在 **Preferences -> Daemon -> Allow Remote Connections** 中修改这个设置。"
+msgstr ""
+"如果你的 autoremove-torrents 和 Deluge 运行在不同的计算机上，请确保您的 Deluge "
+"允许接受远程计算机的连接。您可以在 **Preferences -> Daemon -> Allow Remote Connections** "
+"中修改这个设置。"
 
 #: ../../config.rst:101
 msgid ""
@@ -163,7 +168,9 @@ msgstr "一般来说，您可以在 ``~/.config/deluge/auth`` 中找到用户名
 msgid ""
 "For more information of the authentication, please visit https://dev"
 ".deluge-torrent.org/wiki/UserGuide/Authentication."
-msgstr "有关身份验证方面的更多信息，请访问 https://dev.deluge-torrent.org/wiki/UserGuide/Authentication 。"
+msgstr ""
+"有关身份验证方面的更多信息，请访问 https://dev.deluge-"
+"torrent.org/wiki/UserGuide/Authentication 。"
 
 #: ../../config.rst:106
 msgid "Part 3: Strategy Block"
@@ -229,14 +236,14 @@ msgstr "状态"
 msgid "Remarks"
 msgstr "备注"
 
-#: ../../config.rst:131 ../../config.rst:286 ../../config.rst:476
+#: ../../config.rst:131 ../../config.rst:290 ../../config.rst:500
 msgid "Downloading"
 msgstr "Downloading"
 
 #: ../../config.rst:132 ../../config.rst:134 ../../config.rst:136
-#: ../../config.rst:138 ../../config.rst:144 ../../config.rst:463
-#: ../../config.rst:467 ../../config.rst:483 ../../config.rst:491
-#: ../../config.rst:495 ../../config.rst:507
+#: ../../config.rst:138 ../../config.rst:144 ../../config.rst:483
+#: ../../config.rst:487 ../../config.rst:507 ../../config.rst:515
+#: ../../config.rst:519 ../../config.rst:535
 msgid "/"
 msgstr "/"
 
@@ -390,31 +397,32 @@ msgstr "前 15 个条件如下。为了防止误删种子，某些条件只对�
 msgid "Condition"
 msgstr "条件"
 
-#: ../../config.rst:269 ../../config.rst:451
+#: ../../config.rst:269 ../../config.rst:471
 msgid "Unit"
 msgstr "单位"
 
-#: ../../config.rst:270 ../../config.rst:452
+#: ../../config.rst:270 ../../config.rst:472
 msgid "Available Status"
 msgstr "可用状态"
 
-#: ../../config.rst:271 ../../config.rst:344 ../../config.rst:453
-#: ../../config.rst:521
+#: ../../config.rst:271 ../../config.rst:352 ../../config.rst:473
+#: ../../config.rst:549
 msgid "Description"
 msgstr "说明"
 
-#: ../../config.rst:272 ../../config.rst:490
+#: ../../config.rst:272 ../../config.rst:514
 msgid "``ratio``"
 msgstr "``ratio``"
 
 #: ../../config.rst:274 ../../config.rst:278 ../../config.rst:282
-#: ../../config.rst:294 ../../config.rst:298 ../../config.rst:302
-#: ../../config.rst:306 ../../config.rst:310 ../../config.rst:322
-#: ../../config.rst:326 ../../config.rst:330 ../../config.rst:456
-#: ../../config.rst:460 ../../config.rst:472 ../../config.rst:480
-#: ../../config.rst:484 ../../config.rst:488 ../../config.rst:492
-#: ../../config.rst:496 ../../config.rst:500 ../../config.rst:504
-#: ../../config.rst:508
+#: ../../config.rst:286 ../../config.rst:298 ../../config.rst:302
+#: ../../config.rst:306 ../../config.rst:310 ../../config.rst:314
+#: ../../config.rst:318 ../../config.rst:330 ../../config.rst:334
+#: ../../config.rst:338 ../../config.rst:476 ../../config.rst:480
+#: ../../config.rst:492 ../../config.rst:496 ../../config.rst:504
+#: ../../config.rst:508 ../../config.rst:512 ../../config.rst:516
+#: ../../config.rst:520 ../../config.rst:524 ../../config.rst:528
+#: ../../config.rst:532 ../../config.rst:536
 msgid "All"
 msgstr "全部"
 
@@ -422,12 +430,12 @@ msgstr "全部"
 msgid "Maximum ratio"
 msgstr "分享率上限"
 
-#: ../../config.rst:276 ../../config.rst:470
+#: ../../config.rst:276 ../../config.rst:490
 msgid "``create_time``"
 msgstr "``create_time``"
 
-#: ../../config.rst:277 ../../config.rst:281 ../../config.rst:321
-#: ../../config.rst:471 ../../config.rst:479 ../../config.rst:499
+#: ../../config.rst:277 ../../config.rst:281 ../../config.rst:329
+#: ../../config.rst:491 ../../config.rst:503 ../../config.rst:523
 msgid "Second"
 msgstr "秒"
 
@@ -438,7 +446,7 @@ msgid ""
 "is)."
 msgstr "种子从添加到客户端到现在所经过的时间，以秒为单位。在这里设置一个添加时间的上限，当种子在客户端中存活时间超过此上限后，种子会被直接删除（不管种子现在正处于哪种状态）。"
 
-#: ../../config.rst:280 ../../config.rst:498
+#: ../../config.rst:280 ../../config.rst:522
 msgid "``seeding_time``"
 msgstr "``seeding_time``"
 
@@ -447,212 +455,233 @@ msgid "Maximum seeding time of a torrent."
 msgstr "最长做种时间。"
 
 #: ../../config.rst:284
+msgid "``max_download``"
+msgstr "``max_download``"
+
+#: ../../config.rst:285 ../../config.rst:305 ../../config.rst:313
+#: ../../config.rst:495 ../../config.rst:527 ../../config.rst:531
+msgid "GiB"
+msgstr "GiB"
+
+#: ../../config.rst:287
+msgid ""
+"Maximum downloaded size of a torrent. Torrents whose downloaded size "
+"exceed this limitation will be removed."
+msgstr "种子最大下载量，超过此限制的种子会被删除。"
+
+#: ../../config.rst:288
 msgid "``max_downloadspeed``"
 msgstr "``max_downloadspeed``"
 
-#: ../../config.rst:285 ../../config.rst:289 ../../config.rst:293
-#: ../../config.rst:297 ../../config.rst:455 ../../config.rst:459
-#: ../../config.rst:475 ../../config.rst:511
+#: ../../config.rst:289 ../../config.rst:293 ../../config.rst:297
+#: ../../config.rst:301 ../../config.rst:475 ../../config.rst:479
+#: ../../config.rst:499 ../../config.rst:539
 msgid "KiB/s"
 msgstr "KiB/s"
 
-#: ../../config.rst:287
+#: ../../config.rst:291
 msgid ""
 "Maximum download speed of a torrent. Torrents that exceed the limitation "
 "will be removed."
 msgstr "种子的最大下载速度，超过此限制的种子会被删除。"
 
-#: ../../config.rst:288
+#: ../../config.rst:292
 msgid "``min_uploadspeed``"
 msgstr "``min_uploadspeed``"
 
-#: ../../config.rst:290 ../../config.rst:314 ../../config.rst:318
-#: ../../config.rst:464 ../../config.rst:468 ../../config.rst:512
+#: ../../config.rst:294 ../../config.rst:322 ../../config.rst:326
+#: ../../config.rst:484 ../../config.rst:488 ../../config.rst:540
 msgid "Downloading or Uploading"
 msgstr "Downloading 或 Uploading"
 
-#: ../../config.rst:291
+#: ../../config.rst:295
 msgid ""
 "Minimum upload speed of a torrent. Torrents below this speed will be "
 "removed."
 msgstr "种子的最小上传速度，低于此速度的种子会被删除。"
 
-#: ../../config.rst:292
+#: ../../config.rst:296
 msgid "``max_average_downloadspeed``"
 msgstr "``max_average_downloadspeed``"
 
-#: ../../config.rst:295
+#: ../../config.rst:299
 msgid "Maximum average download speed. Just like ``max_downloadspeed``."
 msgstr "最大平均下载速度，如同 ``max_downloadspeed`` 。"
 
-#: ../../config.rst:296
+#: ../../config.rst:300
 msgid "``min_average_uploadspeed``"
 msgstr "``min_average_uploadspeed``"
 
-#: ../../config.rst:299
+#: ../../config.rst:303
 msgid "Minimum average upload speed. Just like ``min_uploadspeed``."
 msgstr "最小平均上传速度，如同 ``min_uploadspeed`` 。"
 
-#: ../../config.rst:300
+#: ../../config.rst:304
 msgid "``max_size``"
 msgstr "``max_size``"
 
-#: ../../config.rst:301 ../../config.rst:503
-msgid "GiB"
-msgstr "GiB"
-
-#: ../../config.rst:303
+#: ../../config.rst:307
 msgid ""
 "Torrent size limitation. Remove those torrents whose size exceeds the "
 "limit."
 msgstr "种子大小限制，超过此限制的种子会被删除。"
 
-#: ../../config.rst:304
+#: ../../config.rst:308
 msgid "``max_seeder``"
 msgstr "``max_seeder``"
 
-#: ../../config.rst:307
+#: ../../config.rst:311
 msgid ""
 "Maximum number of seeders. When the seeders exceeds the limitation, the "
 "torrent will be removed."
 msgstr "最大做种者数，超过此限制的种子会被删除。"
 
-#: ../../config.rst:308
+#: ../../config.rst:312
+msgid "``max_upload``"
+msgstr "``max_upload``"
+
+#: ../../config.rst:315
+msgid ""
+"Maximum uploaded size of a torrent. Torrents whose uploaded size exceed "
+"this limitation will be removed."
+msgstr "种子的最大上传体积，超过此限制的种子会被删除。"
+
+#: ../../config.rst:316
 msgid "``min_leecher``"
 msgstr "``min_leecher``"
 
-#: ../../config.rst:311
+#: ../../config.rst:319
 msgid ""
 "Minimum number of leechers. When the number of leechers is less than the "
 "settings, the torrent will be removed."
 msgstr "最小下载者数，低于此设置的种子会被删除。"
 
-#: ../../config.rst:312
+#: ../../config.rst:320
 msgid "``max_connected_seeder``"
 msgstr "``max_connected_seeder``"
 
-#: ../../config.rst:315
+#: ../../config.rst:323
 msgid "Maximum number of connected seeders. Just like ``max_seeder``."
 msgstr "已连接做种者的最大值，如同 ``max_seeder`` 。"
 
-#: ../../config.rst:316
+#: ../../config.rst:324
 msgid "``min_connected_leecher``"
 msgstr "``min_connected_leecher``"
 
-#: ../../config.rst:319
+#: ../../config.rst:327
 msgid "Minimum number of connected leechers. Just like ``min_leecher``."
 msgstr "已连接下载者数的最小值，如同 ``min_leecher``。"
 
-#: ../../config.rst:320 ../../config.rst:478
+#: ../../config.rst:328 ../../config.rst:502
 msgid "``last_activity``"
 msgstr "``last_activity``"
 
-#: ../../config.rst:323
+#: ../../config.rst:331
 msgid ""
 "The maximum time allowed since a torrent has stopped being active, that "
 "is, the maximum time without uploading or downloading. When the torrent "
 "reaches the limit, it will be removed."
 msgstr "种子从停止活动到现在所允许经过的最长时间，即允许的没有上传或下载活动的最长时间。当种子到达此限制时，它就会被删除。"
 
-#: ../../config.rst:324
+#: ../../config.rst:332
 msgid "``max_progress``"
 msgstr "``max_progress``"
 
-#: ../../config.rst:325
+#: ../../config.rst:333
 msgid "Percent (%)"
 msgstr "百分比 (%)"
 
-#: ../../config.rst:327
+#: ../../config.rst:335
 msgid "The maximum download progress. The maximum value is 100."
 msgstr "允许的最大下载进度，最大值是100。"
 
-#: ../../config.rst:328 ../../config.rst:506
+#: ../../config.rst:336 ../../config.rst:534
 msgid "``upload_ratio``"
 msgstr "``upload_ratio``"
 
-#: ../../config.rst:331
+#: ../../config.rst:339
 msgid ""
 "The maximum upload ratio. Note that the upload ratio here is different "
 "from the ratio. For each torrent, the upload ratio is ``uploaded size`` "
 "divided by its ``size``."
 msgstr "最大上传比率。注意，此处的上传比率与分享率不同，对于每个种子来说，上传比率是指上传量除以种子大小的比值。"
 
-#: ../../config.rst:333
+#: ../../config.rst:341
 msgid ""
 "Beside these condition, the other 3 remove conditions are here. The rest "
 "of the torrents will be removed if they trigger these conditions."
 msgstr "除了上面的删种条件，这里还有 3 个删种条件。当剩下的种子触发这些删种条件时，它们就会被删除。"
 
-#: ../../config.rst:335
+#: ../../config.rst:343
 msgid ""
 "``seed_size``: Calculate the total size of the torrents you chosen. If "
 "the total size exceeds the limit, some of the torrents will be removed. "
 "The following two properties must be specificed."
 msgstr "``seed_size``：计算上述选择的种子的总大小。如果总大小超过限制，一部分种子会被删除。需要设置以下两个属性："
 
-#: ../../config.rst:337
+#: ../../config.rst:345
 msgid "``limit``: Limit of the total size, in GiB."
 msgstr "``limit``：总大小限制，以GiB为单位。"
 
-#: ../../config.rst:338
+#: ../../config.rst:346
 msgid ""
 "``action``: Determine which torrents will be removed. Can be the "
 "following values:"
 msgstr "``action``：确定哪部分种子将被删除。可以是以下值："
 
-#: ../../config.rst:343
+#: ../../config.rst:351
 msgid "Value"
 msgstr "值"
 
-#: ../../config.rst:345
+#: ../../config.rst:353
 msgid "remove-old-seeds"
 msgstr "remove-old-seeds"
 
-#: ../../config.rst:346
+#: ../../config.rst:354
 msgid "Try to remove old seeds."
 msgstr "尽量删除旧的种子。"
 
-#: ../../config.rst:347
+#: ../../config.rst:355
 msgid "remove-new-seeds"
 msgstr "remove-new-seeds"
 
-#: ../../config.rst:348
+#: ../../config.rst:356
 msgid "Try to remove new seeds."
 msgstr "尽量删除新的种子。"
 
-#: ../../config.rst:349
+#: ../../config.rst:357
 msgid "remove-big-seeds"
 msgstr "remove-big-seeds"
 
-#: ../../config.rst:350
+#: ../../config.rst:358
 msgid "Try to remove large seeds."
 msgstr "尽量删除体积大的种子。"
 
-#: ../../config.rst:351
+#: ../../config.rst:359
 msgid "remove-small-seeds"
 msgstr "remove-small-seeds"
 
-#: ../../config.rst:352
+#: ../../config.rst:360
 msgid "Try to remove small seeds."
 msgstr "尽量删除体积小的种子。"
 
-#: ../../config.rst:353
+#: ../../config.rst:361
 msgid "remove-active-seeds"
 msgstr "remove-active-seeds"
 
-#: ../../config.rst:354
+#: ../../config.rst:362
 msgid "Try to remove active seeds."
 msgstr "尽量删除活跃的种子。"
 
-#: ../../config.rst:355
+#: ../../config.rst:363
 msgid "remove-inactive-seeds"
 msgstr "remove-inactive-seeds"
 
-#: ../../config.rst:356
+#: ../../config.rst:364
 msgid "Try to remove inactive seeds."
 msgstr "尽量删除不活跃的种子。"
 
-#: ../../config.rst:359
+#: ../../config.rst:367
 msgid ""
 "``maximum_number``: Set the maximum number of torrents. When the number "
 "of chosen torrents is exceed the maximum number, some of the torrents "
@@ -662,17 +691,17 @@ msgstr ""
 "``maximum_number``：判断上述选择的选择的种子的总个数。如果个数超出设置的最大值，一部分种子会被删除，就像 `seed_size`"
 " 条件一样。需要设置以下两个属性："
 
-#: ../../config.rst:361
+#: ../../config.rst:369
 msgid "``limit``: Maximum number limitation"
 msgstr "``limit``：总个数限制"
 
-#: ../../config.rst:362
+#: ../../config.rst:370
 msgid ""
 "``action``: Determine which torrents will be removed. The values and its "
 "meanings are in the table above."
 msgstr "``action``：确定哪些种子会被删除，取值与含义同上表。"
 
-#: ../../config.rst:364
+#: ../../config.rst:372
 msgid ""
 "``free_space``: Check the free space on disk is enough or not. When the "
 "free space is not enough, some of the chosen torrents will be deleted, "
@@ -682,44 +711,84 @@ msgstr ""
 "``free_space``：检查磁盘的剩余空间是否符合设定。如果空间不足，一部分种子会被删除，就像 seed_size "
 "条件一样。需要设置以下三个属性："
 
-#: ../../config.rst:366
+#: ../../config.rst:374
 msgid ""
 "``min``: Minimum free space, in `GiB`. When the free space of the "
 "specified directory is less than this value, the removing strategy will "
 "be trigger."
 msgstr "``min``：剩余空间最小值，以`GiB`为单位；当目录的剩余空间小于这个值时，删除策略会被触发。"
 
-#: ../../config.rst:367
+#: ../../config.rst:375
 msgid "``path``: Directory that needs to be monitored"
 msgstr "``path``：需要监控剩余空间的目录"
 
-#: ../../config.rst:368
+#: ../../config.rst:376
 msgid ""
 "``action``: Removing strategy, which determines which torrents will be "
 "removed. The values and its meanings are in the table above."
 msgstr "``action``：删除策略，用于确定哪些种子会被删除。取值与含义同上表"
 
-#: ../../config.rst:370
+#: ../../config.rst:378
+msgid ""
+"``remote_free_space``: Decide which torrents to be removed based on the "
+"free space too, but use the free space data reported by the bittorrent "
+"client. Its behavior is the same as the ``free_space``."
+msgstr ""
+"``remote_free_space``：同样也是根据磁盘剩余空间来决定哪些种子会被删除，但这里使用BT客户端汇报的磁盘剩余空间大小。它的行为与"
+" ``free_space`` 一致。"
+
+#: ../../config.rst:380
+msgid "``min``: Minimum free space, in `GiB`."
+msgstr "``min``：允许的剩余空间最小值，以 `GiB` 为单位。"
+
+#: ../../config.rst:381
+msgid "``path``: Directory that needs to be checked by the bittorrent client."
+msgstr "``path``：BT客户端需要检查剩余空间大小的目录路径"
+
+#: ../../config.rst:382
+msgid "``action``: Removing strategy."
+msgstr "``action``：删除策略"
+
+#: ../../config.rst:386
+msgid ""
+"If your autoremove-torrents and your bittorrent client are running on "
+"different machines, you need to use ``remote_free_space`` to check the "
+"free spaces. Besides, ``free_space`` and ``remote_free_space`` are the "
+"same."
+msgstr ""
+"如果你的 autoremove-torrents 和你的 BT 客户端运行在不同的机器上，你就需要使用 ``remote_free_space``"
+" 去查询剩余空间了。除此之外，``free_space`` 和 ``remote_free_space`` 是一样的。"
+
+#: ../../config.rst:388
+msgid ""
+"Please note that not all of the clients support checking the specified "
+"path. Currently, only Deluge and Transmission support, and the parameter "
+"``path`` in ``remote_free_space`` will be ignored in qBittorrent."
+msgstr ""
+"请注意，并不是所有的客户端都支持检测特定目录的剩余空间。截至目前，只有 Deluge 和 Transmission 支持查询特定目录；若在 "
+"qBittorrent 中使用 ``remote_free_space`` 的 ``path`` 参数，它将会被忽略。"
+
+#: ../../config.rst:390
 msgid ""
 "Here is an example. For torrents whose categories are xxx or yyy, it "
 "removes the torrents which ratio is greater than 1 or seeding time is "
 "more than 1209600 seconds:"
 msgstr "这是一个例子。对于分类是 xxx 或 yyy 的种子，分享率大于1或者做种时间大于1209600秒的种子会被删除："
 
-#: ../../config.rst:388
+#: ../../config.rst:408
 msgid ""
 "Here is another example. For all torrents, it removes the torrents which "
 "seeding time is greater than 259200 seconds:"
 msgstr "这也是一个例子。对于全体种子，做种时间大于259200秒的种子会被删除："
 
-#: ../../config.rst:402
+#: ../../config.rst:422
 msgid ""
 "Here is another another example. For all torrents, when the free space in"
 " directory `/home/myserver/downloads` is less than 10GiB, the program "
 "will try to remove the big torrents:"
 msgstr "这还有一个例子。对于全体种子，当 `/home/myserver/downloads` 的剩余空间小于10GiB时，程序会尝试删除体积大的种子："
 
-#: ../../config.rst:418
+#: ../../config.rst:438
 msgid ""
 "Here is the last example. For all torrents, remove those torrents whose "
 "ratio is greater than 3 first, and then if the total size of the rest of "
@@ -729,11 +798,11 @@ msgstr ""
 "这是最后一个例子。对于全体种子，首先删掉那些分享率大于 3 的种子，然后如果剩下的种子的总大小还大于 500GiB "
 "就尽量删除一些活跃的种子，直到总大小小于 500GiB 为止："
 
-#: ../../config.rst:435
+#: ../../config.rst:455
 msgid "2. Use ``remove`` Keyword (Advanced)"
 msgstr "2. 使用 ``remove`` 关键词 （高级)"
 
-#: ../../config.rst:437
+#: ../../config.rst:457
 msgid ""
 "Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in "
 "version 1.4.0, which supports the complex removing condition. The "
@@ -743,133 +812,149 @@ msgstr ""
 "使用 ``remove`` 关键词。``remove`` "
 "关键词是在1.4.0版本中新增的关键词，用于支持复杂的删除条件的设置。``remove`` 关键词后接一个表达式，表达式由以下语法构成："
 
-#: ../../config.rst:439
+#: ../../config.rst:459
 msgid "``<Parameter> <Comparison Operator> <Value>``"
 msgstr "``<参数> <比较运算符> <数值>``"
 
-#: ../../config.rst:441
+#: ../../config.rst:461
 msgid ""
 "``Parameter``: Available parameters are as follows, and they are case-"
 "insensitive."
 msgstr "``参数``：可选列表如下，不区分大小写。"
 
-#: ../../config.rst:445
+#: ../../config.rst:465
 msgid ""
 "Some properties can only be used in specific status. The torrents not in "
 "available status will not be removed."
 msgstr "某些属性只能在特定的状态中使用，不在可用状态的种子不会被删除。"
 
-#: ../../config.rst:450
+#: ../../config.rst:470
 msgid "Parameter"
 msgstr "参数"
 
-#: ../../config.rst:454
+#: ../../config.rst:474
 msgid "``average_downloadspeed``"
 msgstr "``average_downloadspeed``"
 
-#: ../../config.rst:457
+#: ../../config.rst:477
 msgid "Average download speed."
 msgstr "平均下载速度。"
 
-#: ../../config.rst:458
+#: ../../config.rst:478
 msgid "``average_uploadspeed``"
 msgstr "``average_uploadspeed``"
 
-#: ../../config.rst:461
+#: ../../config.rst:481
 msgid "Average upload speed."
 msgstr "平均上传速度。"
 
-#: ../../config.rst:462
+#: ../../config.rst:482
 msgid "``connected_leecher``"
 msgstr "``connected_leecher``"
 
-#: ../../config.rst:465
+#: ../../config.rst:485
 msgid "The number of connected leecher."
 msgstr "已连接的下载者数。"
 
-#: ../../config.rst:466
+#: ../../config.rst:486
 msgid "``connected_seeder``"
 msgstr "``connected_seeder``"
 
-#: ../../config.rst:469
+#: ../../config.rst:489
 msgid "The number of connected seeder."
 msgstr "已连接的做种者数。"
 
-#: ../../config.rst:473
+#: ../../config.rst:493
 msgid "The elapsed time since the torrent was added to the client."
 msgstr "种子从添加到客户端到现在所经过的时间。"
 
-#: ../../config.rst:474
+#: ../../config.rst:494
+msgid "``download``"
+msgstr "``download``"
+
+#: ../../config.rst:497
+msgid "Downloaded Size"
+msgstr "下载量"
+
+#: ../../config.rst:498
 msgid "``download_speed``"
 msgstr "``download_speed``"
 
-#: ../../config.rst:477
+#: ../../config.rst:501
 msgid "Download speed."
 msgstr "下载速度"
 
-#: ../../config.rst:481
+#: ../../config.rst:505
 msgid ""
 "The elapsed time since the torrent has stopped being active (without "
 "uploading or downloading)."
 msgstr "种子从停止活动（无上传或下载）到现在所经过的时间。"
 
-#: ../../config.rst:482
+#: ../../config.rst:506
 msgid "``leecher``"
 msgstr "``leecher``"
 
-#: ../../config.rst:485
+#: ../../config.rst:509
 msgid "The number of leechers."
 msgstr "下载者数。"
 
-#: ../../config.rst:486
+#: ../../config.rst:510
 msgid "``progress``"
 msgstr "``progress``"
 
-#: ../../config.rst:487
+#: ../../config.rst:511
 msgid "%"
 msgstr "%"
 
-#: ../../config.rst:489
+#: ../../config.rst:513
 msgid "The download progress."
 msgstr "下载进度。"
 
-#: ../../config.rst:493
+#: ../../config.rst:517
 msgid "Ratio"
 msgstr "分享率"
 
-#: ../../config.rst:494
+#: ../../config.rst:518
 msgid "``seeder``"
 msgstr "``seeder``"
 
-#: ../../config.rst:497
+#: ../../config.rst:521
 msgid "The number of seeders."
 msgstr "做种者数。"
 
-#: ../../config.rst:501
+#: ../../config.rst:525
 msgid "Seeding time."
 msgstr "做种时间"
 
-#: ../../config.rst:502
+#: ../../config.rst:526
 msgid "``size``"
 msgstr "``size``"
 
-#: ../../config.rst:505
+#: ../../config.rst:529
 msgid "The torrent size."
 msgstr "种子大小。"
 
-#: ../../config.rst:509
+#: ../../config.rst:530
+msgid "``upload``"
+msgstr "``upload``"
+
+#: ../../config.rst:533=
+msgid "Uploaded Size"
+msgstr "上传量"
+
+#: ../../config.rst:537
 msgid "uploaded size / size"
 msgstr "上传量 / 种子大小"
 
-#: ../../config.rst:510
+#: ../../config.rst:538
 msgid "``upload_speed``"
 msgstr "``upload_speed``"
 
-#: ../../config.rst:513
+#: ../../config.rst:541
 msgid "Upload Speed"
 msgstr "上传速度"
 
-#: ../../config.rst:515
+#: ../../config.rst:543
 msgid ""
 "``Comparison Operator``: Available parameters are as follows. This "
 "program doesn't provide the ``equal`` sign, because the status data of "
@@ -877,31 +962,31 @@ msgid ""
 "specific value."
 msgstr "``比较运算符``：可选列表如下。由于种子的状态数据变化快，通常情况下设置一个特定的数据没有意义，因此本程序不提供等号。"
 
-#: ../../config.rst:520
+#: ../../config.rst:548
 msgid "Comparison Operator"
 msgstr "比较运算符"
 
-#: ../../config.rst:522
+#: ../../config.rst:550
 msgid "``<``"
 msgstr "``<``"
 
-#: ../../config.rst:523
+#: ../../config.rst:551
 msgid "Less Than"
 msgstr "小于"
 
-#: ../../config.rst:524
+#: ../../config.rst:552
 msgid "``>``"
 msgstr "``>``"
 
-#: ../../config.rst:525
+#: ../../config.rst:553
 msgid "Greater Than"
 msgstr "大于"
 
-#: ../../config.rst:527
+#: ../../config.rst:555
 msgid "``Value``: Specify a numeric value. Supports integers and floats."
 msgstr "``数值``：指定一个数值，支持整数和小数。"
 
-#: ../../config.rst:529
+#: ../../config.rst:557
 msgid ""
 "This syntax selects the eligible torrents directly, and removes them "
 "directly or works with the following compound expressions. Here is an "
@@ -909,52 +994,52 @@ msgid ""
 "259200 seconds:"
 msgstr "该语法直接选出符合条件的种子，并直接删除它们或者与后面的复合表达式配合使用。这是一个例子，它直接删除做种时间大于259200秒的种子："
 
-#: ../../config.rst:543
+#: ../../config.rst:571
 msgid ""
 "``<Expression 1> and <Expression 2>`` and ``<Expression 1> or <Expression"
 " 2>``"
 msgstr "``<表达式1> and <表达式2>`` 以及 ``<表达式1> or <表达式2>``"
 
-#: ../../config.rst:545
+#: ../../config.rst:573
 msgid "This syntax is a compound expression."
 msgstr "该语法是复合表达式。"
 
-#: ../../config.rst:547
+#: ../../config.rst:575
 msgid ""
 "``and``: Select torrents that meet both the ``Expression 1`` and "
 "``Expression 2`` (intersection)."
 msgstr "``and``：选择同时满足 ``表达式1`` 和 ``表达式2`` 的种子（交集）。"
 
-#: ../../config.rst:548
+#: ../../config.rst:576
 msgid ""
 "``or``: Select torrents that meet one or both of the ``Expression 1`` and"
 " ``Expression 2`` (Union)."
 msgstr "``or``：选择满足 ``表达式1`` 或者 ``表达式2`` 或者同时满足两个表达式的种子（并集）。"
 
-#: ../../config.rst:550
+#: ../../config.rst:578
 msgid ""
 "Here is an example. For all torrents, it removes those torrents which "
 "ratio is greater than 2 **and** seeding time is more than 60000 seconds:"
 msgstr "这是一个例子。对于全体种子，分享率超过 2 **而且** 做种时间超过 60000 秒的种子会被删除："
 
-#: ../../config.rst:564
+#: ../../config.rst:592
 msgid ""
 "Here is another example. For all torrents, it removes those torrents "
 "which ratio is less than 1 **or** seeding time is more than 60000:"
 msgstr "这是另外一个例子。对于全体种子，分享率小于 1 **或者** 做种时间超过 60000 秒的种子会被删除："
 
-#: ../../config.rst:578
+#: ../../config.rst:606
 msgid "``(<Expression>)``"
 msgstr "``(<表达式>)``"
 
-#: ../../config.rst:580
+#: ../../config.rst:608
 msgid ""
 "When an expression is enclosed in parentheses, it is still an expression."
 " Using parentheses can change the priority. And you can use multiple "
 "parentheses for nesting."
 msgstr "一个表达式加上括号以后，它仍然是表达式。使用括号可以改变优先级。可以使用多重括号嵌套。"
 
-#: ../../config.rst:582
+#: ../../config.rst:610
 msgid ""
 "Here is an example. For all torrents, it removes those torrents which "
 "seeding time is more than 60000 seconds, **or** those torrents which "
@@ -963,23 +1048,33 @@ msgstr ""
 "这是一个例子。对于全体种子，做种时间超过 60000 秒的种子， **或者** 分享率大于 3 **而且** 添加时间超过 1400000 "
 "秒的种子会被删除："
 
-#: ../../config.rst:597
+#: ../../config.rst:625
 msgid "Part 4: Delete data"
 msgstr "第四部分：删除数据"
 
-#: ../../config.rst:599
+#: ../../config.rst:627
 msgid ""
 "Determine whether to delete data at the same time. If this field isn't "
 "specificed, the default value is ``false``."
 msgstr "决定是否在删除种子的同时也删除数据。如果此字段未指定，则默认值为 ``false`` 。"
 
-#: ../../config.rst:602
+#: ../../config.rst:630
 msgid "The Last Step..."
 msgstr "最后一步……"
 
-#: ../../config.rst:604
+#: ../../config.rst:632
 msgid ""
 "Remember to check your configuration file and make sure it works as you "
 "think. Use the following command line to see the torrents that will be "
 "removed (but not really remove them)."
 msgstr "记得检查你的配置文件，确保它按照你的想法工作（不然可能就会误删种子了）。使用以下命令行以查看将要删除的种子，但不会真正地删除它们："
+
+#~ msgid ""
+#~ "``remote_free_space``: Decide whether to "
+#~ "remove the torrents based on the "
+#~ "free space too, but use the free"
+#~ " space data reported by the "
+#~ "bittorrent client. Its behavior is the"
+#~ " same as the ``free_space``."
+#~ msgstr ""
+

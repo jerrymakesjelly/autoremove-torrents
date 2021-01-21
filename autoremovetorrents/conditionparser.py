@@ -6,6 +6,7 @@ from .condition.base import Comparer
 from .condition.connectedleecher import ConnectedLeecherCondition
 from .condition.connectedseeder import ConnectedSeederCondition
 from .condition.createtime import CreateTimeCondition
+from .condition.downloaded import DownloadsCondition
 from .condition.downloadspeed import DownloadSpeedCondition
 from .condition.lastactivity import LastActivityCondition
 from .condition.leecher import LeecherCondition
@@ -14,6 +15,7 @@ from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
 from .condition.size import SizeCondition
+from .condition.uploaded import UploadsCondition
 from .condition.uploadratio import UploadRatioCondition
 from .condition.uploadspeed import UploadSpeedCondition
 from .conditionlexer import ConditionLexer
@@ -28,6 +30,7 @@ class ConditionParser(object):
         'connected_leecher': ConnectedLeecherCondition,
         'connected_seeder': ConnectedSeederCondition,
         'create_time': CreateTimeCondition,
+        'download': DownloadsCondition,
         'download_speed': DownloadSpeedCondition,
         'last_activity': LastActivityCondition,
         'leecher': LeecherCondition,
@@ -36,6 +39,7 @@ class ConditionParser(object):
         'seeder': SeederCondition,
         'seeding_time': SeedingTimeCondition,
         'size': SizeCondition,
+        'upload': UploadsCondition,
         'upload_ratio': UploadRatioCondition,
         'upload_speed': UploadSpeedCondition,
     }
@@ -60,11 +64,11 @@ class ConditionParser(object):
         'statement : expression'
         self.remove = t[1]
         self.remain = self._torrent_list.difference(self.remove)
-    
+
     def p_sub_expression(self, t):
         'expression : LPAREN expression RPAREN'
         t[0] = t[2]
-    
+
     def p_and_or_expression(self, t):
         '''
         expression : expression AND expression
@@ -84,11 +88,11 @@ class ConditionParser(object):
         if t[1] in self._condition_map:
             if t[2] == '<': # Less than
                 obj = self._condition_map[t[1]](t[3], Comparer.LT)
-                obj.apply(self._torrent_list)
+                obj.apply(self._client_status, self._torrent_list)
                 result = obj.remove
             elif t[2] == '>': # Greater than
                 obj = self._condition_map[t[1]](t[3], Comparer.GT)
-                obj.apply(self._torrent_list)
+                obj.apply(self._client_status, self._torrent_list)
                 result = obj.remove
         else:
             raise NoSuchCondition('The condition \'%s\' is not supported.' % t[1])
@@ -111,6 +115,7 @@ class ConditionParser(object):
         self._logger = logger.Logger.register(__name__)
     
     # Apply this strategy
-    def apply(self, torrents):
+    def apply(self, client_status, torrents):
         self._torrent_list = set(torrents)
+        self._client_status = client_status
         self.parser.parse(self._expression)

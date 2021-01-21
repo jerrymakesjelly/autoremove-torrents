@@ -1,4 +1,4 @@
 #-*- coding:utf-8 -*-
 
 # Current autoremove-torrents version
-__version__ = '1.5.2'
+__version__ = '1.5.3'

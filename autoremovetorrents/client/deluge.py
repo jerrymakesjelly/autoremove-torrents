@@ -2,6 +2,8 @@ import time
 from deluge_client import DelugeRPCClient
 from deluge_client.client import DelugeClientException
 from ..torrent import Torrent
+from ..clientstatus import ClientStatus
+from ..portstatus import PortStatus
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.remotefailure import RemoteFailure
@@ -44,6 +46,31 @@ class Deluge(object):
         except DelugeClientException as e:
             # Raise our own exception
             raise RemoteFailure(e.args[0].split('\n')[0] if len(e.args) > 0 else e.__class__.__name__)
+
+    # Get client status
+    def client_status(self):
+        cs = ClientStatus()
+
+        # Set remote free space checker
+        cs.free_space = self.remote_free_space
+
+        # Get DL/UL information
+        session_stats = self._call('core.get_session_status', [
+            'payload_download_rate',
+            'payload_upload_rate',
+            'total_download',
+            'total_upload',
+        ])
+        cs.download_speed = session_stats['payload_download_rate']
+        cs.total_downloaded = session_stats['total_download']
+        cs.upload_speed = session_stats['payload_upload_rate']
+        cs.total_uploaded = session_stats['total_upload']
+
+        # Get port status
+        port_is_open = self._call('core.test_listen_port')
+        cs.port_status = PortStatus.Open if port_is_open else PortStatus.Closed
+
+        return cs
 
     # Get Deluge version
     def version(self):
@@ -113,6 +140,7 @@ class Deluge(object):
         torrent_obj.size = torrent['total_size']
         torrent_obj.ratio = torrent['ratio']
         torrent_obj.uploaded = torrent['total_uploaded']
+        torrent_obj.downloaded = torrent['all_time_download']
         torrent_obj.create_time = int(torrent['time_added'])
         torrent_obj.seeding_time = torrent['seeding_time']
         torrent_obj.upload_speed = torrent['upload_payload_rate']
@@ -131,6 +159,10 @@ class Deluge(object):
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
 
         return torrent_obj
+
+    # Get free space
+    def remote_free_space(self, path):
+        return self._call('core.get_free_space', path)
 
     # Judge Torrent Status
     @staticmethod

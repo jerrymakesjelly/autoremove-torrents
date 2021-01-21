@@ -281,6 +281,10 @@ The first 15 conditions are here. In order to avoid torrents being mistakenly de
      - Second
      - All
      - Maximum seeding time of a torrent.
+   * - ``max_download``
+     - GiB
+     - All
+     - Maximum downloaded size of a torrent. Torrents whose downloaded size exceed this limitation will be removed.
    * - ``max_downloadspeed``
      - KiB/s
      - Downloading
@@ -305,6 +309,10 @@ The first 15 conditions are here. In order to avoid torrents being mistakenly de
      - 
      - All
      - Maximum number of seeders. When the seeders exceeds the limitation, the torrent will be removed.
+   * - ``max_upload``
+     - GiB
+     - All
+     - Maximum uploaded size of a torrent. Torrents whose uploaded size exceed this limitation will be removed.
    * - ``min_leecher``
      - 
      - All
@@ -366,6 +374,18 @@ Beside these condition, the other 3 remove conditions are here. The rest of the 
   - ``min``: Minimum free space, in `GiB`. When the free space of the specified directory is less than this value, the removing strategy will be trigger.
   - ``path``: Directory that needs to be monitored
   - ``action``: Removing strategy, which determines which torrents will be removed. The values and its meanings are in the table above.
+
+* ``remote_free_space``: Decide which torrents to be removed based on the free space too, but use the free space data reported by the bittorrent client. Its behavior is the same as the ``free_space``.
+
+  - ``min``: Minimum free space, in `GiB`.
+  - ``path``: Directory that needs to be checked by the bittorrent client.
+  - ``action``: Removing strategy.
+
+.. note::
+
+   If your autoremove-torrents and your bittorrent client are running on different machines, you need to use ``remote_free_space`` to check the free spaces. Besides, ``free_space`` and ``remote_free_space`` are the same.
+
+   Please note that not all of the clients support checking the specified path. Currently, only Deluge and Transmission support, and the parameter ``path`` in ``remote_free_space`` will be ignored in qBittorrent.
 
 Here is an example. For torrents whose categories are xxx or yyy, it removes the torrents which ratio is greater than 1 or seeding time is more than 1209600 seconds:
 
@@ -471,6 +491,10 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - Second
         - All
         - The elapsed time since the torrent was added to the client.
+      * - ``download``
+        - GiB
+        - All
+        - Downloaded Size
       * - ``download_speed``
         - KiB/s
         - Downloading
@@ -503,6 +527,10 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - GiB
         - All
         - The torrent size.
+      * - ``upload``
+        - GiB
+        - All
+        - Uploaded Size
       * - ``upload_ratio``
         - /
         - All

@@ -1,0 +1,12 @@
+test:
+  free_space:
+    min: 110
+    path: /
+    action: remove-new-seeds
+remove:
+  - Torrent - 11
+  - Torrent - 12
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16

@@ -1,15 +1,18 @@
 import sys
 import os
 import yaml
+from collections import namedtuple
 from autoremovetorrents import logger
 from autoremovetorrents.strategy import Strategy
 from autoremovetorrents.exception.illegalcharacter import IllegalCharacter
 from autoremovetorrents.exception.syntaxerror import ConditionSyntaxError
 from autoremovetorrents.exception.nosuchcondition import NoSuchCondition
 from autoremovetorrents.compatibility.open_ import open_
+from autoremovetorrents.compatibility.disk_usage_ import SUPPORT_SHUTIL
 
-def test_strategies(mocker, test_data, test_env):
-    # Logger
+def test_strategies(mocker, test_data, test_env, test_status):
+    # Init logger
+    logger.Logger.init()
     lg = logger.Logger.register(__name__)
 
     # Exceptions mapping
@@ -37,11 +40,28 @@ def test_strategies(mocker, test_data, test_env):
                         conf = yaml.safe_load(f)
 
                     try:
-                        # Make strategy and run
+                        # Mock current time
                         mocker.patch('time.time', return_value=test_env['time.time'])
-                        mocker.patch('psutil.disk_usage', return_value=test_env['psutil.disk_usage'])
+
+                        # Mock disk usage
+                        if SUPPORT_SHUTIL:
+                            mocker.patch('shutil.disk_usage',
+                                return_value=namedtuple(
+                                    'usage',
+                                    ['total', 'used', 'free'],
+                                )(**test_env['shutil.disk_usage'])
+                            )
+                        else:
+                            mocker.patch('psutil.disk_usage',
+                                return_value=namedtuple(
+                                    'sdiskusage',
+                                    ['total', 'used', 'free', 'percent'],
+                                )(**test_env['psutil.disk_usage'])
+                            )
+
+                        # Make strategy and run
                         stgy = Strategy(conf_file, conf['test'])
-                        stgy.execute(test_data)
+                        stgy.execute(test_status, test_data)
 
                         # Check result
                         if 'remain' in conf:

@@ -60,6 +60,9 @@ Arguments List
    * - `--log`
      - `-l`
      - Sepcify the path of the log file.
+   * - `--debug`
+     - `-d`
+     - Enable debug mode and output more logs.
 
 For example:
 
