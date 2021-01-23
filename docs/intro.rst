@@ -10,7 +10,7 @@ Let's start here. By reading this documentation, we can learn how to install, co
 Supported Clients
 ------------------
 
-Until now, this program supports qBittorrent/Transmission/μTorrent. Deluge and rTorrent are both on my planning list.
+Until now, this program supports qBittorrent/Transmission/μTorrent/Deluge. rTorrent is on my planning list.
 
 .. list-table::
    :header-rows: 1
@@ -24,7 +24,7 @@ Until now, this program supports qBittorrent/Transmission/μTorrent. Deluge and 
    * - μTorrent
      - Yes
    * - Deluge
-     - On Planning
+     - Yes
    * - rTorrent
      - On Planning
 
