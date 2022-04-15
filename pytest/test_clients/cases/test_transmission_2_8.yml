@@ -1,6 +1,7 @@
 task:
   client: transmission
   host: $(TRANSMISSION_2_8_HOST)
+  username: $(TRANSMISSION_2_8_USERNAME)
   password: $(TRANSMISSION_2_8_PASSWORD)
   # This strategy is used to check whether all the filters and conditions can work correctly.
   # The test will be failed if one or more of the following properties are not provided.
