@@ -1,0 +1,83 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: build
+
+on: [push, pull_request]
+
+env:
+  DELUGE_1_HOST: ${{ secrets.DELUGE_1_HOST }}
+  DELUGE_1_USERNAME: ${{ secrets.DELUGE_1_USERNAME }}
+  DELUGE_1_PASSWORD: ${{ secrets.DELUGE_1_PASSWORD }}
+  DELUGE_2_HOST: ${{ secrets.DELUGE_2_HOST }}
+  DELUGE_2_USERNAME: ${{ secrets.DELUGE_2_USERNAME }}
+  DELUGE_2_PASSWORD: ${{ secrets.DELUGE_2_PASSWORD }}
+  QBITTORRENT_3_HOST: ${{ secrets.QBITTORRENT_3_HOST }}
+  QBITTORRENT_3_USERNAME: ${{ secrets.QBITTORRENT_3_USERNAME }}
+  QBITTORRENT_3_PASSWORD: ${{ secrets.QBITTORRENT_3_PASSWORD }}
+  QBITTORRENT_4_HOST: ${{ secrets.QBITTORRENT_4_HOST }}
+  QBITTORRENT_4_USERNAME: ${{ secrets.QBITTORRENT_4_USERNAME }}
+  QBITTORRENT_4_PASSWORD: ${{ secrets.QBITTORRENT_4_PASSWORD }}
+  TRANSMISSION_2_8_HOST: ${{ secrets.TRANSMISSION_2_8_HOST }}
+  TRANSMISSION_2_8_USERNAME: ${{ secrets.TRANSMISSION_2_8_USERNAME }}
+  TRANSMISSION_2_8_PASSWORD: ${{ secrets.TRANSMISSION_2_8_PASSWORD }}
+  TRANSMISSION_2_9_HOST: ${{ secrets.TRANSMISSION_2_9_HOST }}
+  TRANSMISSION_2_9_USERNAME: ${{ secrets.TRANSMISSION_2_9_USERNAME }}
+  TRANSMISSION_2_9_PASSWORD: ${{ secrets.TRANSMISSION_2_9_PASSWORD }}
+  UTORRENT_HOST: ${{ secrets.UTORRENT_HOST }}
+  UTORRENT_USERNAME: ${{ secrets.UTORRENT_USERNAME }}
+  UTORRENT_PASSWORD: ${{ secrets.UTORRENT_PASSWORD }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [
+          "2.7",
+          "3.5",
+          "3.6",
+          "3.7",
+          "3.8",
+          "3.9",
+          "3.10"
+        ]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install flake8 pytest
+        python -m pip install --upgrade pytest
+        python -m pip install -r dev-requirements.txt
+        python setup.py install
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        # reduce clients pressure
+        sleep $(($RANDOM % 60))
+        py.test -s --cov-report=xml --cov
+  codacy-coverage-reporter:
+    runs-on: ubuntu-latest
+    name: codacy-coverage-reporter
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          # or
+          # api-token: ${{ secrets.CODACY_API_TOKEN }}
+          coverage-reports: coverage.xml
