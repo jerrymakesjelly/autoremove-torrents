@@ -33,7 +33,7 @@ Requirements
 -------------
 * Python 2.7 or Python 3
 
-That's all. It's a simple but smart program.
+We recommend you to use Python 3.6 or higher version of Python.
 
 
 Quick Start

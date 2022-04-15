@@ -30,6 +30,8 @@
 
 * Python 2.7 或 Python 3
 
+推荐使用 Python 3.6 或更高版本的 Python。
+
 
 快速开始
 -------------
