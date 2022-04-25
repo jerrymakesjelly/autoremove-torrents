@@ -13,8 +13,8 @@ class ConditionWithSort(Condition):
             'remove-new-seeds': {'key':lambda torrent: torrent.create_time, 'reverse':True},
             'remove-big-seeds': {'key':lambda torrent: torrent.size, 'reverse':True},
             'remove-small-seeds': {'key':lambda torrent: torrent.size, 'reverse':False},
-            'remove-active-seeds': {'key':lambda torrent: torrent.last_activity, 'reverse':True},
-            'remove-inactive-seeds': {'key':lambda torrent: torrent.last_activity, 'reverse':False}
+            'remove-active-seeds': {'key':lambda torrent: torrent.last_activity, 'reverse':False},
+            'remove-inactive-seeds': {'key':lambda torrent: torrent.last_activity, 'reverse':True}
         }
         if self._action in handlers.keys():
             torrents.sort(key=handlers[self._action]['key'], reverse=handlers[self._action]['reverse'])

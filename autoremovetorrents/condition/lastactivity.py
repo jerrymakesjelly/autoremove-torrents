@@ -10,7 +10,7 @@ class LastActivityCondition(Condition):
 
     def apply(self, client_status, torrents):
         for torrent in torrents:
-            if self.compare(time.time() - torrent.last_activity, self._last_activity, self._comparer):
+            if self.compare(torrent.last_activity, self._last_activity, self._comparer):
                 self.remove.add(torrent)
             else:
                 self.remain.add(torrent)

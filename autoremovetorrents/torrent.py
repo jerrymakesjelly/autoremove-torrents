@@ -10,6 +10,8 @@ class Torrent(object):
     def __init__(self):
         # Proper attributes:
         # hash, name, category, tracker, status, size, ratio, uploaded, create_time, seeding_time
+        # NOTE: The attribute 'last_activity' stores the time interval since last activity,
+        #       not the unix timestamp of last activity.
         pass
 
     # Format torrent info
@@ -46,7 +48,7 @@ class Torrent(object):
                 disp('average_upload_speed', convert_speed),
                 disp('create_time', convert_timestamp),
                 disp('seeding_time', convert_seconds),
-                disp('last_activity', convert_timestamp),
+                disp('last_activity', convert_seconds),
                 disp('category', ','.join),
                 disp('tracker', lambda t: \
                     ','.join(
