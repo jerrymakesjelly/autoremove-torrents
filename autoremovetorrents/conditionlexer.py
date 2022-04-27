@@ -5,15 +5,16 @@ from .exception.illegalcharacter import IllegalCharacter
 class ConditionLexer(object):
     reserved = {
         'and': 'AND',
-        'or': 'OR'
+        'or': 'OR',
     }
     tokens = [
-        'CONDITION', 'NUMBER',
-        'LT', 'GT',
+        'STRING', 'NUMBER',
+        'LT', 'GT', 'EQ',
         'LPAREN', 'RPAREN',
     ] + list(reserved.values())
 
     # Regular expression of tokens
+    t_EQ = r'='
     t_LT = r'<'
     t_GT = r'>'
     t_LPAREN = r'\('
@@ -27,10 +28,10 @@ class ConditionLexer(object):
         t.value = float(t.value)
         return t
 
-    def t_CONDITION(self, t):
-        r'[a-zA-Z_]+'
+    def t_STRING(self, t):
+        r'[a-zA-Z][a-zA-Z0-9_\-]*'
         t.value = t.value.lower()
-        t.type = self.reserved.get(t.value, 'CONDITION')
+        t.type = self.reserved.get(t.value, 'STRING')
         return t
     
     def t_error(self, t):
@@ -38,6 +39,6 @@ class ConditionLexer(object):
 
     def __init__(self):
         # Build the lexer
-        self.lexer = lex.lex(module=self)
+        self.lexer = lex.lex(module=self, optimize=1)
         # Set logger
         self._logger = logger.Logger.register(__name__)
