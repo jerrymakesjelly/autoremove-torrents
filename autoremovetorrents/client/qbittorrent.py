@@ -234,7 +234,8 @@ class qBittorrent(object):
                 # We need to check the existence
                 if 'last_activity' in torrent:
                     # Convert to time interval since last activity
-                    torrent_obj.last_activity = self._refresh_time - torrent['last_activity']
+                    torrent_obj.last_activity = self._refresh_time - torrent['last_activity'] \
+                        if torrent['last_activity'] > 0 else None
                 torrent_obj.progress = torrent['progress']
 
                 return torrent_obj

@@ -799,11 +799,6 @@ Sort by Last Active Time, Ascending
      - Category
      - Tracker
      - State
-   * - Torrent - 4
-     - 1526614323
-     - Category - 3
-     - http://tracker.site3.com/?action=announce
-     - Uploading
    * - Torrent - 9
      - 1526730151
      - Category - 3
@@ -879,6 +874,11 @@ Sort by Last Active Time, Ascending
      - 
      - 
      - Stopped
+   * - Torrent - 4
+     - Never Active
+     - Category - 3
+     - http://tracker.site3.com/?action=announce
+     - Uploading
 
 .. list-table::
    :header-rows: 1

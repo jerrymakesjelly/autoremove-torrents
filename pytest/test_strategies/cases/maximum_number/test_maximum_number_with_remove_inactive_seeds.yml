@@ -3,4 +3,4 @@ test:
     limit: 15
     action: remove-inactive-seeds
 remove:
-  - Torrent - 4
+  - Torrent - 9

@@ -38,7 +38,8 @@ def test_data():
         torrent_obj.downloaded = torrent['downloaded']
         torrent_obj.download_speed = torrent['dlspeed']
         torrent_obj.average_download_speed = torrent['dl_speed_avg']
-        torrent_obj.last_activity = env['time.time'] - torrent['last_activity']
+        torrent_obj.last_activity = env['time.time'] - torrent['last_activity'] \
+            if torrent['last_activity'] > 0 else None
         torrent_obj.seeder = torrent['num_complete']
         torrent_obj.connected_seeder = torrent['num_seeds']
         torrent_obj.leecher = torrent['num_incomplete']
