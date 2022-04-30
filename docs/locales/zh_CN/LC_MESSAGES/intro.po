@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 15:01+0800\n"
+"POT-Creation-Date: 2022-04-29 16:12+0800\n"
 "PO-Revision-Date: 2020-02-02 17:29+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../intro.rst:4
 msgid "Introduction"
@@ -42,9 +42,10 @@ msgstr "支持的客户端"
 
 #: ../../intro.rst:13
 msgid ""
-"Until now, this program supports qBittorrent/Transmission/μTorrent. "
-"Deluge and rTorrent are both on my planning list."
-msgstr "截至目前，程序支持 qBittorrent/Transmission/μTorrent。Deluge 和 rTorrent 正在计划之中。"
+"Until now, this program supports "
+"qBittorrent/Transmission/μTorrent/Deluge. rTorrent is on my planning "
+"list."
+msgstr "截至目前，程序支持 qBittorrent/Transmission/μTorrent/Deluge。rTorrent 正在计划之中。"
 
 #: ../../intro.rst:18
 msgid "Client"
@@ -58,7 +59,7 @@ msgstr "支持情况"
 msgid "qBittorrent"
 msgstr "qBittorrent"
 
-#: ../../intro.rst:21 ../../intro.rst:23 ../../intro.rst:25
+#: ../../intro.rst:21 ../../intro.rst:23 ../../intro.rst:25 ../../intro.rst:27
 msgid "Yes"
 msgstr "是"
 
@@ -74,13 +75,13 @@ msgstr "μTorrent"
 msgid "Deluge"
 msgstr "Deluge"
 
-#: ../../intro.rst:27 ../../intro.rst:29
-msgid "On Planning"
-msgstr "计划中"
-
 #: ../../intro.rst:28
 msgid "rTorrent"
 msgstr "rTorrent"
+
+#: ../../intro.rst:29
+msgid "On Planning"
+msgstr "计划中"
 
 #: ../../intro.rst:32
 msgid "Supported Properties"
@@ -117,18 +118,19 @@ msgstr "✓ :superscript:`2.0 或更高版本`"
 #: ../../intro.rst:113 ../../intro.rst:114 ../../intro.rst:116
 #: ../../intro.rst:117 ../../intro.rst:118 ../../intro.rst:119
 #: ../../intro.rst:121 ../../intro.rst:122 ../../intro.rst:123
-#: ../../intro.rst:124 ../../intro.rst:126 ../../intro.rst:127
-#: ../../intro.rst:128 ../../intro.rst:129 ../../intro.rst:131
-#: ../../intro.rst:132 ../../intro.rst:133 ../../intro.rst:134
-#: ../../intro.rst:136 ../../intro.rst:137 ../../intro.rst:138
-#: ../../intro.rst:139 ../../intro.rst:141 ../../intro.rst:142
-#: ../../intro.rst:143 ../../intro.rst:144 ../../intro.rst:146
-#: ../../intro.rst:147 ../../intro.rst:148 ../../intro.rst:149
+#: ../../intro.rst:124 ../../intro.rst:127 ../../intro.rst:128
+#: ../../intro.rst:131 ../../intro.rst:132 ../../intro.rst:133
+#: ../../intro.rst:134 ../../intro.rst:136 ../../intro.rst:137
+#: ../../intro.rst:138 ../../intro.rst:139 ../../intro.rst:141
+#: ../../intro.rst:142 ../../intro.rst:143 ../../intro.rst:144
+#: ../../intro.rst:146 ../../intro.rst:147 ../../intro.rst:148
+#: ../../intro.rst:149 ../../intro.rst:151 ../../intro.rst:152
+#: ../../intro.rst:153 ../../intro.rst:154
 msgid "✓"
 msgstr "✓"
 
 #: ../../intro.rst:49 ../../intro.rst:54 ../../intro.rst:74 ../../intro.rst:89
-#: ../../intro.rst:94
+#: ../../intro.rst:94 ../../intro.rst:126 ../../intro.rst:129
 msgid "✗"
 msgstr "✗"
 
@@ -165,13 +167,12 @@ msgid "Download Speed"
 msgstr "下载速度"
 
 #: ../../intro.rst:80
-#, fuzzy
 msgid "Downloaded Size"
-msgstr "下载速度"
+msgstr "下载量"
 
 #: ../../intro.rst:85
 msgid "Free Space"
-msgstr ""
+msgstr "空闲空间"
 
 #: ../../intro.rst:90
 msgid "Last Activity"
@@ -206,22 +207,26 @@ msgid "Size"
 msgstr "种子大小"
 
 #: ../../intro.rst:125
+msgid "Stall Status"
+msgstr "空闲状态（Stall）"
+
+#: ../../intro.rst:130
 msgid "Status"
 msgstr "状态"
 
-#: ../../intro.rst:130
+#: ../../intro.rst:135
 msgid "Tracker"
 msgstr "Tracker"
 
-#: ../../intro.rst:135
+#: ../../intro.rst:140
 msgid "Upload Ratio"
 msgstr "上传比率"
 
-#: ../../intro.rst:140
+#: ../../intro.rst:145
 msgid "Upload Speed"
 msgstr "上传速度"
 
-#: ../../intro.rst:145
+#: ../../intro.rst:150
 msgid "Uploaded Size"
-msgstr ""
+msgstr "上传量"
 

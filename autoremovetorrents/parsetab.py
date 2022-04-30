@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftANDORAND CONDITION GT LPAREN LT NUMBER OR RPARENstatement : expressionexpression : LPAREN expression RPAREN\n        expression : expression AND expression\n                    | expression OR expression\n        \n        expression : CONDITION LT NUMBER\n                    | CONDITION GT NUMBER\n        '
+_lr_signature = 'leftANDORAND EQ GT LPAREN LT NUMBER OR RPAREN STRINGstatement : expressionexpression : LPAREN expression RPAREN\n        expression : expression AND expression\n                    | expression OR expression\n        \n        relation_op : LT\n                     | GT\n                     | EQ\n        \n        expression : STRING relation_op NUMBER\n                    | STRING relation_op STRING\n        '
     
-_lr_action_items = {'LPAREN':([0,3,5,6,],[3,3,3,3,]),'CONDITION':([0,3,5,6,],[4,4,4,4,]),'$end':([1,2,10,11,12,13,14,],[0,-1,-3,-4,-2,-5,-6,]),'AND':([2,7,10,11,12,13,14,],[5,5,-3,-4,-2,-5,-6,]),'OR':([2,7,10,11,12,13,14,],[6,6,-3,-4,-2,-5,-6,]),'LT':([4,],[8,]),'GT':([4,],[9,]),'RPAREN':([7,10,11,12,13,14,],[12,-3,-4,-2,-5,-6,]),'NUMBER':([8,9,],[13,14,]),}
+_lr_action_items = {'LPAREN':([0,3,5,6,],[3,3,3,3,]),'STRING':([0,3,5,6,8,9,10,11,],[4,4,4,4,15,-5,-6,-7,]),'$end':([1,2,12,13,14,15,16,],[0,-1,-3,-4,-2,-9,-8,]),'AND':([2,7,12,13,14,15,16,],[5,5,-3,-4,-2,-9,-8,]),'OR':([2,7,12,13,14,15,16,],[6,6,-3,-4,-2,-9,-8,]),'LT':([4,],[9,]),'GT':([4,],[10,]),'EQ':([4,],[11,]),'RPAREN':([7,12,13,14,15,16,],[14,-3,-4,-2,-9,-8,]),'NUMBER':([8,9,10,11,],[16,-5,-6,-7,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,3,5,6,],[2,7,10,11,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,3,5,6,],[2,7,12,13,]),'relation_op':([4,],[8,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,10 +27,13 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> expression','statement',1,'p_statement','conditionparser.py',44),
-  ('expression -> LPAREN expression RPAREN','expression',3,'p_sub_expression','conditionparser.py',49),
-  ('expression -> expression AND expression','expression',3,'p_and_or_expression','conditionparser.py',54),
-  ('expression -> expression OR expression','expression',3,'p_and_or_expression','conditionparser.py',55),
-  ('expression -> CONDITION LT NUMBER','expression',3,'p_relation_expression','conditionparser.py',64),
-  ('expression -> CONDITION GT NUMBER','expression',3,'p_relation_expression','conditionparser.py',65),
+  ('statement -> expression','statement',1,'p_statement','conditionparser.py',71),
+  ('expression -> LPAREN expression RPAREN','expression',3,'p_sub_expression','conditionparser.py',76),
+  ('expression -> expression AND expression','expression',3,'p_and_or_expression','conditionparser.py',81),
+  ('expression -> expression OR expression','expression',3,'p_and_or_expression','conditionparser.py',82),
+  ('relation_op -> LT','relation_op',1,'p_relation_op','conditionparser.py',91),
+  ('relation_op -> GT','relation_op',1,'p_relation_op','conditionparser.py',92),
+  ('relation_op -> EQ','relation_op',1,'p_relation_op','conditionparser.py',93),
+  ('expression -> STRING relation_op NUMBER','expression',3,'p_relation_expression','conditionparser.py',99),
+  ('expression -> STRING relation_op STRING','expression',3,'p_relation_expression','conditionparser.py',100),
 ]

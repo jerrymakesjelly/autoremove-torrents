@@ -4,6 +4,7 @@ from setuptools import setup, find_packages
 from autoremovetorrents.version import __version__
 from autoremovetorrents.compatibility.disk_usage_ import SUPPORT_SHUTIL
 from autoremovetorrents.compatibility.open_ import open_
+from autoremovetorrents.compatibility.pyyaml_version_ import PYYAML_VERSION
 
 setup(name = 'autoremove-torrents',
     version = __version__,
@@ -28,7 +29,7 @@ setup(name = 'autoremove-torrents',
         'enum34',
         'ply',
         '' if SUPPORT_SHUTIL else 'psutil',
-        'pyyaml',
+        PYYAML_VERSION,
         'requests',
     ],
     entry_points = {

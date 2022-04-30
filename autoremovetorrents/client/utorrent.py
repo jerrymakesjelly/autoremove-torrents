@@ -87,6 +87,7 @@ class uTorrent(object):
         if request.status_code != 200: # Error
             raise RemoteFailure('The server reponsed %s.' % request.text)
         result = request.json()
+        print(result)
         self._torrents_list_cache = result
         self._refresh_time = time.time()
         # Get version
@@ -101,6 +102,7 @@ class uTorrent(object):
         request = self._session.get(self._host+'/gui/',
             params={'action':'getprops', 'token':self._token, 'hash':torrent_hash})
         request.encoding = 'utf-8'
+        print(request.json()['props'][0])
         return request.json()['props'][0]
     
     # Get Torrent Properties

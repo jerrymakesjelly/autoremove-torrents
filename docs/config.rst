@@ -338,6 +338,12 @@ The first 15 conditions are here. In order to avoid torrents being mistakenly de
      - All
      - The maximum upload ratio. Note that the upload ratio here is different from the ratio. For each torrent, the upload ratio is ``uploaded size`` divided by its ``size``.
 
+.. note::
+
+   In version 1.5.4 and above, the behavior of ``last_activity`` has been changed. By default, it only considers those torrents that have ever been active, and the other torrents, which have no activity yet, won't be deleted.
+
+   Moreover, to remove those torrents that have never been active, please use ``last_activity: Never`` or ``last_activity: None``.
+
 Beside these condition, the other 3 remove conditions are here. The rest of the torrents will be removed if they trigger these conditions.
 
 * ``seed_size``: Calculate the total size of the torrents you chosen. If the total size exceeds the limit, some of the torrents will be removed. The following two properties must be specificed.
@@ -363,6 +369,9 @@ Beside these condition, the other 3 remove conditions are here. The rest of the 
      * - remove-inactive-seeds
        - Try to remove inactive seeds.
 
+  .. note::
+
+     Similar to ``last_activity``, the action ``remove-active-seeds`` and ``remove-inactive-seeds`` first consider those torrents that were once active. Only if these torrents are all removed but the constraints are still not met, the torrents that have never been active can be removed (but the order is not guaranteed).
 
 * ``maximum_number``: Set the maximum number of torrents. When the number of chosen torrents is exceed the maximum number, some of the torrents will be deleted, just like the condition `seed_size`. The following two properties must be specified:
   

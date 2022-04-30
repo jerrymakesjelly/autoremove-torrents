@@ -1,6 +1,6 @@
 自动删种程序
 ======================
-|PyPI| |TravisCI| |ReadTheDocs| |Coverage| |Codacy| |Downloads| |MIT|
+|PyPI| |GithubActionsCI| |ReadTheDocs| |Coverage| |Codacy| |Downloads| |MIT|
 
 这个程序可以帮助你删除种子。现在你再也不用担心你的磁盘空间了——通过你设置的策略，程序会帮你检查每一个种子是否满足删除的条件；如果是，那就自动地删除它。
 
@@ -10,12 +10,14 @@
 
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/6e5509ecb4714ed697c65f35d71cff65
     :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
-.. |TravisCI| image:: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents.svg?branch=master
-   :target: https://www.travis-ci.org/jerrymakesjelly/autoremove-torrents
+.. |GithubActionsCI| image:: https://github.com/jerrymakesjelly/autoremove-torrents/actions/workflows/build.yml/badge.svg?branch=master
+   :target: https://github.com/jerrymakesjelly/autoremove-torrents/actions
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/autoremove-torrents-cn/badge/?version=latest
    :target: https://autoremove-torrents.readthedocs.io/zh_CN/latest/?badge=latest
-.. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/6e5509ecb4714ed697c65f35d71cff65    
-   :target: https://www.codacy.com/app/jerrymakesjelly/autoremove-torrents?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Coverage
+.. |Codacy| image:: https://app.codacy.com/project/badge/Grade/ab6f14fa9d9845b8bc8edecaf8f705e4
+   :target: https://www.codacy.com/gh/jerrymakesjelly/autoremove-torrents/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Grade
+.. |Coverage| image:: https://app.codacy.com/project/badge/Coverage/ab6f14fa9d9845b8bc8edecaf8f705e4
+    :target: https://www.codacy.com/gh/jerrymakesjelly/autoremove-torrents/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jerrymakesjelly/autoremove-torrents&amp;utm_campaign=Badge_Coverage
 .. |MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://github.com/jerrymakesjelly/autoremove-torrents/blob/master/LICENSE
 .. |PyPI| image:: https://badge.fury.io/py/autoremove-torrents.svg
@@ -27,6 +29,8 @@
 -------------
 
 * Python 2.7 或 Python 3
+
+推荐使用 Python 3.6 或更高版本的 Python。
 
 
 快速开始

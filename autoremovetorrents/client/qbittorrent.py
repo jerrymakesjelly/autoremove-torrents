@@ -233,7 +233,9 @@ class qBittorrent(object):
                 # For qBittorrent 3.x, the last activity field doesn't exist.
                 # We need to check the existence
                 if 'last_activity' in torrent:
-                    torrent_obj.last_activity = torrent['last_activity']
+                    # Convert to time interval since last activity
+                    torrent_obj.last_activity = self._refresh_time - torrent['last_activity'] \
+                        if torrent['last_activity'] > 0 else None
                 if 'downloading_time' in properties:
                     torrent_obj.downloading_time = properties['downloading_time']
                 torrent_obj.progress = torrent['progress']
