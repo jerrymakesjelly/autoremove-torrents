@@ -29,7 +29,7 @@ class Torrent(object):
             "\tProgress:%.2f%%\tSize:%s\tRatio:%.3f\tTotal Uploaded:%s\n" +
             "\tSeeder(connected/total):%d/%d\tLeecher(connected/total):%d/%d\tStatus:%s\n" +
             "\tDownload Speed:%s(Avg.:%s)\tUpload Speed:%s(Avg.:%s)\n" +
-            "\tCreate Time:%s\tSeeding Time:%s\tLast Activity:%s\n" +
+            "\tCreate Time:%s\tSeeding Time:%s\Downloading Time:%s\tLast Activity:%s\n" +
             "\tCategory:%s\tTracker:%s") % \
             (
                 disp('name'),
@@ -48,6 +48,7 @@ class Torrent(object):
                 disp('average_upload_speed', convert_speed),
                 disp('create_time', convert_timestamp),
                 disp('seeding_time', convert_seconds),
+                disp('downloading_time', convert_seconds),
                 disp('last_activity', convert_seconds),
                 disp('category', ','.join),
                 disp('tracker', lambda t: \

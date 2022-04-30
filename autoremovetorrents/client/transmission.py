@@ -145,6 +145,7 @@ class Transmission(object):
         torrent_obj.downloaded = torrent['downloadedEver']
         torrent_obj.create_time = torrent['addedDate']
         torrent_obj.seeding_time = torrent['secondsSeeding']
+        torrent_obj.downloading_time = torrent['secondsDownloading']
         torrent_obj.upload_speed = torrent['rateUpload']
         torrent_obj.download_speed = torrent['rateDownload']
         torrent_obj.seeder = sum([tracker['seederCount'] for tracker in torrent['trackerStats']])
