@@ -55,6 +55,7 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest
         python -m pip install --upgrade pytest
+        python -m pip install --upgrade setuptools
         python -m pip install -r dev-requirements.txt
         python setup.py install
     - name: Lint with flake8
@@ -68,12 +69,21 @@ jobs:
         # reduce clients pressure
         sleep $(($RANDOM % 60))
         py.test -s --cov-report=xml --cov
+    - name: Save coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage.xml
+        path: coverage.xml
   codacy-coverage-reporter:
     runs-on: ubuntu-latest
     name: codacy-coverage-reporter
     needs: build
     steps:
       - uses: actions/checkout@v2
+      - name: Load coverage report
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage.xml
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
