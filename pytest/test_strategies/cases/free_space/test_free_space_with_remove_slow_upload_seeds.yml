@@ -1,0 +1,16 @@
+test:
+  free_space:
+    min: 140
+    path: .
+    action: remove-slow-upload-seeds
+remove:
+  - Torrent - 3
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 7
+  - Torrent - 8
+  - Torrent - 9
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16
