@@ -260,7 +260,7 @@ Use the removing condition keywords directly. There are 18 remove conditions.
 
    As long as a chosen torrent satisfies one of these conditions, it will be removed.
 
-The first 15 conditions are here. In order to avoid torrents being mistakenly deleted, some conditions are only available for certain torrent status.
+The first 18 conditions are here. In order to avoid torrents being mistakenly deleted, some conditions are only available for certain torrent status.
 
 .. list-table::
    :header-rows: 1
@@ -277,6 +277,10 @@ The first 15 conditions are here. In order to avoid torrents being mistakenly de
      - Second
      - All
      - The maximum time elapsed since the torrent was added to the client. When a torrent reaches the limit, it will be removed (no matter what state it is).
+   * - ``downloading_time``
+     - Second
+     - All
+     - Maximum downloading time of a torrent.
    * - ``seeding_time``
      - Second
      - All
@@ -508,6 +512,10 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - KiB/s
         - Downloading
         - Download speed.
+      * - ``downloading_time``
+        - Second
+        - All
+        - Downloading time.
       * - ``last_activity``
         - Second
         - All
