@@ -236,8 +236,6 @@ class qBittorrent(object):
                     # Convert to time interval since last activity
                     torrent_obj.last_activity = self._refresh_time - torrent['last_activity'] \
                         if torrent['last_activity'] > 0 else None
-                if 'downloading_time' in properties:
-                    torrent_obj.downloading_time = properties['downloading_time']
                 torrent_obj.progress = torrent['progress']
 
                 return torrent_obj
