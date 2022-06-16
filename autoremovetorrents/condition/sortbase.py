@@ -15,7 +15,6 @@ class ConditionWithSort(Condition):
             'remove-new-seeds': {'key':lambda torrent: torrent.create_time, 'reverse':True},
             'remove-big-seeds': {'key':lambda torrent: torrent.size, 'reverse':True},
             'remove-small-seeds': {'key':lambda torrent: torrent.size, 'reverse':False},
-
             # For remove-active-seeds and remove-inactive-seeds,
             # we move the torrents that are never active to the bottom of the list,
             # to remove as many active torrents as possible.
@@ -24,7 +23,9 @@ class ConditionWithSort(Condition):
             'reverse':False},
             'remove-inactive-seeds': {'key':
                 lambda torrent: torrent.last_activity if torrent.last_activity is not None else -inf_,
-            'reverse':True}
+            'reverse':True},
+            'remove-slow-upload-seeds': {'key':lambda torrent: torrent.upload_speed, 'reverse':False},
+            'remove-fast-upload-seeds': {'key':lambda torrent: torrent.upload_speed, 'reverse':True}
         }
         if self._action in handlers.keys():
             torrents.sort(key=handlers[self._action]['key'], reverse=handlers[self._action]['reverse'])
