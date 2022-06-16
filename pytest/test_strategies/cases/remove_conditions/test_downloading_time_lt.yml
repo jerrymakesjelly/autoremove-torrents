@@ -1,0 +1,7 @@
+test:
+  remove: downloading_time < 100
+remove:
+  - Torrent - 13
+  - Torrent - 14
+  - Torrent - 15
+  - Torrent - 16

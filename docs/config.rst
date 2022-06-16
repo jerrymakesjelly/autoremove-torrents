@@ -260,7 +260,7 @@ Use the removing condition keywords directly. There are 18 remove conditions.
 
    As long as a chosen torrent satisfies one of these conditions, it will be removed.
 
-The first 15 conditions are here. In order to avoid torrents being mistakenly deleted, some conditions are only available for certain torrent status.
+The first 18 conditions are here. In order to avoid torrents being mistakenly deleted, some conditions are only available for certain torrent status.
 
 .. list-table::
    :header-rows: 1
@@ -277,6 +277,10 @@ The first 15 conditions are here. In order to avoid torrents being mistakenly de
      - Second
      - All
      - The maximum time elapsed since the torrent was added to the client. When a torrent reaches the limit, it will be removed (no matter what state it is).
+   * - ``downloading_time``
+     - Second
+     - All
+     - Maximum downloading time of a torrent.
    * - ``seeding_time``
      - Second
      - All
@@ -338,6 +342,12 @@ The first 15 conditions are here. In order to avoid torrents being mistakenly de
      - All
      - The maximum upload ratio. Note that the upload ratio here is different from the ratio. For each torrent, the upload ratio is ``uploaded size`` divided by its ``size``.
 
+.. note::
+
+   In version 1.5.4 and above, the behavior of ``last_activity`` has been changed. By default, it only considers those torrents that have ever been active, and the other torrents, which have no activity yet, won't be deleted.
+
+   Moreover, to remove those torrents that have never been active, please use ``last_activity: Never`` or ``last_activity: None``.
+
 Beside these condition, the other 3 remove conditions are here. The rest of the torrents will be removed if they trigger these conditions.
 
 * ``seed_size``: Calculate the total size of the torrents you chosen. If the total size exceeds the limit, some of the torrents will be removed. The following two properties must be specificed.
@@ -363,6 +373,9 @@ Beside these condition, the other 3 remove conditions are here. The rest of the 
      * - remove-inactive-seeds
        - Try to remove inactive seeds.
 
+  .. note::
+
+     Similar to ``last_activity``, the action ``remove-active-seeds`` and ``remove-inactive-seeds`` first consider those torrents that were once active. Only if these torrents are all removed but the constraints are still not met, the torrents that have never been active can be removed (but the order is not guaranteed).
 
 * ``maximum_number``: Set the maximum number of torrents. When the number of chosen torrents is exceed the maximum number, some of the torrents will be deleted, just like the condition `seed_size`. The following two properties must be specified:
   
@@ -499,6 +512,10 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - KiB/s
         - Downloading
         - Download speed.
+      * - ``downloading_time``
+        - Second
+        - All
+        - Downloading time.
       * - ``last_activity``
         - Second
         - All

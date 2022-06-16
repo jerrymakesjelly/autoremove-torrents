@@ -154,8 +154,8 @@ class Deluge(object):
             download_time = torrent['active_time'] - torrent['finished_time']
             torrent_obj.average_download_speed = torrent['all_time_download'] / download_time if download_time > 0 else 0
         if 'time_since_transfer' in torrent:
-            # Set the last active time of those never active torrents to timestamp 0
-            torrent_obj.last_activity = torrent['time_since_transfer'] if torrent['time_since_transfer'] > 0 else 0
+            torrent_obj.last_activity = torrent['time_since_transfer'] \
+                if torrent['time_since_transfer'] > 0 else None
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
 
         return torrent_obj

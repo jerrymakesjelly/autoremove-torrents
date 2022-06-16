@@ -13,6 +13,9 @@ from autoremovetorrents.compatibility.open_ import open_
 
 @pytest.fixture(scope="module")
 def test_data():
+    # Get mocked time
+    env = _test_env_interval()
+
     # Load input data
     input_torrents = []
     with open_(os.path.join(os.path.realpath(os.path.dirname(__file__)),'data.json'), encoding='utf-8') as f:
@@ -30,12 +33,14 @@ def test_data():
         torrent_obj.uploaded = torrent['uploaded']
         torrent_obj.create_time = torrent['added_on']
         torrent_obj.seeding_time = torrent['seeding_time']
+        torrent_obj.downloading_time = torrent['downloading_time']
         torrent_obj.upload_speed = torrent['upspeed']
         torrent_obj.average_upload_speed = torrent['up_speed_avg']
         torrent_obj.downloaded = torrent['downloaded']
         torrent_obj.download_speed = torrent['dlspeed']
         torrent_obj.average_download_speed = torrent['dl_speed_avg']
-        torrent_obj.last_activity = torrent['last_activity']
+        torrent_obj.last_activity = env['time.time'] - torrent['last_activity'] \
+            if torrent['last_activity'] > 0 else None
         torrent_obj.seeder = torrent['num_complete']
         torrent_obj.connected_seeder = torrent['num_seeds']
         torrent_obj.leecher = torrent['num_incomplete']
@@ -45,11 +50,14 @@ def test_data():
 
     return input_torrents
 
-@pytest.fixture(scope="module")
-def test_env():
+def _test_env_interval():
     with open_(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'environment.json'), encoding='utf-8') as f:
         env = json.load(f)
     return env
+
+@pytest.fixture(scope="module")
+def test_env():
+    return _test_env_interval()
 
 @pytest.fixture(scope="module")
 def test_status():

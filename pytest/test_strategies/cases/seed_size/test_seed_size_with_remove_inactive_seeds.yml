@@ -5,7 +5,7 @@ test:
 remove:
   - Torrent - 1
   - Torrent - 2
-  - Torrent - 4
   - Torrent - 5
   - Torrent - 6
-  - Torrent - 9
+  - Torrent - 7
+  - Torrent - 8

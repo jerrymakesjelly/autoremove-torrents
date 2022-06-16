@@ -1,0 +1,6 @@
+test:
+  remove: leecher = 2
+remove:
+  - Torrent - 4
+  - Torrent - 5
+  - Torrent - 13

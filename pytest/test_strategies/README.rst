@@ -144,6 +144,98 @@ Sort by Create Time, Ascending
      - 
      - Paused
 
+Sort by Downloading Time, Ascending
+++++++++++++++++++++++++++++++++++++
+
+.. list-table::
+   :header-rows: 1
+
+   * - Name
+     - downloading_time
+     - Category
+     - Tracker
+     - State
+   * - Torrent - 13
+     - 1
+     -
+     - 
+     - Checking
+   * - Torrent - 14
+     - 2
+     -
+     - https://www.site2.org/tracker/announce
+     - Queued
+   * - Torrent - 15
+     - 3
+     -
+     - 
+     - Paused
+   * - Torrent - 16
+     - 4
+     -
+     - 
+     - Stopped
+   * - Torrent - 10
+     - 120
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Uploading
+   * - Torrent - 9
+     - 4932
+     - Category - 3
+     - http://tracker.site3.com/?action=announce
+     - Uploading
+   * - Torrent - 2
+     - 5022
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Downloading
+   * - Torrent - 8
+     - 23033
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Uploading
+   * - Torrent - 3
+     - 25933
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Uploading
+   * - Torrent - 4
+     - 39203
+     - Category - 3
+     - http://tracker.site3.com/?action=announce
+     - Uploading
+   * - Torrent - 1
+     - 41322
+     - Category - 1
+     - https://tracker.site1.com/announce
+     - Downloading
+   * - Torrent - 5
+     - 42003
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Uploading
+   * - Torrent - 12
+     - 43222
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Downloading
+   * - Torrent - 6
+     - 43233
+     - Category - 2
+     - https://www.site2.org/tracker/announce
+     - Uploading
+   * - Torrent - 11
+     - 43322
+     - Category - 1
+     - https://tracker.site1.com/announce
+     - Downloading
+   * - Torrent - 7
+     - 66992
+     - Category - 1
+     - https://tracker.site1.com/announce
+     - Uploading
+
 Sort by Finishing Time, Ascending
 ++++++++++++++++++++++++++++++++++
 
@@ -799,11 +891,6 @@ Sort by Last Active Time, Ascending
      - Category
      - Tracker
      - State
-   * - Torrent - 4
-     - 1526614323
-     - Category - 3
-     - http://tracker.site3.com/?action=announce
-     - Uploading
    * - Torrent - 9
      - 1526730151
      - Category - 3
@@ -879,6 +966,11 @@ Sort by Last Active Time, Ascending
      - 
      - 
      - Stopped
+   * - Torrent - 4
+     - Never Active
+     - Category - 3
+     - http://tracker.site3.com/?action=announce
+     - Uploading
 
 .. list-table::
    :header-rows: 1
