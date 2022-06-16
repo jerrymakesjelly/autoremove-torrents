@@ -1,5 +1,5 @@
 test:
-  free_space:
+  remote_free_space:
     min: 140
     path: /
     action: remove-slow-upload-seeds
