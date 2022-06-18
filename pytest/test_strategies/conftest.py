@@ -6,7 +6,6 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__))+"/../..")
 import pytest
 import json
 from autoremovetorrents.clientstatus import ClientStatus
-from autoremovetorrents.portstatus import PortStatus
 from autoremovetorrents.torrent import Torrent
 from autoremovetorrents.torrentstatus import TorrentStatus
 from autoremovetorrents.compatibility.open_ import open_
@@ -69,7 +68,6 @@ def test_status():
         cs.total_downloaded = data['total_downloaded']
         cs.upload_speed = data['upload_speed']
         cs.total_uploaded = data['total_uploaded']
-        cs.port_status = PortStatus[data['port_status']]
         cs.free_space = lambda _: data['free_space']
 
     return cs

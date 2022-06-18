@@ -5,7 +5,6 @@ from .. import logger
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
 from ..torrentstatus import TorrentStatus
-from ..portstatus import PortStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.incompatibleapi import IncompatibleAPIVersion
@@ -162,13 +161,6 @@ class qBittorrent(object):
         # Uploading speed and uploaded size
         cs.upload_speed = status['up_info_speed']
         cs.total_uploaded = status['up_info_data']
-        # Outgoing port status
-        if status['connection_status'] == 'connected':
-            cs.port_status = PortStatus.Open
-        elif status['connection_status'] == 'firewalled':
-            cs.port_status = PortStatus.Firewalled
-        else:
-            cs.port_status = PortStatus.Closed
         
         return cs
 

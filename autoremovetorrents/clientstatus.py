@@ -24,12 +24,10 @@ class ClientStatus(object):
 
         return ('Status reported by the client: \n' +
             '\tDownload Speed: %s\tTotal: %s\n' +
-            '\tUpload Speed: %s\tTotal: %s\n' +
-            '\tOutgoing Port Status: %s') % \
+            '\tUpload Speed: %s\tTotal: %s') % \
             (
                 disp('download_speed', convert_speed),
                 disp('total_downloaded', convert_bytes),
                 disp('upload_speed', convert_speed),
                 disp('total_uploaded', convert_bytes),
-                disp('port_status', lambda s: s.name),
             )

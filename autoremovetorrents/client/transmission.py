@@ -4,7 +4,6 @@ import time
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
 from ..torrentstatus import TorrentStatus
-from ..portstatus import PortStatus
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.loginfailure import LoginFailure
 from ..exception.nosuchclient import NoSuchClient
@@ -69,13 +68,6 @@ class Transmission(object):
         # Uploading speed and uploaded size
         cs.upload_speed = status['uploadSpeed']
         cs.total_uploaded = status['current-stats']['uploadedBytes']
-
-        # Outgoing port status
-        port_is_open = self._make_transmission_request('port-test')
-        if port_is_open:
-            cs.port_status = PortStatus.Open
-        else:
-            cs.port_status = PortStatus.Closed
         
         return cs
     
