@@ -1901,82 +1901,82 @@ Sort by Size, Ascending
      - Tracker
      - State
    * - Torrent - 14
-     - 312186667
+     - 312186667 (0.29 GiB)
      - 
      - https://www.site2.org/tracker/announce
      - Queued
    * - Torrent - 3
-     - 347000034
+     - 347000034 (0.32 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Uploading
    * - Torrent - 16
-     - 1132013553
+     - 1132013553 (1.05 GiB)
      - 
      - 
      - Stopped
    * - Torrent - 13
-     - 1746686185
+     - 1746686185 (1.63 GiB)
      - 
      - 
      - Checking
    * - Torrent - 15
-     - 2126568405
+     - 2126568405 (1.98 GiB)
      - 
      - 
      - Paused
    * - Torrent - 9
-     - 3022394751
+     - 3022394751 (2.81 GiB)
      - Category - 3
      - http://tracker.site3.com/?action=announce
      - Uploading
    * - Torrent - 12
-     - 4030908717
+     - 4030908717 (3.75 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Downloading
    * - Torrent - 7
-     - 7239185152
+     - 7239185152 (6.74 GiB)
      - Category - 1
      - https://tracker.site1.com/announce
      - Uploading
    * - Torrent - 8
-     - 7619309310
+     - 7619309310 (7.10 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Uploading
    * - Torrent - 5
-     - 9627866528
+     - 9627866528 (8.96 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Uploading
    * - Torrent - 4
-     - 10152029087
+     - 10152029087 (9.45 GiB)
      - Category - 3
      - http://tracker.site3.com/?action=announce
      - Uploading
    * - Torrent - 6
-     - 13200820552
+     - 13200820552 (12.29 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Uploading
    * - Torrent - 1
-     - 13762548460
+     - 13762548460 (12.817 GiB)
      - Category - 1
      - https://tracker.site1.com/announce
      - Downloading
    * - Torrent - 11
-     - 13767802684
+     - 13767802684 (12.822 GiB)
      - Category - 1
      - https://tracker.site1.com/announce
      - Downloading
    * - Torrent - 10
-     - 14844911534
+     - 14844911534 (13.83 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Uploading
    * - Torrent - 2
-     - 27918469580
+     - 27918469580 (26.00 GiB)
      - Category - 2
      - https://www.site2.org/tracker/announce
      - Downloading
@@ -2443,7 +2443,7 @@ Sort by Amount of Uploaded Data in Current Session, Ascending
      - https://www.site2.org/tracker/announce
      - Downloading
 
-Sort by Current Download Speed, Ascending
+Sort by Current Upload Speed, Ascending
 ++++++++++++++++++++++++++++++++++++++++++
 
 .. list-table::
