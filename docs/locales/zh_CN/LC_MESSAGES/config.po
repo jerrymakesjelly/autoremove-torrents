@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autoremove-torrents \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-19 16:52+0800\n"
+"POT-Creation-Date: 2022-06-19 17:25+0800\n"
 "PO-Revision-Date: 2020-02-02 16:32+0800\n"
 "Last-Translator: jerrymakesjelly <ganzhaoyu037@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -1012,12 +1012,8 @@ msgid "Upload Speed"
 msgstr "上传速度"
 
 #: ../../config.rst:564
-msgid ""
-"``Comparison Operator``: Available parameters are as follows. This "
-"program doesn't provide the ``equal`` sign, because the status data of "
-"the torrents change quickly, and usually it's meaningless to set a "
-"specific value."
-msgstr "``比较运算符``：可选列表如下。由于种子的状态数据变化快，通常情况下设置一个特定的数据没有意义，因此本程序不提供等号。"
+msgid "``Comparison Operator``: Available operators are as follows."
+msgstr "``比较运算符``：可用的运算符如下。"
 
 #: ../../config.rst:569
 msgid "Comparison Operator"
@@ -1039,11 +1035,19 @@ msgstr "``>``"
 msgid "Greater Than"
 msgstr "大于"
 
+#: ../../config.rst:575
+msgid "``=``"
+msgstr "``=``"
+
 #: ../../config.rst:576
+msgid "Equals"
+msgstr "等于"
+
+#: ../../config.rst:578
 msgid "``Value``: Specify a numeric value. Supports integers and floats."
 msgstr "``数值``：指定一个数值，支持整数和小数。"
 
-#: ../../config.rst:578
+#: ../../config.rst:580
 msgid ""
 "This syntax selects the eligible torrents directly, and removes them "
 "directly or works with the following compound expressions. Here is an "
@@ -1051,52 +1055,52 @@ msgid ""
 "259200 seconds:"
 msgstr "该语法直接选出符合条件的种子，并直接删除它们或者与后面的复合表达式配合使用。这是一个例子，它直接删除做种时间大于259200秒的种子："
 
-#: ../../config.rst:592
+#: ../../config.rst:594
 msgid ""
 "``<Expression 1> and <Expression 2>`` and ``<Expression 1> or <Expression"
 " 2>``"
 msgstr "``<表达式1> and <表达式2>`` 以及 ``<表达式1> or <表达式2>``"
 
-#: ../../config.rst:594
+#: ../../config.rst:596
 msgid "This syntax is a compound expression."
 msgstr "该语法是复合表达式。"
 
-#: ../../config.rst:596
+#: ../../config.rst:598
 msgid ""
 "``and``: Select torrents that meet both the ``Expression 1`` and "
 "``Expression 2`` (intersection)."
 msgstr "``and``：选择同时满足 ``表达式1`` 和 ``表达式2`` 的种子（交集）。"
 
-#: ../../config.rst:597
+#: ../../config.rst:599
 msgid ""
 "``or``: Select torrents that meet one or both of the ``Expression 1`` and"
 " ``Expression 2`` (Union)."
 msgstr "``or``：选择满足 ``表达式1`` 或者 ``表达式2`` 或者同时满足两个表达式的种子（并集）。"
 
-#: ../../config.rst:599
+#: ../../config.rst:601
 msgid ""
 "Here is an example. For all torrents, it removes those torrents which "
 "ratio is greater than 2 **and** seeding time is more than 60000 seconds:"
 msgstr "这是一个例子。对于全体种子，分享率超过 2 **而且** 做种时间超过 60000 秒的种子会被删除："
 
-#: ../../config.rst:613
+#: ../../config.rst:615
 msgid ""
 "Here is another example. For all torrents, it removes those torrents "
 "which ratio is less than 1 **or** seeding time is more than 60000:"
 msgstr "这是另外一个例子。对于全体种子，分享率小于 1 **或者** 做种时间超过 60000 秒的种子会被删除："
 
-#: ../../config.rst:627
+#: ../../config.rst:629
 msgid "``(<Expression>)``"
 msgstr "``(<表达式>)``"
 
-#: ../../config.rst:629
+#: ../../config.rst:631
 msgid ""
 "When an expression is enclosed in parentheses, it is still an expression."
 " Using parentheses can change the priority. And you can use multiple "
 "parentheses for nesting."
 msgstr "一个表达式加上括号以后，它仍然是表达式。使用括号可以改变优先级。可以使用多重括号嵌套。"
 
-#: ../../config.rst:631
+#: ../../config.rst:633
 msgid ""
 "Here is an example. For all torrents, it removes those torrents which "
 "seeding time is more than 60000 seconds, **or** those torrents which "
@@ -1105,21 +1109,21 @@ msgstr ""
 "这是一个例子。对于全体种子，做种时间超过 60000 秒的种子， **或者** 分享率大于 3 **而且** 添加时间超过 1400000 "
 "秒的种子会被删除："
 
-#: ../../config.rst:646
+#: ../../config.rst:648
 msgid "Part 4: Delete data"
 msgstr "第四部分：删除数据"
 
-#: ../../config.rst:648
+#: ../../config.rst:650
 msgid ""
 "Determine whether to delete data at the same time. If this field isn't "
 "specificed, the default value is ``false``."
 msgstr "决定是否在删除种子的同时也删除数据。如果此字段未指定，则默认值为 ``false`` 。"
 
-#: ../../config.rst:651
+#: ../../config.rst:653
 msgid "The Last Step..."
 msgstr "最后一步……"
 
-#: ../../config.rst:653
+#: ../../config.rst:655
 msgid ""
 "Remember to check your configuration file and make sure it works as you "
 "think. Use the following command line to see the torrents that will be "
@@ -1134,4 +1138,13 @@ msgstr "记得检查你的配置文件，确保它按照你的想法工作（不
 #~ "bittorrent client. Its behavior is the"
 #~ " same as the ``free_space``."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "``Comparison Operator``: Available parameters "
+#~ "are as follows. This program doesn't "
+#~ "provide the ``equal`` sign, because the"
+#~ " status data of the torrents change"
+#~ " quickly, and usually it's meaningless "
+#~ "to set a specific value."
+#~ msgstr "``比较运算符``：可选列表如下。由于种子的状态数据变化快，通常情况下设置一个特定的数据没有意义，因此本程序不提供等号。"
 

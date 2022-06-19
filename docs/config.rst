@@ -561,7 +561,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - Downloading or Uploading
         - Upload Speed
 
-   ``Comparison Operator``: Available parameters are as follows. This program doesn't provide the ``equal`` sign, because the status data of the torrents change quickly, and usually it's meaningless to set a specific value.
+   ``Comparison Operator``: Available operators are as follows.
 
    .. list-table::
       :header-rows: 1
@@ -572,6 +572,8 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         - Less Than
       * - ``>``
         - Greater Than
+      * - ``=``
+        - Equals
 
    ``Value``: Specify a numeric value. Supports integers and floats.
 
