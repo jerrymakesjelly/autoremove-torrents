@@ -5,7 +5,7 @@ from .sortbase import ConditionWithSort
 class FreeSpaceConditionBase(ConditionWithSort):
     def __init__(self, settings):
         ConditionWithSort.__init__(self, settings['action'])
-        self._min = settings['min'] << 30 # Convert B to GiB
+        self._min = settings['min'] * (1 << 30) # Convert B to GiB
 
     def apply(self, free_space, torrents):
         torrents = list(torrents)
