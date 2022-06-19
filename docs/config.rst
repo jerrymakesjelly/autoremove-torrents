@@ -361,17 +361,21 @@ Beside these condition, the other 3 remove conditions are here. The rest of the 
      * - Value
        - Description
      * - remove-old-seeds
-       - Try to remove old seeds.
+       - Try to remove old torrents.
      * - remove-new-seeds
-       - Try to remove new seeds.
+       - Try to remove new torrents.
      * - remove-big-seeds
-       - Try to remove large seeds.
+       - Try to remove large torrents.
      * - remove-small-seeds
-       - Try to remove small seeds.
+       - Try to remove small torrents.
      * - remove-active-seeds
-       - Try to remove active seeds.
+       - Try to remove active torrents.
      * - remove-inactive-seeds
-       - Try to remove inactive seeds.
+       - Try to remove inactive torrents.
+     * - remove-fast-upload-seeds
+       - Try to remove torrents with fast upload speeds.
+     * - remove-slow-upload-seeds
+       - Try to remove torrents with slow upload speeds.
 
   .. note::
 
