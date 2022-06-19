@@ -1,4 +1,3 @@
-import time
 from .base import Comparer
 from .base import Condition
 

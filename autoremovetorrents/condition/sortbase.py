@@ -1,6 +1,5 @@
 #-*- coding:utf-8 -*-
 
-import math
 from .base import Condition
 from autoremovetorrents.compatibility.inf_ import inf_
 
@@ -19,7 +18,7 @@ class ConditionWithSort(Condition):
             # we move the torrents that are never active to the bottom of the list,
             # to remove as many active torrents as possible.
             'remove-active-seeds': {'key':
-                lambda torrent: torrent.last_activity if torrent.last_activity is not None else inf_, 
+                lambda torrent: torrent.last_activity if torrent.last_activity is not None else inf_,
             'reverse':False},
             'remove-inactive-seeds': {'key':
                 lambda torrent: torrent.last_activity if torrent.last_activity is not None else -inf_,

@@ -1,4 +1,3 @@
-import sys
 import ply.yacc as yacc
 from . import logger
 from .condition.avgdownloadspeed import AverageDownloadSpeedCondition

@@ -2,7 +2,6 @@
 
 from .base import Comparer
 from .base import Condition
-from ..torrentstatus import TorrentStatus
 
 class DownloadingTimeCondition(Condition):
     def __init__(self, dt, comp = Comparer.GT):
