@@ -111,12 +111,33 @@
 
 更新日志
 ----------
-**2020-08-27 周四**：1.5.3 版本。
+**2022-06-19 星期日**：版本 1.5.4。
 
-* 修复 psutil 在群晖的兼容问题（用于检查磁盘剩余空间）。（#61）
-* 可以通过 ``--debug`` 或 ``-d`` 命令行启用调试模式。（#76）
-* 修复由主机 URL 末尾的 ``/`` 导致的 API 不兼容的问题。（#81）
-* 添加上传量与下载量两个条件。（#79）
+变动
++++++
+
+* 移除端口开放状态（Outgoing Port Status）的信息。(#101) (#135)
+    - 我们确认了一个 bug，即，当我们使用 Transmission 并在 IPv6 网络下检查端口开放状态时，Transmission 的端口检查器会报错并提示“portTested: http error 400: Bad Request”。
+    - 由于没有删种条件需要依赖这个端口开放状态，所以我们删了它。
+
+* 修改了 ``last_activity`` 的行为。(#93) (#98) (#109)
+    - 默认情况下，``last_activity`` 不再删除那些从未活跃过的种子。
+    - 在需要的情况下，这些从未活跃过的种子可以用以下的方式去删除：
+        + 对于 ``last_activity`` 条件，使用 ``last_activity: never`` 或者 ``last_activity: none``。
+        + 对于 ``remove`` 表达式，使用 ``last_activity = never`` 或者 ``last_activity = none``。
+
+新功能
+++++++
+
+* 在 ``action`` 关键字中添加了 ``remove-slow-upload-seeds`` 和 ``remove-fast-upload-seeds`` 两个动作。 (#127) 感谢 @vincent906！
+* remove 表达式中支持等号（``=``）。
+* 添加 ``downloading_time`` 条件。 (#88) 感谢 @dantebarba！
+
+修复
++++++
+
+* 修复了上传/下载量以及 ``free_space``、``remote_free_space`` 不能正确处理小数的问题。 (#133) 感谢 @sfwn！
+* 修复了 ``last_activity`` 条件在 Deluge 2.0.3 及以上版本无效的问题。(#119)
 
 `更多更新日志`_
 
