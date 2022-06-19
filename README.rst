@@ -109,146 +109,41 @@ Screenshot
 -----------
 |Screenshot|
 
-.. |Screenshot| image:: https://user-images.githubusercontent.com/6760674/40576720-a78097fe-612d-11e8-9dda-8aac0c5011a2.png
+.. |Screenshot| image:: https://user-images.githubusercontent.com/6760674/174464634-15743d59-f1dc-41c9-bff6-6d90becaeb67.gif
 
 Changelog
 ----------
-**Thu, 27 Aug 2020**: Version 1.5.3.
+**Sun, 19 June 2022**: Version 1.5.4.
 
-* Fix psutil's compatibility in Synology (use to check the free spaces). (#61)
-* Enable to output debug logs by specifying ``--debug`` or ``-d`` argument. (#76)
-* Fix API imcompatibility issue caused by the trailing ``/`` in host URL. (#81)
-* Add uploaded size and downloaded size conditions. (#79)
+Changes
+++++++++
 
-**Fri, 27 Mar 2020**: Version 1.5.2.
+* Remove outgoing port status info. (#101) (#135)
+    - We have confirmed a bug, which is, the outgoing port status checker will fail and report 'portTested: http error 400: Bad Request' when we are using Transmission and check the outgoing port status in IPv6 network.
+    - Since there are no configurations relying on this status, we remove it.
 
-* Support Deluge. (#8)
-* Use batch delete to improve efficiency.
-* Fix multi-language support in config file. (#69)
-* Set the client names to be case-insensitive.
+* Change ``last_activity``'s behaviour. (#93) (#98) (#109)
+    - It won't remove those torrents that have never been active anymore.
+    - These torrents that have never been active can be removed by the following configuration:
+        + ``last_activity: never`` or ``last_activity: none`` for ``last_activity`` condition.
+        + ``last_activity = never`` or ``last_activity = none`` for ``remove`` expression.
 
-**Sat, 29 Feb 2020**: Version 1.5.1.
+Features
++++++++++
 
-* Fix missing status ``StalledUpload`` and ``StalledDownload`` in version 1.5.0. (#66)
+* Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` in actions. (#127) Thanks to @vincent906!
+* Support equality (``=``) comparison in remove expression.
+* Add downloading time condition. (#88) Thanks to @dantebarba!
 
-**Fri, 28 Feb 2020**: Version 1.5.0.
+Fix
+++++
 
-* Fix a problem: cannot login to client with numeric username or password. (#64)
-* Fix a problem: tasks could not be executed in a Transmission without label properties.
-* Fix a problem: removing conditions may not work for unlabeled and trackerless torrents.
-* Fix a problem: missing status ``Queued`` in μTorrent.
-* Add new status ``Error`` to filter ``status``.
-* Add support for Transmission labels. (#24)
-* Add removing conditions: Maximum Download Speed ``max_downloadspeed`` and Minimum Upload Speed ``min_uploadspeed``.
-* Add removing conditions: Maximum Average Download Speed ``max_average_downloadspeed`` and Minimum Average Upload Speed ``min_average_uploadspeed``. (#49)
-* Add removing conditions: Maximum Torrent Size ``max_size``. (#21)
-* Add removing conditions: Maximum Number of Seeders ``max_seeder`` and Minimum Number of Leechers ``min_leecher``. (#62)
-* Add removing conditions: Maximum Number of Connected Seeders ``max_connected_seeder`` and Minimum Number of Connected Leechers ``min_connected_leecher``.
-* Add a removing condition: Last Activity ``last_activity``, which removes torrents without upload or download speed for a period of time. (#1) (#9)
-* Add a removing condition: Maximum Download Progress ``max_progress``.
-* Add actions: add ``remove-active-seeds`` and ``remove-inactive-seeds`` to ``free_space``, ``maximum_number`` and ``seed_size`` in order to try to remove active or inactive torrents based on the last active time. (#9)
-* Add a removing condition: Upload Ratio ``upload_ratio``, which can remove torrents based on the ratio of uploaded size to torrent size. (#55)
+* Fix a bug that Downloaded/Uploaded Size conditions and ``free_space``/``remote_free_space`` cannot handle decimals correctly. (#133) Thanks to @sfwn!
+* Fix a bug that ``last_activity`` condition doesn't work in Deluge 2.0.3 and above. (#119)
 
-**Mon, 3 Feb 2020**: Migrate documents to Read the Docs.
+`More changelogs`_
 
-**Sun, 26 Jan 2020**: Version 1.4.9.
-
-* Add `free_space` condition.
-
-**Tue, 7 Jan 2020**: Version 1.4.8.
-
-* Fix bug that cannot delete torrents in qBittorrent v4.2.1+. Sorry for any inconvenience. (#53)
-
-**Mon, 6 Jan 2020**: Version 1.4.7.
-
-* Add support for new API in qBittorrent 4.2.1. (#46) **Note: This version has a bug. Please upgrade to v1.4.8 or higher.**
-
-**Tue, 17 Sep 2019**: Version 1.4.6.
-
-* Fix problem that the tracker filter needs to specific ports when the tracker URL includes port number. (#38)
-
-**Thu, 6 Jun 2019**: Version 1.4.5.
-
-* Added status `StalledUpload` and `StalledDownload`. (#34)
-
-**Wed, 22 May 2019**: Version 1.4.4.
-
-* Fixed a bug that when condition `seed_size` / `maximum_number` is used together with condtion `ratio` / `create_time` / `seeding_time`, the task will fail. (#33)
-* New feature: if the content of `filter` has only one line, now it is allowed to write down directly without using list.
-
-**Sun, 19 May 2019**: Version 1.4.3.
-
-* Supported Python 2.7. (#29)
-* Stopped supporting Python 3.4. (kennethreitz/requests#5092)
-
-**Mon, 13 May 2019**: Version 1.4.2.
-
-* Fixed missing parser files. (#32)
-* Fixed association of operators. (#32) Now the operator `and` and `or` are guaranteed to be left-associative.
-
-**Mon, 6 May 2019**: Version 1.4.1.
-
-* Fixed missing dependency: `ply`.
-* Fixed the warning of duplicate definition in condition `remove`.
-
-**Mon, 6 May 2019**: Updated Wiki.
-
-* Added the description of `remove` condition into Simplified-Chinese Wiki.
-
-**Wed, 1 May 2019**: Version 1.4.0.
-
-* Removed torrent status restriction in ``seeding_time`` and ``ratio`` condition (#19).
-    - Before this version, ``seeding_time`` and ``ratio`` condition will only remove those torrents whose status are seeding. We set this restriction to provide a method for users to avoid a torrent being removed by changing its status (e.g. pause seeding).
-    - But now we have a ``status`` filter, this restriction becomes unnecessary, and its behavior may be different from users expectation.
-* Supported custom remove expressions (#15).
-    - Now we can write the condition that we want directly and clearly, e.g. ``remove: ratio > 1``.
-    - Composite condition expressions are also supported, e.g. ``remove: (seeding_time < 86400 and ratio > 1) or (seeding_time > 86400 and ratio > 3)``. Visit Wiki to learn more.
-    - The old remove conditions are still available.
-
-**Wed, 17 Apr 2019**: Version 1.3.0.
-
-* Fixed bug: Program gets stuck when there are a lot of torrents in qBittorrent client (`Issue #22 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/22>`_).
-* Fixed bug: Duplicated logging in status filter.
-* Log system was updated:
-    - Log path can be specified (Use ``--log`` argument, e.g. ``--log=/home/jerrymakesjelly/logs``) (`Issue #23 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/23>`_).
-    - Logs are stored in different files by day (Format: ``autoremove.%Y-%m-%d.log``).
-* Changed the word ``seed`` to ``torrent`` (`Issue #25 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/25>`_).
-* Removed uncessary debug messages.
-
-**Mon, 10 Jan 2019**: Version 1.2.5.
-
-* Fixed bug: Incorrect number of torrents in multiple strategies (`Issue #10 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/10>`_, thanks to @momokoo for the report and PR).
-* Fixed bug: Incorrect number of torrents in qBittorrent (`Issue #13 <https://github.com/jerrymakesjelly/autoremove-torrents/issues/13>`_).
-
-**Thu, 31 May 2018**: Version 1.2.4.
-
-* Fixed startup failure.
-
-**Wed, 30 May 2018**: Version 1.2.3. Added new features.
-
-* Allowed to use environment variables to specify *host*, *username* and *password*.
-* Allowed *username* and *password* to be empty (or one of them is empty) to log in a WebUI without username and/or password.
-* Now the program won't quit directly when a task goes failed.
-
-**Sun, 27 May 2018**: Version 1.2.2. Added new features :smile:
-
-* Added new filter: Torrent Status
-* Added new condition: Maximum number of torrents
-
-**Sat, 26 May 2018**: Version 1.2.1. Fixed issue in *setup.py*.
-
-**Sat, 26 May 2018**: Version 1.2.0. Refactoring was completed, and was published to PyPI.
-
-* New features will be added soon.
-* Now we can install it via *pip*.
-
-**Mon, 14 May 2018**: Version 1.1.0. Created *setup.py*.
-
-You can now use the *autoremove-torrents* command directly instead of *python3 main.py*.
-
-**Wed, 28 Mar 2018**: (Correct document) The *delete_data* field shouldn't be indented.
-
-**Thu, 22 Mar 2018**: First version :bowtie:
+.. _More changelogs: https://autoremove-torrents.readthedocs.io/en/latest/changelog.html
 
 TODO List
 -----------

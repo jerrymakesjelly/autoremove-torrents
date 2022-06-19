@@ -1,0 +1,715 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, jerrymakesjelly
+# This file is distributed under the same license as the autoremove-torrents
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: autoremove-torrents \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-19 18:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.1\n"
+
+#: ../../changelog.rst:4
+msgid "ChangeLog"
+msgstr "更新日志"
+
+#: ../../changelog.rst:7
+msgid "Version 1.5.4"
+msgstr "版本 1.5.4"
+
+#: ../../changelog.rst:9
+msgid "*Release Date: Sunday, 19 June 2022*"
+msgstr "*发布日期：2022 年 6 月 19 日 星期日*"
+
+#: ../../changelog.rst:12 ../../changelog.rst:195 ../../changelog.rst:235
+#: ../../changelog.rst:255
+msgid "Changes"
+msgstr "变动"
+
+#: ../../changelog.rst:16
+msgid "Remove outgoing port status info. (#101) (#135)"
+msgstr "移除端口开放状态（Outgoing Port Status）的信息。(#101) (#135)"
+
+#: ../../changelog.rst:15
+msgid ""
+"We have confirmed a bug, which is, the outgoing port status checker will "
+"fail and report 'portTested: http error 400: Bad Request' when we are "
+"using Transmission and check the outgoing port status in IPv6 network."
+msgstr ""
+"我们确认了一个 bug，即，当我们使用 Transmission 并在 IPv6 网络下检查端口开放状态时，Transmission "
+"的端口检查器会报错并提示“portTested: http error 400: Bad Request”。"
+
+#: ../../changelog.rst:16
+msgid "Since there are no configurations relying on this status, we remove it."
+msgstr "由于没有删种条件需要依赖这个端口开放状态，所以我们删了它。"
+
+#: ../../changelog.rst:22
+msgid "Change ``last_activity``'s behaviour. (#93) (#98) (#109)"
+msgstr "修改了 ``last_activity`` 的行为。(#93) (#98) (#109)"
+
+#: ../../changelog.rst:19
+msgid ""
+"By default, it won't remove those torrents that have never been active "
+"anymore."
+msgstr "默认情况下，``last_activity`` 不再删除那些从未活跃过的种子。"
+
+#: ../../changelog.rst:22
+msgid ""
+"These torrents that have never been active can be removed by the "
+"following configuration:"
+msgstr "在需要的情况下，这些从未活跃过的种子可以用以下的方式去删除："
+
+#: ../../changelog.rst:21
+msgid ""
+"``last_activity: never`` or ``last_activity: none`` for ``last_activity``"
+" condition."
+msgstr ""
+"对于 ``last_activity`` 条件，使用 ``last_activity:never`` 或者 ``last_activity: "
+"none``。"
+
+#: ../../changelog.rst:22
+msgid ""
+"``last_activity = never`` or ``last_activity = none`` for ``remove`` "
+"expression."
+msgstr ""
+"对于 ``remove`` 表达式，使用 ``last_activity = never`` 或者 ``last_activity = "
+"none``。"
+
+#: ../../changelog.rst:25 ../../changelog.rst:43 ../../changelog.rst:65
+#: ../../changelog.rst:91 ../../changelog.rst:242 ../../changelog.rst:301
+#: ../../changelog.rst:312
+msgid "Features"
+msgstr "新功能"
+
+#: ../../changelog.rst:27
+msgid ""
+"Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` actions"
+" to keyword ``action``. (#127) Thanks to @vincent906!"
+msgstr "在 ``action`` 关键字中添加了 ``remove-slow-upload-seeds`` 和 ``remove-fast-upload-seeds`` 两个动作。 (#127) 感谢 @vincent906！"
+
+#: ../../changelog.rst:28
+msgid "Support equality (``=``) comparison in ``remove`` expression."
+msgstr "``remove`` 表达式中支持等号（``=``）。"
+
+#: ../../changelog.rst:29
+msgid "Add ``downloading_time`` condition. (#88) Thanks to @dantebarba!"
+msgstr "添加 ``downloading_time`` 条件。 (#88) 感谢 @dantebarba！"
+
+#: ../../changelog.rst:32 ../../changelog.rst:49 ../../changelog.rst:71
+#: ../../changelog.rst:81 ../../changelog.rst:106 ../../changelog.rst:136
+#: ../../changelog.rst:160 ../../changelog.rst:185 ../../changelog.rst:206
+#: ../../changelog.rst:217 ../../changelog.rst:264 ../../changelog.rst:275
+#: ../../changelog.rst:286 ../../changelog.rst:323
+msgid "Fix"
+msgstr "修复"
+
+#: ../../changelog.rst:34
+msgid ""
+"Fix a bug that Downloaded/Uploaded Size conditions and "
+"``free_space``/``remote_free_space`` cannot handle decimals correctly. "
+"(#133) Thanks to @sfwn!"
+msgstr "修复了上传/下载量以及 ``free_space``、``remote_free_space`` 不能正确处理小数的问题。 (#133) 感谢 @sfwn！"
+
+#: ../../changelog.rst:35
+msgid ""
+"Fix a bug that ``last_activity`` condition doesn't work in Deluge 2.0.3 "
+"and above. (#119)"
+msgstr "修复了 ``last_activity`` 条件在 Deluge 2.0.3 及以上版本无效的问题。(#119)"
+
+#: ../../changelog.rst:38
+msgid "Version 1.5.3"
+msgstr "版本 1.5.3"
+
+#: ../../changelog.rst:40
+msgid "*Release Date: Thursday, 27 August 2020*"
+msgstr "*发布日期：2020 年 8 月 27 日 星期四*"
+
+#: ../../changelog.rst:45
+msgid ""
+"Enable to output debug logs by specifying ``--debug`` or ``-d`` argument."
+" (#76)"
+msgstr "可以通过 ``--debug`` 或 ``-d`` 命令行启用调试模式。（#76）"
+
+#: ../../changelog.rst:46
+msgid "Add uploaded size and downloaded size conditions. (#79)"
+msgstr "添加上传量与下载量两个条件。（#79）"
+
+#: ../../changelog.rst:51
+msgid ""
+"Fix psutil's compatibility in Synology (use to check the free spaces). "
+"(#61)"
+msgstr "修复 psutil 在群晖的兼容问题（用于检查磁盘剩余空间）。（#61）"
+
+#: ../../changelog.rst:52
+msgid ""
+"Fix API imcompatibility issue caused by the trailing ``/`` in host URL. "
+"(#81)"
+msgstr "修复由主机 URL 末尾的 ``/`` 导致的 API 不兼容的问题。（#81）"
+
+#: ../../changelog.rst:55
+msgid "Version 1.5.2"
+msgstr "版本 1.5.2"
+
+#: ../../changelog.rst:57
+msgid "*Release Date: Friday, 27 March 2020*"
+msgstr "*发布日期：2020 年 3 月 27 日 星期五*"
+
+#: ../../changelog.rst:60 ../../changelog.rst:296
+msgid "Change"
+msgstr "变动"
+
+#: ../../changelog.rst:62
+msgid "Set the client names to be case-insensitive."
+msgstr "客户端名称不再对大小写敏感。"
+
+#: ../../changelog.rst:67
+msgid "Support Deluge. (#8)"
+msgstr "支持 Deluge。（#8）"
+
+#: ../../changelog.rst:68
+msgid "Use batch delete to improve efficiency."
+msgstr "使用批量删除提升删除效率。"
+
+#: ../../changelog.rst:73
+msgid "Fix multi-language support in config file. (#69)"
+msgstr "修复配置文件中的多语言支持问题。（#69）"
+
+#: ../../changelog.rst:76
+msgid "Version 1.5.1"
+msgstr "版本 1.5.1"
+
+#: ../../changelog.rst:78
+msgid "*Release Date: Saturday, 29 February 2020*"
+msgstr "*发布日期：2020 年 2 月 29 日 星期六*"
+
+#: ../../changelog.rst:83
+msgid ""
+"Fix missing status ``StalledUpload`` and ``StalledDownload`` in version "
+"1.5.0. (#66)"
+msgstr "修复了 1.5.0 版本中丢失的状态 ``StalledUpload`` 和 ``StalledDownload``。（#66）"
+
+#: ../../changelog.rst:86
+msgid "Version 1.5.0"
+msgstr "版本 1.5.0"
+
+#: ../../changelog.rst:88
+msgid "*Release Date: Friday, 28 February 2020*"
+msgstr "*发布日期：2020 年 2 月 28 日 星期五*"
+
+#: ../../changelog.rst:93
+msgid "Add new status ``Error`` to filter ``status``."
+msgstr "``status`` 中添加 ``Error`` 状态。"
+
+#: ../../changelog.rst:94
+msgid "Add support for Transmission labels. (#24)"
+msgstr "添加对 Transmission 标签的支持（#24）。"
+
+#: ../../changelog.rst:95
+msgid ""
+"Add removing conditions: Maximum Download Speed ``max_downloadspeed`` and"
+" Minimum Upload Speed ``min_uploadspeed``."
+msgstr "添加删除条件“最大下载速度” ``max_downloadspeed``、“最小上传速度” ``min_uploadspeed``。"
+
+#: ../../changelog.rst:96
+msgid ""
+"Add removing conditions: Maximum Average Download Speed "
+"``max_average_downloadspeed`` and Minimum Average Upload Speed "
+"``min_average_uploadspeed``. (#49)"
+msgstr ""
+"添加删除条件“最小平均上传速度” ``min_average_uploadspeed``、“最大平均下载速度” "
+"``max_average_downloadspeed`` （#49）。"
+
+#: ../../changelog.rst:97
+msgid "Add removing conditions: Maximum Torrent Size ``max_size``. (#21)"
+msgstr "添加删除条件“最大种子大小” ``max_size`` （#21）。"
+
+#: ../../changelog.rst:98
+msgid ""
+"Add removing conditions: Maximum Number of Seeders ``max_seeder`` and "
+"Minimum Number of Leechers ``min_leecher``. (#62)"
+msgstr "添加删除条件“最大做种数” ``max_seeder``、“最小下载数” ``min_leecher`` （#62）。"
+
+#: ../../changelog.rst:99
+msgid ""
+"Add removing conditions: Maximum Number of Connected Seeders "
+"``max_connected_seeder`` and Minimum Number of Connected Leechers "
+"``min_connected_leecher``."
+msgstr ""
+"添加删除条件“最大已连接做种者” ``max_connected_seeder``、“最小已连接下载者” "
+"``min_connected_leecher``。"
+
+#: ../../changelog.rst:100
+msgid ""
+"Add a removing condition: Last Activity ``last_activity``, which removes "
+"torrents without upload or download speed for a period of time. (#1) (#9)"
+msgstr "添加删除条件“最后活动时间” ``last_activity``，以删除一段时间内没有上传或下载速度的种子（#1）（#9)。"
+
+#: ../../changelog.rst:101
+msgid "Add a removing condition: Maximum Download Progress ``max_progress``."
+msgstr "添加删除条件“最大下载百分比” ``max_progress``。"
+
+#: ../../changelog.rst:102
+msgid ""
+"Add actions: add ``remove-active-seeds`` and ``remove-inactive-seeds`` to"
+" ``free_space``, ``maximum_number`` and ``seed_size`` in order to try to "
+"remove active or inactive torrents based on the last active time. (#9)"
+msgstr ""
+"``free_space``、``maximum_number``、``seed_size`` 的 ``action`` 中添加 "
+"``remove-active-seeds``、``remove-inactive-seeds`` "
+"动作，用于根据最后活动时间去尽量删除活跃的种子或者不活跃的种子（#9）。"
+
+#: ../../changelog.rst:103
+msgid ""
+"Add a removing condition: Upload Ratio ``upload_ratio``, which can remove"
+" torrents based on the ratio of uploaded size to torrent size. (#55)"
+msgstr "添加了新的删除条件“上传比率” ``upload_ratio``，可以根据上传量占种子大小的比例删种（#55）。"
+
+#: ../../changelog.rst:108
+msgid ""
+"Fix a problem: cannot login to client with numeric username or password. "
+"(#64)"
+msgstr "修复了无法登录使用纯数字用户名或密码的客户端的问题。（#64）"
+
+#: ../../changelog.rst:109
+msgid ""
+"Fix a problem: tasks could not be executed in a Transmission without "
+"label properties."
+msgstr "修复了在没有标签属性的 Transmission 中任务无法执行的问题。"
+
+#: ../../changelog.rst:110
+msgid ""
+"Fix a problem: removing conditions may not work for unlabeled and "
+"trackerless torrents."
+msgstr "修复了删种条件可能对未打标签以及没有Tracker的种子无效的问题。"
+
+#: ../../changelog.rst:111
+msgid "Fix a problem: missing status ``Queued`` in μTorrent."
+msgstr "修复了 status 中遗漏的 μTorrent 状态“排队中”（``Queued``）。"
+
+#: ../../changelog.rst:114
+msgid "Documents Migration"
+msgstr "文档迁移"
+
+#: ../../changelog.rst:116
+msgid "*Date: Monday, 3 February 2020*"
+msgstr "*日期：2020 年 2 月 3 日 星期一*"
+
+#: ../../changelog.rst:118
+msgid "Migrate documents to Read the Docs."
+msgstr "迁移文档到 Read the Docs。"
+
+#: ../../changelog.rst:121
+msgid "Version 1.4.9"
+msgstr "版本 1.4.9"
+
+#: ../../changelog.rst:123
+msgid "*Release Date: Sunday, 26 January 2020*"
+msgstr "*发布日期：2020 年 1 月 26 日 星期日*"
+
+#: ../../changelog.rst:126 ../../changelog.rst:146 ../../changelog.rst:170
+#: ../../changelog.rst:180
+msgid "Feature"
+msgstr "新功能"
+
+#: ../../changelog.rst:128
+msgid "Add `free_space` condition. Thanks to @drawwon!"
+msgstr "添加了 `free_space` 条件（最小剩余空间）。感谢 @drawwon！"
+
+#: ../../changelog.rst:131
+msgid "Version 1.4.8"
+msgstr "版本 1.4.8"
+
+#: ../../changelog.rst:133
+msgid "*Release Date: Tuesday, 7 January 2020*"
+msgstr "*发布日期：2020 年 1 月 7 日 星期二*"
+
+#: ../../changelog.rst:138
+msgid ""
+"Fix bug that cannot delete torrents in qBittorrent v4.2.1+. Sorry for any"
+" inconvenience. (#53)"
+msgstr "修复了在 qBittorrent v4.2.1 中不能删除种子的问题。对造成的不便深感抱歉。 (#53)"
+
+#: ../../changelog.rst:141
+msgid "Version 1.4.7"
+msgstr "版本 1.4.7"
+
+#: ../../changelog.rst:143
+msgid "*Release Date: Monday, 6 January 2020*"
+msgstr "*发布日期：2020 年 1 月 6 日 星期一*"
+
+#: ../../changelog.rst:148
+msgid "Add support for new API in qBittorrent 4.2.1. (#46)"
+msgstr "添加了 qBittorrent v4.2.1 中新 API 的支持。 (#46)"
+
+#: ../../changelog.rst:152
+msgid "Note: This version has a bug. Please upgrade to v1.4.8 or higher."
+msgstr "注意：这个版本有 bug，请升级到 1.4.8 或者更高的版本。"
+
+#: ../../changelog.rst:155
+msgid "Version 1.4.6"
+msgstr "版本 1.4.6"
+
+#: ../../changelog.rst:157
+msgid "*Release Date: Tuesday, 17 September 2019*"
+msgstr "*发布日期：2019 年 9 月 17 日 星期二*"
+
+#: ../../changelog.rst:162
+msgid ""
+"Fix problem that the tracker filter needs to specific ports when the "
+"tracker URL includes port number. (#38)"
+msgstr "修复了当 Tracker 的 URL 包含端口时，`tracker` 过滤器需要指定端口的问题。"
+
+#: ../../changelog.rst:165
+msgid "Version 1.4.5"
+msgstr "版本 1.4.5"
+
+#: ../../changelog.rst:167
+msgid "*Release Date: Thursday, 6 June 2019*"
+msgstr "*发布日期：2019 年 6 月 6 日 星期四*"
+
+#: ../../changelog.rst:172
+msgid "Added status `StalledUpload` and `StalledDownload`. (#34)"
+msgstr "添加了 `StalledUpload` 与 `StalledDownload` 状态。"
+
+#: ../../changelog.rst:175
+msgid "Version 1.4.4"
+msgstr "版本 1.4.4"
+
+#: ../../changelog.rst:177
+msgid "*Release Date: Wednesday, 22 May 2019*"
+msgstr "*发布日期：2019 年 5 月 22 日 星期三*"
+
+#: ../../changelog.rst:182
+msgid ""
+"New feature: if the content of `filter` has only one line, now it is "
+"allowed to write down directly without using list."
+msgstr "新特性：如果过滤器的内容只有一行，现在可以直接写出而不需要使用列表。"
+
+#: ../../changelog.rst:187
+msgid ""
+"Fixed a bug that when condition `seed_size` / `maximum_number` is used "
+"together with condtion `ratio` / `create_time` / `seeding_time`, the task"
+" will fail. (#33)"
+msgstr ""
+"修复了当 `seed_size` / `maximum_number` 条件与 `ratio` / `create_time` / "
+"`seeding_time` 条件同时使用时任务会失败的问题。(#33)"
+
+#: ../../changelog.rst:190
+msgid "Version 1.4.3"
+msgstr "版本 1.4.3"
+
+#: ../../changelog.rst:192
+msgid "*Release Date: Sunday, 19 May 2019*"
+msgstr "*发布日期：2019 年 5 月 19 日 星期日*"
+
+#: ../../changelog.rst:197
+msgid "Supported Python 2.7. (#29)"
+msgstr "添加对 Python 2.7 的支持。(#29)"
+
+#: ../../changelog.rst:198
+msgid "Stopped supporting Python 3.4. (kennethreitz/requests#5092)"
+msgstr "停止支持 Python 3.4。(kennethreitz/requests#5092)"
+
+#: ../../changelog.rst:201
+msgid "Version 1.4.2"
+msgstr "版本 1.4.2"
+
+#: ../../changelog.rst:203
+msgid "*Release Date: Monday, 13 May 2019*"
+msgstr "*发布日期：2019 年 5 月 13 日 星期一*"
+
+#: ../../changelog.rst:208
+msgid "Fixed missing parser files. (#32)"
+msgstr "修复了丢失的语法分析器文件。(#32)"
+
+#: ../../changelog.rst:209
+msgid ""
+"Fixed association of operators. (#32) Now the operator `and` and `or` are"
+" guaranteed to be left-associative."
+msgstr "修复了运算符的结合性。现在，运算符 `and` 和 `or` 保证是左结合的。（#32）"
+
+#: ../../changelog.rst:212
+msgid "Version 1.4.1"
+msgstr "版本 1.4.1"
+
+#: ../../changelog.rst:214
+msgid "*Release Date: Monday, 6 May 2019*"
+msgstr "*发布日期：2019 年 5 月 6 日 星期一*"
+
+#: ../../changelog.rst:219
+msgid "Fixed missing dependency: `ply`."
+msgstr "修复了丢失的依赖项 `ply`。"
+
+#: ../../changelog.rst:220
+msgid "Fixed the warning of duplicate definition in condition `remove`."
+msgstr "修复了在 `remove` 条件中重复定义的警告。"
+
+#: ../../changelog.rst:223
+msgid "Wiki Update"
+msgstr "Wiki 更新"
+
+#: ../../changelog.rst:225
+msgid "*Date: Monday, 6 May 2019*"
+msgstr "*日期：2019 年 5 月 6 日 星期一*"
+
+#: ../../changelog.rst:227
+msgid "Added the description of `remove` condition into Simplified-Chinese Wiki."
+msgstr "增加了关于 `remove` 条件的描述。"
+
+#: ../../changelog.rst:230
+msgid "Version 1.4.0"
+msgstr "版本 1.4.0"
+
+#: ../../changelog.rst:232
+msgid "*Release Date: Wednesday, 1 May 2019*"
+msgstr "*发布日期：2019 年 5 月 1 日 星期三*"
+
+#: ../../changelog.rst:239
+msgid ""
+"Removed torrent status restriction in ``seeding_time`` and ``ratio`` "
+"condition (#19)."
+msgstr "删除了 ``seeding_time`` 和 ``ratio`` 条件中的限制 (#19)。"
+
+#: ../../changelog.rst:238
+msgid ""
+"Before this version, ``seeding_time`` and ``ratio`` condition will only "
+"remove those torrents whose status are seeding. We set this restriction "
+"to provide a method for users to avoid a torrent being removed by "
+"changing its status (e.g. pause seeding)."
+msgstr ""
+"在之前的版本，``seeding_time`` 和 ``ratio`` "
+"条件只会删除那些正在做种的种子。设置这个限制是为了给用户提供一个通过修改种子的状态（例如暂停做种）来避免种子被删除的方法。"
+
+#: ../../changelog.rst:239
+msgid ""
+"But now we have a ``status`` filter, this restriction becomes "
+"unnecessary, and its behavior may be different from users expectation."
+msgstr "不过现在我们有状态过滤器（``status``），所以这个限制就显得多余了，而且可能会使它的行为跟用户预想的不一样。"
+
+#: ../../changelog.rst:247
+msgid "Supported custom remove expressions (#15)."
+msgstr "支持自定义删除表达式 (#15)。"
+
+#: ../../changelog.rst:245
+msgid ""
+"Now we can write the condition that we want directly and clearly, e.g. "
+"``remove: ratio > 1``."
+msgstr "现在我们可以直接而明确地写出我们想要的表达式了，例如 ``remove: ratio > 1``。"
+
+#: ../../changelog.rst:246
+msgid ""
+"Composite condition expressions are also supported, e.g. ``remove: "
+"(seeding_time < 86400 and ratio > 1) or (seeding_time > 86400 and ratio >"
+" 3)``. Visit Wiki to learn more."
+msgstr ""
+"复合的条件表达式也支持，例如 ``remove: (seeding_time < 86400 and ratio > 1) or "
+"(seeding_time > 86400 and ratio > 3)``。"
+
+#: ../../changelog.rst:247
+msgid "The old remove conditions are still available."
+msgstr "旧的写法仍然可用。"
+
+#: ../../changelog.rst:250
+msgid "Version 1.3.0"
+msgstr "版本 1.3.0"
+
+#: ../../changelog.rst:252
+msgid "*Release Date: Wednesday, 17 April 2019*"
+msgstr "*发布日期：2019 年 4 月 17 日 星期三*"
+
+#: ../../changelog.rst:258
+msgid "Log system was updated:"
+msgstr "日志系统已更新： "
+
+#: ../../changelog.rst:258
+msgid ""
+"Log path can be specified (Use ``--log`` argument, e.g. "
+"``--log=/home/jerrymakesjelly/logs``) (#23)."
+msgstr "日志路径可以被指定（使用 ``--log`` 参数，例如 ``--log=/home/jerrymakesjelly/logs``） (#23)。"
+
+#: ../../changelog.rst:259
+#, python-format
+msgid ""
+"Logs are stored in different files by day (Format: "
+"``autoremove.%Y-%m-%d.log``)."
+msgstr "日志文件将按天存储在不同的文件中（格式：``autoremove.%Y-%m-%d.log``）。"
+
+#: ../../changelog.rst:260
+msgid "Changed the word ``seed`` to ``torrent`` (#25)."
+msgstr "全部单词 ``seed`` 修改为 ``torrent`` （#25）。"
+
+#: ../../changelog.rst:261
+msgid "Removed uncessary debug messages."
+msgstr "删去了所有不必要的调试日志。"
+
+#: ../../changelog.rst:266
+msgid ""
+"Fixed bug: Program gets stuck when there are a lot of torrents in "
+"qBittorrent client (#22)."
+msgstr "修复了在 qBittorrent 拥有大量的种子时程序会卡住的问题 (#22)。"
+
+#: ../../changelog.rst:267
+msgid "Fixed bug: Duplicated logging in status filter."
+msgstr "修复了状态过滤器在工作时会写入重复的日志的问题。"
+
+#: ../../changelog.rst:270
+msgid "Version 1.2.5"
+msgstr "版本 1.2.5"
+
+#: ../../changelog.rst:272
+msgid "*Release Date: Monday, 10 January 2019*"
+msgstr "*发布日期：2019 年 1 月 10 日 星期一*"
+
+#: ../../changelog.rst:277
+msgid ""
+"Fixed bug: Incorrect number of torrents in multiple strategies (#10). "
+"Thanks to @momokoo!"
+msgstr "修复了在设置多个策略时种子数量不正确的问题 (#10)。感谢 @momokoo！"
+
+#: ../../changelog.rst:278
+msgid "Fixed bug: Incorrect number of torrents in qBittorrent (#13)."
+msgstr "修复了在 qBittorrent 中种子数不正确的问题 (#13)。"
+
+#: ../../changelog.rst:281
+msgid "Version 1.2.4"
+msgstr "版本 1.2.4"
+
+#: ../../changelog.rst:283
+msgid "*Release Date: Thursday, 31 May 2018*"
+msgstr "*发布日期：2018 年 5 月 31 日 星期四*"
+
+#: ../../changelog.rst:288
+msgid "Fixed startup failure."
+msgstr "修复了启动失败的问题。"
+
+#: ../../changelog.rst:291
+msgid "Version 1.2.3"
+msgstr "版本 1.2.3"
+
+#: ../../changelog.rst:293
+msgid "*Release Date: Wednesday, 30 May 2018*"
+msgstr "*发布日期：2018 年 5 月 30 日 星期三*"
+
+#: ../../changelog.rst:298
+msgid "Now the program won't quit directly when a task goes failed."
+msgstr "现在程序在一个任务失败时不会直接退出。"
+
+#: ../../changelog.rst:303
+msgid ""
+"Allowed to use environment variables to specify *host*, *username* and "
+"*password*."
+msgstr "允许使用环境变量去指定 ``host``、``username`` 和 ``password``。"
+
+#: ../../changelog.rst:304
+msgid ""
+"Allowed *username* and *password* to be empty (or one of them is empty) "
+"to log in a WebUI without username and/or password."
+msgstr "允许 ``username`` 和 ``password`` 留空（或者其中之一留空），使得不用用户名或密码也可以登录 WebUI。"
+
+#: ../../changelog.rst:307
+msgid "Version 1.2.2"
+msgstr "版本 1.2.2"
+
+#: ../../changelog.rst:309
+msgid "*Release Date: Sunday, 27 May 2018*"
+msgstr "*发布日期：2018 年 5 月 27 日 星期日*"
+
+#: ../../changelog.rst:314
+msgid "Added new filter: Torrent Status"
+msgstr "增加了新过滤器：种子状态。"
+
+#: ../../changelog.rst:315
+msgid "Added new condition: Maximum number of torrents"
+msgstr "增加了新条件：最大种子数量。"
+
+#: ../../changelog.rst:318
+msgid "Version 1.2.1"
+msgstr "版本 1.2.1"
+
+#: ../../changelog.rst:320 ../../changelog.rst:330
+msgid "*Release Date: Saturday, 26 May 2018*"
+msgstr "*发布日期：2018 年 5 月 26 日 星期六*"
+
+#: ../../changelog.rst:325
+msgid "Fixed issue in *setup.py*."
+msgstr "修复了 ``setup.py`` 的问题。"
+
+#: ../../changelog.rst:328
+msgid "Version 1.2.0"
+msgstr "版本 1.2.0"
+
+#: ../../changelog.rst:332
+msgid "Published to PyPI!"
+msgstr "程序已发布至 PyPI！"
+
+#: ../../changelog.rst:335
+msgid "Refactoring was completed."
+msgstr "重构已完成。"
+
+#: ../../changelog.rst:334
+msgid "New features will be added soon."
+msgstr "新特性很快会被加入。"
+
+#: ../../changelog.rst:335
+msgid "Now we can install it via *pip*."
+msgstr "现在你可以通过 ``pip`` 安装程序。"
+
+#: ../../changelog.rst:338
+msgid "Version 1.1.0"
+msgstr "版本 1.1.0"
+
+#: ../../changelog.rst:340
+msgid "*Release Date: Monday, 14 May 2018*"
+msgstr "*发布日期：2018 年 5 月 14 日 星期一*"
+
+#: ../../changelog.rst:343
+msgid "Created *setup.py*."
+msgstr "创建了 ``setup.py``。"
+
+#: ../../changelog.rst:343
+msgid ""
+"You can now use the *autoremove-torrents* command directly instead of "
+"*python3 main.py*."
+msgstr "现在你可以直接使用 ``autoremove-torrents`` 命令而不是 ``python3 main.py``。"
+
+#: ../../changelog.rst:346
+msgid "Correct Document"
+msgstr "文档勘误"
+
+#: ../../changelog.rst:348
+msgid "*Date: Wednesday, 28 March 2018*"
+msgstr "*日期：2018 年 3 月 28 日 星期三*"
+
+#: ../../changelog.rst:350
+msgid "The *delete_data* field shouldn't be indented."
+msgstr "``delete_data`` 字段不应该被缩进。"
+
+#: ../../changelog.rst:353
+msgid "FIRST VERSION"
+msgstr "第一个版本"
+
+#: ../../changelog.rst:355
+msgid "*Release Date: Thursday, 22 March 2018*"
+msgstr "*发布日期：2018 年 3 月 22 日 星期四*"
+
+#: ../../changelog.rst:357
+msgid "First version :bowtie:"
+msgstr "第一个版本 :bowtie:"
+
+#~ msgid "It won't remove those torrents that have never been active anymore."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Add ``remove-slow-upload-seeds`` and "
+#~ "``remove-fast-upload-seeds`` in actions."
+#~ " (#127) Thanks to @vincent906!"
+#~ msgstr ""
+

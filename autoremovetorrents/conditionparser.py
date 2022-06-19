@@ -14,6 +14,7 @@ from .condition.progress import ProgressCondition
 from .condition.ratio import RatioCondition
 from .condition.seeder import SeederCondition
 from .condition.seedingtime import SeedingTimeCondition
+from .condition.downloadingtime import DownloadingTimeCondition
 from .condition.size import SizeCondition
 from .condition.uploaded import UploadsCondition
 from .condition.uploadratio import UploadRatioCondition
@@ -38,6 +39,7 @@ class ConditionParser(object):
         'ratio': RatioCondition,
         'seeder': SeederCondition,
         'seeding_time': SeedingTimeCondition,
+        'downloading_time': DownloadingTimeCondition,
         'size': SizeCondition,
         'upload': UploadsCondition,
         'upload_ratio': UploadRatioCondition,
@@ -60,6 +62,12 @@ class ConditionParser(object):
         ('left', 'AND', 'OR'),
     )
 
+    op = {
+        ConditionLexer.t_LT: Comparer.LT,
+        ConditionLexer.t_GT: Comparer.GT,
+        ConditionLexer.t_EQ: Comparer.EQ,
+    }
+
     def p_statement(self, t):
         'statement : expression'
         self.remove = t[1]
@@ -78,22 +86,25 @@ class ConditionParser(object):
             t[0] = t[1].intersection(t[3])
         elif t[2] == 'or': # Union
             t[0] = t[1].union(t[3])
+
+    def p_relation_op(self, t):
+        '''
+        relation_op : LT
+                     | GT
+                     | EQ
+        '''
+        t[0] = t[1]
     
     def p_relation_expression(self, t):
         '''
-        expression : CONDITION LT NUMBER
-                    | CONDITION GT NUMBER
+        expression : STRING relation_op NUMBER
+                    | STRING relation_op STRING
         '''
         result = set()
         if t[1] in self._condition_map:
-            if t[2] == '<': # Less than
-                obj = self._condition_map[t[1]](t[3], Comparer.LT)
-                obj.apply(self._client_status, self._torrent_list)
-                result = obj.remove
-            elif t[2] == '>': # Greater than
-                obj = self._condition_map[t[1]](t[3], Comparer.GT)
-                obj.apply(self._client_status, self._torrent_list)
-                result = obj.remove
+            obj = self._condition_map[t[1]](t[3], self.op[t[2]])
+            obj.apply(self._client_status, self._torrent_list)
+            result = obj.remove
         else:
             raise NoSuchCondition('The condition \'%s\' is not supported.' % t[1])
         t[0] = result
@@ -108,7 +119,7 @@ class ConditionParser(object):
     def __init__(self, expression):
         # Initialize lexer and parser
         self.lexer = ConditionLexer()
-        self.parser = yacc.yacc(module=self)
+        self.parser = yacc.yacc(module=self, optimize=1)
         # Save expression
         self._expression = expression
         # Logger

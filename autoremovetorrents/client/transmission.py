@@ -1,9 +1,9 @@
 #-*- coding:utf-8 -*-
 import requests
+import time
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
 from ..torrentstatus import TorrentStatus
-from ..portstatus import PortStatus
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.loginfailure import LoginFailure
 from ..exception.nosuchclient import NoSuchClient
@@ -68,13 +68,6 @@ class Transmission(object):
         # Uploading speed and uploaded size
         cs.upload_speed = status['uploadSpeed']
         cs.total_uploaded = status['current-stats']['uploadedBytes']
-
-        # Outgoing port status
-        port_is_open = self._make_transmission_request('port-test')
-        if port_is_open:
-            cs.port_status = PortStatus.Open
-        else:
-            cs.port_status = PortStatus.Closed
         
         return cs
     
@@ -144,13 +137,16 @@ class Transmission(object):
         torrent_obj.downloaded = torrent['downloadedEver']
         torrent_obj.create_time = torrent['addedDate']
         torrent_obj.seeding_time = torrent['secondsSeeding']
+        torrent_obj.downloading_time = torrent['secondsDownloading']
         torrent_obj.upload_speed = torrent['rateUpload']
         torrent_obj.download_speed = torrent['rateDownload']
         torrent_obj.seeder = sum([tracker['seederCount'] for tracker in torrent['trackerStats']])
         torrent_obj.connected_seeder = torrent['peersSendingToUs']
         torrent_obj.leecher = sum([tracker['leecherCount'] for tracker in torrent['trackerStats']])
         torrent_obj.connected_leecher = torrent['peersGettingFromUs']
-        torrent_obj.last_activity = torrent['activityDate']
+        # Convert to time interval since last activity
+        torrent_obj.last_activity = time.time() - torrent['activityDate'] \
+            if torrent['activityDate'] > 0 else None
         torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding'] if torrent['secondsSeeding'] != 0 else 0
         torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading'] if torrent['secondsDownloading'] != 0 else 0
         torrent_obj.progress = torrent['percentDone']

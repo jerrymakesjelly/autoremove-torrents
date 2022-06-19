@@ -13,6 +13,7 @@ Welcome to autoremove-torrents's documentation!
    intro
    inst
    config
+   changelog
 
 Indices and tables
 ==================

@@ -1,0 +1,4 @@
+test:
+  remove: downloading_time > 50000
+remove:
+  - Torrent - 7

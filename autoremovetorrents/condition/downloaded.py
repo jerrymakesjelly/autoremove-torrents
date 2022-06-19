@@ -4,7 +4,7 @@ from .base import Condition
 class DownloadsCondition(Condition):
     def __init__(self, downloads, comp = Comparer.GT):
         Condition.__init__(self) # Initialize remain and remove list
-        self._downloads = downloads << 30 # Convert bytes to GiB
+        self._downloads = downloads * (1 << 30) # Convert bytes to GiB
         self._comparer = comp
 
     def apply(self, client_status, torrents):

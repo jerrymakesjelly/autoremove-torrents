@@ -5,7 +5,6 @@ from .. import logger
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
 from ..torrentstatus import TorrentStatus
-from ..portstatus import PortStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.connectionfailure import ConnectionFailure
 from ..exception.incompatibleapi import IncompatibleAPIVersion
@@ -162,13 +161,6 @@ class qBittorrent(object):
         # Uploading speed and uploaded size
         cs.upload_speed = status['up_info_speed']
         cs.total_uploaded = status['up_info_data']
-        # Outgoing port status
-        if status['connection_status'] == 'connected':
-            cs.port_status = PortStatus.Open
-        elif status['connection_status'] == 'firewalled':
-            cs.port_status = PortStatus.Firewalled
-        else:
-            cs.port_status = PortStatus.Closed
         
         return cs
 
@@ -233,7 +225,9 @@ class qBittorrent(object):
                 # For qBittorrent 3.x, the last activity field doesn't exist.
                 # We need to check the existence
                 if 'last_activity' in torrent:
-                    torrent_obj.last_activity = torrent['last_activity']
+                    # Convert to time interval since last activity
+                    torrent_obj.last_activity = self._refresh_time - torrent['last_activity'] \
+                        if torrent['last_activity'] > 0 else None
                 torrent_obj.progress = torrent['progress']
 
                 return torrent_obj

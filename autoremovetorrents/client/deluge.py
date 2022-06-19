@@ -3,7 +3,6 @@ from deluge_client import DelugeRPCClient
 from deluge_client.client import DelugeClientException
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
-from ..portstatus import PortStatus
 from ..torrentstatus import TorrentStatus
 from ..exception.loginfailure import LoginFailure
 from ..exception.remotefailure import RemoteFailure
@@ -65,10 +64,6 @@ class Deluge(object):
         cs.total_downloaded = session_stats['total_download']
         cs.upload_speed = session_stats['payload_upload_rate']
         cs.total_uploaded = session_stats['total_upload']
-
-        # Get port status
-        port_is_open = self._call('core.test_listen_port')
-        cs.port_status = PortStatus.Open if port_is_open else PortStatus.Closed
 
         return cs
 
@@ -154,8 +149,8 @@ class Deluge(object):
             download_time = torrent['active_time'] - torrent['finished_time']
             torrent_obj.average_download_speed = torrent['all_time_download'] / download_time if download_time > 0 else 0
         if 'time_since_transfer' in torrent:
-            # Set the last active time of those never active torrents to timestamp 0
-            torrent_obj.last_activity = torrent['time_since_transfer'] if torrent['time_since_transfer'] > 0 else 0
+            torrent_obj.last_activity = torrent['time_since_transfer'] \
+                if torrent['time_since_transfer'] > 0 else None
         torrent_obj.progress = torrent['progress'] / 100 # Accept Range: 0-1
 
         return torrent_obj

@@ -1,5 +1,5 @@
 test:
-  free_space:
+  remote_free_space:
     min: 105
     path: /
     action: remove-small-seeds
