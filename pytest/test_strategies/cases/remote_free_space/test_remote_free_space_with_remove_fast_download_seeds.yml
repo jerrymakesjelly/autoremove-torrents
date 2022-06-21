@@ -1,7 +1,7 @@
 test:
   remote_free_space:
     min: 135
-    path: .
+    path: /
     action: remove-fast-download-seeds
 remove:
   - Torrent - 1

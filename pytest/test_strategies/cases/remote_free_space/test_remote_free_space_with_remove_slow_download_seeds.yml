@@ -1,7 +1,7 @@
 test:
   remote_free_space:
     min: 180
-    path: .
+    path: /
     action: remove-slow-download-seeds
 remove:
   - Torrent - 3
