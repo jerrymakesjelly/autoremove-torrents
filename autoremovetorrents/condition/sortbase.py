@@ -24,7 +24,9 @@ class ConditionWithSort(Condition):
                 lambda torrent: torrent.last_activity if torrent.last_activity is not None else -inf_,
             'reverse':True},
             'remove-slow-upload-seeds': {'key':lambda torrent: torrent.upload_speed, 'reverse':False},
-            'remove-fast-upload-seeds': {'key':lambda torrent: torrent.upload_speed, 'reverse':True}
+            'remove-fast-upload-seeds': {'key':lambda torrent: torrent.upload_speed, 'reverse':True},
+            'remove-slow-download-seeds': {'key':lambda torrent: torrent.download_speed, 'reverse':False},
+            'remove-fast-download-seeds': {'key':lambda torrent: torrent.download_speed, 'reverse':True}
         }
         if self._action in handlers.keys():
             torrents.sort(key=handlers[self._action]['key'], reverse=handlers[self._action]['reverse'])
