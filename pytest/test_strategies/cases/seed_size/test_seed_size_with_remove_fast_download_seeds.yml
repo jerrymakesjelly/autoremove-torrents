@@ -1,0 +1,6 @@
+test:
+  seed_size:
+    limit: 110
+    action: remove-fast-download-seeds
+remove:
+  - Torrent - 1
