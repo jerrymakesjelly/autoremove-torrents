@@ -30,7 +30,7 @@ class Torrent(object):
             "\tSeeder(connected/total):%d/%d\tLeecher(connected/total):%d/%d\tStatus:%s\n" +
             "\tDownload Speed:%s(Avg.:%s)\tUpload Speed:%s(Avg.:%s)\n" +
             "\tCreate Time:%s\tSeeding Time:%s\tDownloading Time:%s\tLast Activity:%s\n" +
-            "\tCategory:%s\tTracker:%s") % \
+            "\tCategory:%s\tTags:%s\tTracker:%s") % \
             (
                 disp('name'),
                 disp('progress', lambda x: x*100),
@@ -50,7 +50,8 @@ class Torrent(object):
                 disp('seeding_time', convert_seconds),
                 disp('downloading_time', convert_seconds),
                 disp('last_activity', convert_seconds),
-                disp('category', ','.join),
+                disp('category'),
+                disp('tags', lambda tags: ','.join(tags)),
                 disp('tracker', lambda t: \
                     ','.join(
                         [urlparse_(x).hostname if urlparse_(x).hostname is not None else x for x in t]

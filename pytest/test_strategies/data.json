@@ -33,6 +33,7 @@
         "size": 13762548460,
         "state": "Downloading",
         "super_seeding": false,
+        "tags": "tag1",
         "total_size": 13762548460,
         "tracker": [
             "https://tracker.site1.com/announce"
@@ -77,6 +78,7 @@
         "size": 27918469580,
         "state": "Downloading",
         "super_seeding": false,
+        "tags": "tag1,tag2",
         "total_size": 27918469580,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -121,6 +123,7 @@
         "size": 347000034,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag1,tag2,tag3",
         "total_size": 347000034,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -165,6 +168,7 @@
         "size": 10152029087,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag1,tag2,tag3,tag4",
         "total_size": 10152029087,
         "tracker": [
             "http://tracker.site3.com/?action=announce"
@@ -209,6 +213,7 @@
         "size": 9627866528,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag1,tag2,tag3,tag4,tag5",
         "total_size": 9627866528,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -253,6 +258,7 @@
         "size": 13200820552,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag2,tag3,tag4,tag5",
         "total_size": 13200820552,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -297,6 +303,7 @@
         "size": 7239185152,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag3,tag4,tag5",
         "total_size": 7239185152,
         "tracker": [
             "https://tracker.site1.com/announce"
@@ -341,6 +348,7 @@
         "size": 7619309310,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag4,tag5",
         "total_size": 7619309310,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -385,6 +393,7 @@
         "size": 3022394751,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "tag5",
         "total_size": 3022394751,
         "tracker": [
             "http://tracker.site3.com/?action=announce"
@@ -429,6 +438,7 @@
         "size": 14844911534,
         "state": "Uploading",
         "super_seeding": false,
+        "tags": "",
         "total_size": 14844911534,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -473,6 +483,7 @@
         "size": 13767802684,
         "state": "Downloading",
         "super_seeding": false,
+        "tags": "",
         "total_size": 13767802684,
         "tracker": [
             "https://tracker.site1.com/announce"
@@ -517,6 +528,7 @@
         "size": 4030908717,
         "state": "Downloading",
         "super_seeding": false,
+        "tags": "",
         "total_size": 4030908717,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -560,6 +572,7 @@
         "seq_dl": false,
         "size": 1746686185,
         "state": "Checking",
+        "tags": "",
         "super_seeding": false,
         "total_size": 1746686185,
         "tracker": [],
@@ -603,6 +616,7 @@
         "size": 312186667,
         "state": "Queued",
         "super_seeding": false,
+        "tags": "",
         "total_size": 312186667,
         "tracker": [
             "https://www.site2.org/tracker/announce"
@@ -647,6 +661,7 @@
         "size": 2126568405,
         "state": "Paused",
         "super_seeding": false,
+        "tags": "",
         "total_size": 2126568405,
         "tracker": [],
         "up_limit": 0,
@@ -689,6 +704,7 @@
         "size": 1132013553,
         "state": "Stopped",
         "super_seeding": false,
+        "tags": "",
         "total_size": 1132013553,
         "tracker": [],
         "up_limit": 0,

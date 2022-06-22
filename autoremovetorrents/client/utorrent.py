@@ -115,8 +115,7 @@ class uTorrent(object):
                 torrent_obj = Torrent()
                 torrent_obj.hash = torrent[0]
                 torrent_obj.name = torrent[2]
-                # The category list will be empty if a torrent was not specified categories
-                torrent_obj.category = [torrent[11]] if len(torrent[11]) > 0 else []
+                torrent_obj.category = torrent[11]
                 torrent_obj.tracker = properties['trackers'].split()
                 torrent_obj.status = uTorrent._judge_status(torrent[1], torrent[4])
                 torrent_obj.size = torrent[3]

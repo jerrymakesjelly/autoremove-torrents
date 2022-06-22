@@ -129,7 +129,7 @@ class Deluge(object):
         torrent_obj.hash = torrent['hash']
         torrent_obj.name = torrent['name']
         if 'label' in torrent:
-            torrent_obj.category = [torrent['label']] if len(torrent['label']) > 0 else []
+            torrent_obj.category = torrent['label']
         torrent_obj.tracker = [tracker['url'] for tracker in torrent['trackers']]
         torrent_obj.status = Deluge._judge_status(torrent['state'])
         torrent_obj.size = torrent['total_size']

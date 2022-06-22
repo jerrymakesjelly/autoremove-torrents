@@ -1,0 +1,10 @@
+test:
+  tags:
+    - tag1
+    - tag3
+  excluded_tags:
+    - tag3
+
+remain:
+  - Torrent - 1
+  - Torrent - 2

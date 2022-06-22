@@ -26,6 +26,7 @@ from .condition.uploadspeed import UploadSpeedCondition
 from .conditionparser import ConditionParser
 from .exception.unsupportedproperty import UnsupportedProperty
 from .filter.category import CategoryFilter
+from .filter.tag import TagFilter
 from .filter.status import StatusFilter
 from .filter.tracker import TrackerFilter
 
@@ -47,6 +48,8 @@ class Strategy(object):
         # Filter ALL
         self._all_categories = conf['all_categories'] if 'all_categories' in conf \
             else not 'categories' in conf
+        self._all_tags = conf['all_tags'] if 'all_tags' in conf \
+            else not 'tags' in conf
         self._all_trackers = conf['all_trackers'] if 'all_trackers' in conf \
             else not 'trackers' in conf
         self._all_status = conf['all_status'] if 'all_status' in conf \
@@ -60,10 +63,11 @@ class Strategy(object):
     def _apply_filters(self):
         filter_conf = [
             {'all':self._all_categories, 'ac':'categories', 're':'excluded_categories'}, # Category filter
+            {'all':self._all_tags, 'ac':'tags', 're':'excluded_tags'}, # Tag filter
             {'all':self._all_status, 'ac':'status', 're':'excluded_status'}, # Status filter
             {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
         ]
-        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter]
+        filter_obj = [CategoryFilter, TagFilter, StatusFilter, TrackerFilter]
 
         for i in range(0, len(filter_conf)):
             # Initialize all of the filter arguments
