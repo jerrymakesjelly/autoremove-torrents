@@ -10,6 +10,7 @@ setup(name = 'autoremove-torrents',
     version = __version__,
     description = 'Automatically remove torrents according to your strategies.',
     long_description = open_('README.rst', 'r', encoding='utf-8').read(),
+    long_description_content_type = 'text/x-rst',
     classifiers = [
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
