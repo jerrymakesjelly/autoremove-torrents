@@ -68,7 +68,7 @@ jobs:
       run: |
         # reduce clients pressure
         sleep $(($RANDOM % 60))
-        py.test -s --cov-report=xml --cov
+        py.test -s --cov-report=xml --cov --log-level=INFO
     - name: Save coverage report
       uses: actions/upload-artifact@v2
       with:
