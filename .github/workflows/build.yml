@@ -35,10 +35,10 @@ jobs:
       qbittorrent-latest:
         image: lscr.io/linuxserver/qbittorrent:latest
         env:
-          - PUID=1000
-          - PGID=1000
-          - TZ=Europe/London
-          - WEBUI_PORT=8080
+          PUID: 1000
+          PGID: 1000
+          TZ: Europe/London
+          WEBUI_PORT: 8080
         volumes:
           - /path/to/appdata/config:/config
           - /path/to/downloads:/downloads
