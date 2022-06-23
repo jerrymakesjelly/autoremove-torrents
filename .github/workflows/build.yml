@@ -15,9 +15,9 @@ env:
   QBITTORRENT_3_HOST: ${{ secrets.QBITTORRENT_3_HOST }}
   QBITTORRENT_3_USERNAME: ${{ secrets.QBITTORRENT_3_USERNAME }}
   QBITTORRENT_3_PASSWORD: ${{ secrets.QBITTORRENT_3_PASSWORD }}
-  QBITTORRENT_4_HOST: ${{ secrets.QBITTORRENT_4_HOST }}
-  QBITTORRENT_4_USERNAME: ${{ secrets.QBITTORRENT_4_USERNAME }}
-  QBITTORRENT_4_PASSWORD: ${{ secrets.QBITTORRENT_4_PASSWORD }}
+  QBITTORRENT_4_HOST: http://localhost:8080
+  QBITTORRENT_4_USERNAME: admin
+  QBITTORRENT_4_PASSWORD: adminadmin
   TRANSMISSION_2_8_HOST: ${{ secrets.TRANSMISSION_2_8_HOST }}
   TRANSMISSION_2_8_USERNAME: ${{ secrets.TRANSMISSION_2_8_USERNAME }}
   TRANSMISSION_2_8_PASSWORD: ${{ secrets.TRANSMISSION_2_8_PASSWORD }}
@@ -31,16 +31,25 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      qbittorrent-latest:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        env:
+          - PUID=1000
+          - PGID=1000
+          - TZ=Europe/London
+          - WEBUI_PORT=8080
+        volumes:
+          - /path/to/appdata/config:/config
+          - /path/to/downloads:/downloads
+        ports:
+          - 8080:8080
+          - 6881:6881
+          - 6881:6881/udp
     strategy:
       fail-fast: false
       matrix:
         python-version: [
-          "2.7",
-          "3.5",
-          "3.6",
-          "3.7",
-          "3.8",
-          "3.9",
           "3.10"
         ]
 
