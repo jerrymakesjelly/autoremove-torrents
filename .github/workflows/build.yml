@@ -19,8 +19,8 @@ env:
   QBITTORRENT_4_USERNAME: admin
   QBITTORRENT_4_PASSWORD: adminadmin
   TRANSMISSION_2_8_HOST: http://localhost:19091
-  TRANSMISSION_2_8_USERNAME:
-  TRANSMISSION_2_8_PASSWORD:
+  TRANSMISSION_2_8_USERNAME: username
+  TRANSMISSION_2_8_PASSWORD: password
   TRANSMISSION_2_9_HOST: http://localhost:9091
   TRANSMISSION_2_9_USERNAME: username
   TRANSMISSION_2_9_PASSWORD: password
@@ -64,6 +64,9 @@ jobs:
           - 20002:51413/udp
       transmission-294:
         image: linuxserver/transmission:2.94-r3-ls53
+        env:
+          USER: username
+          PASS: password
         ports:
           - 19091:9091
           - 20003:51413
