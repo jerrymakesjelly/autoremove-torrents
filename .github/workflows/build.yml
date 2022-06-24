@@ -63,7 +63,7 @@ jobs:
           - 20002:51413
           - 20002:51413/udp
       transmission-294:
-        image: lscr.io/linuxserver/transmission:2.94-r3-ls53
+        image: linuxserver/transmission:2.94-r3-ls53
         ports:
           - 19091:9091
           - 20003:51413
