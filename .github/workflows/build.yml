@@ -39,19 +39,12 @@ jobs:
           PGID: 1000
           TZ: Europe/London
           WEBUI_PORT: 8080
-        volumes:
-          - /qbittorrent-latest/config:/config
-          - /qbittorrent-latest/downloads:/downloads
         ports:
           - 8080:8080
           - 20000:6881
           - 20000:6881/udp
       qbittorrent-3:
         image: wernight/qbittorrent:3.3.3
-        volumes:
-          - /qbittorrent-3/config:/config
-          - /qbittorrent-3/torrents:/torrents
-          - /qbittorrent-3/downloads:/downloads
         ports:
           - 18080:8080
           - 20001:6881
