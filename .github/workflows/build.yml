@@ -18,9 +18,9 @@ env:
   QBITTORRENT_4_HOST: http://localhost:8080
   QBITTORRENT_4_USERNAME: admin
   QBITTORRENT_4_PASSWORD: adminadmin
-  TRANSMISSION_2_8_HOST: ${{ secrets.TRANSMISSION_2_8_HOST }}
-  TRANSMISSION_2_8_USERNAME: ${{ secrets.TRANSMISSION_2_8_USERNAME }}
-  TRANSMISSION_2_8_PASSWORD: ${{ secrets.TRANSMISSION_2_8_PASSWORD }}
+  TRANSMISSION_2_8_HOST: http://localhost:19091
+  TRANSMISSION_2_8_USERNAME:
+  TRANSMISSION_2_8_PASSWORD:
   TRANSMISSION_2_9_HOST: http://localhost:9091
   TRANSMISSION_2_9_USERNAME: username
   TRANSMISSION_2_9_PASSWORD: password
@@ -60,8 +60,14 @@ jobs:
           PASS: password
         ports:
           - 9091:9091
-          - 51413:51413
-          - 51413:51413/udp
+          - 20002:51413
+          - 20002:51413/udp
+      transmission-294:
+        image: lscr.io/linuxserver/transmission:2.94-r3-ls53
+        ports:
+          - 19091:9091
+          - 20003:51413
+          - 20003:51413/udp
     strategy:
       fail-fast: false
       matrix:
