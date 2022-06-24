@@ -47,7 +47,7 @@ jobs:
           - 20000:6881
           - 20000:6881/udp
       qbittorrent-3:
-        image: wernight/qbittorrent:3.3.13
+        image: wernight/qbittorrent:3.3.3
         volumes:
           - /qbittorrent-3/config:/config
           - /qbittorrent-3/torrents:/torrents
