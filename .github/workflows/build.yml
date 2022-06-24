@@ -15,7 +15,7 @@ env:
   QBITTORRENT_3_HOST: ${{ secrets.QBITTORRENT_3_HOST }}
   QBITTORRENT_3_USERNAME: ${{ secrets.QBITTORRENT_3_USERNAME }}
   QBITTORRENT_3_PASSWORD: ${{ secrets.QBITTORRENT_3_PASSWORD }}
-  QBITTORRENT_4_HOST: http://localhost:10000
+  QBITTORRENT_4_HOST: http://localhost:8080
   QBITTORRENT_4_USERNAME: admin
   QBITTORRENT_4_PASSWORD: adminadmin
   TRANSMISSION_2_8_HOST: ${{ secrets.TRANSMISSION_2_8_HOST }}
@@ -43,7 +43,7 @@ jobs:
           - /qbittorrent-latest/config:/config
           - /qbittorrent-latest/downloads:/downloads
         ports:
-          - 10000:8080
+          - 8080:8080
           - 20000:6881
           - 20000:6881/udp
     strategy:
