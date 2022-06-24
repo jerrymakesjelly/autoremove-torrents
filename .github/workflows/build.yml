@@ -12,9 +12,9 @@ env:
   DELUGE_2_HOST: ${{ secrets.DELUGE_2_HOST }}
   DELUGE_2_USERNAME: ${{ secrets.DELUGE_2_USERNAME }}
   DELUGE_2_PASSWORD: ${{ secrets.DELUGE_2_PASSWORD }}
-  QBITTORRENT_3_HOST: ${{ secrets.QBITTORRENT_3_HOST }}
-  QBITTORRENT_3_USERNAME: ${{ secrets.QBITTORRENT_3_USERNAME }}
-  QBITTORRENT_3_PASSWORD: ${{ secrets.QBITTORRENT_3_PASSWORD }}
+  QBITTORRENT_3_HOST: http://localhost:18080
+  QBITTORRENT_3_USERNAME: admin
+  QBITTORRENT_3_PASSWORD: adminadmin
   QBITTORRENT_4_HOST: http://localhost:8080
   QBITTORRENT_4_USERNAME: admin
   QBITTORRENT_4_PASSWORD: adminadmin
@@ -46,6 +46,16 @@ jobs:
           - 8080:8080
           - 20000:6881
           - 20000:6881/udp
+      qbittorrent-3:
+        image: wernight/qbittorrent:3.3.13
+        volumes:
+          - /qbittorrent-3/config:/config
+          - /qbittorrent-3/torrents:/torrents
+          - /qbittorrent-3/downloads:/downloads
+        ports:
+          - 18080:8080
+          - 20001:6881
+          - 20001:6881/udp
     strategy:
       fail-fast: false
       matrix:
