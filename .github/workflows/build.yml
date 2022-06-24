@@ -21,9 +21,9 @@ env:
   TRANSMISSION_2_8_HOST: ${{ secrets.TRANSMISSION_2_8_HOST }}
   TRANSMISSION_2_8_USERNAME: ${{ secrets.TRANSMISSION_2_8_USERNAME }}
   TRANSMISSION_2_8_PASSWORD: ${{ secrets.TRANSMISSION_2_8_PASSWORD }}
-  TRANSMISSION_2_9_HOST: ${{ secrets.TRANSMISSION_2_9_HOST }}
-  TRANSMISSION_2_9_USERNAME: ${{ secrets.TRANSMISSION_2_9_USERNAME }}
-  TRANSMISSION_2_9_PASSWORD: ${{ secrets.TRANSMISSION_2_9_PASSWORD }}
+  TRANSMISSION_2_9_HOST: http://localhost:9091
+  TRANSMISSION_2_9_USERNAME: username
+  TRANSMISSION_2_9_PASSWORD: password
   UTORRENT_HOST: ${{ secrets.UTORRENT_HOST }}
   UTORRENT_USERNAME: ${{ secrets.UTORRENT_USERNAME }}
   UTORRENT_PASSWORD: ${{ secrets.UTORRENT_PASSWORD }}
@@ -49,6 +49,19 @@ jobs:
           - 18080:8080
           - 20001:6881
           - 20001:6881/udp
+      transmission-latest:
+        image: lscr.io/linuxserver/transmission:latest
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Europe/London
+          TRANSMISSION_WEB_HOME: /combustion-release/
+          USER: username
+          PASS: password
+        ports:
+          - 9091:9091
+          - 51413:51413
+          - 51413:51413/udp
     strategy:
       fail-fast: false
       matrix:
