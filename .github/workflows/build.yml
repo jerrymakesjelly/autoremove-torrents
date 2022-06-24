@@ -10,7 +10,7 @@ env:
   DELUGE_1_USERNAME: ${{ secrets.DELUGE_1_USERNAME }}
   DELUGE_1_PASSWORD: ${{ secrets.DELUGE_1_PASSWORD }}
   DELUGE_2_HOST: 127.0.0.1:58846
-  DELUGE_2_USERNAME: localhost
+  DELUGE_2_USERNAME: localclient
   DELUGE_2_PASSWORD: set-later
   QBITTORRENT_3_HOST: http://localhost:18080
   QBITTORRENT_3_USERNAME: admin
@@ -112,8 +112,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Extract passwords of Deluge Daemon
       run: |
-        export DELUGE_2_PASSWORD=$(sudo cat /tmp/deluge-latest/config/auth | sed 's/.*:\(.*\):.*/\1/g')
-        echo $DELUGE_2_PASSWORD
+        echo "DELUGE_2_PASSWORD=$(sudo cat /tmp/deluge-latest/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
     - name: Test with pytest
       run: |
         # reduce clients pressure
