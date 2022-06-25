@@ -133,7 +133,7 @@ jobs:
     - name: Extract passwords of Deluge Daemon
       run: |
         echo "DELUGE_2_PASSWORD=$(sudo cat /tmp/deluge-latest/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
-        echo "DELUGE_1_PASSWORD=$(sudo cat /tmp/deluge-1/config/auth | sed 's/.*:\(.*\):.*/\1/g)" >> $GITHUB_ENV
+        echo "DELUGE_1_PASSWORD=$(sudo cat /tmp/deluge-1/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
     - name: Test with pytest
       run: |
         # reduce clients pressure
