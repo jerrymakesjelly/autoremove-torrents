@@ -152,8 +152,6 @@ jobs:
         echo "DELUGE_1_PASSWORD=$(sudo cat /tmp/deluge-1/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
     - name: Test with pytest
       run: |
-        # reduce clients pressure
-        sleep $(($RANDOM % 60))
         py.test -s --cov-report=xml --cov --log-level=INFO
     - name: Save coverage report
       uses: actions/upload-artifact@v2
