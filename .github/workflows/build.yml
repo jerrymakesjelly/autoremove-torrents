@@ -157,7 +157,7 @@ jobs:
         echo "DELUGE_1_PASSWORD=$(sudo cat /tmp/deluge-1/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
     - name: Sleep for a while
       run: |
-        sleep $(($RANDOM % 60))
+        sleep $((10 + $RANDOM % 50))
     - name: Test with pytest
       run: |
         py.test -s --cov-report=xml --cov --log-level=INFO
