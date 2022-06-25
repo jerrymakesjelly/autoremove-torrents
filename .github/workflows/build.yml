@@ -45,6 +45,10 @@ jobs:
           - 20000:6881/udp
       qbittorrent-3:
         image: wernight/qbittorrent:3.3.3
+        env:
+          PUID: 1001
+          PGID: 1001
+          TZ: Europe/London
         ports:
           - 18080:8080
           - 20001:6881
@@ -52,8 +56,8 @@ jobs:
       transmission-latest:
         image: lscr.io/linuxserver/transmission:latest
         env:
-          PUID: 1000
-          PGID: 1000
+          PUID: 2000
+          PGID: 2000
           TZ: Europe/London
           TRANSMISSION_WEB_HOME: /combustion-release/
           USER: username
@@ -64,6 +68,9 @@ jobs:
           - 20002:51413/udp
       transmission-294:
         image: linuxserver/transmission:2.94-r3-ls53
+        env:
+          PUID: 2001
+          PGID: 2001
         env:
           USER: username
           PASS: password
