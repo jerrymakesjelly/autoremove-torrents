@@ -6,31 +6,110 @@ name: build
 on: [push, pull_request]
 
 env:
-  DELUGE_1_HOST: ${{ secrets.DELUGE_1_HOST }}
-  DELUGE_1_USERNAME: ${{ secrets.DELUGE_1_USERNAME }}
-  DELUGE_1_PASSWORD: ${{ secrets.DELUGE_1_PASSWORD }}
-  DELUGE_2_HOST: ${{ secrets.DELUGE_2_HOST }}
-  DELUGE_2_USERNAME: ${{ secrets.DELUGE_2_USERNAME }}
-  DELUGE_2_PASSWORD: ${{ secrets.DELUGE_2_PASSWORD }}
-  QBITTORRENT_3_HOST: ${{ secrets.QBITTORRENT_3_HOST }}
-  QBITTORRENT_3_USERNAME: ${{ secrets.QBITTORRENT_3_USERNAME }}
-  QBITTORRENT_3_PASSWORD: ${{ secrets.QBITTORRENT_3_PASSWORD }}
-  QBITTORRENT_4_HOST: ${{ secrets.QBITTORRENT_4_HOST }}
-  QBITTORRENT_4_USERNAME: ${{ secrets.QBITTORRENT_4_USERNAME }}
-  QBITTORRENT_4_PASSWORD: ${{ secrets.QBITTORRENT_4_PASSWORD }}
-  TRANSMISSION_2_8_HOST: ${{ secrets.TRANSMISSION_2_8_HOST }}
-  TRANSMISSION_2_8_USERNAME: ${{ secrets.TRANSMISSION_2_8_USERNAME }}
-  TRANSMISSION_2_8_PASSWORD: ${{ secrets.TRANSMISSION_2_8_PASSWORD }}
-  TRANSMISSION_2_9_HOST: ${{ secrets.TRANSMISSION_2_9_HOST }}
-  TRANSMISSION_2_9_USERNAME: ${{ secrets.TRANSMISSION_2_9_USERNAME }}
-  TRANSMISSION_2_9_PASSWORD: ${{ secrets.TRANSMISSION_2_9_PASSWORD }}
-  UTORRENT_HOST: ${{ secrets.UTORRENT_HOST }}
-  UTORRENT_USERNAME: ${{ secrets.UTORRENT_USERNAME }}
-  UTORRENT_PASSWORD: ${{ secrets.UTORRENT_PASSWORD }}
+  DELUGE_1_HOST: localhost:48846
+  DELUGE_1_USERNAME: localclient
+  DELUGE_1_PASSWORD: set-later
+  DELUGE_2_HOST: localhost:58846
+  DELUGE_2_USERNAME: localclient
+  DELUGE_2_PASSWORD: set-later
+  QBITTORRENT_3_HOST: http://localhost:18080
+  QBITTORRENT_3_USERNAME: admin
+  QBITTORRENT_3_PASSWORD: adminadmin
+  QBITTORRENT_4_HOST: http://localhost:8080
+  QBITTORRENT_4_USERNAME: admin
+  QBITTORRENT_4_PASSWORD: adminadmin
+  TRANSMISSION_2_8_HOST: http://localhost:19091
+  TRANSMISSION_2_8_USERNAME: username
+  TRANSMISSION_2_8_PASSWORD: password
+  TRANSMISSION_2_9_HOST: http://localhost:9091
+  TRANSMISSION_2_9_USERNAME: username
+  TRANSMISSION_2_9_PASSWORD: password
+  UTORRENT_HOST: http://localhost:28080
+  UTORRENT_USERNAME: admin
+  UTORRENT_PASSWORD:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      qbittorrent-latest:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Europe/London
+          WEBUI_PORT: 8080
+        ports:
+          - 8080:8080
+          - 20000:6881
+          - 20000:6881/udp
+      qbittorrent-3:
+        image: wernight/qbittorrent:3.3.3
+        env:
+          PUID: 1001
+          PGID: 1001
+          TZ: Europe/London
+        ports:
+          - 18080:8080
+          - 20001:6881
+          - 20001:6881/udp
+      transmission-latest:
+        image: lscr.io/linuxserver/transmission:latest
+        env:
+          PUID: 2000
+          PGID: 2000
+          TZ: Europe/London
+          TRANSMISSION_WEB_HOME: /combustion-release/
+          USER: username
+          PASS: password
+        ports:
+          - 9091:9091
+          - 20002:51413
+          - 20002:51413/udp
+      transmission-294:
+        image: linuxserver/transmission:2.94-r3-ls53
+        env:
+          PUID: 2001
+          PGID: 2001
+          USER: username
+          PASS: password
+        ports:
+          - 19091:9091
+          - 20003:51413
+          - 20003:51413/udp
+      deluge-latest:
+        image: lscr.io/linuxserver/deluge:latest
+        env:
+          PUID: 3000
+          PGID: 3000
+          TZ: Europe/London
+        volumes:
+          - /tmp/deluge-latest/config:/config
+        ports:
+          - 58846:58846
+          - 20004:6881
+          - 20004:6881/udp
+      deluge-1:
+        image: linuxserver/deluge:amd64-ab9135a6-ls19
+        env:
+          PUID: 3001
+          PGID: 3001
+          TZ: Europe/London
+        volumes:
+          - /tmp/deluge-1/config:/config
+        ports:
+          - 48846:58846
+          - 20005:6881
+          - 20005:6881/udp
+      utorrent-latest:
+        image: ekho/utorrent:latest
+        env:
+          UID: 4000
+          GID: 4000
+        ports:
+          - 28080:8080
+          - 20006:6881
+          - 20006:6881/udp
     strategy:
       fail-fast: false
       matrix:
@@ -64,11 +143,24 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Allow remote access of Deluge Daemon
+      run: |
+        docker stop ${{ job.services.deluge-latest.id }}
+        docker stop ${{ job.services.deluge-1.id }}
+        sudo sed -i 's/"allow_remote": false/"allow_remote": true/g' /tmp/deluge-latest/config/core.conf
+        sudo sed -i 's/"allow_remote": false/"allow_remote": true/g' /tmp/deluge-1/config/core.conf
+        docker start ${{ job.services.deluge-latest.id }}
+        docker start ${{ job.services.deluge-1.id }}
+    - name: Extract passwords of Deluge Daemon
+      run: |
+        echo "DELUGE_2_PASSWORD=$(sudo cat /tmp/deluge-latest/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
+        echo "DELUGE_1_PASSWORD=$(sudo cat /tmp/deluge-1/config/auth | sed 's/.*:\(.*\):.*/\1/g')" >> $GITHUB_ENV
+    - name: Sleep for a while
+      run: |
+        sleep $((10 + $RANDOM % 50))
     - name: Test with pytest
       run: |
-        # reduce clients pressure
-        sleep $(($RANDOM % 60))
-        py.test -s --cov-report=xml --cov
+        py.test -s --cov-report=xml --cov --log-level=INFO
     - name: Save coverage report
       uses: actions/upload-artifact@v2
       with:
