@@ -113,7 +113,7 @@ jobs:
     - name: Allow remote access of Deluge Daemon
       run: |
         docker stop ${{ job.services.deluge-latest.id }}
-        sed -i 's/"allow_remote": false/"allow_remote": true/g' /tmp/deluge-latest/config/core.conf
+        sudo sed -i 's/"allow_remote": false/"allow_remote": true/g' /tmp/deluge-latest/config/core.conf
         docker start ${{ job.services.deluge-latest.id }}
     - name: Extract passwords of Deluge Daemon
       run: |
