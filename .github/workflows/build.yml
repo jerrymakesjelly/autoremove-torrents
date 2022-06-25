@@ -24,9 +24,9 @@ env:
   TRANSMISSION_2_9_HOST: http://localhost:9091
   TRANSMISSION_2_9_USERNAME: username
   TRANSMISSION_2_9_PASSWORD: password
-  UTORRENT_HOST: ${{ secrets.UTORRENT_HOST }}
-  UTORRENT_USERNAME: ${{ secrets.UTORRENT_USERNAME }}
-  UTORRENT_PASSWORD: ${{ secrets.UTORRENT_PASSWORD }}
+  UTORRENT_HOST: http://localhost:28080
+  UTORRENT_USERNAME: admin
+  UTORRENT_PASSWORD:
 
 jobs:
   build:
@@ -95,6 +95,15 @@ jobs:
           - 48846:58846
           - 20005:6881
           - 20005:6881/udp
+      utorrent-latest:
+        image: ekho/utorrent:latest
+        env:
+          UID: 4000
+          GID: 4000
+        ports:
+          - 28080:8080
+          - 20006:6881
+          - 20006:6881/udp
     strategy:
       fail-fast: false
       matrix:
