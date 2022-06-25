@@ -71,7 +71,6 @@ jobs:
         env:
           PUID: 2001
           PGID: 2001
-        env:
           USER: username
           PASS: password
         ports:
