@@ -82,6 +82,11 @@ Supported Properties
      - ✓
      - ✓
      - ✓
+   * - Downloading Time
+     - ✓ :superscript:`2.0 or later`
+     - ✗
+     - ✓
+     - ✗
    * - Free Space
      - ✓
      - ✓
