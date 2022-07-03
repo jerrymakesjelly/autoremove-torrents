@@ -29,7 +29,35 @@ env:
   UTORRENT_PASSWORD:
 
 jobs:
-  build:
+  install:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [
+          "2.7",
+          "3.5",
+          "3.6",
+          "3.7",
+          "3.8",
+          "3.9",
+          "3.10"
+        ]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install flake8
+        python -m pip install --upgrade setuptools
+    - name: Installation test
+      run: |
+        pip install .
+  unittest:
     runs-on: ubuntu-latest
     services:
       qbittorrent-latest:
@@ -136,7 +164,8 @@ jobs:
         python -m pip install --upgrade pytest
         python -m pip install --upgrade setuptools
         python -m pip install -r dev-requirements.txt
-        python setup.py install
+        python setup.py egg_info
+        python -m pip install -r autoremove_torrents.egg-info/requires.txt
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -169,7 +198,7 @@ jobs:
   codacy-coverage-reporter:
     runs-on: ubuntu-latest
     name: codacy-coverage-reporter
-    needs: build
+    needs: unittest
     steps:
       - uses: actions/checkout@v2
       - name: Load coverage report
