@@ -198,7 +198,7 @@ jobs:
   codacy-coverage-reporter:
     runs-on: ubuntu-latest
     name: codacy-coverage-reporter
-    needs: build
+    needs: unittest
     steps:
       - uses: actions/checkout@v2
       - name: Load coverage report
