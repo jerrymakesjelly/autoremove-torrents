@@ -3,3 +3,6 @@ codacy-coverage
 requests_mock
 pytest-mock
 setuptools
+sphinx
+sphinx_rtd_theme
+sphinx-intl
