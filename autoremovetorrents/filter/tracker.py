@@ -10,7 +10,7 @@ class TrackerFilter(Filter):
     def apply(self, torrents):
         # Pick accepted torrents
         accepts = set()
-        if self._all: # Accpet all torrents (all_trackers)
+        if self._all: # Accept all torrents (all_trackers)
             accepts = set(torrents)
         elif len(self._accept) > 0: # Accept specific tracker torrents (trackers)
             for torrent in torrents:

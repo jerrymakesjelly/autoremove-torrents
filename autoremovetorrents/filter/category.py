@@ -9,7 +9,7 @@ class CategoryFilter(Filter):
     def apply(self, torrents):
         # Pick accepted torrents
         accepts = set()
-        if self._all: # Accpet all torrents (all_categories)
+        if self._all: # Accept all torrents (all_categories)
             accepts = set(torrents)
         elif len(self._accept) > 0: # Accept specific category torrents (categories)
             for torrent in torrents:

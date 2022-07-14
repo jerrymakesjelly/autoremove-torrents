@@ -86,7 +86,7 @@ class Strategy(object):
 
             # Print debug log
             self._logger.debug('Applying filter %s...' % filter_obj[i].__name__)
-            self._logger.debug('Filter configrations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
+            self._logger.debug('Filter configurations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
                 filter_conf[i]['all'],
                 ', '.join(self._conf[accept_field]),
                 ', '.join(self._conf[reject_field])
