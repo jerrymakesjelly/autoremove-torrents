@@ -114,9 +114,9 @@ Just name your strategy like the task name.
 Part II: Filters
 ++++++++++++++++
 
-The removing condtions are only available for the torrents you chosen. There are 9 filters available.
+The removing condtions are only available for the torrents you chosen. There are 12 filters available.
 
-* ``all_trackers``/``all_categories``/``all_status``: Choose all the trackers/categories/status.
+* ``all_trackers``/``all_categories``/``all_status``/``all_paths``: Choose all the trackers/categories/status/paths.
 * ``categories``: Choose torrents in these categories.
 * ``excluded_categories``: Don't choose torrents in these categories.
 * ``trackers``: Choose torrents in these trackers.
@@ -148,18 +148,20 @@ The removing condtions are only available for the torrents you chosen. There are
      - μTorrent doesn't have this status.
 
 * ``excluded_status``: Don't choose these torrents in these status. Available status is shown in the table above.
+* ``paths``: Choose torrents in these paths.
+* ``excluded_paths``: Don't choose torrents in these paths.
 
 The result of each filter is a set of torrents. 
 
 .. note::
 
-   When two or three of ``categories``, ``trackers`` and ``status`` filter are specificed, the program will take the intersection of these sets, and subtracts set ``excluded_categories``, ``excluded_trackers`` and ``excluded_status``.
+   When more than one of ``categories``, ``trackers``, ``status`` and ``paths`` filter are specified, the program will take the intersection of these sets, and subtracts set ``excluded_categories``, ``excluded_trackers``, ``excluded_status`` and ``excluded_paths``.
 
 
 .. note::
 
    1. Don't write sockets in ``trackers``. The ``trackers`` field only needs hostname, for example, just fill ``tracker.site1.com`` for ``https://tracker.site1.com``.
-   2. In 1.4.4 and later version, if there's only one item in ``categories``, ``trackers`` or ``status``, it's not necessary to use list structure. A single-line text is enough, for example:
+   2. In 1.4.4 and later version, if there's only one item in ``categories``, ``trackers``, ``status`` or ``paths``, it's not necessary to use list structure. A single-line text is enough, for example:
 
    .. code-block:: yaml
 
@@ -172,6 +174,7 @@ The result of each filter is a set of torrents.
    
 
    3. The ``StalledUp`` and ``StalledDown`` is the new status in version 1.4.5. In this program, ``Uploading`` inlcudes the torrents in ``StalledUpload`` status, and ``Downloading`` includes the torrents in ``StalledDownload`` status.
+   4. The ``paths`` and ``excluded_paths`` is only support the Transmission client (for now), and the path need end with ``/``.
 
 Let's see some examples. Select those torrents whose categories are Movies or Games:
 
@@ -227,7 +230,7 @@ Select torrents whose categories are Movies or Games, but exclude those torrents
          # Removing conditions are here
          # ...
 
-Select those torrents whose categories is Movies and status is uploading:
+Select those torrents whose categories is Movies and status is uploading and path is /volume1/tv/:
 
 .. code-block:: yaml
 
@@ -242,6 +245,8 @@ Select those torrents whose categories is Movies and status is uploading:
            - Movies
          status:
            - Uploading
+         paths:
+           - /volume1/tv/
          # Removing conditions are here
          # ...
 

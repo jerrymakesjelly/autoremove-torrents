@@ -117,6 +117,7 @@ class Transmission(object):
                     'downloadedEver',
                     'secondsDownloading',
                     'percentDone',
+                    'downloadDir',
                 ]}
             )
         if len(result['torrents']) == 0: # No such torrent
@@ -135,6 +136,7 @@ class Transmission(object):
         torrent_obj.ratio = torrent['uploadRatio']
         torrent_obj.uploaded = torrent['uploadedEver']
         torrent_obj.downloaded = torrent['downloadedEver']
+        torrent_obj.download_dir = torrent['downloadDir']
         torrent_obj.create_time = torrent['addedDate']
         torrent_obj.seeding_time = torrent['secondsSeeding']
         torrent_obj.downloading_time = torrent['secondsDownloading']
