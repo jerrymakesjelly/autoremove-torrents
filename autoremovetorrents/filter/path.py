@@ -4,6 +4,13 @@ from .filter import Filter
 
 class PathFilter(Filter):
     def __init__(self, all_paths, ac, re):
+        '''filter torrents by path (download directory)
+
+        Parameters:
+          all_paths (boolean): whether accept all paths
+          ac (list): accept paths
+          re (list): reject paths
+        '''
         Filter.__init__(self, all_paths, ac, re)
 
     def apply(self, torrents):
