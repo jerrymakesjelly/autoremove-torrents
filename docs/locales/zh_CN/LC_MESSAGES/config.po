@@ -302,7 +302,7 @@ msgstr "``paths``: 选择这些目录的种子。"
 
 #: ../../config.rst:152
 msgid "``excluded_paths``: Don't choose torrents in these paths."
-msgstr "``excluded_paths``: 排查这些目录的种子。"
+msgstr "``excluded_paths``: 排除这些目录的种子。"
 
 #: ../../config.rst:154
 msgid "The result of each filter is a set of torrents."

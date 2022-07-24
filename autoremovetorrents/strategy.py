@@ -48,15 +48,15 @@ class Strategy(object):
 
         # Filter ALL
         self._all_categories = conf['all_categories'] if 'all_categories' in conf \
-            else not 'categories' in conf
+            else 'categories' not in conf
         self._all_tags = conf['all_tags'] if 'all_tags' in conf \
-            else not 'tags' in conf
+            else 'tags' not in conf
         self._all_trackers = conf['all_trackers'] if 'all_trackers' in conf \
-            else not 'trackers' in conf
+            else 'trackers' not in conf
         self._all_status = conf['all_status'] if 'all_status' in conf \
-            else not 'status' in conf
-        self._all_paths = conf['all_path'] if 'all_path' in conf \
-            else not 'paths' in conf
+            else 'status' not in conf
+        self._all_paths = conf['all_paths'] if 'all_paths' in conf \
+            else 'paths' not in conf
 
         # Print debug log
         self._logger.debug("Configuration of strategy '%s':" % self._name)
