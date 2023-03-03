@@ -13,7 +13,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: autoremove-torrents-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
       with:
-        images: xushengbin/ubuntu-networking
+        images: w12725/autoremove-torrents:1.5.4
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
