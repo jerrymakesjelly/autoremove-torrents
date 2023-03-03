@@ -26,9 +26,9 @@ jobs:
         
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
       with:
-        images: w12725/autoremove-torrents:latest
+        images: w12725/autoremove-torrents:1.5.4
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
