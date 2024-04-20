@@ -160,7 +160,7 @@ jobs:
     - name: Setup passwords of qBittorrent latest
       run: |
         docker stop ${{ job.services.qbittorrent-latest.id }}
-        sudo echo 'WebUI\Password_PBKDF2="@ByteArray(+BwJe86psDlDzA5u7ebg9Q==:yZeQKzvuRW/Mn+qL0FS8Nt91A53x5Ow8YGNOq0KusmleU9xn60RWx9kDXKOEqIe+eJX5bQ9UJ4GgR16UWprRSw==)"' >> /tmp/qbittorrent-latest/config/qBittorrent/qBittorrent.conf
+        echo 'WebUI\Password_PBKDF2="@ByteArray(+BwJe86psDlDzA5u7ebg9Q==:yZeQKzvuRW/Mn+qL0FS8Nt91A53x5Ow8YGNOq0KusmleU9xn60RWx9kDXKOEqIe+eJX5bQ9UJ4GgR16UWprRSw==)"' | sudo tee -a /tmp/qbittorrent-latest/config/qBittorrent/qBittorrent.conf
         docker start ${{ job.services.qbittorrent-latest.id }}
     - name: Sleep for a while
       run: |
