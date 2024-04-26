@@ -3,7 +3,7 @@
 
 name: build
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 env:
   DELUGE_1_HOST: localhost:48846
