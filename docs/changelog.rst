@@ -3,6 +3,16 @@
 ChangeLog
 ==========
 
+Version 1.5.5
+--------------
+
+*Release Date: Saturday, 27 April 2024*
+
+* Fix the compatibility issues in qBittorrent 4.5 and later. (#157) (#173) (#174) (#182) (#186) Thanks to @Siriussee!
+    - See the API changes in qbittorrent/qBittorrent#17563.
+
+We also fix the unittest workflow for the lastest qBittorrent. Thanks to @amefs!
+
 Version 1.5.4
 --------------
 
