@@ -34,7 +34,7 @@ Changes
 Features
 +++++++++
 
-* Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` actions to keyword ``action``. (#127) Thanks to @vincent906!
+* Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` actions to keyword ``action``. (#127) Thanks to @vincent806!
 * Support equality (``=``) comparison in ``remove`` expression.
 * Add ``downloading_time`` condition. (#88) Thanks to @dantebarba!
 
