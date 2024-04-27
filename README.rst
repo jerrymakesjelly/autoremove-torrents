@@ -110,34 +110,14 @@ Screenshot
 .. |Screenshot| image:: https://user-images.githubusercontent.com/6760674/174464634-15743d59-f1dc-41c9-bff6-6d90becaeb67.gif
 
 Changelog
-----------
-**Sun, 19 June 2022**: Version 1.5.4.
+--------------
 
-Changes
-++++++++
+**Sat, 27 Apr 2024**: Version 1.5.5.
 
-* Remove outgoing port status info. (#101) (#135)
-    - We have confirmed a bug, which is, the outgoing port status checker will fail and report 'portTested: http error 400: Bad Request' when we are using Transmission and check the outgoing port status in IPv6 network.
-    - Since there are no configurations relying on this status, we remove it.
+* Fix the compatibility issues in qBittorrent 4.5 and later. (#157) (#173) (#174) (#182) (#186) Thanks to @Siriussee!
+    - See the API changes in qbittorrent/qBittorrent#17563.
 
-* Change ``last_activity``'s behaviour. (#93) (#98) (#109)
-    - It won't remove those torrents that have never been active anymore.
-    - These torrents that have never been active can be removed by the following configuration:
-        + ``last_activity: never`` or ``last_activity: none`` for ``last_activity`` condition.
-        + ``last_activity = never`` or ``last_activity = none`` for ``remove`` expression.
-
-Features
-+++++++++
-
-* Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` in actions. (#127) Thanks to @vincent906!
-* Support equality (``=``) comparison in remove expression.
-* Add downloading time condition. (#88) Thanks to @dantebarba!
-
-Fix
-++++
-
-* Fix a bug that Downloaded/Uploaded Size conditions and ``free_space``/``remote_free_space`` cannot handle decimals correctly. (#133) Thanks to @sfwn!
-* Fix a bug that ``last_activity`` condition doesn't work in Deluge 2.0.3 and above. (#119)
+We also fix the unittest workflow for the lastest qBittorrent. Thanks to @amefs!
 
 `More changelogs`_
 

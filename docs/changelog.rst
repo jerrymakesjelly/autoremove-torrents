@@ -3,6 +3,16 @@
 ChangeLog
 ==========
 
+Version 1.5.5
+--------------
+
+*Release Date: Saturday, 27 April 2024*
+
+* Fix the compatibility issues in qBittorrent 4.5 and later. (#157) (#173) (#174) (#182) (#186) Thanks to @Siriussee!
+    - See the API changes in qbittorrent/qBittorrent#17563.
+
+We also fix the unittest workflow for the lastest qBittorrent. Thanks to @amefs!
+
 Version 1.5.4
 --------------
 
@@ -24,7 +34,7 @@ Changes
 Features
 +++++++++
 
-* Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` actions to keyword ``action``. (#127) Thanks to @vincent906!
+* Add ``remove-slow-upload-seeds`` and ``remove-fast-upload-seeds`` actions to keyword ``action``. (#127) Thanks to @vincent806!
 * Support equality (``=``) comparison in ``remove`` expression.
 * Add ``downloading_time`` condition. (#88) Thanks to @dantebarba!
 
