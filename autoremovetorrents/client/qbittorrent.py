@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 import requests
 import time
+from packaging import version
 from .. import logger
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
@@ -134,6 +135,21 @@ class qBittorrent(object):
                 break
         if self._request_handler is None:
             raise IncompatibleAPIVersion('Incompatible qbittorrent client. The current API version may be unsupported.')
+
+        # Workaround for https://github.com/qbittorrent/qBittorrent/issues/18097
+        if self._request_handler.api_major_version() == "v2":
+            if version.parse(self._request_handler.client_version().text) >= version.parse("4.5.0"):
+                def new_delete_torrents(self, torrent_hash_list):
+                    return self._session.post(self._host + '/api/v2/torrents/delete',
+                                              data={'hashes': '|'.join(torrent_hash_list), 'deleteFiles': False})
+
+                self.qBittorrentAPIHandlerV2.delete_torrents = new_delete_torrents
+
+                def new_delete_torrents_and_data(self, torrent_hash_list):
+                    return self._session.post(self._host + '/api/v2/torrents/delete',
+                                              data={'hashes': '|'.join(torrent_hash_list), 'deleteFiles': True})
+
+                self.qBittorrentAPIHandlerV2.delete_torrents_and_data = new_delete_torrents_and_data
 
     # Login to qBittorrent
     def login(self, username, password):
