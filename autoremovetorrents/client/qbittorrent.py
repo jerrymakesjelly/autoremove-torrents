@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 import requests
 import time
+from urllib3.exceptions import InsecureRequestWarning
 from .. import logger
 from ..torrent import Torrent
 from ..clientstatus import ClientStatus
@@ -20,7 +21,12 @@ class qBittorrent(object):
         
         # Check API Compatibility
         def check_compatibility(self):
-            request = self._session.get(self._host+'/version/api')
+            try:
+                request = self._session.get(self._host+'/version/api')
+            except requests.exceptions.SSLError:
+                self._session.verify = False
+                requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+                request = self._session.get(self._host+'/version/api')
             return request.status_code != 404 # compatible if API exsits
 
         # Get API major version
@@ -73,7 +79,12 @@ class qBittorrent(object):
         
         # Check API Compatibility
         def check_compatibility(self):
-            request = self._session.get(self._host+'/api/v2/app/webapiVersion')
+            try:
+                request = self._session.get(self._host+'/api/v2/app/webapiVersion')
+            except requests.exceptions.SSLError:
+                self._session.verify = False
+                requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+                request = self._session.get(self._host+'/api/v2/app/webapiVersion')
             return request.status_code != 404 # compatible if API exsits
 
         # Get API major version
