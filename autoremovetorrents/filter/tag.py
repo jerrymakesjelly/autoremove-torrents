@@ -1,26 +1,33 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 from .filter import Filter
 
 class TagFilter(Filter):
-    def __init__(self, all_tag, ac, re):
-        Filter.__init__(self, all_category, ac, re)
+    def __init__(self, all_tags, ac, re):
+        super().__init__(all_tags, ac, re)
 
     def apply(self, torrents):
+        # Debugging: Print the tags for each torrent
+        # for torrent in torrents:
+        #     print(f"Torrent: {torrent.name}, Tags: {torrent.tags}")
+
         # Pick accepted torrents
         accepts = set()
-        if self._all: # Accpet all torrents (all_tags)
+        if self._all:
             accepts = set(torrents)
-        elif len(self._accept) > 0: # Accept specific tags torrents (tags)
+        elif len(self._accept) > 0:
             for torrent in torrents:
-                for tag in torrent.tag:
+                for tag in torrent.tags:
                     if tag in self._accept:
                         accepts.add(torrent)
+
         # Pick rejected torrents
         rejects = set()
-        if len(self._reject) > 0: # Reject specific tags torrents (excluded_tags)
+        if len(self._reject) > 0:
             for torrent in accepts:
-                for category in torrent.tag:
-                    if category in self._reject:
+                for tag in torrent.tags:
+                    if tag in self._reject:
                         rejects.add(torrent)
-        return accepts.difference(rejects) # Return their difference
+
+        result = accepts.difference(rejects)
+        return result
