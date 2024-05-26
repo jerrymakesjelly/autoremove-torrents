@@ -28,6 +28,7 @@ from .exception.unsupportedproperty import UnsupportedProperty
 from .filter.category import CategoryFilter
 from .filter.status import StatusFilter
 from .filter.tracker import TrackerFilter
+from .filter.tag import TagFilter
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -51,6 +52,8 @@ class Strategy(object):
             else not 'trackers' in conf
         self._all_status = conf['all_status'] if 'all_status' in conf \
             else not 'status' in conf
+        self._all_tags = conf['all_tags'] if 'all_tags' in conf \
+            else not 'tags' in conf
 
         # Print debug log
         self._logger.debug("Configuration of strategy '%s':" % self._name)
@@ -62,8 +65,9 @@ class Strategy(object):
             {'all':self._all_categories, 'ac':'categories', 're':'excluded_categories'}, # Category filter
             {'all':self._all_status, 'ac':'status', 're':'excluded_status'}, # Status filter
             {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
+            {'all':self._all_tags, 'ac':'tags', 're':'excluded_tags'}, # Tags filter
         ]
-        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter]
+        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter, TagFilter]
 
         for i in range(0, len(filter_conf)):
             # Initialize all of the filter arguments
