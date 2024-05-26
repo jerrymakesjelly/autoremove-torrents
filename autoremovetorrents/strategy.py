@@ -28,6 +28,7 @@ from .exception.unsupportedproperty import UnsupportedProperty
 from .filter.category import CategoryFilter
 from .filter.status import StatusFilter
 from .filter.tracker import TrackerFilter
+from .filter.tag import TagFilter
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -51,21 +52,24 @@ class Strategy(object):
             else not 'trackers' in conf
         self._all_status = conf['all_status'] if 'all_status' in conf \
             else not 'status' in conf
+        self._all_tags = conf['all_tags'] if 'all_tags' in conf \
+            else not 'tags' in conf
 
         # Print debug log
         self._logger.debug("Configuration of strategy '%s':" % self._name)
-        self._logger.debug('Configurated filters and conditions: %s' % ', '.join(self._conf))
+        self._logger.debug('Configured filters and conditions: %s' % ', '.join(self._conf))
 
     # Apply Filters
     def _apply_filters(self):
         filter_conf = [
-            {'all':self._all_categories, 'ac':'categories', 're':'excluded_categories'}, # Category filter
-            {'all':self._all_status, 'ac':'status', 're':'excluded_status'}, # Status filter
-            {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
+            {'all': self._all_categories, 'ac': 'categories', 're': 'excluded_categories'}, # Category filter
+            {'all': self._all_status, 'ac': 'status', 're': 'excluded_status'}, # Status filter
+            {'all': self._all_trackers, 'ac': 'trackers', 're': 'excluded_trackers'}, # Tracker filter
+            {'all': self._all_tags, 'ac': 'tags', 're': 'excluded_tags'}, # Tags filter
         ]
-        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter]
+        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter, TagFilter]
 
-        for i in range(0, len(filter_conf)):
+        for i in range(len(filter_conf)):
             # Initialize all of the filter arguments
             # User can use a single line to represent one item instead of using list
             accept_field = filter_conf[i]['ac']
@@ -82,7 +86,7 @@ class Strategy(object):
 
             # Print debug log
             self._logger.debug('Applying filter %s...' % filter_obj[i].__name__)
-            self._logger.debug('Filter configrations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
+            self._logger.debug('Filter configurations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
                 filter_conf[i]['all'],
                 ', '.join(self._conf[accept_field]),
                 ', '.join(self._conf[reject_field])
@@ -132,6 +136,7 @@ class Strategy(object):
             'max_size': SizeCondition,
             'upload_ratio': UploadRatioCondition,
         }
+
         for conf in self._conf:
             if conf in conditions:
                 # Print debug log
@@ -149,7 +154,6 @@ class Strategy(object):
                         "%s. Your client may not support this property, so the condition %s does not work." % \
                         (str(e), conf)
                     )
-                
                 # Output
                 self.remain_list = cond.remain
                 self.remove_list.update(cond.remove)
@@ -161,7 +165,6 @@ class Strategy(object):
                 self._logger.debug('OUTPUT: %d torrent(s) to be removed after applying the condition.' % len(self.remove_list))
                 for torrent in self.remove_list:
                     self._logger.debug(torrent)
-
     # Execute this strategy
     def execute(self, client_status, torrents):
         self._logger.info('Running strategy %s...' % self._name)
@@ -172,8 +175,10 @@ class Strategy(object):
         self._apply_conditions(client_status)
         # Print remove list
         self._logger.info("Total: %d torrent(s). %d torrent(s) can be removed." %
-            (len(self.remain_list)+len(self.remove_list), len(self.remove_list)))
+            (len(self.remain_list) + len(self.remove_list), len(self.remove_list)))
         if len(self.remove_list) > 0:
             self._logger.info('To be deleted:')
             for torrent in self.remove_list:
                 self._logger.info(torrent)
+        else:
+            self._logger.info('No torrents to be deleted.')
