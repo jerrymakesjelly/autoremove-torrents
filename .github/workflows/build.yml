@@ -179,7 +179,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Load coverage report
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: coverage.xml
       - name: Run codacy-coverage-reporter
