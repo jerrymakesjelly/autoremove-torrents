@@ -1,0 +1,9 @@
+my_task:
+  client: transmission
+  host: http://localhost
+  username: admin
+  password: verysecurepassword
+  strategies:
+    my_strategy:
+      remove: seeding_time > 2592000 or ratio > 1.99
+  delete_data: true
