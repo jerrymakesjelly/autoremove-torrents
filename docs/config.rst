@@ -114,7 +114,7 @@ Just name your strategy like the task name.
 Part II: Filters
 ++++++++++++++++
 
-The removing condtions are only available for the torrents you chosen. There are 9 filters available.
+The removing conditions are only available for the torrents you chosen. There are 11 filters available.
 
 * ``all_trackers``/``all_categories``/``all_status``: Choose all the trackers/categories/status.
 * ``categories``: Choose torrents in these categories.
@@ -122,6 +122,8 @@ The removing condtions are only available for the torrents you chosen. There are
 * ``trackers``: Choose torrents in these trackers.
 * ``excluded_trackers``: Don't choose torrents in these trackers.
 * ``status``: Choose torrents in these status. Available status is as follows:
+* ``min_ratio``: Choose torrents whose ratio is greater than or equal to this value.
+* ``max_ratio``: Choose torrents whose ratio is less than or equal to this value.
 
 .. list-table::
    :header-rows: 1
@@ -149,12 +151,12 @@ The removing condtions are only available for the torrents you chosen. There are
 
 * ``excluded_status``: Don't choose these torrents in these status. Available status is shown in the table above.
 
-The result of each filter is a set of torrents. 
+The result of each filter is a set of torrents.
 
 .. note::
 
-   When two or three of ``categories``, ``trackers`` and ``status`` filter are specificed, the program will take the intersection of these sets, and subtracts set ``excluded_categories``, ``excluded_trackers`` and ``excluded_status``.
-
+   When two or three of ``categories``, ``trackers`` and ``status`` filter are specified, the program will take the intersection of these sets, and subtracts set ``excluded_categories``, ``excluded_trackers`` and ``excluded_status``.
+   When ``min_ratio`` and/or ``max_ratio`` are specified, they are applied to the torrents selected by the other filters. For example, if you specify ``categories`` and ``min_ratio``, only torrents matching both the category and the minimum ratio will be selected.
 
 .. note::
 
@@ -164,12 +166,12 @@ The result of each filter is a set of torrents.
    .. code-block:: yaml
 
       categories: cata1
-   
+
 
    .. code-block:: yaml
 
       status: uploading
-   
+
 
    3. The ``StalledUp`` and ``StalledDown`` is the new status in version 1.4.5. In this program, ``Uploading`` inlcudes the torrents in ``StalledUpload`` status, and ``Downloading`` includes the torrents in ``StalledDownload`` status.
 
@@ -189,7 +191,6 @@ Let's see some examples. Select those torrents whose categories are Movies or Ga
            - Games
          # Removing conditions are here
          # ...
-
 
 Select those torrents whose hostnames of tracker are tracker.aaa.com or x.bbb.com:
 
@@ -227,6 +228,25 @@ Select torrents whose categories are Movies or Games, but exclude those torrents
          # Removing conditions are here
          # ...
 
+Select torrents whose categories are Movies or Games, and have a ratio between 0.5 and 1.5:
+
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         categories:
+           - Movies
+           - Games
+         min_ratio: 0.5
+         max_ratio: 1.5
+         # Removing conditions are here
+         # ...
+
 Select those torrents whose categories is Movies and status is uploading:
 
 .. code-block:: yaml
@@ -245,6 +265,21 @@ Select those torrents whose categories is Movies and status is uploading:
          # Removing conditions are here
          # ...
 
+Select torrents that have a ratio between 0.5 and 1.5:
+
+.. code-block:: yaml
+
+   my_task:
+     client: xxx
+     host: xxx
+     username: xxx
+     password: xxx
+     strategies:
+       my_strategy:
+         min_ratio: 0.5
+         max_ratio: 1.5
+         # Removing conditions are here
+         # ...
 
 Part III: Remove Condition
 ++++++++++++++++++++++++++
@@ -254,7 +289,7 @@ There are 2 ways to set removing condition.
 1. Use Removing Condition Keywords Directly (Recommended)
 ##########################################################
 
-Use the removing condition keywords directly. There are 18 remove conditions. 
+Use the removing condition keywords directly. There are 18 remove conditions.
 
 .. note::
 
@@ -264,7 +299,7 @@ The first 18 conditions are here. In order to avoid torrents being mistakenly de
 
 .. list-table::
    :header-rows: 1
-   
+
    * - Condition
      - Unit
      - Available Status
@@ -310,7 +345,7 @@ The first 18 conditions are here. In order to avoid torrents being mistakenly de
      - All
      - Torrent size limitation. Remove those torrents whose size exceeds the limit.
    * - ``max_seeder``
-     - 
+     -
      - All
      - Maximum number of seeders. When the seeders exceeds the limitation, the torrent will be removed.
    * - ``max_upload``
@@ -318,7 +353,7 @@ The first 18 conditions are here. In order to avoid torrents being mistakenly de
      - All
      - Maximum uploaded size of a torrent. Torrents whose uploaded size exceed this limitation will be removed.
    * - ``min_leecher``
-     - 
+     -
      - All
      - Minimum number of leechers. When the number of leechers is less than the settings, the torrent will be removed.
    * - ``max_connected_seeder``
@@ -338,7 +373,7 @@ The first 18 conditions are here. In order to avoid torrents being mistakenly de
      - All
      - The maximum download progress. The maximum value is 100.
    * - ``upload_ratio``
-     - 
+     -
      - All
      - The maximum upload ratio. Note that the upload ratio here is different from the ratio. For each torrent, the upload ratio is ``uploaded size`` divided by its ``size``.
 
@@ -351,13 +386,13 @@ The first 18 conditions are here. In order to avoid torrents being mistakenly de
 Beside these condition, the other 3 remove conditions are here. The rest of the torrents will be removed if they trigger these conditions.
 
 * ``seed_size``: Calculate the total size of the torrents you chosen. If the total size exceeds the limit, some of the torrents will be removed. The following two properties must be specificed.
-  
+
   - ``limit``: Limit of the total size, in GiB.
   - ``action``: Determine which torrents will be removed. Can be the following values:
 
   .. list-table::
      :header-rows: 1
-  
+
      * - Value
        - Description
      * - remove-old-seeds
@@ -382,12 +417,12 @@ Beside these condition, the other 3 remove conditions are here. The rest of the 
      Similar to ``last_activity``, the action ``remove-active-seeds`` and ``remove-inactive-seeds`` first consider those torrents that were once active. Only if these torrents are all removed but the constraints are still not met, the torrents that have never been active can be removed (but the order is not guaranteed).
 
 * ``maximum_number``: Set the maximum number of torrents. When the number of chosen torrents is exceed the maximum number, some of the torrents will be deleted, just like the condition `seed_size`. The following two properties must be specified:
-  
+
   - ``limit``: Maximum number limitation
   - ``action``: Determine which torrents will be removed. The values and its meanings are in the table above.
 
 * ``free_space``: Check the free space on disk is enough or not. When the free space is not enough, some of the chosen torrents will be deleted, just like the condition `seed_size`. The following three properties should be specified:
-  
+
   - ``min``: Minimum free space, in `GiB`. When the free space of the specified directory is less than this value, the removing strategy will be trigger.
   - ``path``: Directory that needs to be monitored
   - ``action``: Removing strategy, which determines which torrents will be removed. The values and its meanings are in the table above.
@@ -438,7 +473,7 @@ Here is another example. For all torrents, it removes the torrents which seeding
 
 Here is another another example. For all torrents, when the free space in directory `/home/myserver/downloads` is less than 10GiB, the program will try to remove the big torrents:
 
-.. code-block:: yaml    
+.. code-block:: yaml
 
    my_task:
      client: xxx
@@ -475,15 +510,15 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
 
 1. ``<Parameter> <Comparison Operator> <Value>``
 
-   ``Parameter``: Available parameters are as follows, and they are case-insensitive. 
-   
+   ``Parameter``: Available parameters are as follows, and they are case-insensitive.
+
    .. note::
-   
+
        Some properties can only be used in specific status. The torrents not in available status will not be removed.
 
    .. list-table::
       :header-rows: 1
-       
+
       * - Parameter
         - Unit
         - Available Status
@@ -565,7 +600,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
 
    .. list-table::
       :header-rows: 1
-       
+
       * - Comparison Operator
         - Description
       * - ``<``
@@ -589,7 +624,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         strategies:
           my_strategy:
             remove: seeding_time > 259200
-    
+
 
 2. ``<Expression 1> and <Expression 2>`` and ``<Expression 1> or <Expression 2>``
 
@@ -610,7 +645,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         strategies:
           my_strategy:
             remove: ratio > 2 and seeding_time > 60000
-      
+
 
    Here is another example. For all torrents, it removes those torrents which ratio is less than 1 **or** seeding time is more than 60000:
 
@@ -624,7 +659,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         strategies:
           my_strategy:
             remove: ratio < 1 or seeding_time > 60000
-      
+
 
 3. ``(<Expression>)``
 
@@ -642,7 +677,7 @@ Use the ``remove`` keyword. The ``remove`` keyword is a new keyword in version 1
         strategies:
           my_strategy:
             remove: seeding_time > 60000 or (ratio > 3 and create_time > 1400000)
-      
+
 
 Part 4: Delete data
 -------------------

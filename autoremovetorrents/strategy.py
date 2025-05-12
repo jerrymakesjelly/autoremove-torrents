@@ -28,6 +28,7 @@ from .exception.unsupportedproperty import UnsupportedProperty
 from .filter.category import CategoryFilter
 from .filter.status import StatusFilter
 from .filter.tracker import TrackerFilter
+from .filter.ratio import RatioFilter
 
 class Strategy(object):
     def __init__(self, name, conf):
@@ -62,46 +63,72 @@ class Strategy(object):
             {'all':self._all_categories, 'ac':'categories', 're':'excluded_categories'}, # Category filter
             {'all':self._all_status, 'ac':'status', 're':'excluded_status'}, # Status filter
             {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
+            {'type': 'ratio', 'min_key': 'min_ratio', 'max_key': 'max_ratio'} # Ratio filter
         ]
-        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter]
+        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter, RatioFilter]
 
         for i in range(0, len(filter_conf)):
-            # Initialize all of the filter arguments
-            # User can use a single line to represent one item instead of using list
-            accept_field = filter_conf[i]['ac']
-            reject_field = filter_conf[i]['re']
-            if accept_field not in self._conf:
-                self._conf[accept_field] = []
-            if reject_field not in self._conf:
-                self._conf[reject_field] = []
+            current_filter_class = filter_obj[i]
+            current_filter_config = filter_conf[i]
 
-            if not isinstance(self._conf[accept_field], list):
-                self._conf[accept_field] = [self._conf[accept_field]] # Make it a list
-            if not isinstance(self._conf[reject_field], list):
-                self._conf[reject_field] = [self._conf[reject_field]]
+            self._logger.debug('Applying filter %s...' % current_filter_class.__name__)
 
-            # Print debug log
-            self._logger.debug('Applying filter %s...' % filter_obj[i].__name__)
-            self._logger.debug('Filter configrations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
-                filter_conf[i]['all'],
-                ', '.join(self._conf[accept_field]),
-                ', '.join(self._conf[reject_field])
-            ))
-            self._logger.debug('INPUT: %d torrent(s) before applying the filter.' % len(self.remain_list))
-            for torrent in self.remain_list:
-                self._logger.debug(torrent)
+            if current_filter_config.get('type') == 'ratio':
+                min_ratio_val = self._conf.get(current_filter_config['min_key'])
+                max_ratio_val = self._conf.get(current_filter_config['max_key'])
 
-            # Apply each filter
-            self.remain_list = filter_obj[i](
-                filter_conf[i]['all'],
-                self._conf[accept_field],
-                self._conf[reject_field]
-            ).apply(self.remain_list)
+                if min_ratio_val is not None or max_ratio_val is not None:
+                    self._logger.debug('Filter configurations: MIN_RATIO: %s; MAX_RATIO: %s.' % (
+                        min_ratio_val, max_ratio_val
+                    ))
+                    self._logger.debug('INPUT: %d torrent(s) before applying the filter.' % len(self.remain_list))
+                    for torrent in self.remain_list:
+                        self._logger.debug(torrent)
 
-            # Print debug log again
-            self._logger.debug('OUTPUT: %d torrent(s) after applying the filter.' % len(self.remain_list))
-            for torrent in self.remain_list:
-                self._logger.debug(torrent)
+                    active_filter = current_filter_class(min_ratio_val, max_ratio_val)
+                    self.remain_list = active_filter.apply(self.remain_list)
+
+                    self._logger.debug('OUTPUT: %d torrent(s) after applying the filter.' % len(self.remain_list))
+                    for torrent in self.remain_list:
+                        self._logger.debug(torrent)
+                else:
+                    self._logger.debug('Ratio filter (%s) skipped as its configuration keys (\'%s\', \'%s\') are not found in strategy config.' % (
+                        current_filter_class.__name__,
+                        current_filter_config['min_key'],
+                        current_filter_config['max_key']
+                    ))
+            else:
+                accept_field = current_filter_config['ac']
+                reject_field = current_filter_config['re']
+                if accept_field not in self._conf:
+                    self._conf[accept_field] = []
+                if reject_field not in self._conf:
+                    self._conf[reject_field] = []
+
+                if not isinstance(self._conf[accept_field], list):
+                    self._conf[accept_field] = [self._conf[accept_field]]
+                if not isinstance(self._conf[reject_field], list):
+                    self._conf[reject_field] = [self._conf[reject_field]]
+
+                self._logger.debug('Filter configurations: ALL: %s; ACCEPTANCES: [%s]; REJECTIONS: [%s].' % (
+                    current_filter_config['all'],
+                    ', '.join(map(str, self._conf[accept_field])),
+                    ', '.join(map(str, self._conf[reject_field]))
+                ))
+                self._logger.debug('INPUT: %d torrent(s) before applying the filter.' % len(self.remain_list))
+                for torrent in self.remain_list:
+                    self._logger.debug(torrent)
+
+                active_filter = current_filter_class(
+                    current_filter_config['all'],
+                    self._conf[accept_field],
+                    self._conf[reject_field]
+                )
+                self.remain_list = active_filter.apply(self.remain_list)
+
+                self._logger.debug('OUTPUT: %d torrent(s) after applying the filter.' % len(self.remain_list))
+                for torrent in self.remain_list:
+                    self._logger.debug(torrent)
 
     # Apply Conditions
     def _apply_conditions(self, client_status):
@@ -149,7 +176,7 @@ class Strategy(object):
                         "%s. Your client may not support this property, so the condition %s does not work." % \
                         (str(e), conf)
                     )
-                
+
                 # Output
                 self.remain_list = cond.remain
                 self.remove_list.update(cond.remove)
