@@ -55,10 +55,10 @@ Just name your task.
    No spaces are allowed before the task name.
 
 
-Part 2: Login Information
+Part 2: Login Information and Webhook URL
 -------------------------
 
-This part is your login inforamtion.
+This part is your login information and optionally a Discord Webhook URL.
 
 For qBittorrent, Transmission or μTorrent
 ++++++++++++++++++++++++++++++++++++++++++
@@ -80,6 +80,13 @@ This program accesses Deluge via its RPC protocol.
 * ``username``: The username of the Deluge Daemon.
 * ``password``: The password of the Deluge Daemon.
 
+Discord Webhook (Optional)
++++++++++++
+
+If you want to receive notifications via Discord Webhook, you can add the following fields:
+
+* ``webhook``: The URL of your Discord Webhook. For example, ``https://discord.com/api/webhooks/123456789/abcdefghijklmnopqrstuvwxyz``.
+
 Example:
 
 .. code-block:: yaml
@@ -89,6 +96,7 @@ Example:
      host: 127.0.0.1:58846
      username: localclient
      password: 357a0d23f09b9f303f58846e41986b36fef2ac88
+     webhook: "https://discord.com/api/webhooks/123456789/abcdefghijklmnopqrstuvwxyz" # Optional
 
 .. note::
 

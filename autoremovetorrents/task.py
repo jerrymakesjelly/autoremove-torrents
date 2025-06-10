@@ -10,6 +10,7 @@ from .client.deluge import Deluge
 from .exception.nosuchclient import NoSuchClient
 from .strategy import Strategy
 from autoremovetorrents.torrent import Torrent
+from .util.discord_webhook_handler import DiscordWebhookHandler
 
 class Task(object):
     def __init__(self, name, conf, remove_torrents = True):
@@ -37,6 +38,11 @@ class Task(object):
         self._enabled_remove = remove_torrents
         self._delete_data = conf['delete_data'] if 'delete_data' in conf else False
         self._strategies = conf['strategies'] if 'strategies' in conf else []
+        self._webhook_url = conf['webhook'] if 'webhook' in conf else None
+
+        # Get webhook handler
+        if self._webhook_url is not None:
+            self._webhook_handler = DiscordWebhookHandler(name, self._webhook_url, self._client_name)
 
         # Torrents
         self._torrents = set()
@@ -120,18 +126,22 @@ class Task(object):
             delete_list[torrent.hash] = torrent.name
         # Run deletion
         success, failed = self._client.remove_torrents([hash_ for hash_ in delete_list], self._delete_data)
-        # Output logs
+        # Output logs and send webhooks
         for hash_ in success:
             self._logger.info(
                 'The torrent %s and its data have been removed.' if self._delete_data \
                 else 'The torrent %s has been removed.',
                 delete_list[hash_]
             )
+            if self._webhook_url is not None:
+                self._webhook_handler.send_success(delete_list[hash_])
         for torrent in failed:
             self._logger.error('The torrent %s and its data cannot be removed. Reason: %s' if self._delete_data \
                 else 'The torrent %s cannot be removed. Reason: %s',
                 delete_list[torrent['hash']], torrent['reason']
             )
+            if self._webhook_url is not None:
+                self._webhook_handler.send_failure(delete_list[torrent['hash']], torrent['reason'])
 
     # Execute
     def execute(self):
