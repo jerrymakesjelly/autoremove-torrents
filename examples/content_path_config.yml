@@ -1,0 +1,37 @@
+# Example configuration with content_path filter
+# 
+# Content path filter allows you to selectively remove torrents
+# based on their download directory. This is useful when you have
+# different retention policies for different types of content.
+
+my_task:
+  client: qbittorrent
+  host: http://127.0.0.1:8080
+  username: admin
+  password: adminadmin
+  strategies:
+    # Strategy 1: Remove old movies after 30 days or ratio > 2
+    movies_cleanup:
+      content_paths:
+        - /downloads/movies
+        - /downloads/films
+      remove: seeding_time > 2592000 or ratio > 2  # 30 days
+    
+    # Strategy 2: Remove TV shows after 14 days, but keep important ones
+    tv_shows_cleanup:
+      content_paths:
+        - /downloads/tv
+        - /downloads/tv-shows/*
+      excluded_content_paths:
+        - /downloads/tv/important
+      remove: seeding_time > 1209600 or ratio > 3  # 14 days
+    
+    # Strategy 3: Clean up all downloads except important directories
+    general_cleanup:
+      all_content_paths: false
+      excluded_content_paths:
+        - /downloads/important
+        - /downloads/keep
+      remove: seeding_time > 604800  # 7 days
+
+  delete_data: true

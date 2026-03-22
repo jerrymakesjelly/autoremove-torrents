@@ -26,6 +26,7 @@ from .condition.uploadspeed import UploadSpeedCondition
 from .conditionparser import ConditionParser
 from .exception.unsupportedproperty import UnsupportedProperty
 from .filter.category import CategoryFilter
+from .filter.contentpath import ContentPathFilter
 from .filter.status import StatusFilter
 from .filter.tracker import TrackerFilter
 
@@ -51,6 +52,8 @@ class Strategy(object):
             else not 'trackers' in conf
         self._all_status = conf['all_status'] if 'all_status' in conf \
             else not 'status' in conf
+        self._all_content_paths = conf['all_content_paths'] if 'all_content_paths' in conf \
+            else not 'content_paths' in conf
 
         # Print debug log
         self._logger.debug("Configuration of strategy '%s':" % self._name)
@@ -62,8 +65,9 @@ class Strategy(object):
             {'all':self._all_categories, 'ac':'categories', 're':'excluded_categories'}, # Category filter
             {'all':self._all_status, 'ac':'status', 're':'excluded_status'}, # Status filter
             {'all':self._all_trackers, 'ac':'trackers', 're':'excluded_trackers'}, # Tracker filter
+            {'all':self._all_content_paths, 'ac':'content_paths', 're':'excluded_content_paths'}, # Content path filter
         ]
-        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter]
+        filter_obj = [CategoryFilter, StatusFilter, TrackerFilter, ContentPathFilter]
 
         for i in range(0, len(filter_conf)):
             # Initialize all of the filter arguments
