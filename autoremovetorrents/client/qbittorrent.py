@@ -229,6 +229,8 @@ class qBittorrent(object):
                     torrent_obj.last_activity = self._refresh_time - torrent['last_activity'] \
                         if torrent['last_activity'] > 0 else None
                 torrent_obj.progress = torrent['progress']
+                # Content path (download directory)
+                torrent_obj.content_path = properties.get('content_path', None)
 
                 return torrent_obj
 

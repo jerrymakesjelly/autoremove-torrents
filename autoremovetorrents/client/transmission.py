@@ -117,6 +117,7 @@ class Transmission(object):
                     'downloadedEver',
                     'secondsDownloading',
                     'percentDone',
+                    'downloadDir',
                 ]}
             )
         if len(result['torrents']) == 0: # No such torrent
@@ -150,6 +151,9 @@ class Transmission(object):
         torrent_obj.average_upload_speed = torrent['uploadedEver'] / torrent['secondsSeeding'] if torrent['secondsSeeding'] != 0 else 0
         torrent_obj.average_download_speed = torrent['downloadedEver'] / torrent['secondsDownloading'] if torrent['secondsDownloading'] != 0 else 0
         torrent_obj.progress = torrent['percentDone']
+        # Content path (download directory)
+        if 'downloadDir' in torrent:
+            torrent_obj.content_path = torrent['downloadDir']
 
         return torrent_obj
     

@@ -10,6 +10,7 @@ class Torrent(object):
     def __init__(self):
         # Proper attributes:
         # hash, name, category, tracker, status, size, ratio, uploaded, create_time, seeding_time
+        # content_path (download directory)
         # NOTE: The attribute 'last_activity' stores the time interval since last activity,
         #       not the unix timestamp of last activity.
         pass
