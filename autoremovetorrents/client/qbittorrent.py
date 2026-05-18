@@ -142,7 +142,7 @@ class qBittorrent(object):
         except Exception as exc:
             raise ConnectionFailure(str(exc))
         
-        if request.status_code == 200:
+        if 200 <= request.status_code < 300:
             if request.text == 'Fails.': # Fail
                 raise LoginFailure(request.text)
         else:
