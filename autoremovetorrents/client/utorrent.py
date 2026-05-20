@@ -26,7 +26,7 @@ class uTorrent(object):
         self._refresh_time = 0
 
     # Login to uTorrent
-    def login(self, username, password):
+    def login(self, username, password, api_token=None):
         # HTTP Authorization
         self._session.auth = (username, password)
         # Requests Token

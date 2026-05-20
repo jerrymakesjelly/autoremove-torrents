@@ -21,7 +21,7 @@ class Task(object):
 
         # Replace environment variables first
         pattern = re.compile(r'\$\(([^\)]+)\)')
-        replace_keys = ['host', 'username', 'password']
+        replace_keys = ['host', 'username', 'password', 'api_token']
         for key in replace_keys:
             if key in conf:
                 env = pattern.match(str(conf[key]))
@@ -34,6 +34,7 @@ class Task(object):
         self._host = conf['host'].rstrip('/')
         self._username = conf['username'] if 'username' in conf else ''
         self._password = conf['password'] if 'password' in conf else ''
+        self._api_token = conf['api_token'] if 'api_token' in conf else ''
         self._enabled_remove = remove_torrents
         self._delete_data = conf['delete_data'] if 'delete_data' in conf else False
         self._strategies = conf['strategies'] if 'strategies' in conf else []
@@ -55,8 +56,8 @@ class Task(object):
 
         # Print debug logs
         self._logger.debug("Configuration of task '%s':" % self._name)
-        self._logger.debug('Client: %s, Host: %s, Username: %s, Password: %s' % (
-            self._client_name, self._host, self._username, self._password
+        self._logger.debug('Client: %s, Host: %s, Username: %s, Password: %s, API Token: %s' % (
+            self._client_name, self._host, self._username, self._password, self._api_token
         ))
         self._logger.debug('Remove Torrents: %s, Remove Torrents and Data: %s' % (
             self._enabled_remove, self._delete_data
@@ -83,7 +84,7 @@ class Task(object):
 
         # Login
         self._logger.info('Logging in...')
-        self._client.login(self._username, self._password)
+        self._client.login(self._username, self._password, self._api_token)
         self._logger.info('Login successfully. The client is %s.' % self._client.version())
         self._logger.info('WebUI API version: %s' % self._client.api_version())
 

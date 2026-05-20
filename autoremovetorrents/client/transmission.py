@@ -22,7 +22,7 @@ class Transmission(object):
         self._session = requests.Session()
 
     # Login to Transmission
-    def login(self, username, password):
+    def login(self, username, password, api_token=None):
         # Save authentication of session
         self._session.auth = (username, password)
     

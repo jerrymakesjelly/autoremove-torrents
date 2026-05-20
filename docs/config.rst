@@ -67,8 +67,9 @@ For qBittorrent/Transmission/μTorrent, this program works with your client's We
 
 * ``client``: Your client name. It's case-insensitive.
 * ``host``: The URL of your client's WebUI, and the URL must have a scheme (http:// or https://).
-* ``username``: The username of the WebUI.
-* ``password``: The password of the WebUI.
+* ``username``: The username of the WebUI (optional for qBittorrent if using API token).
+* ``password``: The password of the WebUI (optional for qBittorrent if using API token).
+* ``api_token``: The API key for qBittorrent v5.2.0+ with WebAPI v2.14.1+ (optional, if provided, username/password can be omitted).
 
 For Deluge
 +++++++++++

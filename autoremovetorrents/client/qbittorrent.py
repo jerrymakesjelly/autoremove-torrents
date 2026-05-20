@@ -36,7 +36,9 @@ class qBittorrent(object):
             return self._session.get(self._host+'/version/qbittorrent')
         
         # Login
-        def login(self, username, password):
+        def login(self, username, password, api_token=None):
+            if api_token:
+                raise IncompatibleAPIVersion('API token authentication is only supported on qBittorrent v5.2.0+ with WebAPI v2.14.1+ (API v2)')
             return self._session.post(self._host+'/login', data={'username':username, 'password':password})
 
         # Get server state
@@ -89,8 +91,15 @@ class qBittorrent(object):
             return self._session.get(self._host+'/api/v2/app/version')
         
         # Login
-        def login(self, username, password):
-            return self._session.post(self._host+'/api/v2/auth/login', data={'username':username, 'password':password})
+        def login(self, username, password, api_token=None):
+            if api_token:
+                self._session.headers.update({
+                    'Authorization': f'Bearer {api_token}'
+                })
+                # Verify the token works by calling a simple API endpoint
+                return self.server_state()
+            else:
+                return self._session.post(self._host+'/api/v2/auth/login', data={'username':username, 'password':password})
 
         # Get server state
         def server_state(self):
@@ -136,15 +145,17 @@ class qBittorrent(object):
             raise IncompatibleAPIVersion('Incompatible qbittorrent client. The current API version may be unsupported.')
 
     # Login to qBittorrent
-    def login(self, username, password):
+    def login(self, username, password, api_token=None):
         try:
-            request = self._request_handler.login(username, password)
+            request = self._request_handler.login(username, password, api_token)
         except Exception as exc:
             raise ConnectionFailure(str(exc))
         
         if request.status_code == 200:
-            if request.text == 'Fails.': # Fail
-                raise LoginFailure(request.text)
+            # Check if this is a response from the login endpoint (plain text) or from server_state() (JSON)
+            if not api_token:  # Only check "Fails." for username/password login
+                if request.text == 'Fails.':
+                    raise LoginFailure(request.text)
         else:
             raise LoginFailure('The server returned HTTP %d.' % request.status_code)
     
