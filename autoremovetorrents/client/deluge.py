@@ -24,7 +24,7 @@ class Deluge(object):
         self._last_refresh = 0
 
     # Login to Deluge
-    def login(self, username, password):
+    def login(self, username, password, api_token=None):
         # Split IP(or domain name) and port
         splits = self._host.split(':')
         host = splits[0] if len(splits) > 0 else ''
